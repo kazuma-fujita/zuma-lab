@@ -23,16 +23,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const sections = [
-  { title: 'Technology', url: '#' },
-  { title: 'Design', url: '#' },
-  { title: 'Culture', url: '#' },
-  { title: 'Business', url: '#' },
-  { title: 'Politics', url: '#' },
-  { title: 'Opinion', url: '#' },
-  { title: 'Science', url: '#' },
-  { title: 'Health', url: '#' },
-  { title: 'Style', url: '#' },
-  { title: 'Travel', url: '#' },
+  { title: 'Home', url: '#' },
+  { title: 'Profile', url: '#' },
+  // { title: 'Contact', url: '#' },
 ];
 
 const mainFeaturedPost = {
@@ -66,9 +59,8 @@ const mainFeaturedPost = {
 // const posts = [post1, post2, post3];
 
 const sidebar = {
-  title: 'About',
-  description:
-    'Etiam porta sem malesuada magna mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.',
+  title: 'Author',
+  description: 'ZUMA a.k.a. Kazuma. Web/Mobile App開発。React/iOS/Android。Next/Amplify/Flutter勉強中。',
   archives: [
     { title: 'March 2020', url: '#' },
     { title: 'February 2020', url: '#' },
@@ -96,7 +88,7 @@ const Layout: React.FC = () => {
     <>
       <CssBaseline />
       <Container maxWidth="lg">
-        <Header title="ZUMA Blog" sections={sections} />
+        <Header title="ZUMA Tech Blog" sections={sections} />
         <main>
           <MainFeaturedPost post={mainFeaturedPost} />
           {/* <Grid container spacing={4}>
