@@ -4,12 +4,13 @@ import { ThemeProvider as StyledComponentsThemeProvider } from 'styled-component
 import { ThemeProvider as MaterialUIThemeProvider } from '@material-ui/core/styles';
 import { StylesProvider } from '@material-ui/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import Layout from '../components/Layout';
+import Layout from '../components/templates/Layout';
 import theme from '../styles/theme';
 
-const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
+const App = ({ Component, pageProps }: AppProps): JSX.Element => {
 
   useEffect(() => {
+    // TODO: any型の解決
     const jssStyles: any = document.querySelector('#jss-server-side');
     if (jssStyles) {
       jssStyles.parentElement.removeChild(jssStyles);
@@ -30,4 +31,4 @@ const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
   );
 };
 
-export default MyApp;
+export default App;
