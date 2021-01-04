@@ -4,19 +4,17 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import GitHubIcon from '@material-ui/icons/GitHub';
-import FacebookIcon from '@material-ui/icons/Facebook';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import Header from '../organisms/Header';
 import MainFeaturedPost from '../organisms/MainFeaturedPost';
-// import FeaturedPost from './FeaturedPost';
-import Main from '../organisms/Main';
+import Main from '../organisms/NewPostList';
 import Sidebar from '../organisms/Sidebar';
 import Footer from '../organisms/Footer';
 import FeaturedPost from '../organisms/FeaturedPost';
-import { useFetchPostList } from '../../state/PostList/hooks';
-// import post1 from '../../posts/post1.md';
-// import post2 from '../../posts/post2.md';
-// import post3 from '../../posts/post3.md';
+import Head from 'next/head';
+import { POST_DETAIL, POST_LIST, ScreenName } from '../../lib/constants';
+import PostList from './PostList';
+import PostDetail from './PostDetail';
 
 const useStyles = makeStyles((theme) => ({
   mainGrid: {
@@ -30,33 +28,20 @@ const sections = [
   // { title: 'Contact', url: '#' },
 ];
 
-const mainFeaturedPost = {
-  title: 'Title of a longer featured blog post',
-  description:
-    "Multiple lines of text that form the lede, informing new readers quickly and efficiently about what's most interesting in this post's contents.",
-  image: 'https://source.unsplash.com/random',
-  imageText: 'main image description',
-  linkText: 'Continue reading…',
-};
+export interface PostItem {
+  id: string;
+  contents: string;
+}
 
-const featuredPosts = [
-  {
-    title: 'Featured post',
-    date: 'Nov 12',
-    description:
-      'This is a wider card with supporting text below as a natural lead-in to additional content.',
-    image: 'https://source.unsplash.com/random',
-    imageTitle: 'Image Text',
-  },
-  {
-    title: 'Post title',
-    date: 'Nov 11',
-    description:
-      'This is a wider card with supporting text below as a natural lead-in to additional content.',
-    image: 'https://source.unsplash.com/random',
-    imageTitle: 'Image Text',
-  },
-];
+interface ScreenProps {
+  screenName: ScreenName;
+  items?: Array<PostItem>;
+  item?: PostItem;
+}
+
+interface Props extends ScreenProps {
+  title: string;
+}
 
 const sidebar = {
   title: 'Author',
@@ -77,47 +62,58 @@ const sidebar = {
   social: [
     { name: 'GitHub', icon: GitHubIcon },
     { name: 'Twitter', icon: TwitterIcon },
-    // { name: 'Facebook', icon: FacebookIcon },
   ],
 };
 
-// const posts = [post1, post2, post3];
-
-export interface PostItem {
-  id: string;
-  contents: string;
+const SelectComponent: React.FC<ScreenProps> = ({ screenName, items, item, children }) => {
+  switch (screenName) {
+    case POST_LIST:
+      return <PostList items={items!}>{children}</PostList>;
+    case POST_DETAIL:
+      return <PostDetail item={item!}>{children}</PostDetail>;
+    default:
+      throw new Error('Unknown screen index.');
+  }
 }
 
-interface Props {
-  items: Array<PostItem>;
-}
-
-const Layout: React.FC<Props> = ({ items }) => {
-  const classes = useStyles();
-
-  console.log('Layout! items:', items);
-
+const Layout: React.FC<Props> = ({ title, screenName, items, item }) => {
+  // const classes = useStyles();
   return (
     <>
+      <Head>
+        <link rel="icon" href="/favicon.ico" />
+        <meta name="description" content="Learn how to build a personal website using Next.js" />
+        <meta property="og:image" content={`https://og-image.now.sh/${encodeURI(title)}.png?theme=light&md=0&fontSize=75px&images=https%3A%2F%2Fassets.zeit.co%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg`} />
+        <meta name="og:title" content={title} />
+        <meta name="twitter:card" content="summary_large_image" />
+      </Head>
       <CssBaseline />
       <Container maxWidth="lg">
-        <Header title="ZUMA Tech Blog" sections={sections} />
+        <Header title={title} sections={sections} />
         <main>
-          <MainFeaturedPost post={mainFeaturedPost} />
-          <Grid container spacing={4}>
-            {featuredPosts.map((post) => (
-              <FeaturedPost key={post.title} post={post} />
-            ))}
-          </Grid>
-          <Grid container spacing={5} className={classes.mainGrid}>
-            <Main title="From the firehose" items={items} />
+          <SelectComponent screenName={screenName} items={items} item={item}>
             <Sidebar
               title={sidebar.title}
               description={sidebar.description}
               archives={sidebar.archives}
               social={sidebar.social}
             />
+          </SelectComponent>
+          {/* <MainFeaturedPost post={mainFeaturedPost} />
+          <Grid container spacing={4}>
+            {featuredPosts.map((post) => (
+              <FeaturedPost key={post.title} post={post} />
+            ))}
           </Grid>
+          <Grid container spacing={5} className={classes.mainGrid}>
+            <Main title="記事一覧" items={items} />
+            <Sidebar
+              title={sidebar.title}
+              description={sidebar.description}
+              archives={sidebar.archives}
+              social={sidebar.social}
+            />
+          </Grid> */}
         </main>
       </Container>
       <Footer title="Footer" description="Something here to give the footer a purpose!" />

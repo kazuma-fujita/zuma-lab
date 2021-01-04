@@ -38,7 +38,7 @@ const Header: React.FC<Props> = ({ sections, title }) => {
   const classes = useStyles();
 
   return (
-    <React.Fragment>
+    <>
       <Toolbar className={classes.toolbar}>
         {/* <Button size="small">Subscribe</Button> */}
         <Typography
@@ -72,7 +72,7 @@ const Header: React.FC<Props> = ({ sections, title }) => {
           </Link>
         ))}
       </Toolbar>
-    </React.Fragment>
+    </>
   );
 }
 

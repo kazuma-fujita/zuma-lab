@@ -3,7 +3,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
-import { useFetchPostList } from '../../state/PostList/hooks';
 import Markdown from '../atoms/Markdown';
 import { PostItem } from '../templates/Layout';
 
@@ -19,9 +18,8 @@ interface Props {
   title: string;
 }
 
-const Main: React.FC<Props> = ({ items, title }) => {
+const NewPostList: React.FC<Props> = ({ items, title }) => {
   const classes = useStyles();
-  console.log('items:', items);
 
   return (
     <Grid item xs={12} md={8}>
@@ -38,4 +36,4 @@ const Main: React.FC<Props> = ({ items, title }) => {
   );
 }
 
-export default Main;
+export default NewPostList;

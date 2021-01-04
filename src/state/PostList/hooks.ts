@@ -7,10 +7,8 @@ import html from 'remark-html';
 const postsDirectory = path.join(process.cwd(), 'src/posts');
 
 export const useFetchPostList = () => {
-  console.log('Here!!');
   // /posts　配下のファイル名を取得する
   const fileNames = fs.readdirSync(postsDirectory);
-  console.log('fileNames:', fileNames);
   const allPostsData = fileNames.map(fileName => {
     // id を取得するためにファイル名から ".md" を削除する
     const id = fileName.replace(/\.md$/, '');

@@ -1,5 +1,7 @@
-import Link from 'next/link'
+// import Link from 'next/link'
+import { GetStaticProps } from 'next';
 import Layout, { PostItem } from '../components/templates/Layout'
+import { POST_LIST } from '../lib/constants';
 import { useFetchPostList } from '../state/PostList/hooks';
 
 // const IndexPage = () => (
@@ -18,10 +20,12 @@ interface Props {
 }
 
 const IndexPage: React.FC<Props> = ({ items }) => (
-  <Layout items={items} />
+  <Layout title="ZUMA Tech Note" screenName={POST_LIST} items={items} />
 );
 
-export async function getStaticProps() {
+export default IndexPage;
+
+export const getStaticProps: GetStaticProps = async () => {
   const items = useFetchPostList();
   return {
     props: {
@@ -29,5 +33,3 @@ export async function getStaticProps() {
     }
   }
 }
-
-export default IndexPage
