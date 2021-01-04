@@ -1,46 +1,10 @@
-# Sample blog post
+---
+title: "事前レンダリングの2つの形式"
+date: "2020-01-01"
+---
 
-#### April 1, 2020 by [Olivier](/)
+Next.js には、**静的生成**と**サーバー側レンダリング**の 2 つの形式の事前レンダリングがあります。違いは、ページの HTML を生成する**時期**にあります。
 
-This blog post shows a few different types of content that are supported and styled with
-Material styles. Basic typography, images, and code are all supported.
-You can extend these by modifying `Markdown.js`.
+-**静的生成**は、**ビルド時**に HTML を生成する事前レンダリング方法です。事前にレンダリングされた HTML は、リクエストごとに*再利用*されます。 -**サーバー側レンダリング**は、**各リクエスト**で HTML を生成する事前レンダリングメソッドです。
 
-Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.
-Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.
-
-Curabitur blandit tempus porttitor. **Nullam quis risus eget urna mollis** ornare vel eu leo.
-Nullam id dolor id nibh ultricies vehicula ut id elit.
-
-Etiam porta sem malesuada magna mollis euismod. Cras mattis consectetur purus sit amet fermentum.
-Aenean lacinia bibendum nulla sed consectetur.
-
-## Heading
-
-Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.
-Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.
-Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-
-### Sub-heading
-
-Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-
-### Sub-heading
-
-Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-Aenean lacinia bibendum nulla sed consectetur. Etiam porta sem malesuada magna mollis euismod.
-Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo
-sit amet risus.
-
-- Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
-- Donec id elit non mi porta gravida at eget metus.
-- Nulla vitae elit libero, a pharetra augue.
-
-Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue.
-
-1.  Vestibulum id ligula porta felis euismod semper.
-2.  Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-3.  Maecenas sed diam eget risus varius blandit sit amet non magna.
-
-Cras mattis consectetur purus sit amet fermentum. Sed posuere consectetur est at lobortis.
+重要なのは、Next.js を使用すると、各ページに使用する事前レンダリングフォームを**選択**できることです。
