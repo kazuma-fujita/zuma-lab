@@ -37,6 +37,12 @@ const Sidebar: React.FC<Props> = ({ archives, description, social, title }) => {
 
   return (
     <Grid item xs={12} md={4}>
+      <Paper elevation={0} className={classes.sidebarAboutBox}>
+        <Typography variant="h6" gutterBottom>
+          {title}
+        </Typography>
+        <Typography>{description}</Typography>
+      </Paper>
       <Typography variant="h6" gutterBottom className={classes.sidebarSection}>
         Archives
       </Typography>
@@ -58,12 +64,6 @@ const Sidebar: React.FC<Props> = ({ archives, description, social, title }) => {
           </Grid>
         </Link>
       ))}
-      <Paper elevation={0} className={classes.sidebarAboutBox}>
-        <Typography variant="h6" gutterBottom>
-          {title}
-        </Typography>
-        <Typography>{description}</Typography>
-      </Paper>
     </Grid>
   );
 }
