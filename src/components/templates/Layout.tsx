@@ -13,9 +13,10 @@ import Main from '../organisms/Main';
 import Sidebar from '../organisms/Sidebar';
 import Footer from '../organisms/Footer';
 import FeaturedPost from '../organisms/FeaturedPost';
-// import post1 from './blog-post.1.md';
-// import post2 from './blog-post.2.md';
-// import post3 from './blog-post.3.md';
+import { useFetchPostList } from '../../state/PostList/hooks';
+// import post1 from '../../posts/post1.md';
+// import post2 from '../../posts/post2.md';
+// import post3 from '../../posts/post3.md';
 
 const useStyles = makeStyles((theme) => ({
   mainGrid: {
@@ -80,8 +81,21 @@ const sidebar = {
   ],
 };
 
-const Layout: React.FC = () => {
+// const posts = [post1, post2, post3];
+
+export interface PostItem {
+  id: string;
+  contents: string;
+}
+
+interface Props {
+  items: Array<PostItem>;
+}
+
+const Layout: React.FC<Props> = ({ items }) => {
   const classes = useStyles();
+
+  console.log('Layout! items:', items);
 
   return (
     <>
@@ -96,8 +110,7 @@ const Layout: React.FC = () => {
             ))}
           </Grid>
           <Grid container spacing={5} className={classes.mainGrid}>
-            <Main title="From the firehose" />
-            {/* <Main title="From the firehose" posts={posts} /> */}
+            <Main title="From the firehose" items={items} />
             <Sidebar
               title={sidebar.title}
               description={sidebar.description}

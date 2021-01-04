@@ -22,9 +22,9 @@ const App = ({ Component, pageProps }: AppProps): JSX.Element => {
       <MaterialUIThemeProvider theme={theme}>
         <StyledComponentsThemeProvider theme={theme}>
           <CssBaseline />
-          <Layout>
+          {/* <Layout> */}
             <Component {...pageProps} />
-          </Layout>
+          {/* </Layout> */}
         </StyledComponentsThemeProvider>
       </MaterialUIThemeProvider>
     </StylesProvider>

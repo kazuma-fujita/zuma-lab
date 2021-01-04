@@ -4,7 +4,8 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import { useFetchPostList } from '../../state/PostList/hooks';
-// import Markdown from './Markdown';
+import Markdown from '../atoms/Markdown';
+import { PostItem } from '../templates/Layout';
 
 const useStyles = makeStyles((theme) => ({
   markdown: {
@@ -14,13 +15,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 interface Props {
-  // posts: Array<object>;
+  items: Array<PostItem>;
   title: string;
 }
 
-// const Main: React.FC<Props> = ({ posts, title }) => {
-const Main: React.FC<Props> = ({ title }) => {
-  // const classes = useStyles();
+const Main: React.FC<Props> = ({ items, title }) => {
+  const classes = useStyles();
+  console.log('items:', items);
 
   return (
     <Grid item xs={12} md={8}>
@@ -28,22 +29,13 @@ const Main: React.FC<Props> = ({ title }) => {
         {title}
       </Typography>
       <Divider />
-      {/* {posts.map((post) => (
-        <Markdown className={classes.markdown} key={post.substring(0, 40)}>
-          {post}
+      {items.map((item) => (
+        <Markdown className={classes.markdown} key={item.contents.substring(0, 40)}>
+          {item.contents}
         </Markdown>
-      ))} */}
+      ))}
     </Grid>
   );
-}
-
-export async function getStaticProps() {
-  const allPostsData = useFetchPostList();
-  return {
-    props: {
-      allPostsData
-    }
-  }
 }
 
 export default Main;

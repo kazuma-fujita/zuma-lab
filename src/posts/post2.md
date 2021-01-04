@@ -1,17 +1,17 @@
----
-title: "静的生成を使用する場合v.s.サーバー側のレンダリング"
-date: "2020-01-02"
----
+# Another blog post
 
-ページは一度作成して CDN で提供できるため、可能な限り**静的生成**（データありとなし）を使用することをお勧めします。これにより、サーバーがリクエストごとにページをレンダリングするよりもはるかに高速になります。
+#### March 23, 2020 by [Matt](/)
 
-静的生成は、次のような多くの種類のページに使用できます。
+Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.
+Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.
 
--マーケティングページ -ブログ投稿
--E コマース製品リスト -ヘルプとドキュメント
+Curabitur blandit tempus porttitor. **Nullam quis risus eget urna mollis** ornare vel eu leo.
+Nullam id dolor id nibh ultricies vehicula ut id elit.
 
-「ユーザーのリクエストの**前**にこのページを事前にレンダリングできますか？」と自問する必要があります。答えが「はい」の場合は、静的生成を選択する必要があります。
+Etiam porta sem malesuada magna mollis euismod. Cras mattis consectetur purus sit amet fermentum.
+Aenean lacinia bibendum nulla sed consectetur.
 
-一方、静的生成は、ユーザーの要求の前にページを事前にレンダリングできない場合は**お勧めできません**。たぶん、あなたのページには頻繁に更新されるデータが表示され、ページのコンテンツはリクエストごとに変更されます。
-
-その場合は、**サーバー側のレンダリング**を使用できます。速度は遅くなりますが、事前にレンダリングされたページは常に最新の状態になります。または、事前レンダリングをスキップし、クライアント側の JavaScript を使用してデータを入力することもできます。
+Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.
+Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.
+Morbi leo risus, porta ac consectetur ac, vestibulum at eros.

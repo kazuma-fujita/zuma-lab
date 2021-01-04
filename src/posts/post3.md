@@ -1,8 +1,17 @@
----
-title: "大幅にリニューアルされた Next.js のチュートリアルをどこよりも早く全編和訳しました"
-date: "2020-01-03"
----
+# New feature
 
-数日前（4/21 頃）に Next.js のチュートリアルが一新されました。
-Next.js は 3 月頭に ver 9.3 がリリースされ、ビルド時に静的に HTML を生成する関数などが追加されるなど、今までよりもかなりパワフルになり、いわゆる JAMstack と呼ばれるようなアプリケーションを作りやすくなりました。
-そのバージョンアップに対応するかたちで、チュートリアルも大幅に書き直されました。
+#### March 14, 2020 by [Tom](/)
+
+Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+Aenean lacinia bibendum nulla sed consectetur. Etiam porta sem malesuada magna mollis euismod.
+Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
+ut fermentum massa justo sit amet risus.
+
+- Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
+- Donec id elit non mi porta gravida at eget metus.
+- Nulla vitae elit libero, a pharetra augue.
+
+Etiam porta sem malesuada magna mollis euismod. Cras mattis consectetur purus sit amet fermentum.
+Aenean lacinia bibendum nulla sed consectetur.
+
+Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue.
