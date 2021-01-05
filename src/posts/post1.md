@@ -1,3 +1,8 @@
+---
+title: "1/1の記事"
+date: "2020-01-01"
+---
+
 # Sample blog post
 
 #### April 1, 2020 by [Olivier](/)

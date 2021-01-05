@@ -15,6 +15,7 @@ import Head from 'next/head';
 import { POST_DETAIL, POST_LIST, ScreenName } from '../../lib/constants';
 import PostList from './PostList';
 import PostDetail from './PostDetail';
+import { PostItem } from '../../interfaces/PostItem';
 
 const useStyles = makeStyles((theme) => ({
   mainGrid: {
@@ -27,11 +28,6 @@ const sections = [
   { title: 'Profile', url: '#' },
   // { title: 'Contact', url: '#' },
 ];
-
-export interface PostItem {
-  id: string;
-  contents: string;
-}
 
 interface ScreenProps {
   screenName: ScreenName;

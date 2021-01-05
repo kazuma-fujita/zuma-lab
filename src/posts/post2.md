@@ -1,3 +1,8 @@
+---
+title: "1/2の記事"
+date: "2020-01-02"
+---
+
 # Another blog post
 
 #### March 23, 2020 by [Matt](/)

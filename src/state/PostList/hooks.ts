@@ -1,12 +1,13 @@
 import fs from 'fs';
 import path from 'path';
-import matter from 'gray-matter';
+import matter, { GrayMatterFile, Input } from 'gray-matter';
 import remark from 'remark';
 import html from 'remark-html';
+import { PostItem } from '../../interfaces/PostItem';
 
 const postsDirectory = path.join(process.cwd(), 'src/posts');
 
-export const useFetchPostList = () => {
+export const useFetchPostList = (): Array<PostItem> => {
   // /posts　配下のファイル名を取得する
   const fileNames = fs.readdirSync(postsDirectory);
   const allPostsData = fileNames.map(fileName => {
@@ -15,25 +16,29 @@ export const useFetchPostList = () => {
 
     // マークダウンファイルを文字列として読み取る
     const fullPath = path.join(postsDirectory, fileName);
-    const contents = fs.readFileSync(fullPath, 'utf8');
+    const fileContents = fs.readFileSync(fullPath, 'utf8');
 
     // 投稿のメタデータ部分を解析するために gray-matter を使う
-    // const matterResult = matter(contents);
+    const matterResult: GrayMatterFile<Input> = matter(fileContents);
+    const contents = matterResult.content;
+    const title = matterResult.data.title;
+    const date = matterResult.data.date;
 
     // データを id と合わせる
     return {
       id,
-      // ...matterResult.data
-      contents
+      contents,
+      title,
+      date
     }
   })
-  return allPostsData;
+  // return allPostsData;
   // 投稿を日付でソートする
-  // return allPostsData.sort((a, b) => {
-  //   if (a.date < b.date) {
-  //     return 1
-  //   } else {
-  //     return -1
-  //   }
-  // })
+  return allPostsData.sort((a: PostItem, b: PostItem) => {
+    if (a.date < b.date) {
+      return 1
+    } else {
+      return -1
+    }
+  })
 }

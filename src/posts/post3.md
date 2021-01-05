@@ -1,3 +1,8 @@
+---
+title: "1/3の記事"
+date: "2020-01-03"
+---
+
 # New feature
 
 #### March 14, 2020 by [Tom](/)

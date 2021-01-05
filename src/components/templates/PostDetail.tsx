@@ -12,8 +12,8 @@ import Sidebar from '../organisms/Sidebar';
 import Footer from '../organisms/Footer';
 import FeaturedPost from '../organisms/FeaturedPost';
 import Head from 'next/head';
-import { PostItem } from './Layout';
 import Markdown from '../atoms/Markdown';
+import { PostItem } from '../../interfaces/PostItem';
 
 const useStyles = makeStyles((theme) => ({
   mainGrid: {

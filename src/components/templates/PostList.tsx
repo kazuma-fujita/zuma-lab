@@ -12,6 +12,7 @@ import Sidebar from '../organisms/Sidebar';
 import Footer from '../organisms/Footer';
 import FeaturedPost from '../organisms/FeaturedPost';
 import Head from 'next/head';
+import { PostItem } from '../../interfaces/PostItem';
 
 const useStyles = makeStyles((theme) => ({
   mainGrid: {
@@ -75,11 +76,6 @@ const sidebar = {
   ],
 };
 
-export interface PostItem {
-  id: string;
-  contents: string;
-}
-
 interface Props {
   items: Array<PostItem>;
 }
@@ -96,7 +92,7 @@ const PostList: React.FC<Props> = ({ items, children }) => {
         ))}
       </Grid>
       <Grid container spacing={5} className={classes.mainGrid}>
-        <NewPostList title="新着記事" items={items} />
+        <NewPostList title='Post' items={items} />
         {children}
         {/* <Sidebar
           title={sidebar.title}

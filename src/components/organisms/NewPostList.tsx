@@ -4,7 +4,8 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import Markdown from '../atoms/Markdown';
-import { PostItem } from '../templates/Layout';
+import { PostItem } from '../../interfaces/PostItem';
+import Link from 'next/link';
 
 const useStyles = makeStyles((theme) => ({
   markdown: {
@@ -27,10 +28,22 @@ const NewPostList: React.FC<Props> = ({ items, title }) => {
         {title}
       </Typography>
       <Divider />
-      {items.map((item) => (
-        <Markdown className={classes.markdown} key={item.contents.substring(0, 40)}>
-          {item.contents}
+      {items.map(({ id, title, date, contents }) => (
+        <>
+        <Link href={`/posts/${id}`}>
+          <a>{title}</a>
+        </Link>
+        <br />
+        <small>
+          {date}
+          {/* <Date dateString={date} /> */}
+        </small>
+        <br />
+        <br />
+        <Markdown className={classes.markdown} key={contents.substring(0, 40)}>
+          {contents}
         </Markdown>
+        </>
       ))}
     </Grid>
   );

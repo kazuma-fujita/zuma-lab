@@ -10,6 +10,8 @@
   "dependencies": {
     "@material-ui/core": "^4.11.2",
     "@material-ui/icons": "^4.11.2",
+    "date-fns": "^2.16.1",
+    "gray-matter": "^4.0.2",
     "markdown-to-jsx": "^7.1.0",
     "next": "latest",
     "react": "^16.12.0",
