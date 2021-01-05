@@ -24,29 +24,29 @@ const NewPostList: React.FC<Props> = ({ items, title }) => {
 
   return (
     <Grid item xs={12} md={8}>
-      <Typography variant="h6" gutterBottom>
+      <Typography variant='h6' gutterBottom>
         {title}
       </Typography>
       <Divider />
       {items.map(({ id, title, date, contents }) => (
         <>
-        <Link href={`/posts/${id}`}>
-          <a>{title}</a>
-        </Link>
-        <br />
-        <small>
-          {date}
-          {/* <Date dateString={date} /> */}
-        </small>
-        <br />
-        <br />
-        <Markdown className={classes.markdown} key={contents.substring(0, 40)}>
-          {contents}
-        </Markdown>
+          <Link href={`/posts/${id}`}>
+            <a>{title}</a>
+          </Link>
+          <br />
+          <small>
+            {date}
+            {/* <Date dateString={date} /> */}
+          </small>
+          <br />
+          <br />
+          <Markdown className={classes.markdown} key={contents.substring(0, 40)}>
+            {contents}
+          </Markdown>
         </>
       ))}
     </Grid>
   );
-}
+};
 
 export default NewPostList;
