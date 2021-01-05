@@ -1,6 +1,6 @@
 ---
 title: 'ESLint/Prettierで自動フォーマットとgit commit時にlintチェックをする'
-date: '2021-01-04'
+date: '2021-01-05'
 ---
 
 Next で blog 作成をするにあたり、最低限の ESLint / Prettier 自動フォーマット設定はしようと思う。
@@ -29,7 +29,7 @@ Next で blog 作成をするにあたり、最低限の ESLint / Prettier 自�
 - ESLint
 
 ```
-yarn add -D eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin
+yarn add -D eslint eslint-plugin-react @typescript-eslint/parser @typescript-eslint/eslint-plugin
 ```
 
 - prettier

@@ -4,11 +4,9 @@ import { ThemeProvider as StyledComponentsThemeProvider } from 'styled-component
 import { ThemeProvider as MaterialUIThemeProvider } from '@material-ui/core/styles';
 import { StylesProvider } from '@material-ui/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import Layout from '../components/templates/Layout';
 import theme from '../styles/theme';
 
 const App = ({ Component, pageProps }: AppProps): JSX.Element => {
-
   useEffect(() => {
     // TODO: any型の解決
     const jssStyles: any = document.querySelector('#jss-server-side');
@@ -22,9 +20,7 @@ const App = ({ Component, pageProps }: AppProps): JSX.Element => {
       <MaterialUIThemeProvider theme={theme}>
         <StyledComponentsThemeProvider theme={theme}>
           <CssBaseline />
-          {/* <Layout> */}
-            <Component {...pageProps} />
-          {/* </Layout> */}
+          <Component {...pageProps} />
         </StyledComponentsThemeProvider>
       </MaterialUIThemeProvider>
     </StylesProvider>
