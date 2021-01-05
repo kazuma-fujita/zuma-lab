@@ -1,9 +1,11 @@
 ---
-title: 'ESLint/Prettier設定手順'
+title: 'ESLint/Prettier設定とgit commit時にlintチェックをする'
 date: '2021-01-04'
 ---
 
 Next で blog 作成をするにあたり、最低限の ESLint / Prettier 設定はしようと思う。
+
+更に git commit 時に Husky と lint-staged で lint チェックをする。
 
 前提として、既に typescript は install 済みとする。
 
@@ -22,21 +24,21 @@ Next で blog 作成をするにあたり、最低限の ESLint / Prettier 設�
 - yarn
   - 1.22.4
 
-# ESLint/Prettier install
+# ESLint/Prettier package install
 
-## ESLint
+## ESLint install
 
 ```
 yarn add -D eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin
 ```
 
-## Pettier
+## Pettier install
 
 ```
 yarn add -D prettier eslint-config-prettier
 ```
 
-### install された package
+### install package の確認
 
 ```
 $ yarn list --depth=0 |grep -e prettier -e eslint
@@ -122,6 +124,43 @@ VSCode の settings.json を開き以下を追記
     "source.fixAll.eslint": true // ファイル保存時に ESLint でフォーマット
   },
 }
+```
+
+ここまでで ESLint と Prettier の設定は完了。
+
+VSCode 開き直して適当にインデントのおかしいコードの記述、保存をすると自動的にフォーマットがかかるはずだ。
+
+次に Husky/lint-staged を利用して git commit 時に lint チェックがかかるようにする。
+
+# Husky/lint-staged package install
+
+```
+yarn add -D husky lint-staged
+```
+
+## install package 確認
+
+```
+$ yarn list --depth=0 |grep -e husky -e lint-staged
+├─ husky@4.3.6
+├─ lint-staged@10.5.3
+```
+
+## package.json に Husky と lint-staged 用の設定を追記
+
+```json:package.json
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx}": [
+      "prettier --write",
+      "eslint --fix",
+      "git add"
+    ]
+  },
 ```
 
 ## 参考
