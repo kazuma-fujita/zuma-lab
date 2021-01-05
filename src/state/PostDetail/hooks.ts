@@ -7,6 +7,8 @@ import { PostItem } from '../../interfaces/PostItem';
 
 const postsDirectory = path.join(process.cwd(), 'src/posts');
 
+// TODO: markdownファイルではなく、最初にfetchしたlistからidの配列生成する
+// listの情報をstateで持つこと
 export const useGetAllPostIds = () => {
   const fileNames = fs.readdirSync(postsDirectory);
 
@@ -23,14 +25,14 @@ export const useGetAllPostIds = () => {
   //     }
   //   }
   // ]
-  return fileNames.map(fileName => {
+  return fileNames.map((fileName) => {
     return {
       params: {
-        id: fileName.replace(/\.md$/, '')
-      }
-    }
-  })
-}
+        id: fileName.replace(/\.md$/, ''),
+      },
+    };
+  });
+};
 
 // export const useGetPostData = async (id: string) => {
 export const useGetPostData = (id: string): PostItem => {
@@ -41,6 +43,7 @@ export const useGetPostData = (id: string): PostItem => {
   const contents = matterResult.content;
   const title = matterResult.data.title;
   const date = matterResult.data.date;
+  const isPublished = matterResult.data.isPublished;
   // マークダウンを HTML 文字列に変換するために remark を使う
   // const processedContent = await remark()
   //   .use(html)
@@ -53,8 +56,9 @@ export const useGetPostData = (id: string): PostItem => {
     id,
     contents,
     title,
-    date
+    date,
+    isPublished,
     // contentHtml,
     // ...matterResult.data
-  }
-}
+  };
+};

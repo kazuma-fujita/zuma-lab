@@ -3,4 +3,5 @@ export interface PostItem {
   contents: string;
   title: string;
   date: string;
+  isPublished: boolean;
 }
