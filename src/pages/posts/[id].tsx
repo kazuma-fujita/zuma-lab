@@ -1,5 +1,6 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
-import Layout, { PostItem } from '../../components/templates/Layout'
+import Layout from '../../components/templates/Layout'
+import { PostItem } from '../../interfaces/PostItem';
 import { POST_DETAIL } from '../../lib/constants';
 import { useGetAllPostIds, useGetPostData } from '../../state/PostDetail/hooks';
 
