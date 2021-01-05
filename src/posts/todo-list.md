@@ -8,7 +8,7 @@ isPublished: true
 
 あくまで備忘録なので、記載されている内容に不備があり、何かしらの不具合を引き起こしても当方は責任を持たない無責任 blog である。
 
-# やることリスト
+## やることリスト
 
 この blog は Next を利用し、フルスクラッチで実装している為、足りない機能だらけである。
 
@@ -41,8 +41,12 @@ isPublished: true
   - [ ] OGP タグ設定
   - [ ] Meta 設定
   - [ ] Title タグ設定
+  - [ ] シンタックスハイライト追加
+- 状態管理
+  - [ ] 記事一覧 PostItem オブジェクトを useReducer/useContext で管理
+  - [ ] 記事詳細で取得する PostItem オブジェクトは state から取得
 - 開発環境整備
-  - [ ] Next 初期環境構築の記事投稿
+  - [x] Next 初期環境構築の記事投稿
   - [x] ESLint/Prettier 設定の記事投稿
 - その他
   - [ ] Google Analytics 設定

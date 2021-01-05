@@ -35,7 +35,7 @@ export const useFetchPostList = (): Array<PostItem> => {
         isPublished,
       };
     })
-    .filter((item) => item.isPublished);
+    .filter((item) => item.isPublished); // isPublished=false記事を除外
 
   // 投稿を日付でソートする
   return allPostsData.sort((a: PostItem, b: PostItem) => {
