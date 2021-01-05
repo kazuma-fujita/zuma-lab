@@ -32,7 +32,7 @@ interface Section {
 interface Props {
   sections: Array<Section>;
   title: string;
-};
+}
 
 const Header: React.FC<Props> = ({ sections, title }) => {
   const classes = useStyles();
@@ -41,14 +41,7 @@ const Header: React.FC<Props> = ({ sections, title }) => {
     <>
       <Toolbar className={classes.toolbar}>
         {/* <Button size="small">Subscribe</Button> */}
-        <Typography
-          component="h2"
-          variant="h5"
-          color="inherit"
-          align="center"
-          noWrap
-          className={classes.toolbarTitle}
-        >
+        <Typography component='h2' variant='h5' color='inherit' align='center' noWrap className={classes.toolbarTitle}>
           {title}
         </Typography>
         {/* <IconButton>
@@ -58,13 +51,13 @@ const Header: React.FC<Props> = ({ sections, title }) => {
           Sign up
         </Button> */}
       </Toolbar>
-      <Toolbar component="nav" variant="dense" className={classes.toolbarSecondary}>
+      <Toolbar component='nav' variant='dense' className={classes.toolbarSecondary}>
         {sections.map((section: Section) => (
           <Link
-            color="inherit"
+            color='inherit'
             noWrap
             key={section.title}
-            variant="body2"
+            variant='body2'
             href={section.url}
             className={classes.toolbarLink}
           >
@@ -74,6 +67,6 @@ const Header: React.FC<Props> = ({ sections, title }) => {
       </Toolbar>
     </>
   );
-}
+};
 
 export default Header;

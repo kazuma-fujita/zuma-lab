@@ -11,10 +11,8 @@ export default class MyDocument extends Document {
     try {
       ctx.renderPage = () =>
         originalRenderPage({
-          enhanceApp: App => props =>
-            styledComponentSheets.collectStyles(
-              materialUiServerStyleSheets.collect(<App {...props} />)
-            )
+          enhanceApp: (App) => (props) =>
+            styledComponentSheets.collectStyles(materialUiServerStyleSheets.collect(<App {...props} />)),
         });
 
       const initialProps = await Document.getInitialProps(ctx);
@@ -26,7 +24,7 @@ export default class MyDocument extends Document {
             {styledComponentSheets.getStyleElement()}
             {materialUiServerStyleSheets.getStyleElement()}
           </>
-        )
+        ),
       };
     } finally {
       styledComponentSheets.seal();
@@ -35,7 +33,7 @@ export default class MyDocument extends Document {
 
   render() {
     return (
-      <Html lang="ja">
+      <Html lang='ja'>
         <Head />
         <body>
           <Main />

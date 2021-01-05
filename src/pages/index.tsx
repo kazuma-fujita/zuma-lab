@@ -1,5 +1,6 @@
 import { GetStaticProps } from 'next';
-import Layout, { PostItem } from '../components/templates/Layout'
+import Layout from '../components/templates/Layout';
+import { PostItem } from '../interfaces/PostItem';
 import { POST_LIST } from '../lib/constants';
 import { useFetchPostList } from '../state/PostList/hooks';
 
@@ -8,7 +9,7 @@ interface Props {
 }
 
 const IndexPage: React.FC<Props> = ({ items }) => (
-  <Layout title="ZUMA Tech Note" screenName={POST_LIST} items={items} />
+  <Layout title='ZUMA Tech Note' screenName={POST_LIST} items={items} />
 );
 
 export default IndexPage;
@@ -17,7 +18,7 @@ export const getStaticProps: GetStaticProps = async () => {
   const items = useFetchPostList();
   return {
     props: {
-      items
-    }
-  }
-}
+      items,
+    },
+  };
+};

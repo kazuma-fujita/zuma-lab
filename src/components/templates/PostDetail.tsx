@@ -82,6 +82,6 @@ const PostDetail: React.FC<Props> = ({ item, children }) => {
       </Grid>
     </>
   );
-}
+};
 
 export default PostDetail;

@@ -26,8 +26,7 @@ interface FeaturedPost {
   date: string;
   imageTitle: string;
   image: string;
-};
-
+}
 
 interface Props {
   post: FeaturedPost;
@@ -38,20 +37,20 @@ const FeaturedPost: React.FC<Props> = ({ post }) => {
 
   return (
     <Grid item xs={12} md={6}>
-      <CardActionArea component="a" href="#">
+      <CardActionArea component='a' href='#'>
         <Card className={classes.card}>
           <div className={classes.cardDetails}>
             <CardContent>
-              <Typography component="h2" variant="h5">
+              <Typography component='h2' variant='h5'>
                 {post.title}
               </Typography>
-              <Typography variant="subtitle1" color="textSecondary">
+              <Typography variant='subtitle1' color='textSecondary'>
                 {post.date}
               </Typography>
-              <Typography variant="subtitle1" paragraph>
+              <Typography variant='subtitle1' paragraph>
                 {post.description}
               </Typography>
-              <Typography variant="subtitle1" color="primary">
+              <Typography variant='subtitle1' color='primary'>
                 Continue reading...
               </Typography>
             </CardContent>
@@ -63,6 +62,6 @@ const FeaturedPost: React.FC<Props> = ({ post }) => {
       </CardActionArea>
     </Grid>
   );
-}
+};
 
 export default FeaturedPost;

@@ -34,20 +34,19 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
 interface MainFeaturedPost {
   title: string;
   description: string;
   image: string;
   imageText: string;
   linkText: string;
-};
+}
 
 interface Props {
   post: MainFeaturedPost;
 }
 
-const MainFeaturedPost: React.FC<Props> = ({post}) => {
+const MainFeaturedPost: React.FC<Props> = ({ post }) => {
   const classes = useStyles();
 
   return (
@@ -58,13 +57,13 @@ const MainFeaturedPost: React.FC<Props> = ({post}) => {
       <Grid container>
         <Grid item md={6}>
           <div className={classes.mainFeaturedPostContent}>
-            <Typography component="h1" variant="h3" color="inherit" gutterBottom>
+            <Typography component='h1' variant='h3' color='inherit' gutterBottom>
               {post.title}
             </Typography>
-            <Typography variant="h5" color="inherit" paragraph>
+            <Typography variant='h5' color='inherit' paragraph>
               {post.description}
             </Typography>
-            <Link variant="subtitle1" href="#">
+            <Link variant='subtitle1' href='#'>
               <Link href={'/posts/post1'}>
                 <a>{post.linkText}</a>
               </Link>
@@ -74,6 +73,6 @@ const MainFeaturedPost: React.FC<Props> = ({post}) => {
       </Grid>
     </Paper>
   );
-}
+};
 
 export default MainFeaturedPost;
