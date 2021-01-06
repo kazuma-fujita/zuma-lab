@@ -18,14 +18,15 @@ interface Props {
   avatar: AvatarItem;
   socials: Array<SNSItem>;
   item?: PostItem;
-  errors?: string;
+  // errors?: string;
 }
 
-const Post: React.FC<Props> = ({ avatar, socials, item, errors }) => (
+// const Post: React.FC<Props> = ({ avatar, socials, item, errors }) => (
+const Post: React.FC<Props> = ({ avatar, socials, item }) => (
   <Layout title={`${item?.title} | ${SITE_TITLE}`}>
     <PostDetail item={item!}>
       {/* <Sidebar title={sidebar.title} description={sidebar.description} archives={sidebar.archives} socials={socials} /> */}
-      <Sidebar description={avatar.description} socials={socials} />
+      <Sidebar avatar={avatar} socials={socials} />
     </PostDetail>
   </Layout>
 );

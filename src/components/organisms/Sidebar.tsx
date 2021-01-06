@@ -7,6 +7,7 @@ import { SNSItem } from '../../interfaces/SNSItem';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import { Avatar, Box } from '@material-ui/core';
+import { AvatarItem } from '../../interfaces/AvatarItem';
 
 const useStyles = makeStyles((theme) => ({
   sidebarAboutBox: {
@@ -30,12 +31,12 @@ const useStyles = makeStyles((theme) => ({
 
 interface Props {
   // archives: Array<Archive>;
-  description: string;
+  avatar: AvatarItem;
   socials: Array<SNSItem>;
 }
 
 // const Sidebar: React.FC<Props> = ({ archives, description, socials, title }) => {
-const Sidebar: React.FC<Props> = ({ description, socials }) => {
+const Sidebar: React.FC<Props> = ({ avatar, socials }) => {
   const classes = useStyles();
 
   return (
@@ -44,12 +45,12 @@ const Sidebar: React.FC<Props> = ({ description, socials }) => {
         <Grid container spacing={2} justify='center'>
           <Grid item>
             <Link href='/profile'>
-              <Avatar className={classes.largeAvatar} src='/images/avatar/ZUMA.png' />
+              <Avatar className={classes.largeAvatar} src={avatar.image} />
             </Link>
           </Grid>
           <Grid item>
             {/* <Typography>{description}</Typography> */}
-            {description}&nbsp;&nbsp;
+            {avatar.description}&nbsp;&nbsp;
             <Link href='/profile'>My profile.</Link>
           </Grid>
         </Grid>

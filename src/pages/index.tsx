@@ -25,7 +25,7 @@ const IndexPage: React.FC<Props> = ({ avatar, socials, items }) => (
   <Layout title={SITE_TITLE}>
     <PostList items={items}>
       {/* <Sidebar title={sidebar.title} description={sidebar.description} archives={sidebar.archives} socials={socials} /> */}
-      <Sidebar description={avatar.description} socials={socials} />
+      <Sidebar avatar={avatar} socials={socials} />
     </PostList>
   </Layout>
 );
