@@ -64,9 +64,7 @@ const MainFeaturedPost: React.FC<Props> = ({ post }) => {
               {post.description}
             </Typography>
             <Link variant='subtitle1' href='#'>
-              <Link href={'/posts/post1'}>
-                <a>{post.linkText}</a>
-              </Link>
+              <a>{post.linkText}</a>
             </Link>
           </div>
         </Grid>

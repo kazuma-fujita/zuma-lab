@@ -1,8 +1,22 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Layout from '../../components/templates/Layout';
 import { PostItem } from '../../interfaces/PostItem';
-import { POST_DETAIL } from '../../lib/constants';
 import { useGetAllPostIds, useGetPostData } from '../../state/PostDetail/hooks';
+import PostDetail from '../../components/templates/PostDetail';
+import Sidebar from '../../components/organisms/Sidebar';
+import GitHubIcon from '@material-ui/icons/GitHub';
+import TwitterIcon from '@material-ui/icons/Twitter';
+import { SITE_TITLE } from '../../lib/constants';
+
+const sidebar = {
+  title: 'Author',
+  description: 'ZUMA a.k.a. Kazuma. Web/Mobile App開発。React/iOS/Android。Next/Amplify/Flutter勉強中。',
+  archives: [{ title: 'March 2020', url: '#' }],
+  social: [
+    { name: 'GitHub', icon: GitHubIcon },
+    { name: 'Twitter', icon: TwitterIcon },
+  ],
+};
 
 interface Props {
   item?: PostItem;
@@ -10,7 +24,16 @@ interface Props {
 }
 
 const Post: React.FC<Props> = ({ item, errors }) => (
-  <Layout title='ZUMA Tech Note' screenName={POST_DETAIL} item={item} />
+  <Layout title={`${item?.title} | ${SITE_TITLE}`}>
+    <PostDetail item={item!}>
+      <Sidebar
+        title={sidebar.title}
+        description={sidebar.description}
+        archives={sidebar.archives}
+        social={sidebar.social}
+      />
+    </PostDetail>
+  </Layout>
 );
 
 export default Post;

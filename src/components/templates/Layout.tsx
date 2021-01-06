@@ -12,7 +12,7 @@ import Sidebar from '../organisms/Sidebar';
 import Footer from '../organisms/Footer';
 import FeaturedPost from '../organisms/FeaturedPost';
 import Head from 'next/head';
-import { POST_DETAIL, POST_LIST, ScreenName } from '../../lib/constants';
+import { POST_DETAIL, POST_LIST, ScreenName, SITE_TITLE } from '../../lib/constants';
 import PostList from './PostList';
 import PostDetail from './PostDetail';
 import { PostItem } from '../../interfaces/PostItem';
@@ -29,55 +29,39 @@ const sections = [
   // { title: 'Contact', url: '#' },
 ];
 
-interface ScreenProps {
-  screenName: ScreenName;
-  items?: Array<PostItem>;
-  item?: PostItem;
-}
+// interface ScreenProps {
+//   screenName: ScreenName;
+//   items?: Array<PostItem>;
+//   item?: PostItem;
+// }
 
-interface Props extends ScreenProps {
+// interface Props extends ScreenProps {
+//   title: string;
+// }
+
+interface Props {
   title: string;
 }
 
-const sidebar = {
-  title: 'Author',
-  description: 'ZUMA a.k.a. Kazuma. Web/Mobile App開発。React/iOS/Android。Next/Amplify/Flutter勉強中。',
-  archives: [
-    { title: 'March 2020', url: '#' },
-    { title: 'February 2020', url: '#' },
-    { title: 'January 2020', url: '#' },
-    { title: 'November 1999', url: '#' },
-    { title: 'October 1999', url: '#' },
-    { title: 'September 1999', url: '#' },
-    { title: 'August 1999', url: '#' },
-    { title: 'July 1999', url: '#' },
-    { title: 'June 1999', url: '#' },
-    { title: 'May 1999', url: '#' },
-    { title: 'April 1999', url: '#' },
-  ],
-  social: [
-    { name: 'GitHub', icon: GitHubIcon },
-    { name: 'Twitter', icon: TwitterIcon },
-  ],
-};
+// const SelectComponent: React.FC<ScreenProps> = ({ screenName, items, item, children }) => {
+//   switch (screenName) {
+//     case POST_LIST:
+//       return <PostList items={items!}>{children}</PostList>;
+//     case POST_DETAIL:
+//       return <PostDetail item={item!}>{children}</PostDetail>;
+//     default:
+//       throw new Error('Unknown screen index.');
+//   }
+// };
 
-const SelectComponent: React.FC<ScreenProps> = ({ screenName, items, item, children }) => {
-  switch (screenName) {
-    case POST_LIST:
-      return <PostList items={items!}>{children}</PostList>;
-    case POST_DETAIL:
-      return <PostDetail item={item!}>{children}</PostDetail>;
-    default:
-      throw new Error('Unknown screen index.');
-  }
-};
-
-const Layout: React.FC<Props> = ({ title, screenName, items, item }) => {
+// const Layout: React.FC<Props> = ({ title, screenName, items, item }) => {
+const Layout: React.FC<Props> = ({ title, children }) => {
   // const classes = useStyles();
   return (
     <>
       <Head>
         <link rel='icon' href='/favicon.ico' />
+        <title>{title}</title>
         <meta name='description' content='Learn how to build a personal website using Next.js' />
         <meta
           property='og:image'
@@ -90,16 +74,17 @@ const Layout: React.FC<Props> = ({ title, screenName, items, item }) => {
       </Head>
       <CssBaseline />
       <Container maxWidth='lg'>
-        <Header title={title} sections={sections} />
+        <Header title={SITE_TITLE} sections={sections} />
         <main>
-          <SelectComponent screenName={screenName} items={items} item={item}>
+          {children}
+          {/* <SelectComponent screenName={screenName} items={items} item={item}>
             <Sidebar
               title={sidebar.title}
               description={sidebar.description}
               archives={sidebar.archives}
               social={sidebar.social}
             />
-          </SelectComponent>
+          </SelectComponent> */}
           {/* <MainFeaturedPost post={mainFeaturedPost} />
           <Grid container spacing={4}>
             {featuredPosts.map((post) => (
