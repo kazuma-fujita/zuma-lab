@@ -9,6 +9,9 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.paper,
     // marginTop: theme.spacing(8),
     padding: theme.spacing(6, 0),
+    // width: '100%',
+    // position: 'absolute', // 画面下部固定
+    // bottom: theme.spacing(0), // 画面下部余白ゼロ
   },
 }));
 
