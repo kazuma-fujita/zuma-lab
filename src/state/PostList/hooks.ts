@@ -1,8 +1,6 @@
 import fs from 'fs';
 import path from 'path';
 import matter, { GrayMatterFile, Input } from 'gray-matter';
-import remark from 'remark';
-import html from 'remark-html';
 import { PostItem } from 'interfaces/PostItem';
 
 const postsDirectory = path.join(process.cwd(), 'src/posts');

@@ -1,10 +1,10 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import MainFeaturedPost from '../organisms/MainFeaturedPost';
-import NewPostList from '../organisms/NewPostList';
-import FeaturedPost from '../organisms/FeaturedPost';
-import { PostItem } from '../../interfaces/PostItem';
+import MainFeaturedPost from 'components/organisms/MainFeaturedPost';
+import NewPostList from 'components/organisms/NewPostList';
+import FeaturedPost from 'components/organisms/FeaturedPost';
+import { PostItem } from 'interfaces/PostItem';
 import { useFetchFeaturedImageItem } from 'state/FeaturedImage/hooks';
 
 const useStyles = makeStyles((theme) => ({
@@ -12,32 +12,6 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(3),
   },
 }));
-
-const mainFeaturedPost = {
-  title: 'Title of a longer featured blog post',
-  description:
-    "Multiple lines of text that form the lede, informing new readers quickly and efficiently about what's most interesting in this post's contents.",
-  image: 'https://source.unsplash.com/random',
-  imageText: 'main image description',
-  linkText: 'Continue reading…',
-};
-
-const featuredPosts = [
-  {
-    title: 'Featured post',
-    date: 'Nov 12',
-    description: 'This is a wider card with supporting text below as a natural lead-in to additional content.',
-    image: 'https://source.unsplash.com/random',
-    imageTitle: 'Image Text',
-  },
-  {
-    title: 'Post title',
-    date: 'Nov 11',
-    description: 'This is a wider card with supporting text below as a natural lead-in to additional content.',
-    image: 'https://source.unsplash.com/random',
-    imageTitle: 'Image Text',
-  },
-];
 
 interface Props {
   items: Array<PostItem>;
@@ -58,13 +32,9 @@ const PostList: React.FC<Props> = ({ items, children }) => {
       </Grid>
       <Grid container spacing={5} className={classes.mainGrid}>
         <NewPostList title='Recent Posts' items={items} />
+        {/* Sidebar */}
         {children}
-        {/* <Sidebar
-          title={sidebar.title}
-          description={sidebar.description}
-          archives={sidebar.archives}
-          social={sidebar.social}
-        /> */}
+        {/* Sidebar */}
       </Grid>
     </>
   );

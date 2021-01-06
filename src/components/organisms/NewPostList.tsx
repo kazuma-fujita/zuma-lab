@@ -1,52 +1,36 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import { PostItem } from 'interfaces/PostItem';
-import Link from 'next/link';
-import HighlightedMarkdown from 'components/atoms/HighlightedMarkdown';
-
-const useStyles = makeStyles((theme) => ({
-  markdown: {
-    ...theme.typography.body2,
-    padding: theme.spacing(3, 0),
-  },
-}));
+import { Box, Link } from '@material-ui/core';
 
 interface Props {
-  items: Array<PostItem>;
   title: string;
+  items: Array<PostItem>;
 }
 
-const NewPostList: React.FC<Props> = ({ items, title }) => {
-  const classes = useStyles();
-
-  return (
-    <Grid item xs={12} md={8}>
-      <Typography variant='h6' gutterBottom>
-        {title}
-      </Typography>
-      <Divider />
-      {items.map(({ id, title, date, contents }) => (
-        <>
-          <Link href={`/posts/${id}`}>
-            <a>{title}</a>
-          </Link>
-          <br />
-          <small>
+const NewPostList: React.FC<Props> = ({ title, items }) => (
+  <Grid item xs={12} md={8}>
+    <Typography variant='h6' gutterBottom>
+      {title}
+    </Typography>
+    <Divider />
+    {items.map(({ id, title, date }) => (
+      <>
+        <Box mt={4} mb={4}>
+          <Typography component='h4' variant='h6'>
+            <Link color='inherit' href={`/posts/${id}`}>
+              {title}
+            </Link>
+          </Typography>
+          <Typography variant='subtitle1' color='textSecondary'>
             {date}
-            {/* <Date dateString={date} /> */}
-          </small>
-          <br />
-          <br />
-          <HighlightedMarkdown className={classes.markdown} key={contents.substring(0, 40)}>
-            {contents}
-          </HighlightedMarkdown>
-        </>
-      ))}
-    </Grid>
-  );
-};
+          </Typography>
+        </Box>
+      </>
+    ))}
+  </Grid>
+);
 
 export default NewPostList;
