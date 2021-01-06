@@ -1,7 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import MainFeaturedPost from 'components/organisms/MainFeaturedPost';
 import { PostItem } from 'interfaces/PostItem';
 import HighlightedMarkdown from 'components/atoms/HighlightedMarkdown';
 import PostDetailTitle from 'components/organisms/PostDetailTitle';
@@ -16,15 +15,6 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(3, 0),
   },
 }));
-
-const mainFeaturedPost = {
-  title: 'Title of a longer featured blog post',
-  description:
-    "Multiple lines of text that form the lede, informing new readers quickly and efficiently about what's most interesting in this post's contents.",
-  image: 'https://source.unsplash.com/random',
-  imageText: 'main image description',
-  linkText: 'Continue reading…',
-};
 
 interface Props {
   item: PostItem;

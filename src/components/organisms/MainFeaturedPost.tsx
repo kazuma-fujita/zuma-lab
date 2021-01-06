@@ -4,6 +4,8 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
+import { FeaturedImageItem } from 'interfaces/FeaturedImageItem';
+import { PostItem } from 'interfaces/PostItem';
 
 const useStyles = makeStyles((theme) => ({
   mainFeaturedPost: {
@@ -11,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.grey[800],
     color: theme.palette.common.white,
     marginBottom: theme.spacing(4),
-    backgroundImage: 'url(https://source.unsplash.com/random)',
+    // backgroundImage: 'url(https://source.unsplash.com/random)',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
@@ -34,42 +36,40 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-interface MainFeaturedPost {
-  title: string;
-  description: string;
-  image: string;
-  imageText: string;
-  linkText: string;
-}
-
 interface Props {
-  post: MainFeaturedPost;
+  item: PostItem;
+  featuredImage: FeaturedImageItem;
 }
 
-const MainFeaturedPost: React.FC<Props> = ({ post }) => {
+const MainFeaturedPost: React.FC<Props> = ({ item, featuredImage }) => {
   const classes = useStyles();
 
   return (
-    <Paper className={classes.mainFeaturedPost} style={{ backgroundImage: `url(${post.image})` }}>
-      {/* Increase the priority of the hero background image */}
-      {<img style={{ display: 'none' }} src={post.image} alt={post.imageText} />}
-      <div className={classes.overlay} />
-      <Grid container>
-        <Grid item md={6}>
-          <div className={classes.mainFeaturedPostContent}>
-            <Typography component='h1' variant='h3' color='inherit' gutterBottom>
-              {post.title}
-            </Typography>
-            <Typography variant='h5' color='inherit' paragraph>
-              {post.description}
-            </Typography>
-            <Link variant='subtitle1' href='#'>
-              <a>{post.linkText}</a>
-            </Link>
-          </div>
+    <Link color='inherit' href={`/posts/${item.id}`}>
+      <Paper className={classes.mainFeaturedPost} style={{ backgroundImage: `url(${featuredImage.image})` }}>
+        {/* Increase the priority of the hero background image */}
+        {<img style={{ display: 'none' }} src={featuredImage.image} alt={featuredImage.imageText} />}
+        <div className={classes.overlay} />
+        <Grid container>
+          <Grid item md={6}>
+            <div className={classes.mainFeaturedPostContent}>
+              <Typography component='h1' variant='h3' color='inherit' gutterBottom>
+                {item.title}
+              </Typography>
+              <Typography variant='h6' color='inherit' paragraph>
+                {item.date}
+              </Typography>
+              {/* <Typography variant='h5' color='inherit' paragraph>
+              {item.contents.substring(0, 60)}
+            </Typography> */}
+              {/* <Link variant='subtitle1' href={`/posts/${item.id}`}>
+              <a>Continue reading…</a>
+            </Link> */}
+            </div>
+          </Grid>
         </Grid>
-      </Grid>
-    </Paper>
+      </Paper>
+    </Link>
   );
 };
 

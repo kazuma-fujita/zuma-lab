@@ -5,6 +5,7 @@ import MainFeaturedPost from '../organisms/MainFeaturedPost';
 import NewPostList from '../organisms/NewPostList';
 import FeaturedPost from '../organisms/FeaturedPost';
 import { PostItem } from '../../interfaces/PostItem';
+import { useFetchFeaturedImageItem } from 'state/FeaturedImage/hooks';
 
 const useStyles = makeStyles((theme) => ({
   mainGrid: {
@@ -44,14 +45,16 @@ interface Props {
 
 const PostList: React.FC<Props> = ({ items, children }) => {
   const classes = useStyles();
-
+  const featuredImage = useFetchFeaturedImageItem();
   return (
     <>
-      <MainFeaturedPost post={mainFeaturedPost} />
+      <MainFeaturedPost item={items[0]} featuredImage={featuredImage} />
       <Grid container spacing={4}>
-        {featuredPosts.map((post) => (
+        <FeaturedPost key={items[1].title} item={items[1]} featuredImage={featuredImage} />
+        <FeaturedPost key={items[2].title} item={items[2]} featuredImage={featuredImage} />
+        {/* {featuredPosts.map((post) => (
           <FeaturedPost key={post.title} post={post} />
-        ))}
+        ))} */}
       </Grid>
       <Grid container spacing={5} className={classes.mainGrid}>
         <NewPostList title='Recent Posts' items={items} />
