@@ -2,7 +2,6 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 import { SNSItem } from '../../interfaces/SNSItem';
 import TwitterIcon from '@material-ui/icons/Twitter';
@@ -42,16 +41,14 @@ const Sidebar: React.FC<Props> = ({ description, socials }) => {
   return (
     <Grid item xs={12} md={4}>
       <Paper elevation={0} className={classes.sidebarAboutBox}>
-        {/* <Typography variant='h6' gutterBottom>
-          {title}
-        </Typography> */}
         <Grid container spacing={2} justify='center'>
           <Grid item>
             <Avatar className={classes.largeAvatar}>H</Avatar>
           </Grid>
           <Grid item>
             {/* <Typography>{description}</Typography> */}
-            {description}
+            {description}&nbsp;&nbsp;
+            <Link href='/profile'>My profile.</Link>
           </Grid>
         </Grid>
         <Box mb={2} />
