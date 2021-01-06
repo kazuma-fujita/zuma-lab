@@ -59,6 +59,10 @@ cd sample-app && mkdir src && mv components interfaces pages src/.
 
 この作業は好みだが、CRA で開発をする時は基本プロダクトソースコードを src ディレクトリ配下に置くので、慣例として実行する。
 
+## import 文を src ディレクトリからの絶対パスに設定
+
+[import 文を絶対パスで設定する(TypeScript 版)](posts/typescript-import-absolute-path-settings) を参照
+
 ## Material-UI 設定
 
 Next ではデフォルト Material-UI が利用出来ない。というより Material-UI が Next の SSR に対応していないので対応させる。

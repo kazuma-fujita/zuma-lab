@@ -1,12 +1,12 @@
 import { GetStaticProps } from 'next';
-import Layout from '../components/templates/Layout';
-import { PostItem } from '../interfaces/PostItem';
-import { useFetchPostList } from '../state/PostList/hooks';
-import PostList from '../components/templates/PostList';
-import Sidebar from '../components/organisms/Sidebar';
+import Layout from 'components/templates/Layout';
+import { PostItem } from 'interfaces/PostItem';
+import { useFetchPostList } from 'state/PostList/hooks';
+import PostList from 'components/templates/PostList';
+import Sidebar from 'components/organisms/Sidebar';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import TwitterIcon from '@material-ui/icons/Twitter';
-import { SITE_TITLE } from '../lib/constants';
+import { SITE_TITLE } from 'lib/constants';
 
 const sidebar = {
   title: 'Author',

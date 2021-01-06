@@ -3,10 +3,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
-import Markdown from '../atoms/Markdown';
-import { PostItem } from '../../interfaces/PostItem';
+import { PostItem } from 'interfaces/PostItem';
 import Link from 'next/link';
-import HighlightedMarkdown from '../atoms/HighlightedMarkdown';
+import HighlightedMarkdown from 'components/atoms/HighlightedMarkdown';
 
 const useStyles = makeStyles((theme) => ({
   markdown: {
