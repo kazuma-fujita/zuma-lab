@@ -6,6 +6,10 @@ import Toolbar from '@material-ui/core/Toolbar';
 // import SearchIcon from '@material-ui/icons/Search';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
+import { SNSItem } from 'interfaces/SNSItem';
+import TwitterIcon from '@material-ui/icons/Twitter';
+import GitHubIcon from '@material-ui/icons/GitHub';
+import { Grid } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
@@ -30,11 +34,12 @@ interface Section {
 }
 
 interface Props {
-  sections: Array<Section>;
   title: string;
+  sections: Array<Section>;
+  socials: Array<SNSItem>;
 }
 
-const Header: React.FC<Props> = ({ sections, title }) => {
+const Header: React.FC<Props> = ({ title, sections, socials }) => {
   const classes = useStyles();
 
   return (
@@ -42,7 +47,9 @@ const Header: React.FC<Props> = ({ sections, title }) => {
       <Toolbar className={classes.toolbar}>
         {/* <Button size="small">Subscribe</Button> */}
         <Typography component='h2' variant='h5' color='inherit' align='center' noWrap className={classes.toolbarTitle}>
-          {title}
+          <Link color='inherit' href='/'>
+            {title}
+          </Link>
         </Typography>
         {/* <IconButton>
           <SearchIcon />
@@ -64,6 +71,15 @@ const Header: React.FC<Props> = ({ sections, title }) => {
             {section.title}
           </Link>
         ))}
+        <Grid container spacing={2} justify='flex-end'>
+          {socials.map((social) => (
+            <Grid item>
+              <Link target='_blank' rel='noopener' href={social.url} key={social.name}>
+                {social.name === 'Twitter' ? <TwitterIcon fontSize='small' /> : <GitHubIcon fontSize='small' />}
+              </Link>
+            </Grid>
+          ))}
+        </Grid>
       </Toolbar>
     </>
   );

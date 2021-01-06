@@ -44,7 +44,7 @@ const Sidebar: React.FC<Props> = ({ description, socials }) => {
         <Grid container spacing={2} justify='center'>
           <Grid item>
             <Link href='/profile'>
-              <Avatar className={classes.largeAvatar} src='/images/ZUMA.png' />
+              <Avatar className={classes.largeAvatar} src='/images/avatar/ZUMA.png' />
             </Link>
           </Grid>
           <Grid item>
