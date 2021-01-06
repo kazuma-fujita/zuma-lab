@@ -1,37 +1,31 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
-import Layout from '../../components/templates/Layout';
-import { PostItem } from '../../interfaces/PostItem';
-import { useGetAllPostIds, useGetPostData } from '../../state/PostDetail/hooks';
-import PostDetail from '../../components/templates/PostDetail';
-import Sidebar from '../../components/organisms/Sidebar';
-import GitHubIcon from '@material-ui/icons/GitHub';
-import TwitterIcon from '@material-ui/icons/Twitter';
-import { SITE_TITLE } from '../../lib/constants';
+import Layout from 'components/templates/Layout';
+import { PostItem } from 'interfaces/PostItem';
+import { useGetAllPostIds, useGetPostData } from 'state/PostDetail/hooks';
+import PostDetail from 'components/templates/PostDetail';
+import Sidebar from 'components/organisms/Sidebar';
+import { SITE_TITLE } from 'lib/constants';
+import { useFetchSNSList } from 'state/SNS/hooks';
+import { SNSItem } from 'interfaces/SNSItem';
+import { AvatarItem } from 'interfaces/AvatarItem';
+import { useFetchAvatarItem } from '../../state/Avatar/hooks';
 
-const sidebar = {
-  title: 'Author',
-  description: 'ZUMA a.k.a. Kazuma. Web/Mobile App開発。React/iOS/Android。Next/Amplify/Flutter勉強中。',
-  archives: [{ title: 'March 2020', url: '#' }],
-  social: [
-    { name: 'GitHub', icon: GitHubIcon },
-    { name: 'Twitter', icon: TwitterIcon },
-  ],
-};
+// const sidebar = {
+//   archives: [{ title: 'March 2020', url: '#' }],
+// };
 
 interface Props {
+  avatar: AvatarItem;
+  socials: Array<SNSItem>;
   item?: PostItem;
   errors?: string;
 }
 
-const Post: React.FC<Props> = ({ item, errors }) => (
+const Post: React.FC<Props> = ({ avatar, socials, item, errors }) => (
   <Layout title={`${item?.title} | ${SITE_TITLE}`}>
     <PostDetail item={item!}>
-      <Sidebar
-        title={sidebar.title}
-        description={sidebar.description}
-        archives={sidebar.archives}
-        social={sidebar.social}
-      />
+      {/* <Sidebar title={sidebar.title} description={sidebar.description} archives={sidebar.archives} socials={socials} /> */}
+      <Sidebar description={avatar.description} socials={socials} />
     </PostDetail>
   </Layout>
 );
@@ -48,9 +42,13 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   // const postData = await useGetPostData(params.id);
+  const avatar = useFetchAvatarItem();
+  const socials = useFetchSNSList();
   const item = useGetPostData(params?.id as string);
   return {
     props: {
+      avatar,
+      socials,
       item,
     },
   };
