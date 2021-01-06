@@ -14,6 +14,7 @@ import FeaturedPost from '../organisms/FeaturedPost';
 import Head from 'next/head';
 import Markdown from '../atoms/Markdown';
 import { PostItem } from '../../interfaces/PostItem';
+import HighlightedMarkdown from '../atoms/HighlightedMarkdown';
 
 const useStyles = makeStyles((theme) => ({
   mainGrid: {
@@ -68,9 +69,9 @@ const PostDetail: React.FC<Props> = ({ item, children }) => {
       <MainFeaturedPost post={mainFeaturedPost} />
       <Grid container spacing={5} className={classes.mainGrid}>
         <Grid item xs={12} md={8}>
-          <Markdown className={classes.markdown} key={item.contents.substring(0, 40)}>
+          <HighlightedMarkdown className={classes.markdown} key={item.contents.substring(0, 40)}>
             {item.contents}
-          </Markdown>
+          </HighlightedMarkdown>
         </Grid>
         {children}
         {/* <Sidebar

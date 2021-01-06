@@ -90,7 +90,7 @@ const PostList: React.FC<Props> = ({ items, children }) => {
         ))}
       </Grid>
       <Grid container spacing={5} className={classes.mainGrid}>
-        <NewPostList title='Post' items={items} />
+        <NewPostList title='Recent Posts' items={items} />
         {children}
         {/* <Sidebar
           title={sidebar.title}

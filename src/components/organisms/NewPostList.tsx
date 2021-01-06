@@ -6,6 +6,7 @@ import Divider from '@material-ui/core/Divider';
 import Markdown from '../atoms/Markdown';
 import { PostItem } from '../../interfaces/PostItem';
 import Link from 'next/link';
+import HighlightedMarkdown from '../atoms/HighlightedMarkdown';
 
 const useStyles = makeStyles((theme) => ({
   markdown: {
@@ -40,9 +41,9 @@ const NewPostList: React.FC<Props> = ({ items, title }) => {
           </small>
           <br />
           <br />
-          <Markdown className={classes.markdown} key={contents.substring(0, 40)}>
+          <HighlightedMarkdown className={classes.markdown} key={contents.substring(0, 40)}>
             {contents}
-          </Markdown>
+          </HighlightedMarkdown>
         </>
       ))}
     </Grid>

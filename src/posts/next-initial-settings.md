@@ -101,7 +101,7 @@ material-ui と styled-components を全画面共通で利用出来るよう `sr
 
 `MaterialUIThemeProvider` と `StyledComponentsThemeProvider` でどこでも material-ui と styled-components を利用できるようにしている。
 
-```tsx:_app.tsx
+```jsx:_app.tsx
 import React, { useEffect } from 'react';
 import { AppProps } from 'next/app';
 import { ThemeProvider as StyledComponentsThemeProvider } from 'styled-components';
@@ -143,7 +143,7 @@ material-ui / styled-components を SSR に対応させる為、 `src/pages/_doc
 
 material-ui や styled-components で指定した CSS はこのファイルに設定を用意すれば、SSR 対応出来る。
 
-```tsx: _document.tsx
+```jsx:_document.tsx
 import Document, { DocumentContext, Html, Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheet as StyledComponentSheets } from 'styled-components';
 import { ServerStyleSheets as MaterialUiServerStyleSheets } from '@material-ui/styles';
@@ -157,10 +157,8 @@ export default class MyDocument extends Document {
     try {
       ctx.renderPage = () =>
         originalRenderPage({
-          enhanceApp: App => props =>
-            styledComponentSheets.collectStyles(
-              materialUiServerStyleSheets.collect(<App {...props} />)
-            )
+          enhanceApp: (App) => (props) =>
+            styledComponentSheets.collectStyles(materialUiServerStyleSheets.collect(<App {...props} />)),
         });
 
       const initialProps = await Document.getInitialProps(ctx);
@@ -172,7 +170,7 @@ export default class MyDocument extends Document {
             {styledComponentSheets.getStyleElement()}
             {materialUiServerStyleSheets.getStyleElement()}
           </>
-        )
+        ),
       };
     } finally {
       styledComponentSheets.seal();
@@ -181,7 +179,7 @@ export default class MyDocument extends Document {
 
   render() {
     return (
-      <Html lang="ja">
+      <Html lang='ja'>
         <Head />
         <body>
           <Main />

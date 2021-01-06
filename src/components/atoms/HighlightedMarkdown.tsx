@@ -1,5 +1,8 @@
-import * as React from 'react';
-import ReactMarkdown from 'markdown-to-jsx';
+import React, { useRef, useEffect } from 'react';
+import Markdown from 'markdown-to-jsx';
+import hljs from 'highlight.js';
+import 'highlight.js/styles/atom-one-dark.css';
+// import 'highlight.js/styles/atelier-lakeside-dark.css';
 import { Theme, createStyles, withStyles, WithStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
@@ -51,9 +54,36 @@ const options = {
         );
       }),
     },
+    // code: {
+    //   component:
+    // }
   },
 };
 
-export default function Markdown(props: any) {
-  return <ReactMarkdown options={options} {...props} />;
+interface Props {
+  className: string;
+  children: string;
 }
+
+const HighlightedMarkdown: React.FC<Props> = ({ className, children }) => {
+  const rootRef: any = useRef<HTMLDivElement>();
+
+  useEffect(() => {
+    rootRef.current.querySelectorAll('pre code').forEach((block: HTMLElement) => {
+      hljs.highlightBlock(block);
+    });
+    // rootRef.current.querySelectorAll('code').forEach((block: HTMLElement) => {
+    //   hljs.fixMarkup(block.innerHTML);
+    // });
+  }, [children]);
+
+  return (
+    <div ref={rootRef}>
+      <Markdown options={options} className={className}>
+        {children}
+      </Markdown>
+    </div>
+  );
+};
+
+export default HighlightedMarkdown;

@@ -36,12 +36,15 @@ isPublished: true
   - [ ] OGP タグ設定
   - [ ] Meta 設定
   - [ ] Title タグ設定
+  - [ ] 新着記事ページング実装
 - 記事詳細
   - [ ] MainFeatured に記事タイトル設定
   - [ ] OGP タグ設定
   - [ ] Meta 設定
   - [ ] Title タグ設定
   - [ ] シンタックスハイライト追加
+  - [ ] 画像埋め込み実装
+  - [ ] code タグ装飾
 - 状態管理
   - [ ] 記事一覧 PostItem オブジェクトを useReducer/useContext で管理
   - [ ] 記事詳細で取得する PostItem オブジェクトは state から取得
