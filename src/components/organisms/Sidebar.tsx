@@ -43,7 +43,9 @@ const Sidebar: React.FC<Props> = ({ description, socials }) => {
       <Paper elevation={0} className={classes.sidebarAboutBox}>
         <Grid container spacing={2} justify='center'>
           <Grid item>
-            <Avatar className={classes.largeAvatar}>H</Avatar>
+            <Link href='/profile'>
+              <Avatar className={classes.largeAvatar} src='/images/ZUMA.png' />
+            </Link>
           </Grid>
           <Grid item>
             {/* <Typography>{description}</Typography> */}
