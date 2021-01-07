@@ -10,6 +10,7 @@ import { Box, CardMedia, Chip, Container, Divider, Grid, Link, Slider, Typograph
 import TwitterIcon from '@material-ui/icons/Twitter';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import { SNSItem } from 'interfaces/SNSItem';
+import { ProfileDescriptionItem } from '../../interfaces/ProfileDescriptionItem';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -63,6 +64,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     description: {
       margin: 'auto',
+      lineHeight: theme.spacing(4),
       // PCサイズ時
       [theme.breakpoints.up('sm')]: {
         width: '70%',
@@ -78,8 +80,9 @@ const useStyles = makeStyles((theme: Theme) =>
 interface Props {
   avatar: AvatarItem;
   socials: Array<SNSItem>;
+  descriptions: Array<ProfileDescriptionItem>;
 }
-const Profile: React.FC<Props> = ({ avatar, socials }) => {
+const Profile: React.FC<Props> = ({ avatar, socials, descriptions }) => {
   const classes = useStyles();
 
   return (
@@ -164,7 +167,7 @@ const Profile: React.FC<Props> = ({ avatar, socials }) => {
               <CardMedia
                 className={classes.media}
                 image='/images/profile/other-skill-image.jpeg'
-                title='backend skill image'
+                title='Other skill image'
               />
               <CardContent>
                 <Typography gutterBottom variant='h6' component='h3'>
@@ -193,7 +196,7 @@ const Profile: React.FC<Props> = ({ avatar, socials }) => {
               <CardMedia
                 className={classes.media}
                 image='/images/profile/aws-skill-image.jpeg'
-                title='backend skill image'
+                title='AWS skill image'
               />
               <CardContent>
                 <Typography gutterBottom variant='h6' component='h3'>
@@ -318,44 +321,15 @@ const Profile: React.FC<Props> = ({ avatar, socials }) => {
         </Grid>
       </Container>
       <div className={classes.description}>
-        <Typography variant='h6' gutterBottom>
-          自己紹介
-        </Typography>
-        <Divider />
-        <Box m={3} />
-        <DescriptionTypography>
-          {`このblogは2021年に入り Next の勉強がてら作りました。\n
-          比較的最新の技術が好きです。\n
-          最近はサーバレス構成を秒速で構築出来る Amplify を勉強しています。Lambda 最高です。\n
-          モバイル開発は Flutter を勉強中です。Hot reload最高です。\n
-          思いついた時に Twitter で技術発信をしているので、お気軽にフォローお願いします。\n
-          \n
-          趣味は音楽と野外フェスが好きで、FUJI ROCK、Summer Sonic、朝霧JAM、GREENROOM FESTIVAL、ARABAKI ROCK FEST. など全国数え切れないくらい行ってます。\n
-          FUJI ROCK は10年以上通ってるフジロッカーです。\n
-          ロードバイクも好きで、東京からFUJI ROCK会場のある新潟県の苗場まで自転車で往復400km走破しました。\n
-          バンドもやっていて、ギター、ベース、バンジョー、マンドリンが弾けます。\n
-          休日はバンド練習やライブをしていて、結構大きめの会場でライブをした経験もあります。\n
-          \n
-          昨今のコロナ渦でライブが出来なくて大変な思いをしているミュージシャンをいっぱい知っています。\n
-          個人開発の目標として、音楽の表現の場を失ったミュージシャンをオンラインで繋げ、新しい音楽を創出できるようなサービスを作ります！(宣言)\n
-          \n`}
-        </DescriptionTypography>
-        <Typography variant='h6' gutterBottom>
-          趣味
-        </Typography>
-        <Divider />
-        <Box m={3} />
-        <DescriptionTypography>
-          {`趣味は音楽と野外フェスが好きで、FUJI ROCK、Summer Sonic、朝霧JAM、GREENROOM FESTIVAL、ARABAKI ROCK FEST. など全国数え切れないくらい行ってます。\n
-          FUJI ROCK は10年以上通ってるフジロッカーです。\n
-          ロードバイクも好きで、東京からFUJI ROCK会場のある新潟県の苗場まで自転車で往復400km走破しました。\n
-          バンドもやっていて、ギター、ベース、バンジョー、マンドリンが弾けます。\n
-          休日はバンド練習やライブをしていて、結構大きめの会場でライブをした経験もあります。\n
-          \n
-          昨今のコロナ渦でライブが出来なくて大変な思いをしているミュージシャンをいっぱい知っています。\n
-          個人開発の目標として、音楽の表現の場を失ったミュージシャンをオンラインで繋げ、新しい音楽を創出できるようなサービスを作ります！(宣言)\n
-          \n`}
-        </DescriptionTypography>
+        {descriptions.map((item) => (
+          <>
+            <Typography variant='h6' gutterBottom>
+              {item.caption}
+            </Typography>
+            <Divider />
+            <DescriptionTypography>{item.description}</DescriptionTypography>
+          </>
+        ))}
       </div>
     </>
   );
