@@ -10,6 +10,10 @@ import { useFetchFeaturedImageItem } from 'state/FeaturedImage/hooks';
 const useStyles = makeStyles((theme) => ({
   mainGrid: {
     marginTop: theme.spacing(3),
+    // PCサイズ時のみ下と左にpaddingを入れる
+    [theme.breakpoints.up('sm')]: {
+      padding: theme.spacing(0, 0, 8, 16),
+    },
   },
 }));
 

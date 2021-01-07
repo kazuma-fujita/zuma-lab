@@ -48,9 +48,9 @@ const PostDetailTitle: React.FC<Props> = ({ title, featuredImage }) => {
       {<img style={{ display: 'none' }} src={featuredImage.image} alt={featuredImage.imageText} />}
       <div className={classes.overlay} />
       <Grid container>
-        <Grid item md={6}>
+        <Grid item md={8}>
           <div className={classes.mainFeaturedPostContent}>
-            <Typography component='h1' variant='h3' color='inherit' gutterBottom>
+            <Typography component='h2' variant='h4' color='inherit' gutterBottom>
               {title}
             </Typography>
           </div>

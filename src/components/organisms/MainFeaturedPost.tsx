@@ -28,9 +28,9 @@ const useStyles = makeStyles((theme) => ({
   },
   mainFeaturedPostContent: {
     position: 'relative',
-    padding: theme.spacing(3),
+    padding: theme.spacing(3, 3, 0, 3),
     [theme.breakpoints.up('md')]: {
-      padding: theme.spacing(6),
+      padding: theme.spacing(6, 6, 3, 6),
       paddingRight: 0,
     },
   },
@@ -51,9 +51,9 @@ const MainFeaturedPost: React.FC<Props> = ({ item, featuredImage }) => {
         {<img style={{ display: 'none' }} src={featuredImage.image} alt={featuredImage.imageText} />}
         <div className={classes.overlay} />
         <Grid container>
-          <Grid item md={6}>
+          <Grid item md={8}>
             <div className={classes.mainFeaturedPostContent}>
-              <Typography component='h1' variant='h3' color='inherit' gutterBottom>
+              <Typography component='h2' variant='h4' color='inherit' gutterBottom>
                 {item.title}
               </Typography>
               <Typography variant='h6' color='inherit' paragraph>
