@@ -1,9 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import remark from 'remark';
-import html from 'remark-html';
-import { PostItem } from '../../interfaces/PostItem';
+import { PostItem } from 'interfaces/PostItem';
 
 const postsDirectory = path.join(process.cwd(), 'src/posts');
 
@@ -44,6 +42,7 @@ export const useGetPostData = (id: string): PostItem => {
   const title = matterResult.data.title;
   const date = matterResult.data.date;
   const isPublished = matterResult.data.isPublished;
+  const metaDescription = matterResult.data.metaDescription;
   // マークダウンを HTML 文字列に変換するために remark を使う
   // const processedContent = await remark()
   //   .use(html)
@@ -58,6 +57,7 @@ export const useGetPostData = (id: string): PostItem => {
     title,
     date,
     isPublished,
+    metaDescription,
     // contentHtml,
     // ...matterResult.data
   };

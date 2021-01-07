@@ -23,6 +23,7 @@ export const useFetchPostList = (): Array<PostItem> => {
       const title = matterResult.data.title;
       const date = matterResult.data.date;
       const isPublished = matterResult.data.isPublished;
+      const metaDescription = matterResult.data.metaDescription;
 
       // データを id と合わせる
       return {
@@ -31,6 +32,7 @@ export const useFetchPostList = (): Array<PostItem> => {
         title,
         date,
         isPublished,
+        metaDescription,
       };
     })
     .filter((item) => item.isPublished); // isPublished=false記事を除外
