@@ -2,6 +2,7 @@
 title: 'ESLint/PrettierでVSCodeの保存時に自動フォーマットをする'
 date: '2021-01-05'
 isPublished: true
+metaDescription: 'Next で blog 作成をするにあたり、最低限の ESLint / Prettier 自動フォーマット設定します。'
 ---
 
 Next で blog 作成をするにあたり、最低限の ESLint / Prettier 自動フォーマット設定はしようと思う。

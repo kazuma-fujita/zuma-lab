@@ -14,6 +14,9 @@ import { AvatarItem } from 'interfaces/AvatarItem';
 //   archives: [{ title: 'March 2020', url: '#' }],
 // };
 
+const metaDescription =
+  '普段WebやMobileアプリ開発をしているエンジニアが個人開発を通して学んだ技術を発信をするブログです。React/TypeScript/Next/Flutter/GraphQL/AWS/Amplifyなどの話題を発信します。';
+
 interface Props {
   avatar: AvatarItem;
   socials: Array<SNSItem>;
@@ -22,7 +25,7 @@ interface Props {
 
 const IndexPage: React.FC<Props> = ({ avatar, socials, items }) => (
   // <Layout title='ZUMA Tech Note' screenName={POST_LIST} items={items} />
-  <Layout title={SITE_TITLE}>
+  <Layout title={SITE_TITLE} metaDescription={metaDescription}>
     <PostList items={items}>
       {/* <Sidebar title={sidebar.title} description={sidebar.description} archives={sidebar.archives} socials={socials} /> */}
       <Sidebar avatar={avatar} socials={socials} />

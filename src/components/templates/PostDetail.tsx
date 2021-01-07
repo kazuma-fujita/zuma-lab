@@ -40,7 +40,7 @@ const PostDetail: React.FC<Props> = ({ item, children }) => {
       <Grid container spacing={5} className={classes.mainGrid}>
         <Grid item xs={12} md={8}>
           <Typography variant='subtitle1' color='textSecondary' className={classes.publishedDate}>
-            {item.date}
+            <time>{item.date}</time>
           </Typography>
           <HighlightedMarkdown className={classes.markdown} key={item.contents.substring(0, 40)}>
             {item.contents}

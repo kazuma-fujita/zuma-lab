@@ -25,7 +25,7 @@ const NewPostList: React.FC<Props> = ({ title, items }) => (
             </Link>
           </Typography>
           <Typography variant='subtitle1' color='textSecondary'>
-            {date}
+            <time>{date}</time>
           </Typography>
         </Box>
       </>

@@ -15,8 +15,11 @@ interface Props {
   descriptions: Array<ProfileDescriptionItem>;
 }
 
+const metaDescription =
+  '普段WebやMobileアプリ開発をしているエンジニアが個人開発を通して学んだ技術を発信をするブログです。React/TypeScript/Next/Flutter/GraphQL/AWS/Amplifyなどの話題を発信します。';
+
 const ProfilePage: React.FC<Props> = ({ avatar, socials, descriptions }) => (
-  <Layout title={`Profile | ${SITE_TITLE}`}>
+  <Layout title={`Profile | ${SITE_TITLE}`} metaDescription={metaDescription}>
     <Profile avatar={avatar} socials={socials} descriptions={descriptions} />
   </Layout>
 );

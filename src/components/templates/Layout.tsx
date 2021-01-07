@@ -15,16 +15,17 @@ const sections = [
 
 interface Props {
   title: string;
+  metaDescription: string;
 }
 
-const Layout: React.FC<Props> = ({ title, children }) => {
+const Layout: React.FC<Props> = ({ title, metaDescription, children }) => {
   const socials = useFetchSNSList();
   return (
     <>
       <Head>
         <link rel='icon' href='/favicon.ico' />
         <title>{title}</title>
-        <meta name='description' content='Learn how to build a personal website using Next.js' />
+        <meta name='description' content={metaDescription} />
         <meta
           property='og:image'
           content={`https://og-image.now.sh/${encodeURI(

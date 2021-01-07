@@ -23,7 +23,7 @@ interface Props {
 
 // const Post: React.FC<Props> = ({ avatar, socials, item, errors }) => (
 const Post: React.FC<Props> = ({ avatar, socials, item }) => (
-  <Layout title={`${item?.title} | ${SITE_TITLE}`}>
+  <Layout title={`${item?.title} | ${SITE_TITLE}`} metaDescription={item?.metaDescription!}>
     <PostDetail item={item!}>
       {/* <Sidebar title={sidebar.title} description={sidebar.description} archives={sidebar.archives} socials={socials} /> */}
       <Sidebar avatar={avatar} socials={socials} />

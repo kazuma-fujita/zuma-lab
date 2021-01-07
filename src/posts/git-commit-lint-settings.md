@@ -2,6 +2,7 @@
 title: 'Husky と lint-staged で git commit 時に lint チェックをする（エラー発生未解決）'
 date: '2021-01-05'
 isPublished: false
+metaDescription: 'Husky/lint-staged を利用して git commit 時に lint チェックがかかるようにします。'
 ---
 
 Husky/lint-staged を利用して git commit 時に lint チェックがかかるようにする。
