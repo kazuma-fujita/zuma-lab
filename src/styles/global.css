@@ -1,0 +1,23 @@
+html,
+h6.MuiTypography-gutterBottom {
+  margin-top: 24px;
+  border-bottom: solid 1.5px #e0e0e0;
+  position: relative;
+}
+h6.MuiTypography-gutterBottom:after {
+  position: absolute;
+  content: ' ';
+  display: block;
+  border-bottom: solid 2px #e7edf3;
+  bottom: -2px;
+  width: 60%;
+}
+code {
+  display: inline-block;
+  font-size: medium; /* 文字サイズ */
+  padding: 0.1em 0.25em; /* 文字周りの余白 */
+  color: #444; /* 文字色 */
+  background-color: #e7edf3; /* 背景色 */
+  border-radius: 3px; /* 角丸 */
+  border: solid 1px #d6dde4; /* 枠線 */
+}
