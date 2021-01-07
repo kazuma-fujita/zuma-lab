@@ -17,7 +17,7 @@ const NewPostList: React.FC<Props> = ({ title, items }) => (
     </Typography>
     <Divider />
     {items.map(({ id, title, date }) => (
-      <>
+      <div key={title}>
         <Box mt={4} mb={4}>
           <Typography component='h4' variant='h6'>
             <Link color='inherit' href={`/posts/${id}`}>
@@ -28,7 +28,7 @@ const NewPostList: React.FC<Props> = ({ title, items }) => (
             <time>{date}</time>
           </Typography>
         </Box>
-      </>
+      </div>
     ))}
   </Grid>
 );

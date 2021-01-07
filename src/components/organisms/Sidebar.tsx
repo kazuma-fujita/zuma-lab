@@ -57,7 +57,7 @@ const Sidebar: React.FC<Props> = ({ avatar, socials }) => {
         <Box mb={2} />
         <Grid container spacing={8} justify='center'>
           {socials.map((social) => (
-            <Grid item>
+            <Grid item key={social.name}>
               <Link target='_blank' rel='noopener' href={social.url} key={social.name}>
                 {social.name === 'Twitter' ? (
                   <TwitterIcon style={{ fontSize: 40 }} />

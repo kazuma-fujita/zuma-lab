@@ -322,13 +322,13 @@ const Profile: React.FC<Props> = ({ avatar, socials, descriptions }) => {
       </Container>
       <div className={classes.description}>
         {descriptions.map((item) => (
-          <>
+          <div key={item.caption}>
             <Typography variant='h6' gutterBottom>
               {item.caption}
             </Typography>
             <Divider />
             <DescriptionTypography>{item.description}</DescriptionTypography>
-          </>
+          </div>
         ))}
       </div>
     </>
