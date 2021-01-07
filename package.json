@@ -8,14 +8,32 @@
     "type-check": "tsc"
   },
   "dependencies": {
+    "@material-ui/core": "^4.11.2",
+    "@material-ui/icons": "^4.11.2",
+    "date-fns": "^2.16.1",
+    "gray-matter": "^4.0.2",
+    "highlight.js": "^10.5.0",
+    "markdown-to-jsx": "^7.1.0",
     "next": "latest",
     "react": "^16.12.0",
-    "react-dom": "^16.12.0"
+    "react-dom": "^16.12.0",
+    "remark": "^13.0.0",
+    "remark-html": "^13.0.1",
+    "styled-components": "^5.2.1"
   },
   "devDependencies": {
     "@types/node": "^12.12.21",
     "@types/react": "^16.9.16",
     "@types/react-dom": "^16.9.4",
+    "@types/styled-components": "^5.1.7",
+    "@typescript-eslint/eslint-plugin": "^4.12.0",
+    "@typescript-eslint/parser": "^4.12.0",
+    "babel-plugin-styled-components": "^1.12.0",
+    "eslint": "^7.17.0",
+    "eslint-config-prettier": "^7.1.0",
+    "husky": "^4.3.6",
+    "lint-staged": "^10.5.3",
+    "prettier": "^2.2.1",
     "typescript": "4.0"
   },
   "license": "MIT"

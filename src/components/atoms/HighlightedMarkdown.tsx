@@ -1,0 +1,89 @@
+import React, { useRef, useEffect } from 'react';
+import Markdown from 'markdown-to-jsx';
+import hljs from 'highlight.js';
+import 'highlight.js/styles/atom-one-dark.css';
+// import 'highlight.js/styles/atelier-lakeside-dark.css';
+import { Theme, createStyles, withStyles, WithStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import Link from '@material-ui/core/Link';
+
+const styles = (theme: Theme) =>
+  createStyles({
+    listItem: {
+      marginTop: theme.spacing(1),
+    },
+  });
+
+const options = {
+  overrides: {
+    h1: {
+      component: Typography,
+      props: {
+        gutterBottom: true,
+        variant: 'h4',
+      },
+    },
+    h2: {
+      component: Typography,
+      props: { gutterBottom: true, variant: 'h6' },
+    },
+    h3: {
+      component: Typography,
+      props: { gutterBottom: true, variant: 'subtitle1' },
+    },
+    h4: {
+      component: Typography,
+      props: {
+        gutterBottom: true,
+        variant: 'caption',
+        paragraph: true,
+      },
+    },
+    p: {
+      component: Typography,
+      props: { paragraph: true },
+    },
+    a: { component: Link },
+    li: {
+      component: withStyles(styles)((props: WithStyles<typeof styles>) => {
+        const { classes, ...other } = props;
+        return (
+          <li className={classes.listItem}>
+            <Typography component='span' {...other} />
+          </li>
+        );
+      }),
+    },
+    // code: {
+    //   component:
+    // }
+  },
+};
+
+interface Props {
+  className: string;
+  children: string;
+}
+
+const HighlightedMarkdown: React.FC<Props> = ({ className, children }) => {
+  const rootRef: any = useRef<HTMLDivElement>();
+
+  useEffect(() => {
+    rootRef.current.querySelectorAll('pre code').forEach((block: HTMLElement) => {
+      hljs.highlightBlock(block);
+    });
+    // rootRef.current.querySelectorAll('code').forEach((block: HTMLElement) => {
+    //   hljs.fixMarkup(block.innerHTML);
+    // });
+  }, [children]);
+
+  return (
+    <div ref={rootRef}>
+      <Markdown options={options} className={className}>
+        {children}
+      </Markdown>
+    </div>
+  );
+};
+
+export default HighlightedMarkdown;
