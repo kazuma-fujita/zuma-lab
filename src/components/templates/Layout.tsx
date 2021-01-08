@@ -26,11 +26,17 @@ const Layout: React.FC<Props> = ({ title, metaDescription, children }) => {
         <link rel='icon' href='/favicon.ico' />
         <title>{title}</title>
         <meta name='description' content={metaDescription} />
-        <meta
+        {/* <meta
           property='og:image'
           content={`https://og-image.now.sh/${encodeURI(
             title
           )}.png?theme=light&md=0&fontSize=75px&images=https%3A%2F%2Fassets.zeit.co%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg`}
+        /> */}
+        <meta
+          property='og:image'
+          content={`https://ogi-api.vercel.app/${encodeURI(
+            title
+          )}.png?md=0&fontSize=75px&background=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1445375011782-2384686778a0`}
         />
         <meta name='og:title' content={title} />
         <meta name='twitter:card' content='summary_large_image' />
