@@ -41,7 +41,6 @@ interface Props {
 
 const Header: React.FC<Props> = ({ title, sections, socials }) => {
   const classes = useStyles();
-
   return (
     <>
       <Toolbar className={classes.toolbar}>

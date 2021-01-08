@@ -22,6 +22,9 @@ const useStyles = makeStyles((theme) => ({
     width: theme.spacing(8),
     height: theme.spacing(8),
   },
+  mainGrid: {
+    marginBottom: theme.spacing(16), // Sidebar下部にTopへ戻るボタンがある為、marginを開ける
+  },
 }));
 
 // interface Archive {
@@ -40,7 +43,7 @@ const Sidebar: React.FC<Props> = ({ avatar, socials }) => {
   const classes = useStyles();
 
   return (
-    <Grid item xs={12} md={4}>
+    <Grid item xs={12} md={4} className={classes.mainGrid}>
       <Paper elevation={0} className={classes.sidebarAboutBox}>
         <Grid container spacing={2} justify='center'>
           <Grid item>

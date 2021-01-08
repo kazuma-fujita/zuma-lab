@@ -6,6 +6,7 @@ import Head from 'next/head';
 import { SITE_TITLE } from 'lib/constants';
 import { Container } from '@material-ui/core';
 import { useFetchSNSList } from 'state/SNS/hooks';
+import { useScrollToTop } from 'lib/useScrollToTop';
 
 const sections = [
   { title: 'Home', url: '/' },
@@ -20,6 +21,7 @@ interface Props {
 
 const Layout: React.FC<Props> = ({ title, metaDescription, children }) => {
   const socials = useFetchSNSList();
+  const { ref, scrollToTop } = useScrollToTop();
   return (
     <>
       <Head>
@@ -42,11 +44,13 @@ const Layout: React.FC<Props> = ({ title, metaDescription, children }) => {
         <meta name='twitter:card' content='summary_large_image' />
       </Head>
       <CssBaseline />
+      {/* Topへ戻るボタンクリック時この位置まで画面スクロール */}
+      <div id='top-of-screen' ref={ref} />
       <Container maxWidth='lg'>
         <Header title={SITE_TITLE} sections={sections} socials={socials} />
         <main>{children}</main>
       </Container>
-      <Footer title={SITE_TITLE} />
+      <Footer title={SITE_TITLE} scrollToTop={scrollToTop} />
     </>
   );
 };
