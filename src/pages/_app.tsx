@@ -6,6 +6,8 @@ import { StylesProvider } from '@material-ui/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import theme from 'styles/theme';
 import 'styles/global.css';
+import * as gtag from 'lib/gtag';
+import { useRouter } from 'next/router';
 
 const App = ({ Component, pageProps }: AppProps): JSX.Element => {
   // const [state, dispatch] = useReducer(postsReducer, initialPostsState);
@@ -17,6 +19,18 @@ const App = ({ Component, pageProps }: AppProps): JSX.Element => {
       jssStyles.parentElement.removeChild(jssStyles);
     }
   }, []);
+
+  // Google Analyticsをページ遷移時にも対応させる
+  const router = useRouter();
+  useEffect(() => {
+    const handleRouteChange = (url: string) => {
+      gtag.pageview(url);
+    };
+    router.events.on('routeChangeComplete', handleRouteChange);
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange);
+    };
+  }, [router.events]);
 
   return (
     <StylesProvider injectFirst>
