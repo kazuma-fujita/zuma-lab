@@ -1,7 +1,7 @@
 import { GetStaticProps } from 'next';
 import Layout from 'components/templates/Layout';
 import { PostItem } from 'interfaces/PostItem';
-import { useFetchPostList } from 'state/PostList/hooks';
+import { useFetchPostList } from 'state/posts/hooks';
 import PostList from 'components/templates/PostList';
 import Sidebar from 'components/organisms/Sidebar';
 import { SITE_TITLE } from 'lib/constants';

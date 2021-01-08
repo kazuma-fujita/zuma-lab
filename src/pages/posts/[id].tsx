@@ -1,14 +1,14 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Layout from 'components/templates/Layout';
 import { PostItem } from 'interfaces/PostItem';
-import { useGetAllPostIds, useGetPostData } from 'state/PostDetail/hooks';
+import { useGetAllPostIds, useGetPostData } from 'state/posts/hooks';
 import PostDetail from 'components/templates/PostDetail';
 import Sidebar from 'components/organisms/Sidebar';
 import { SITE_TITLE } from 'lib/constants';
 import { useFetchSNSList } from 'state/SNS/hooks';
 import { SNSItem } from 'interfaces/SNSItem';
 import { AvatarItem } from 'interfaces/AvatarItem';
-import { useFetchAvatarItem } from '../../state/Avatar/hooks';
+import { useFetchAvatarItem } from 'state/Avatar/hooks';
 
 // const sidebar = {
 //   archives: [{ title: 'March 2020', url: '#' }],

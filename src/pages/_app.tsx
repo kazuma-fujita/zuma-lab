@@ -8,6 +8,8 @@ import theme from 'styles/theme';
 import 'styles/global.css';
 
 const App = ({ Component, pageProps }: AppProps): JSX.Element => {
+  // const [state, dispatch] = useReducer(postsReducer, initialPostsState);
+
   useEffect(() => {
     // TODO: any型の解決
     const jssStyles: any = document.querySelector('#jss-server-side');
@@ -20,8 +22,10 @@ const App = ({ Component, pageProps }: AppProps): JSX.Element => {
     <StylesProvider injectFirst>
       <MaterialUIThemeProvider theme={theme}>
         <StyledComponentsThemeProvider theme={theme}>
+          {/* <PostsContextProvider state={state} dispatch={dispatch}> */}
           <CssBaseline />
           <Component {...pageProps} />
+          {/* </PostsContextProvider> */}
         </StyledComponentsThemeProvider>
       </MaterialUIThemeProvider>
     </StylesProvider>
