@@ -50,7 +50,7 @@ const Layout: React.FC<Props> = ({ title, metaDescription, children }) => {
         <Header title={SITE_TITLE} sections={sections} socials={socials} />
         <main>{children}</main>
       </Container>
-      <Footer title={SITE_TITLE} scrollToTop={scrollToTop} />
+      <Footer title={SITE_TITLE} sections={sections} scrollToTop={scrollToTop} />
     </>
   );
 };
