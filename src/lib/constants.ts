@@ -4,7 +4,7 @@
 //   PROFILE: 2, // プロフィール
 // } as const;
 
-export const SITE_TITLE = 'ZUMA Tech Note';
+export const SITE_TITLE = 'ZUMA Lab Note';
 export const POST_LIST = 'POST_LIST';
 export const POST_DETAIL = 'POST_DETAIL';
 export const PROFILE = 'PROFILE';
