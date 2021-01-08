@@ -1,59 +1,64 @@
 ---
-title: 'ブログ始めました'
+title: 'Next/TypeScript/Material-UI/Vercelでブログ始めました'
 date: '2021-01-03'
 isPublished: true
-metaDescription: '2021 年 を迎え、今までやってこなかった事にチャレンジするという固くモロイ意思の元、まったりと超個人的 blog、いや備忘録ノートを付けようと思う。'
+metaDescription: 'この blog は Next/TypeScript で実装、デザインは Material-UI で組み、Vercel でホスティングしています。'
 ---
 
-2021 年 を迎え、今までやってこなかった事にチャレンジするという固くモロイ意思の元、まったりと超個人的 blog、いや備忘録ノートを付けようと思います。
+2021 年 を迎え、まったりと技術発信 blog というより備忘録を付けようと思います。
 
-あくまで備忘録なので、記載されている内容に不備があり、何かしらの不具合を引き起こしても当方は責任を持たない無責任 blog です。
+この blog は Next/TypeScript で実装、デザインは Material-UI で組み、Vercel でホスティングしています。
 
 ## やることリスト
 
-この blog は Next を利用し、フルスクラッチで実装している為、足りない機能だらけです。
+この blog はフルスクラッチで実装している為、足りない機能だらけです。
 
-以下は blog の機能追加や、環境整備など、当面のやることリスト、そしてやらないかもしれないリスト。
+以下は blog の機能追加や、環境整備など、当面のやることリスト、そしてやらないかもしれないリストです。
 
-- 新規画面実装
+- 開発環境・初期設定
+  - [x] Next/TypeScript 環境構築
+  - [x] ESLint/Prettier 設定
+  - [x] Google Analytics 設定
+- 画面実装
+  - [ ] 記事一覧 画面実装
+    - [ ] 新着記事ページング実装
+    - [x] MainFeatured/Featured に記事リンク設定
+  - [ ] 記事詳細 画面実装
+    - [ ] PWA 対応
+    - [ ] OGP 画像動的生成実装
+    - [ ] Twitter share ボタン設置
+    - [ ] next/image component 埋め込み実装
+    - [x] MainFeatured に記事タイトル設定
+    - [x] code タグ装飾実装
+    - [x] シンタックスハイライト粧飾実装
   - [x] Profile 画面実装
   - [ ] Contact 画面実装
-  - [ ] 免責事項 画面実装
   - [ ] プライバシーポリシー 画面実装
+  - [ ] 免責事項 画面実装
+- 画面共通処理
+  - [ ] OGP タグ設定
+  - [ ] Meta タグ設定
+  - [x] Title タグ設定
 - Sidebar
+  - [ ] タグ一覧実装
   - [ ] 月別アーカイブ実装
   - [ ] 新着記事一覧実装
   - [ ] カテゴリ一覧実装
-  - [ ] タグ一覧実装
-  - [x] Author に SNS アイコン表示
   - [ ] Google AdSense 設定
+  - [ ] ページ先頭に戻るボタン設置
+  - [x] SNS アイコン設置
 - Header
-  - [x] SiteTitle に Top リンク追加
+  - [ ] Contact リンク設置
+  - [x] SiteTitle に Top リンク設置
   - [x] SNS アイコン表示
   - [x] Profile リンク表示
-  - [ ] Contact リンク実装
 - Footer
-  - [ ] Home/ Profile / 免責事項リンク追加
-- 記事一覧
-  - [x] MainFeatured/Featured に記事リンク設定
-  - [ ] OGP タグ設定
-  - [ ] Meta 設定
-  - [x] Title タグ設定
-  - [ ] 新着記事ページング実装
-- 記事詳細
-  - [x] MainFeatured に記事タイトル設定
-  - [ ] OGP タグ設定
-  - [ ] Meta 設定
-  - [x] Title タグ設定
-  - [ ] next/image component 埋め込み実装
-  - [x] シンタックスハイライト追加
-  - [x] code タグ装飾
-  - [ ] Twitter share ボタン追加
-- 状態管理
-  - [ ] 記事一覧 PostItem オブジェクトを useReducer/useContext で管理
-  - [ ] 記事詳細で取得する PostItem オブジェクトは state から取得
-- 開発環境整備
-  - [x] Next 初期環境構築の記事投稿
-  - [x] ESLint/Prettier 設定の記事投稿
-- その他
-  - [ ] Google Analytics 設定
+  - [ ] Home / Profile / contact / 免責事項リンク設置
+
+実装完了したものからチェックを付けてますが、果たして全機能実装出来るのでしょうか。
+
+ただ Next が既に様々に機能を用意してくれてるので、基本的な blog の機能だけなら 3 日くらいで実装は出来ると思います。
+
+また Vercel でホスティングすれば、秒速で公開でき、更に Next の恩恵を最大限に得れるので生産性は爆上がりです。
+
+後は頑張って機能追加していこうと思います！
