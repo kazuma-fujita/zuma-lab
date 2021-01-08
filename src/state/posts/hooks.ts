@@ -37,6 +37,7 @@ const createPostItemByMarkdown = (fileName: string): PostItem => {
 export const useFetchPostList = (): Array<PostItem> => {
   // posts　配下のファイル名を取得する
   const fileNames = fs.readdirSync(postsDirectory);
+  // ファイル名配列からpostItemを作成してisPublishedを除外、かつ日付ソートをかける
   return fileNames
     .map((fileName) => createPostItemByMarkdown(fileName))
     .filter((item) => item.isPublished) // isPublished=false記事を除外
@@ -53,7 +54,7 @@ export const useFetchPostList = (): Array<PostItem> => {
 export const useGetAllPostIds = () => {
   // posts　配下のファイル名を取得する
   const fileNames = fs.readdirSync(postsDirectory);
-  console.log('fileNames:', fileNames);
+  // ファイル名配列からpostItemを作成してisPublishedを除外したid一覧を返却
   return fileNames
     .map((fileName) => createPostItemByMarkdown(fileName))
     .filter((item) => item.isPublished) // isPublished=false記事を除外
