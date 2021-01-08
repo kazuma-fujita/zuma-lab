@@ -8,7 +8,7 @@ import { SITE_TITLE } from 'lib/constants';
 import { useFetchSNSList } from 'state/SNS/hooks';
 import { SNSItem } from 'interfaces/SNSItem';
 import { AvatarItem } from 'interfaces/AvatarItem';
-import { useFetchAvatarItem } from '../../state/Avatar/hooks';
+import { useFetchAvatarItem } from 'state/Avatar/hooks';
 
 // const sidebar = {
 //   archives: [{ title: 'March 2020', url: '#' }],
