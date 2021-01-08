@@ -1,13 +1,13 @@
 ---
 title: 'ESLint/PrettierでVSCodeの保存時に自動フォーマットをする'
 date: '2021-01-05'
-isPublished: true
+isPublished: false
 metaDescription: 'Next で blog 作成をするにあたり、最低限の ESLint / Prettier 自動フォーマット設定します。'
 ---
 
-Next で blog 作成をするにあたり、最低限の ESLint / Prettier 自動フォーマット設定はしようと思う。
+Next で blog 作成をするにあたり、最低限の ESLint / Prettier 自動フォーマット設定はしようと思います。
 
-前提として、typescript は install 済みとする。
+前提として、typescript は install 済みとします。
 
 ## 環境
 
@@ -62,7 +62,7 @@ $ yarn list --depth=0 |grep -e prettier -e eslint
 
 ### .eslint.json の追加
 
-プロジェクトルートディレクトリ(package.json があるディレクトリ)に `.eslint.json` を追加
+プロジェクトルートディレクトリ(package.json があるディレクトリ)に `.eslint.json` を追加します。
 
 ```json:.eslint.json
 {
@@ -86,7 +86,7 @@ $ yarn list --depth=0 |grep -e prettier -e eslint
 
 ### .prettierrc.json の追加
 
-プロジェクトルートディレクトリに `.prettierrc.json` を追加
+プロジェクトルートディレクトリに `.prettierrc.json` を追加します。
 
 ```json:.prettierrc.json
 {
@@ -109,7 +109,7 @@ $ yarn list --depth=0 |grep -e prettier -e eslint
 
 ### VSCode の settings.json で自動フォーマット機能を有効化する
 
-VSCode の settings.json を開き以下を追記
+VSCode の settings.json を開き以下を追記します。
 
 ```json:settings.json
 {
@@ -124,9 +124,9 @@ VSCode の settings.json を開き以下を追記
 }
 ```
 
-ここまでで ESLint と Prettier の設定は完了。
+ここまでで ESLint と Prettier の設定は完了です。
 
-VSCode 開き直して適当にインデントのおかしいコードの記述、保存をすると自動的にフォーマットがかかるはずだ。
+VSCode 開き直して適当にインデントのおかしいコードの記述、保存をすると自動的にフォーマットがかかるはずです。
 
 ## 参考
 
