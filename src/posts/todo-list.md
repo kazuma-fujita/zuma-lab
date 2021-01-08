@@ -16,36 +16,39 @@ metaDescription: '2021 年 を迎え、今までやってこなかった事に�
 以下は blog の機能追加や、環境整備など、当面のやることリスト、そしてやらないかもしれないリスト。
 
 - 新規画面実装
-  - [ ] Profile 画面実装
+  - [x] Profile 画面実装
   - [ ] Contact 画面実装
   - [ ] 免責事項 画面実装
+  - [ ] プライバシーポリシー 画面実装
 - Sidebar
   - [ ] 月別アーカイブ実装
   - [ ] 新着記事一覧実装
+  - [ ] カテゴリ一覧実装
   - [ ] タグ一覧実装
-  - [ ] Author に SNS アイコン表示
+  - [x] Author に SNS アイコン表示
   - [ ] Google AdSense 設定
 - Header
-  - [ ] SiteTitle に Top リンク追加
-  - [ ] SNS アイコン表示
-  - [ ] Profile リンク表示
+  - [x] SiteTitle に Top リンク追加
+  - [x] SNS アイコン表示
+  - [x] Profile リンク表示
   - [ ] Contact リンク実装
 - Footer
   - [ ] Home/ Profile / 免責事項リンク追加
 - 記事一覧
-  - [ ] MainFeatured/Featured に記事リンク設定
+  - [x] MainFeatured/Featured に記事リンク設定
   - [ ] OGP タグ設定
   - [ ] Meta 設定
-  - [ ] Title タグ設定
+  - [x] Title タグ設定
   - [ ] 新着記事ページング実装
 - 記事詳細
-  - [ ] MainFeatured に記事タイトル設定
+  - [x] MainFeatured に記事タイトル設定
   - [ ] OGP タグ設定
   - [ ] Meta 設定
-  - [ ] Title タグ設定
-  - [ ] シンタックスハイライト追加
-  - [ ] 画像埋め込み実装
-  - [ ] code タグ装飾
+  - [x] Title タグ設定
+  - [ ] next/image component 埋め込み実装
+  - [x] シンタックスハイライト追加
+  - [x] code タグ装飾
+  - [ ] Twitter share ボタン追加
 - 状態管理
   - [ ] 記事一覧 PostItem オブジェクトを useReducer/useContext で管理
   - [ ] 記事詳細で取得する PostItem オブジェクトは state から取得

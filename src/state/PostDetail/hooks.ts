@@ -10,19 +10,6 @@ const postsDirectory = path.join(process.cwd(), 'src/posts');
 export const useGetAllPostIds = () => {
   const fileNames = fs.readdirSync(postsDirectory);
 
-  // 以下のような配列を返す:
-  // [
-  //   {
-  //     params: {
-  //       id: 'ssg-ssr'
-  //     }
-  //   },
-  //   {
-  //     params: {
-  //       id: 'pre-rendering'
-  //     }
-  //   }
-  // ]
   return fileNames.map((fileName) => {
     return {
       params: {
