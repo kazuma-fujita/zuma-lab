@@ -48,7 +48,8 @@ const PostDetailTitle: React.FC<Props> = ({ title, featuredImage }) => {
       {<img style={{ display: 'none' }} src={featuredImage.image} alt={featuredImage.imageText} />}
       <div className={classes.overlay} />
       <Grid container>
-        <Grid item md={8}>
+        {/* <Grid item md={8}> */}
+        <Grid item>
           <div className={classes.mainFeaturedPostContent}>
             <Typography component='h2' variant='h4' color='inherit' gutterBottom>
               {title}
