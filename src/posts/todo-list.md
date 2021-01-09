@@ -25,27 +25,31 @@ metaDescription: 'この blog は Next/TypeScript で実装、デザインは Ma
     - [x] MainFeatured/Featured に記事リンク設定
   - [ ] 記事詳細 画面実装
     - [ ] PWA 対応
-    - [ ] OGP 画像動的生成実装
+    - [x] OGP 画像動的生成実装
+    - [ ] パンくずリスト実装
     - [ ] Twitter share ボタン設置
     - [ ] next/image component 埋め込み実装
     - [x] MainFeatured に記事タイトル設定
+    - [ ] Markdown から HTML 生成実装
     - [x] code タグ装飾実装
-    - [x] シンタックスハイライト粧飾実装
-  - [x] Profile 画面実装
+    - [x] シンタックスハイライト実装
+  - [ ] Profile 画面実装
+    - [ ] Profile データを hooks から取得
   - [ ] Contact 画面実装
   - [ ] プライバシーポリシー 画面実装
   - [ ] 免責事項 画面実装
 - 画面共通処理
-  - [ ] OGP タグ設定
-  - [ ] Meta タグ設定
+  - [x] Twitter OGP タグ設定
+  - [ ] その他 SNS OGP タグ調査・設定
+  - [ ] Meta タグ調査・設定
   - [x] Title タグ設定
+  - [x] ページ先頭に戻るボタン設置
 - Sidebar
   - [ ] タグ一覧実装
   - [ ] 月別アーカイブ実装
   - [ ] 新着記事一覧実装
   - [ ] カテゴリ一覧実装
   - [ ] Google AdSense 設定
-  - [ ] ページ先頭に戻るボタン設置
   - [x] SNS アイコン設置
 - Header
   - [ ] Contact リンク設置
@@ -53,7 +57,7 @@ metaDescription: 'この blog は Next/TypeScript で実装、デザインは Ma
   - [x] SNS アイコン表示
   - [x] Profile リンク表示
 - Footer
-  - [ ] Home / Profile / contact / 免責事項リンク設置
+  - [x] Sections リンク設置
 
 実装完了したものからチェックを付けてますが、果たして全機能実装出来るのでしょうか。
 

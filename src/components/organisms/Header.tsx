@@ -10,6 +10,8 @@ import { SNSItem } from 'interfaces/SNSItem';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import { Grid } from '@material-ui/core';
+import { SectionItem } from 'interfaces/SectionItem';
+import ToolbarLink from 'components/atoms/ToolbarLink';
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
@@ -28,20 +30,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-interface Section {
-  title: string;
-  url: string;
-}
-
 interface Props {
   title: string;
-  sections: Array<Section>;
+  sections: Array<SectionItem>;
   socials: Array<SNSItem>;
 }
 
 const Header: React.FC<Props> = ({ title, sections, socials }) => {
   const classes = useStyles();
-
   return (
     <>
       <Toolbar className={classes.toolbar}>
@@ -59,17 +55,8 @@ const Header: React.FC<Props> = ({ title, sections, socials }) => {
         </Button> */}
       </Toolbar>
       <Toolbar component='nav' variant='dense' className={classes.toolbarSecondary}>
-        {sections.map((section: Section) => (
-          <Link
-            color='inherit'
-            noWrap
-            key={section.title}
-            variant='body2'
-            href={section.url}
-            className={classes.toolbarLink}
-          >
-            {section.title}
-          </Link>
+        {sections.map(({ title, url }) => (
+          <ToolbarLink title={title} url={url} />
         ))}
         <Grid container spacing={2} justify='flex-end'>
           {socials.map((social) => (
