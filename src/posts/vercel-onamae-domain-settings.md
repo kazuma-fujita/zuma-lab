@@ -19,13 +19,13 @@ Vercel のコンソールにログインし、カスタムドメイン設定し�
 
 `Settings` > `Domains` から Domains 追加画面を開きます。
 
-<img src='/images/posts/2021-01-09-1.png' width='100%' />
+<img src='/images/posts/2021-01-09-1.png' class='img' />
 
 入力ボックスにお名前.com で取得したドメインを入力して `Add` ボタンを押して下さい。
 
 私は取得してから長年放置していた `zuma-lab.com` というドメインを設定しました。
 
-<img src='/images/posts/2021-01-09-2.png' width='100%' />
+<img src='/images/posts/2021-01-09-2.png' class='img' />
 
 まだこのように `Invalid Configuration` と表示されます。
 
@@ -33,21 +33,21 @@ Vercel のコンソールにログインし、カスタムドメイン設定し�
 
 ## お名前.com の A レコードを設定する
 
-<img src='/images/posts/2021-01-09-3.png' width='100%' />
+<img src='/images/posts/2021-01-09-3.png' class='img' />
 
 お名前.com のコンソールを開き、`DNS設定/転送設定` > `DNSレコードを設定する` の設定するボタンからレコード追加画面を開いてください。
 
-<img src='/images/posts/2021-01-09-4.png' width='100%' />
+<img src='/images/posts/2021-01-09-4.png' class='img' />
 
 今回 A レコードを設定するので、`TYPE` は `A` を選択、TTL はデフォルト、`VALUE`は先程 Vercel のコンソールで控えた `Value` を入力してください。
 
-<img src='/images/posts/2021-01-09-5.png' width='100%' />
+<img src='/images/posts/2021-01-09-5.png' class='img' />
 
 確認画面へ進み、 設定するボタンを押して設定を完了してください。
 
 ## Vercel でドメインが設定されることを確認する
 
-<img src='/images/posts/2021-01-09-6.png' width='100%' />
+<img src='/images/posts/2021-01-09-6.png' class='img' />
 
 先程の Vercel のコンソールへ戻り、`Valid Configuration` になっていることを確認します。
 
@@ -57,11 +57,11 @@ Vercel のコンソールにログインし、カスタムドメイン設定し�
 
 私の場合、完全に `Valid Configuration` するまで 15 分程かかりました。
 
-<img src='/images/posts/2021-01-09-7.png' width='100%' />
+<img src='/images/posts/2021-01-09-7.png' class='img' />
 
 追加したドメインの `Edit` > `View DNS Records & More for XXXXX.XXX →` から設定の詳細が見れます。
 
-<img src='/images/posts/2021-01-09-8.png' width='100%' />
+<img src='/images/posts/2021-01-09-8.png' class='img' />
 
 あとは設定したドメインにアクセスしてこのようにサイトが表示されれば完了です！
 

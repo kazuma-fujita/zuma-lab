@@ -15,14 +15,14 @@ const useStyles = makeStyles((theme) => ({
     ...theme.typography.body2,
     // PCサイズ時のみ下と左にpaddingを入れる
     [theme.breakpoints.up('sm')]: {
-      padding: theme.spacing(0, 0, 8, 16),
+      padding: theme.spacing(0, 0, 8, 12),
     },
   },
   publishedDate: {
     paddingBottom: theme.spacing(2),
     // PCサイズ時のみ左にpaddingを入れる
     [theme.breakpoints.up('sm')]: {
-      paddingLeft: theme.spacing(16),
+      paddingLeft: theme.spacing(12),
     },
   },
 }));
@@ -37,11 +37,12 @@ const PostDetail: React.FC<Props> = ({ item, children }) => {
   return (
     <>
       <PostDetailTitle title={item.title} featuredImage={featuredImage} />
-      <Grid container spacing={5} className={classes.mainGrid}>
+      <Grid container spacing={2} className={classes.mainGrid}>
         <Grid item xs={12} md={8}>
           <Typography variant='subtitle1' color='textSecondary' className={classes.publishedDate}>
             <time>{item.date}</time>
           </Typography>
+          {/* <HighlightedMarkdown className={`${classes.markdown} ${markdownStyles}`} key={item.contents.substring(0, 40)}> */}
           <HighlightedMarkdown className={classes.markdown} key={item.contents.substring(0, 40)}>
             {item.contents}
           </HighlightedMarkdown>
