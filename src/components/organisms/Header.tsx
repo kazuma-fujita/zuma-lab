@@ -56,7 +56,7 @@ const Header: React.FC<Props> = ({ title, sections, socials }) => {
       </Toolbar>
       <Toolbar component='nav' variant='dense' className={classes.toolbarSecondary}>
         {sections.map(({ title, url }) => (
-          <ToolbarLink title={title} url={url} />
+          <ToolbarLink title={title} url={url} key={title} />
         ))}
         <Grid container spacing={2} justify='flex-end'>
           {socials.map((social) => (

@@ -1,6 +1,6 @@
 html,
 h6.MuiTypography-gutterBottom {
-  margin-top: 24px;
+  margin-top: 32px;
   border-bottom: solid 1.5px #e0e0e0;
   position: relative;
 }
@@ -20,4 +20,9 @@ code {
   background-color: #e7edf3; /* 背景色 */
   border-radius: 3px; /* 角丸 */
   border: solid 1px #d6dde4; /* 枠線 */
+}
+.img {
+  width: 100%;
+  margin-top: 24px;
+  margin-bottom: 24px;
 }

@@ -73,10 +73,10 @@ const Footer: React.FC<Props> = ({ title, sections, scrollToTop }) => {
       <ScrollToTopButton scrollToTop={scrollToTop} />
       <footer className={classes.footer}>
         {sections.map(({ title, url }, index: number) => (
-          <>
-            <ToolbarLink title={title} url={url} />
+          <span key={title}>
+            <ToolbarLink title={title} url={url} key={title} />
             {sections.length === index + 1 || ' | '}
-          </>
+          </span>
         ))}
         <Box m={4} />
         <Container maxWidth='lg'>
