@@ -61,7 +61,7 @@ const Header: React.FC<Props> = ({ title, sections, socials }) => {
         <Grid container spacing={2} justify='flex-end'>
           {socials.map((social) => (
             <Grid item key={social.name}>
-              <Link target='_blank' rel='noopener' href={social.url} key={social.name}>
+              <Link target='_blank' rel='nofollow noopener noreferrer' href={social.url} key={social.name}>
                 {social.name === 'Twitter' ? <TwitterIcon fontSize='small' /> : <GitHubIcon fontSize='small' />}
               </Link>
             </Grid>
