@@ -1,11 +1,11 @@
 ---
 title: 'Reactのimport文を絶対パスで設定する(TypeScript版)'
 date: '2021-01-10'
-isPublished: false
-metaDescription: 'React(Next.js/TypeScript) で import 文を src ディレクトリからの絶対パスで設定する方法を解説します。設定はものすごく簡単で tsconfig.json の compilerOptions に `baseUrl` を追記します。'
+isPublished: true
+metaDescription: 'React(TypeScript) で import 文を src ディレクトリからの絶対パスで設定する方法を解説します。設定はものすごく簡単で tsconfig.json の compilerOptions に `baseUrl` を追記します。'
 ---
 
-React(Next.js/TypeScript) の import 文を src ディレクトリからの絶対パスで設定する方法です。
+React(TypeScript) の import 文を src ディレクトリからの絶対パスで設定する方法です。
 
 ある程度実装を終えてから絶対パスに変更しようとすると修正漏れが発生しそうなので、自分は Next や CRA の作成直後に必ずこれを実施しています。
 
