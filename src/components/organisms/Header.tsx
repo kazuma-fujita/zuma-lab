@@ -7,8 +7,6 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 import { SNSItem } from 'interfaces/SNSItem';
-import TwitterIcon from '@material-ui/icons/Twitter';
-import GitHubIcon from '@material-ui/icons/GitHub';
 import { Grid } from '@material-ui/core';
 import { SectionItem } from 'interfaces/SectionItem';
 import ToolbarLink from 'components/atoms/ToolbarLink';

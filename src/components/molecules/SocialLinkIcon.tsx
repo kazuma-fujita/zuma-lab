@@ -1,5 +1,5 @@
 import React from 'react';
-import { createStyles, Link, LinkProps, makeStyles, Theme } from '@material-ui/core';
+import { createStyles, Link, LinkProps, makeStyles } from '@material-ui/core';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import GitHubIcon from '@material-ui/icons/GitHub';
 
