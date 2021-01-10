@@ -5,6 +5,7 @@
 // } as const;
 
 export const SITE_TITLE = 'ZUMA Lab';
+export const SITE_URL = 'https://zuma-lab.com';
 export const POST_LIST = 'POST_LIST';
 export const POST_DETAIL = 'POST_DETAIL';
 export const PROFILE = 'PROFILE';

@@ -8,6 +8,7 @@ import TwitterIcon from '@material-ui/icons/Twitter';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import { Avatar, Box } from '@material-ui/core';
 import { AvatarItem } from '../../interfaces/AvatarItem';
+import SocialLinkIcon from 'components/molecules/SocialLinkIcon';
 
 const useStyles = makeStyles((theme) => ({
   sidebarAboutBox: {
@@ -61,13 +62,7 @@ const Sidebar: React.FC<Props> = ({ avatar, socials }) => {
         <Grid container spacing={8} justify='center'>
           {socials.map((social) => (
             <Grid item key={social.name}>
-              <Link target='_blank' rel='noopener' href={social.url} key={social.name}>
-                {social.name === 'Twitter' ? (
-                  <TwitterIcon style={{ fontSize: 40 }} />
-                ) : (
-                  <GitHubIcon style={{ fontSize: 40 }} />
-                )}
-              </Link>
+              <SocialLinkIcon name={social.name} url={social.url} largeIcon />
             </Grid>
           ))}
         </Grid>

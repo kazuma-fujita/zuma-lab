@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import matter, { GrayMatterFile, Input } from 'gray-matter';
 import { PostItem } from 'interfaces/PostItem';
+import { SITE_URL } from 'lib/constants';
 
 const postsDirectory = path.join(process.cwd(), 'src/posts');
 
@@ -23,11 +24,13 @@ const createPostItemByMarkdown = (fileName: string): PostItem => {
   const metaDescription = matterResult.data.metaDescription;
   // id を取得するためにファイル名から ".md" を削除する
   const id = fileName.replace(/\.md$/, '');
+  const url = `${SITE_URL}/posts/${id}`;
   // データを id と合わせる
   return {
     id,
     contents,
     title,
+    url,
     date,
     isPublished,
     metaDescription,

@@ -61,11 +61,10 @@ const options = {
 };
 
 interface Props {
-  className: string;
   children: string;
 }
 
-const HighlightedMarkdown: React.FC<Props> = ({ className, children }) => {
+const HighlightedMarkdown: React.FC<Props> = ({ children }) => {
   const rootRef: any = useRef<HTMLDivElement>();
 
   useEffect(() => {
@@ -79,9 +78,7 @@ const HighlightedMarkdown: React.FC<Props> = ({ className, children }) => {
 
   return (
     <div ref={rootRef}>
-      <Markdown options={options} className={className}>
-        {children}
-      </Markdown>
+      <Markdown options={options}>{children}</Markdown>
     </div>
   );
 };
