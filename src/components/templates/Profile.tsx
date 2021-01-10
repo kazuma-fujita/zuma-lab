@@ -274,7 +274,7 @@ const Profile: React.FC<Props> = ({ avatar, socials, descriptions }) => {
             <Card className={classes.card}>
               <CardMedia
                 className={classes.media}
-                image='/images/profile/Hobby-skill-image.jpeg'
+                image='/images/profile/hobby-skill-image.jpeg'
                 title='hobby skill image'
               />
               <CardContent>
