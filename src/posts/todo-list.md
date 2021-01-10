@@ -24,18 +24,19 @@ metaDescription: 'この blog は Next/TypeScript で実装、デザインは Ma
     - [ ] 新着記事ページング実装
     - [x] MainFeatured/Featured に記事リンク設定
   - [ ] 記事詳細 画面実装
+    - [ ] AMP 対応
     - [ ] PWA 対応
     - [x] OGP 画像動的生成実装
     - [ ] パンくずリスト実装
-    - [ ] Twitter share ボタン設置
+    - [x] Twitter/Facebook share ボタン設置
     - [ ] next/image component 埋め込み実装
     - [x] MainFeatured に記事タイトル設定
-    - [ ] Markdown から HTML 生成実装
+    - [x] Markdown から HTML 生成実装
     - [x] code タグ装飾実装
     - [x] シンタックスハイライト実装
-  - [ ] Profile 画面実装
-    - [ ] Profile データを hooks から取得
+  - [x] Profile 画面実装
   - [ ] Contact 画面実装
+  - [ ] Product 画面実装
   - [ ] プライバシーポリシー 画面実装
   - [ ] 免責事項 画面実装
 - 画面共通処理
@@ -46,8 +47,8 @@ metaDescription: 'この blog は Next/TypeScript で実装、デザインは Ma
   - [x] ページ先頭に戻るボタン設置
 - Sidebar
   - [ ] タグ一覧実装
-  - [ ] 月別アーカイブ実装
   - [ ] 新着記事一覧実装
+  - [ ] 月別アーカイブ実装
   - [ ] カテゴリ一覧実装
   - [ ] Google AdSense 設定
   - [x] SNS アイコン設置
