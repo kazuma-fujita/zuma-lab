@@ -12,6 +12,7 @@ import GitHubIcon from '@material-ui/icons/GitHub';
 import { Grid } from '@material-ui/core';
 import { SectionItem } from 'interfaces/SectionItem';
 import ToolbarLink from 'components/atoms/ToolbarLink';
+import SocialLinkIcon from 'components/molecules/SocialLinkIcon';
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
@@ -61,9 +62,7 @@ const Header: React.FC<Props> = ({ title, sections, socials }) => {
         <Grid container spacing={2} justify='flex-end'>
           {socials.map((social) => (
             <Grid item key={social.name}>
-              <Link target='_blank' rel='nofollow noopener noreferrer' href={social.url} key={social.name}>
-                {social.name === 'Twitter' ? <TwitterIcon fontSize='small' /> : <GitHubIcon fontSize='small' />}
-              </Link>
+              <SocialLinkIcon name={social.name} url={social.url} />
             </Grid>
           ))}
         </Grid>

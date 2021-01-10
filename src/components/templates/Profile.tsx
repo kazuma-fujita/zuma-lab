@@ -11,6 +11,7 @@ import TwitterIcon from '@material-ui/icons/Twitter';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import { SNSItem } from 'interfaces/SNSItem';
 import { ProfileDescriptionItem } from '../../interfaces/ProfileDescriptionItem';
+import SocialLinkIcon from 'components/molecules/SocialLinkIcon';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -306,13 +307,7 @@ const Profile: React.FC<Props> = ({ avatar, socials, descriptions }) => {
                 <Divider />
                 <div className={classes.social}>
                   {socials.map((social) => (
-                    <Link target='_blank' rel='nofollow noopener noreferrer' href={social.url} key={social.name}>
-                      {social.name === 'Twitter' ? (
-                        <TwitterIcon style={{ fontSize: 40 }} />
-                      ) : (
-                        <GitHubIcon style={{ fontSize: 40 }} />
-                      )}
-                    </Link>
+                    <SocialLinkIcon name={social.name} url={social.url} largeIcon />
                   ))}
                 </div>
               </CardContent>
