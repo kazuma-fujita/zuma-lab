@@ -6,7 +6,6 @@ import HighlightedMarkdown from 'components/atoms/HighlightedMarkdown';
 import PostDetailTitle from 'components/organisms/PostDetailTitle';
 import { useFetchFeaturedImageItem } from 'state/FeaturedImage/hooks';
 import { Typography } from '@material-ui/core';
-import { SITE_URL } from 'lib/constants';
 import SocialShareButtons from 'components/molecules/SocialShareButtons';
 
 const useStyles = makeStyles((theme) => ({

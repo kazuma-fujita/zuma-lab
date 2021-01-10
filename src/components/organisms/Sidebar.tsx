@@ -3,11 +3,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Link from '@material-ui/core/Link';
-import { SNSItem } from '../../interfaces/SNSItem';
-import TwitterIcon from '@material-ui/icons/Twitter';
-import GitHubIcon from '@material-ui/icons/GitHub';
+import { SNSItem } from 'interfaces/SNSItem';
 import { Avatar, Box } from '@material-ui/core';
-import { AvatarItem } from '../../interfaces/AvatarItem';
+import { AvatarItem } from 'interfaces/AvatarItem';
 import SocialLinkIcon from 'components/molecules/SocialLinkIcon';
 
 const useStyles = makeStyles((theme) => ({
