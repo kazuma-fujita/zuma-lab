@@ -28,6 +28,7 @@ metaDescription: 'この blog は Next/TypeScript で実装、デザインは Ma
     - [ ] PWA 対応
     - [x] OGP 画像動的生成実装
     - [ ] パンくずリスト実装
+    - [ ] 前後記事リンク設置
     - [x] Twitter/Facebook share ボタン設置
     - [ ] next/image component 埋め込み実装
     - [x] MainFeatured に記事タイトル設定

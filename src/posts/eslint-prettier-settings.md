@@ -1,44 +1,62 @@
 ---
-title: 'ESLint/PrettierでVSCodeの保存時に自動フォーマットをする'
-date: '2021-01-05'
-isPublished: false
-metaDescription: 'Next で blog 作成をするにあたり、最低限の ESLint / Prettier 自動フォーマット設定します。'
+title: 'TypeScriptのプロジェクトにESLintとPrettierを併用してVSCodeの保存時に自動フォーマットをする'
+date: '2021-01-11'
+isPublished: true
+metaDescription: 'Prettier/ESLintを併用してコードフォーマットします。かつTypeScriptに対応させます。Prettier はコードフォーマット、ESLint は構文チェックツールとして併用します。さらにVSCodeの保存時に自動フォーマットをする設定をします。'
 ---
 
-Next で blog 作成をするにあたり、最低限の ESLint / Prettier 自動フォーマット設定はしようと思います。
+TypeScript のプロジェクトに ESLint と Prettier を併用して VSCode の保存時に自動フォーマットを実行します。
 
-前提として、typescript は install 済みとします。
+Prettier (プリティア) とはコードフォーマッターで、ソースコードを整形してくれます。
 
-## 環境
+デフォルトで HTML/JavaScript/CSS/JSON/YAML の他、 JSX、TypeScript や Markdown、GraphQL、styled-components など様々な形式に対応しています。
 
-- OS
-  - macOS Catalina 10.15.5(19F101)
-- VSCode
-  - 1.52.1
-- next
-  - 10.0.4
-- react
-  - 16.14.0
-- typescript
-  - 4.0.5
-- yarn
-  - 1.22.4
+今回、 Prettier はコードフォーマット、ESLint は構文チェックツールとして併用します。
 
-## ESLint/Prettier package install
+ESLint 単体コードフォーマットが可能なのですが、Prettier では ESLint では整形出来ないコードも整形してくれます。
 
-- ESLint
+ESLint の構文チェックは TypeScript も対応させます。
+
+最後に VSCode の保存時に自動フォーマットをする設定をします。
+
+※ 前提として、TypeScript は install 済みとします。
+
+### 環境
+
+- macOS Catalina 10.15.5(19F101)
+- VSCode 1.52.1
+- Next 10.0.4
+- React 16.14.0
+- TypeScript 4.0.5
+- yarn 1.22.4
+
+## ESLint/Prettier package を install する
+
+- ESLint 関連 package
+  - ESLint
+    - ESLint 本体
+  - @typescript-eslint/parser
+    - ESLint が TypeScript ソースを lint できるようにする ESLint パーサー
+  - @typescript-eslint/eslint-plugin
+    - TypeScript コードベースに lint ルールを提供する ESLint プラグイン
 
 ```
 yarn add -D eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin
 ```
 
-- prettier
+- prettier 関連 package
+  - prettier
+    - prettier 本体
+  - eslint-config-prettier
+    - prettier が整形したコードに対して ESLint がエラーを出力しないようにするプラグイン
 
 ```
 yarn add -D prettier eslint-config-prettier
 ```
 
-### install package の確認
+※ `eslint-plugin-prettier` を install する方法がありますが、現在非推奨となっいる為、今回利用しません。
+
+## install した package を確認する
 
 ```
 $ yarn list --depth=0 |grep -e prettier -e eslint
@@ -58,13 +76,13 @@ $ yarn list --depth=0 |grep -e prettier -e eslint
 ├─ prettier@2.2.1
 ```
 
-## ESLint/Prettier 設定ファイル追加
+## ESLint 設定ファイル .eslintrc.json を作成する
 
-### .eslint.json の追加
+ESLint 設定をする為、package.json と同じ階層に `.eslintrc.json` を新規作成します。
 
-プロジェクトルートディレクトリ(package.json があるディレクトリ)に `.eslint.json` を追加します。
+以下は参考までに設定の一例です。
 
-```json:.eslint.json
+```json:.eslintrc.json
 {
   "extends": [
     "eslint:recommended",
@@ -80,13 +98,31 @@ $ yarn list --depth=0 |grep -e prettier -e eslint
     "project": "./tsconfig.json"
   },
   "env": { "browser": true, "node": true, "es6": true },
-  "rules": {}
+  "rules": {
+    // 個別に設定するESLintルールを記述
+  }
 }
 ```
 
-### .prettierrc.json の追加
+- eslint:recommended
+  - チェック項目をひとつずつ追加しなくても ESLint が推奨するチェック項目でまとめてチェックすることができる
+  - これだけでも基本的なソースの不備を手軽にチェックできる
+- plugin:@typescript-eslint/recommended
+  - 型を必要としないプラグインの推奨ルールをすべて有効
+- plugin:@typescript-eslint/recommended-requiring-type-checking
+  - 型を必要とするプラグインの推奨ルールをすべて有効
+  - TypeScript のビルド時間分が増えるので、気になる場合は設定を外す
+- prettier/@typescript-eslint
+  - ESLint で Prettier の規則もエラーとして検出する設定
+  - ESLint のルールを上書きするために、最後の方に書く
 
-プロジェクトルートディレクトリに `.prettierrc.json` を追加します。
+ESLint のチェック項目は [ESLint - Rules](https://eslint.org/docs/rules/) にあるので自分で設定したい場合は参照ください。
+
+## Prettier ルール設定ファイル .prettierrc.json を作成する
+
+Prettier のコードフォーマットルールを設定する為、package.json と同じ階層に `.prettierrc.json` を新規作成します。
+
+以下は参考までに設定の一例です。
 
 ```json:.prettierrc.json
 {
@@ -100,14 +136,31 @@ $ yarn list --depth=0 |grep -e prettier -e eslint
 }
 ```
 
-## VSCode 設定
+- printWidth
+  - 折り返す行の長さを指定
+- trailingComma
+  - オブジェクト、配列などの末尾にカンマを追加する設定。デフォルトで `es5` に準拠したルールで設定させる
+- tabWidth
+  - インデントのスペースの数を指定
+- semi
+  - ステートメントの最後にセミコロンを追加
+- singleQuote
+  - JSX 以外でダブルクォートの代わりにシングルクォートを使用
+- jsxSingleQuote
+  - JSX でダブルクォートの代わりにシングルクォートを使用
+- endOfLine
+  - 改行の文字コードを指定
 
-### VSCode に ESLint/Prettier 拡張機能を install する
+## VSCode に ESLint/Prettier 拡張機能を install する
 
-- [ESLint 拡張機能](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
-- [Prettier 拡張機能](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+VSCode に以下 ESLint と Prettier 拡張機能を install します。
 
-### VSCode の settings.json で自動フォーマット機能を有効化する
+リンクを開いて `install` ボタンをクリックしてください。
+
+- [ESLint(ESLint 拡張機能)](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+- [Prettier - Code formatter(Prettier 拡張機能)](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+
+## VSCode の settings.json に自動フォーマット設定を追記する
 
 VSCode の settings.json を開き以下を追記します。
 
@@ -124,9 +177,17 @@ VSCode の settings.json を開き以下を追記します。
 }
 ```
 
-ここまでで ESLint と Prettier の設定は完了です。
+ここまでで ESLint/Prettier と VSCode の設定は完了です。
 
-VSCode 開き直して適当にインデントのおかしいコードの記述、保存をすると自動的にフォーマットがかかるはずです。
+VSCode 開き直してファイルを保存をすると自動的にフォーマットがかかるはずです。
+
+## おわりに
+
+コードフォーマットをかけるとプロジェクトソースの記述に一貫性が保たれ、チーム開発時にチームメンバーによる記述の揺らぎによるソースの可読性が下がることを防ぐことが出来ます。
+
+なにより自動コードフォーマットで一番効果が発揮するのが、Pull Request 時のレビュワーによる構文チェックの工数を減らせることだと思っています。
+
+個人開発では設定しなくても事足りますが、チーム開発時はレビュワー負担を減らす為にも設定したいですね。
 
 ## 参考
 
