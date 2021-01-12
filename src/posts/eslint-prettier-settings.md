@@ -118,7 +118,7 @@ ESLint 設定をする為、package.json と同じ階層に `.eslintrc.json` を
 
 ESLint のチェック項目は [ESLint - Rules](https://eslint.org/docs/rules/) にあるので自分で設定したい場合は参照ください。
 
-## Prettier ルール設定ファイル .prettierrc.json を作成する
+## Prettier option 設定ファイル .prettierrc.json を作成する
 
 Prettier のコードフォーマットルールを設定する為、package.json と同じ階層に `.prettierrc.json` を新規作成します。
 
@@ -152,7 +152,7 @@ Prettier のコードフォーマットルールを設定する為、package.jso
 - endOfLine
   - 改行の文字コードを指定
 
-### 参考)設定のデフォルト値
+### 参考)Prettier option 設定のデフォルト値
 
 ```json:.prettierrc.json
 	{
