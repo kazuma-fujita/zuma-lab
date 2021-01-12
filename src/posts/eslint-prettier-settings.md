@@ -138,6 +138,7 @@ Prettier のコードフォーマットルールを設定する為、package.jso
 
 - printWidth
   - 折り返す行の長さを指定
+  - デフォルト 80 だと少なく感じたので筆者は 120 で設定
 - trailingComma
   - オブジェクト、配列などの末尾にカンマを追加する設定。デフォルトで `es5` に準拠したルールで設定させる
 - tabWidth
@@ -150,6 +151,38 @@ Prettier のコードフォーマットルールを設定する為、package.jso
   - JSX でダブルクォートの代わりにシングルクォートを使用
 - endOfLine
   - 改行の文字コードを指定
+
+### 参考)設定のデフォルト値
+
+```json:.prettierrc.json
+	{
+		"printWidth": 80,
+		"tabWidth": 2,
+		"useTabs": false,
+		"semi": true,
+		"singleQuote": false,
+		"quoteProps": "as-needed",
+		"jsxSingleQuote": false,
+		"trailingComma": "none",
+		"bracketSpacing": true,
+		"jsxBracketSameLine": false,
+		"arrowParens": "avoid",
+		"rangeStart": 0,
+		"rangeEnd": Infinity,
+		"parser": "none",
+		"filepath": "none",
+		"requirePragma": false,
+		"insertPragma": false,
+		"proseWrap": "preserve",
+		"htmlWhitespaceSensitivity": "css",
+		"vueIndentScriptAndStyle": false,
+		"endOfLine": "auto",
+	}
+```
+
+`.prettierrc.json` ファイルを作成していない場合は、上記の設定が適用されます。
+
+オプションの設定のついてもっと詳しく知りたい方は [Prettier - Options](https://prettier.io/docs/en/options.html) に詳細があるので参照してください。
 
 ## VSCode に ESLint/Prettier 拡張機能を install する
 
@@ -194,3 +227,5 @@ VSCode 開き直してファイルを保存をすると自動的にフォーマ�
 [いつのまにか eslint-plugin-prettier が推奨されないものになってた](https://knote.dev/post/2020-08-29/duprecated-eslint-plugin-prettier/)
 
 [VSCode で ESLint+typescript-eslint+Prettier を導入する（2020/11/14 修正）](https://qiita.com/madono/items/a134e904e891c5cb1d20)
+
+[【VSCode】Prettier の使い方＆おすすめ設定を紹介](https://ma-vericks.com/vscode-prettier/)
