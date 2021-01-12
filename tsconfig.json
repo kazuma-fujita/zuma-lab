@@ -17,7 +17,7 @@
     "skipLibCheck": true,
     "strict": true,
     "target": "esnext",
-    "baseUrl": "./src" // import文をsrcからの絶対パスで記述出来る
+    "baseUrl": "src" // import文をsrcからの絶対パスで記述出来る
   },
   "exclude": ["node_modules"],
   "include": ["src/**/*.ts", "src/**/*.tsx"]
