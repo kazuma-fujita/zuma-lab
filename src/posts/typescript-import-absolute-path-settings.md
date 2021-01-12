@@ -55,7 +55,7 @@ import Layout from 'components/templates/Layout';
            :
            :
            :
-    "baseUrl": "./src" // 追加。import文をsrcからの絶対パスで記述出来る
+    "baseUrl": "src" // 追加。import文をsrcからの絶対パスで記述出来る
   },
   "exclude": ["node_modules"],
   "include": ["src/**/*.ts", "src/**/*.tsx"]

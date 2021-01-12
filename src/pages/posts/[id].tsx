@@ -17,14 +17,15 @@ import { useFetchAvatarItem } from 'state/Avatar/hooks';
 interface Props {
   avatar: AvatarItem;
   socials: Array<SNSItem>;
-  item?: PostItem;
+  item: PostItem;
+  // item?: PostItem;
   // errors?: string;
 }
 
 // const Post: React.FC<Props> = ({ avatar, socials, item, errors }) => (
 const Post: React.FC<Props> = ({ avatar, socials, item }) => (
-  <Layout title={`${item?.title} | ${SITE_TITLE}`} metaDescription={item?.metaDescription!}>
-    <PostDetail item={item!}>
+  <Layout title={`${item.title} | ${SITE_TITLE}`} metaDescription={item.metaDescription}>
+    <PostDetail item={item}>
       {/* <Sidebar title={sidebar.title} description={sidebar.description} archives={sidebar.archives} socials={socials} /> */}
       <Sidebar avatar={avatar} socials={socials} />
     </PostDetail>
@@ -35,10 +36,10 @@ export default Post;
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = useGetAllPostIds();
-  return {
+  return Promise.resolve({
     paths,
     fallback: false,
-  };
+  });
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
@@ -46,13 +47,13 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const avatar = useFetchAvatarItem();
   const socials = useFetchSNSList();
   const item = useGetPostData(params?.id as string);
-  return {
+  return Promise.resolve({
     props: {
       avatar,
       socials,
       item,
     },
-  };
+  });
 };
 
 // Error sample

@@ -65,12 +65,14 @@ interface Props {
 }
 
 const HighlightedMarkdown: React.FC<Props> = ({ children }) => {
-  const rootRef: any = useRef<HTMLDivElement>();
+  const rootRef = useRef<HTMLDivElement>() as React.MutableRefObject<HTMLDivElement>;
 
   useEffect(() => {
-    rootRef.current.querySelectorAll('pre code').forEach((block: HTMLElement) => {
-      hljs.highlightBlock(block);
-    });
+    rootRef.current
+      ?.querySelectorAll('pre code')
+      .forEach((value: Element, _key: number, _parent: NodeListOf<Element>) => {
+        hljs.highlightBlock(value as HTMLElement);
+      });
     // rootRef.current.querySelectorAll('code').forEach((block: HTMLElement) => {
     //   hljs.fixMarkup(block.innerHTML);
     // });

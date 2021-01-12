@@ -61,13 +61,13 @@ yarn add -D prettier eslint-config-prettier
 ```
 $ yarn list --depth=0 |grep -e prettier -e eslint
 ├─ @eslint/eslintrc@0.2.2
-├─ @typescript-eslint/eslint-plugin@4.12.0
-├─ @typescript-eslint/experimental-utils@4.12.0
-├─ @typescript-eslint/parser@4.12.0
-├─ @typescript-eslint/scope-manager@4.12.0
-├─ @typescript-eslint/types@4.12.0
-├─ @typescript-eslint/typescript-estree@4.12.0
-├─ @typescript-eslint/visitor-keys@4.12.0
+├─ @typescript-eslint/eslint-plugin@4.13.0
+├─ @typescript-eslint/experimental-utils@4.13.0
+├─ @typescript-eslint/parser@4.13.0
+├─ @typescript-eslint/scope-manager@4.13.0
+├─ @typescript-eslint/types@4.13.0
+├─ @typescript-eslint/typescript-estree@4.13.0
+├─ @typescript-eslint/visitor-keys@4.13.0
 ├─ eslint-config-prettier@7.1.0
 ├─ eslint-scope@5.1.1
 ├─ eslint-utils@2.1.0
@@ -118,7 +118,7 @@ ESLint 設定をする為、package.json と同じ階層に `.eslintrc.json` を
 
 ESLint のチェック項目は [ESLint - Rules](https://eslint.org/docs/rules/) にあるので自分で設定したい場合は参照ください。
 
-## Prettier ルール設定ファイル .prettierrc.json を作成する
+## Prettier option 設定ファイル .prettierrc.json を作成する
 
 Prettier のコードフォーマットルールを設定する為、package.json と同じ階層に `.prettierrc.json` を新規作成します。
 
@@ -138,6 +138,7 @@ Prettier のコードフォーマットルールを設定する為、package.jso
 
 - printWidth
   - 折り返す行の長さを指定
+  - デフォルト 80 だと少なく感じたので筆者は 120 で設定
 - trailingComma
   - オブジェクト、配列などの末尾にカンマを追加する設定。デフォルトで `es5` に準拠したルールで設定させる
 - tabWidth
@@ -151,6 +152,38 @@ Prettier のコードフォーマットルールを設定する為、package.jso
 - endOfLine
   - 改行の文字コードを指定
 
+### 参考)Prettier option 設定のデフォルト値
+
+```json:.prettierrc.json
+	{
+		"printWidth": 80,
+		"tabWidth": 2,
+		"useTabs": false,
+		"semi": true,
+		"singleQuote": false,
+		"quoteProps": "as-needed",
+		"jsxSingleQuote": false,
+		"trailingComma": "none",
+		"bracketSpacing": true,
+		"jsxBracketSameLine": false,
+		"arrowParens": "avoid",
+		"rangeStart": 0,
+		"rangeEnd": Infinity,
+		"parser": "none",
+		"filepath": "none",
+		"requirePragma": false,
+		"insertPragma": false,
+		"proseWrap": "preserve",
+		"htmlWhitespaceSensitivity": "css",
+		"vueIndentScriptAndStyle": false,
+		"endOfLine": "auto",
+	}
+```
+
+`.prettierrc.json` ファイルを作成していない場合は、上記の設定が適用されます。
+
+オプションの設定のついてもっと詳しく知りたい方は [Prettier - Options](https://prettier.io/docs/en/options.html) に詳細があるので参照してください。
+
 ## VSCode に ESLint/Prettier 拡張機能を install する
 
 VSCode に以下 ESLint と Prettier 拡張機能を install します。
@@ -162,7 +195,16 @@ VSCode に以下 ESLint と Prettier 拡張機能を install します。
 
 ## VSCode の settings.json に自動フォーマット設定を追記する
 
-VSCode の settings.json を開き以下を追記します。
+VSCode の `settings.json` を開きます。
+
+- コマンドパレットを開く
+  - ショートカットキー `command + shift + P` または F1 でコマンドパレットを表示
+- 検索ワードを入れる
+  - settings と入力
+
+開いた `settings.json` に自動フォーマット設定を追記します。
+
+以下は参考までに設定の一例です。
 
 ```json:settings.json
 {
@@ -189,8 +231,14 @@ VSCode 開き直してファイルを保存をすると自動的にフォーマ�
 
 個人開発では設定しなくても事足りますが、チーム開発時はレビュワー負担を減らす為にも設定したいですね。
 
+また、今回作成したサンプルアプリケーションは Github にありますので参照ください。
+
+<iframe class="hatenablogcard" style="width:100%;height:155px;margin:15px 0;max-width:680px;" title="kazuma-fujita/next-ts-lint-mui-template: Next.js/TypeScript/ESLint/Prettier/Material-UI Template." src="https://hatenablog-parts.com/embed?url=https://github.com/kazuma-fujita/next-ts-lint-mui-template" frameborder="0" scrolling="no"></iframe>
+
 ## 参考
 
 [いつのまにか eslint-plugin-prettier が推奨されないものになってた](https://knote.dev/post/2020-08-29/duprecated-eslint-plugin-prettier/)
 
 [VSCode で ESLint+typescript-eslint+Prettier を導入する（2020/11/14 修正）](https://qiita.com/madono/items/a134e904e891c5cb1d20)
+
+[【VSCode】Prettier の使い方＆おすすめ設定を紹介](https://ma-vericks.com/vscode-prettier/)

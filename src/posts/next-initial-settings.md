@@ -5,20 +5,14 @@ isPublished: true
 metaDescription: 'Next/Typescript/Material-UIの初期環境構築手順の方法を解説します。'
 ---
 
-## 環境
+### 環境
 
-- OS
-  - macOS Catalina 10.15.5(19F101)
-- VSCode
-  - 1.52.1
-- next
-  - 10.0.4
-- react
-  - 16.14.0
-- typescript
-  - 4.0.5
-- yarn
-  - 1.22.4
+- macOS Catalina 10.15.5(19F101)
+- VSCode 1.52.1
+- Next 10.0.4
+- React 16.14.0
+- TypeScript 4.0.5
+- yarn 1.22.4
 
 ## Next/Typescript 設定
 
@@ -58,11 +52,13 @@ create-next-app した初期状態では src ディレクトリが無いので�
 cd sample-app && mkdir src && mv components interfaces pages src/.
 ```
 
-この作業は好みだが、CRA で開発をする時は基本プロダクトソースコードを src ディレクトリ配下に置くので、慣例として実行します。
+この作業は好みですが、CRA で開発をする時は基本プロダクトソースコードを src ディレクトリ配下に置くので、慣例として実行します。
 
 ## import 文を src ディレクトリからの絶対パスに設定
 
-[import 文を絶対パスで設定する(TypeScript 版)](posts/typescript-import-absolute-path-settings) を参照
+こちらに詳しい設定手順の記事を書いたので参照ください。
+
+<iframe class="hatenablogcard" style="width:100%;height:155px;margin:15px 0;max-width:680px;" title="Reactのimport文を絶対パスで設定する(TypeScript版) | ZUMA Lab" src="https://hatenablog-parts.com/embed?url=https://zuma-lab.com/posts/typescript-import-absolute-path-settings" frameborder="0" scrolling="no"></iframe>
 
 ## Material-UI 設定
 

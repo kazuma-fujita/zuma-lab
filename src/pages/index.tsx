@@ -39,11 +39,11 @@ export const getStaticProps: GetStaticProps = async () => {
   const avatar = useFetchAvatarItem();
   const socials = useFetchSNSList();
   const items = useFetchPostList();
-  return {
+  return Promise.resolve({
     props: {
       avatar,
       socials,
       items,
     },
-  };
+  });
 };
