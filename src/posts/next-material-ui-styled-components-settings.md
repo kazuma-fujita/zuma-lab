@@ -209,6 +209,12 @@ CustomDocument.getInitialProps = async (ctx: DocumentContext) => {
 
 これで Next.js/TypeScript のプロジェクトでも Material-UI と styled-components を利用することが出来ます。
 
+## おわりに
+
+今回作成したサンプルアプリケーションは Github にありますので参照ください。
+
+<iframe class="hatenablogcard" style="width:100%;height:155px;margin:15px 0;max-width:680px;" title="kazuma-fujita/next-ts-lint-mui-template: Next.js/TypeScript/ESLint/Prettier/Material-UI Template." src="https://hatenablog-parts.com/embed?url=https://github.com/kazuma-fujita/next-ts-lint-mui-template" frameborder="0" scrolling="no"></iframe>
+
 ## 参考
 
 [Material-UI と styled components で，next.js の css をいい感じに管理する (Jest/TypeScript 対応版)](https://qiita.com/o3c9/items/2551820edc156704edba)

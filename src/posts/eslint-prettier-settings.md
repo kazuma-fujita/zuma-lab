@@ -231,6 +231,10 @@ VSCode 開き直してファイルを保存をすると自動的にフォーマ�
 
 個人開発では設定しなくても事足りますが、チーム開発時はレビュワー負担を減らす為にも設定したいですね。
 
+また、今回作成したサンプルアプリケーションは Github にありますので参照ください。
+
+<iframe class="hatenablogcard" style="width:100%;height:155px;margin:15px 0;max-width:680px;" title="kazuma-fujita/next-ts-lint-mui-template: Next.js/TypeScript/ESLint/Prettier/Material-UI Template." src="https://hatenablog-parts.com/embed?url=https://github.com/kazuma-fujita/next-ts-lint-mui-template" frameborder="0" scrolling="no"></iframe>
+
 ## 参考
 
 [いつのまにか eslint-plugin-prettier が推奨されないものになってた](https://knote.dev/post/2020-08-29/duprecated-eslint-plugin-prettier/)
