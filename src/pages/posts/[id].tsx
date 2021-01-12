@@ -1,7 +1,7 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Layout from 'components/templates/Layout';
 import { PostItem } from 'interfaces/PostItem';
-import { useGetAllPostIds, useGetPostData } from 'state/posts/hooks';
+import { useFetchPostList, useGetAllPostIds, useGetPostData } from 'state/posts/hooks';
 import PostDetail from 'components/templates/PostDetail';
 import Sidebar from 'components/organisms/Sidebar';
 import { SITE_TITLE } from 'lib/constants';
@@ -15,19 +15,20 @@ import { useFetchAvatarItem } from 'state/Avatar/hooks';
 // };
 
 interface Props {
+  item: PostItem;
   avatar: AvatarItem;
   socials: Array<SNSItem>;
-  item: PostItem;
+  items: Array<PostItem>;
   // item?: PostItem;
   // errors?: string;
 }
 
 // const Post: React.FC<Props> = ({ avatar, socials, item, errors }) => (
-const Post: React.FC<Props> = ({ avatar, socials, item }) => (
+const Post: React.FC<Props> = ({ item, ...rest }) => (
   <Layout title={`${item.title} | ${SITE_TITLE}`} metaDescription={item.metaDescription}>
     <PostDetail item={item}>
       {/* <Sidebar title={sidebar.title} description={sidebar.description} archives={sidebar.archives} socials={socials} /> */}
-      <Sidebar avatar={avatar} socials={socials} />
+      <Sidebar {...rest} />
     </PostDetail>
   </Layout>
 );
@@ -46,12 +47,14 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   // const postData = await useGetPostData(params.id);
   const avatar = useFetchAvatarItem();
   const socials = useFetchSNSList();
+  const items = useFetchPostList();
   const item = useGetPostData(params?.id as string);
   return Promise.resolve({
     props: {
+      item,
       avatar,
       socials,
-      item,
+      items,
     },
   });
 };
