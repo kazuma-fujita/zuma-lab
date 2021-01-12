@@ -8,7 +8,7 @@ interface Props extends OverrideProps<OverridableTypeMap, React.ElementType> {
   url: string;
 }
 
-const TwitterShareButton: React.FC<Props> = ({ title, url, variant, startIcon, size, target, rel, ...rest }) => (
+const TwitterShareButton: React.FC<Props> = ({ title, url, ...rest }) => (
   <Button
     variant='outlined'
     size='small'

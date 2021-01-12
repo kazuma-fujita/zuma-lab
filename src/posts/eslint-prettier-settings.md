@@ -61,13 +61,13 @@ yarn add -D prettier eslint-config-prettier
 ```
 $ yarn list --depth=0 |grep -e prettier -e eslint
 ├─ @eslint/eslintrc@0.2.2
-├─ @typescript-eslint/eslint-plugin@4.12.0
-├─ @typescript-eslint/experimental-utils@4.12.0
-├─ @typescript-eslint/parser@4.12.0
-├─ @typescript-eslint/scope-manager@4.12.0
-├─ @typescript-eslint/types@4.12.0
-├─ @typescript-eslint/typescript-estree@4.12.0
-├─ @typescript-eslint/visitor-keys@4.12.0
+├─ @typescript-eslint/eslint-plugin@4.13.0
+├─ @typescript-eslint/experimental-utils@4.13.0
+├─ @typescript-eslint/parser@4.13.0
+├─ @typescript-eslint/scope-manager@4.13.0
+├─ @typescript-eslint/types@4.13.0
+├─ @typescript-eslint/typescript-estree@4.13.0
+├─ @typescript-eslint/visitor-keys@4.13.0
 ├─ eslint-config-prettier@7.1.0
 ├─ eslint-scope@5.1.1
 ├─ eslint-utils@2.1.0
@@ -195,7 +195,16 @@ VSCode に以下 ESLint と Prettier 拡張機能を install します。
 
 ## VSCode の settings.json に自動フォーマット設定を追記する
 
-VSCode の settings.json を開き以下を追記します。
+VSCode の `settings.json` を開きます。
+
+- コマンドパレットを開く
+  - ショートカットキー `command + shift + P` または F1 でコマンドパレットを表示
+- 検索ワードを入れる
+  - settings と入力
+
+開いた `settings.json` に自動フォーマット設定を追記します。
+
+以下は参考までに設定の一例です。
 
 ```json:settings.json
 {

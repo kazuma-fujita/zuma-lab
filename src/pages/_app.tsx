@@ -9,14 +9,11 @@ import 'styles/global.css';
 import * as gtag from 'lib/gtag';
 import { useRouter } from 'next/router';
 
-const App = ({ Component, pageProps }: AppProps): JSX.Element => {
-  // const [state, dispatch] = useReducer(postsReducer, initialPostsState);
-
+const CustomApp = ({ Component, pageProps }: AppProps): JSX.Element => {
   useEffect(() => {
-    // TODO: any型の解決
-    const jssStyles: any = document.querySelector('#jss-server-side');
+    const jssStyles: Element | null = document.querySelector('#jss-server-side');
     if (jssStyles) {
-      jssStyles.parentElement.removeChild(jssStyles);
+      jssStyles.parentElement?.removeChild(jssStyles);
     }
   }, []);
 
@@ -46,4 +43,4 @@ const App = ({ Component, pageProps }: AppProps): JSX.Element => {
   );
 };
 
-export default App;
+export default CustomApp;
