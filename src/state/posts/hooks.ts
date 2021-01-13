@@ -57,22 +57,6 @@ export const useFetchPostList = (): Array<PostItem> => {
     });
 };
 
-export const useGetAllPostIds = (): Array<{ params: { id: string } }> => {
-  // posts配下のファイル名を取得する
-  const fileNames = fs.readdirSync(postsDirectory);
-  // ファイル名配列からpostItemを作成してisPublishedを除外したid一覧を返却
-  return fileNames
-    .map((fileName) => createPostItemByMarkdown(fileName))
-    .filter((item) => item.isPublished) // isPublished=false記事を除外
-    .map((item: PostItem) => {
-      return {
-        params: {
-          id: item.id,
-        },
-      };
-    });
-};
-
 export const useGetPostData = (id: string): PostItem => {
   return createPostItemByMarkdown(`${id}.md`);
 };
@@ -81,8 +65,33 @@ export const useFetchTagList = (): Array<string> => {
   // 記事一覧取得
   const items: Array<PostItem> = useFetchPostList();
   // tagだけの配列を生成
-  // const tags: Array<string> = items.flatMap((item: PostItem) => item.tags);
   const tags: Array<string> = items.flatMap(({ tags }) => tags);
   // tagの重複を削除
   return [...new Set(tags)];
+};
+
+export const useGetAllPostIds = (): Array<{ params: { id: string } }> => {
+  // posts配下のファイル名を取得する
+  const fileNames = fs.readdirSync(postsDirectory);
+  // ファイル名配列からpostItemを作成してisPublishedを除外したid一覧を返却
+  return fileNames
+    .map((fileName) => createPostItemByMarkdown(fileName))
+    .filter((item) => item.isPublished) // isPublished=false記事を除外
+    .map((item: PostItem) => ({
+      params: { id: item.id },
+    }));
+};
+
+export const useGetAllTagIds = (): Array<{ params: { tag: string } }> => {
+  // tag名一覧取得
+  const tags: Array<string> = useFetchTagList();
+  // tag名をidとしてid配列を返却。paramsキーを付与しないとgetStaticPathsで認識されないので注意
+  return tags.map((tag: string) => ({ params: { tag: tag } }));
+};
+
+export const useSearchTagList = (tag: string): Array<PostItem> => {
+  // 記事一覧取得
+  const items: Array<PostItem> = useFetchPostList();
+  // tags配列にtag文字列検索をして一致した記事の配列を返却
+  return items.filter(({ tags }) => tags.includes(tag));
 };

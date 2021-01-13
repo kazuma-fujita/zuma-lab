@@ -1,7 +1,6 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
 import { PostItem } from 'interfaces/PostItem';
 import { Box, Link, makeStyles, Theme } from '@material-ui/core';
 import Chips from 'components/molecules/Chips';
@@ -27,7 +26,6 @@ const NewPostList: React.FC<Props> = ({ title, items }) => {
       <Typography variant='h6' gutterBottom>
         {title}
       </Typography>
-      <Divider />
       {items.map(({ id, title, date, tags }) => (
         <div key={title}>
           <Box mt={4} mb={4}>

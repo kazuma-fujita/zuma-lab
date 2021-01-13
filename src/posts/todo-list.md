@@ -6,6 +6,8 @@ metaDescription: 'この blog は Next/TypeScript で実装、デザインは Ma
 tags:
   - 'Next.js'
   - 'TypeScript'
+  - 'Material-UI'
+  - 'Vercel'
 ---
 
 2021 年 を迎え、まったりと技術発信 blog というより備忘録を付けようと思います。
