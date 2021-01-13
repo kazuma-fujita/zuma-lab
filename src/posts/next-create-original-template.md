@@ -3,6 +3,13 @@ title: 'Next.js/TypeScript/ESLint/Prettier/Material-UI/styled-componentsの自�
 date: '2021-01-13'
 isPublished: true
 metaDescription: 'Next.js/TypeScript/ESLint/Prettier/Material-UI/styled-componentsの自作テンプレートを作成して公開しました。どなたでもご利用可能ですのでぜひお試しください。'
+tags:
+  - 'Next.js'
+  - 'TypeScript'
+  - 'ESLint'
+  - 'Prettier'
+  - 'Material-UI'
+  - 'styled-components'
 ---
 
 Next.js/TypeScript/ESLint/Prettier/Material-UI/styled-components の自作テンプレートを作りました。

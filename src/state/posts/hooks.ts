@@ -16,12 +16,14 @@ const parseMarkdownFile = (fileName: string): GrayMatterFile<Input> => {
 
 const createPostItemByMarkdown = (fileName: string): PostItem => {
   // fileNameからmarkdownを取得しメタデータを抽出する
-  const matterResult = parseMarkdownFile(fileName);
+  const matterResult: GrayMatterFile<Input> = parseMarkdownFile(fileName);
   const contents = matterResult.content;
-  const title = matterResult.data.title;
-  const date = matterResult.data.date;
-  const isPublished = matterResult.data.isPublished;
-  const metaDescription = matterResult.data.metaDescription;
+  const data = matterResult.data as PostItem;
+  const title = data.title;
+  const date = data.date;
+  const isPublished = data.isPublished;
+  const metaDescription = data.metaDescription;
+  const tags = data.tags;
   // id を取得するためにファイル名から ".md" を削除する
   const id = fileName.replace(/\.md$/, '');
   const url = `${SITE_URL}/posts/${id}`;
@@ -34,11 +36,12 @@ const createPostItemByMarkdown = (fileName: string): PostItem => {
     date,
     isPublished,
     metaDescription,
+    tags,
   };
 };
 
 export const useFetchPostList = (): Array<PostItem> => {
-  // posts　配下のファイル名を取得する
+  // posts配下のファイル名を取得する
   const fileNames = fs.readdirSync(postsDirectory);
   // ファイル名配列からpostItemを作成してisPublishedを除外、かつ日付ソートをかける
   return fileNames
@@ -54,8 +57,8 @@ export const useFetchPostList = (): Array<PostItem> => {
     });
 };
 
-export const useGetAllPostIds = () => {
-  // posts　配下のファイル名を取得する
+export const useGetAllPostIds = (): Array<{ params: { id: string } }> => {
+  // posts配下のファイル名を取得する
   const fileNames = fs.readdirSync(postsDirectory);
   // ファイル名配列からpostItemを作成してisPublishedを除外したid一覧を返却
   return fileNames

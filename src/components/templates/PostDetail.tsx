@@ -5,8 +5,9 @@ import { PostItem } from 'interfaces/PostItem';
 import HighlightedMarkdown from 'components/atoms/HighlightedMarkdown';
 import PostDetailTitle from 'components/organisms/PostDetailTitle';
 import { useFetchFeaturedImageItem } from 'state/FeaturedImage/hooks';
-import { Typography } from '@material-ui/core';
+import { Box, Typography } from '@material-ui/core';
 import SocialShareButtons from 'components/molecules/SocialShareButtons';
+import Chips from 'components/molecules/Chips';
 
 const useStyles = makeStyles((theme) => ({
   mainGrid: {
@@ -16,6 +17,18 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('sm')]: {
       padding: theme.spacing(0, 0, 8, 12),
     },
+  },
+  chip: {
+    display: 'flex',
+    justifyContent: 'flex-start',
+    flexWrap: 'wrap',
+    '& > *': {
+      // margin: theme.spacing(0.3),
+      marginRight: theme.spacing(0.8),
+    },
+  },
+  chipFontColor: {
+    color: 'gray',
   },
 }));
 
@@ -34,7 +47,11 @@ const PostDetail: React.FC<Props> = ({ item, children }) => {
           <Typography variant='subtitle1' color='textSecondary'>
             <time>{item.date}</time>
           </Typography>
+          <Box mb={1} />
+          <Chips tags={item.tags} />
+          <Box mb={1} />
           <SocialShareButtons title={encodeURI(item.title)} url={encodeURI(item.url)} />
+          <Box mb={2} />
           <HighlightedMarkdown key={item.id}>{item.contents}</HighlightedMarkdown>
           <SocialShareButtons title={encodeURI(item.title)} url={encodeURI(item.url)} />
         </Grid>

@@ -3,6 +3,9 @@ title: 'Next/TypeScript/Material-UI/Vercelでブログ始めました'
 date: '2021-01-03'
 isPublished: true
 metaDescription: 'この blog は Next/TypeScript で実装、デザインは Material-UI で組み、Vercel でホスティングしています。'
+tags:
+  - 'Next.js'
+  - 'TypeScript'
 ---
 
 2021 年 を迎え、まったりと技術発信 blog というより備忘録を付けようと思います。
@@ -48,7 +51,7 @@ metaDescription: 'この blog は Next/TypeScript で実装、デザインは Ma
   - [x] ページ先頭に戻るボタン設置
 - Sidebar
   - [ ] タグ一覧実装
-  - [ ] 新着記事一覧実装
+  - [x] 新着記事一覧実装
   - [ ] 月別アーカイブ実装
   - [ ] カテゴリ一覧実装
   - [ ] Google AdSense 設定

@@ -3,6 +3,10 @@ title: 'Vercelにお名前.comで取得したドメインをカスタムドメ�
 date: '2021-01-09'
 isPublished: true
 metaDescription: 'Vercel でホスティングしたサイトに、お名前.com で取得したドメインをカスタムドメインとして設定します。'
+tags:
+  - 'Next.js'
+  - 'TypeScript'
+  - 'Vercel'
 ---
 
 Vercel でホスティングしたサイトに、お名前.com で取得したドメインをカスタムドメインとして設定します。
