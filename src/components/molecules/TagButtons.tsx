@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Chip, createStyles, makeStyles, Theme } from '@material-ui/core';
+import { Button, createStyles, makeStyles, Theme } from '@material-ui/core';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -9,7 +9,6 @@ const useStyles = makeStyles((theme: Theme) =>
       flexWrap: 'wrap',
       '& > *': {
         margin: theme.spacing(0.8, 0.8, 0.8, 0),
-        // marginRight: theme.spacing(0.8),
       },
     },
     button: {

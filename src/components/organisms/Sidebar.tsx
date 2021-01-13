@@ -7,7 +7,6 @@ import { Avatar, Box, Typography } from '@material-ui/core';
 import SocialLinkIcon from 'components/molecules/SocialLinkIcon';
 import Divider from '@material-ui/core/Divider';
 import { SidebarProps } from 'interfaces/SidebarProps';
-import Chips from 'components/molecules/Chips';
 import TagButtons from 'components/molecules/TagButtons';
 
 const useStyles = makeStyles((theme) => ({
@@ -44,7 +43,6 @@ const Sidebar: React.FC<SidebarProps> = ({ avatar, socials, items, tags }) => {
             </Link>
           </Grid>
           <Grid item>
-            {/* <Typography>{description}</Typography> */}
             {avatar.description}&nbsp;&nbsp;
             <Link href='/profile'>My profile.</Link>
           </Grid>
