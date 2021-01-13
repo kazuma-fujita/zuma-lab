@@ -19,12 +19,12 @@ interface Props {
   items: Array<PostItem>;
 }
 
-const TagSearchResultList: React.FC<Props> = ({ searchTag, items, children }) => {
+const SearchResultList: React.FC<Props> = ({ searchTag, items, children }) => {
   const classes = useStyles();
   return (
     <>
       <Grid container spacing={5} className={classes.mainGrid}>
-        <NewPostList title={`${searchTag} tag search results`} items={items} />
+        <NewPostList title={`${searchTag} search results`} items={items} />
         {/* Sidebar */}
         {children}
         {/* Sidebar */}
@@ -33,4 +33,4 @@ const TagSearchResultList: React.FC<Props> = ({ searchTag, items, children }) =>
   );
 };
 
-export default TagSearchResultList;
+export default SearchResultList;

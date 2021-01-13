@@ -70,6 +70,15 @@ export const useFetchTagList = (): Array<string> => {
   return [...new Set(tags)];
 };
 
+export const useFetchMonthList = (): Array<string> => {
+  // 記事一覧取得
+  const items: Array<PostItem> = useFetchPostList();
+  // 記事更新月YYYY-MMだけの配列を生成
+  const months: Array<string> = items.map(({ date }) => date.substring(0, 7));
+  // YYYY-MMの重複を削除
+  return [...new Set(months)];
+};
+
 export const useGetAllPostIds = (): Array<{ params: { id: string } }> => {
   // posts配下のファイル名を取得する
   const fileNames = fs.readdirSync(postsDirectory);
@@ -83,10 +92,17 @@ export const useGetAllPostIds = (): Array<{ params: { id: string } }> => {
 };
 
 export const useGetAllTagIds = (): Array<{ params: { tag: string } }> => {
-  // tag名一覧取得
+  // ユニークなtag名一覧取得
   const tags: Array<string> = useFetchTagList();
   // tag名をidとしてid配列を返却。paramsキーを付与しないとgetStaticPathsで認識されないので注意
   return tags.map((tag: string) => ({ params: { tag: tag } }));
+};
+
+export const useGetAllArchiveIds = (): Array<{ params: { month: string } }> => {
+  // ユニークな記事更新月YYYY-mm一覧取得
+  const months = useFetchMonthList();
+  // getStaticPathsに認識させる為paramsキーを付与
+  return months.map((month: string) => ({ params: { month: month } }));
 };
 
 export const useSearchTagList = (tag: string): Array<PostItem> => {
@@ -94,4 +110,11 @@ export const useSearchTagList = (tag: string): Array<PostItem> => {
   const items: Array<PostItem> = useFetchPostList();
   // tags配列にtag文字列検索をして一致した記事の配列を返却
   return items.filter(({ tags }) => tags.includes(tag));
+};
+
+export const useSearchMonthList = (month: string): Array<PostItem> => {
+  // 記事一覧取得
+  const items: Array<PostItem> = useFetchPostList();
+  // 記事更新日YYYY-MM-ddに対して検索文字列 YYYY-MM 文字列前方一致した記事の配列を返却
+  return items.filter(({ date }) => date.indexOf(month) !== -1);
 };

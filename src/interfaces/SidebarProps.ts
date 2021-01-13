@@ -7,4 +7,5 @@ export interface SidebarProps {
   socials: Array<SNSItem>;
   items: Array<PostItem>;
   tags: Array<string>;
+  archives: Array<string>;
 }

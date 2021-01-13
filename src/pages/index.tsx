@@ -1,6 +1,6 @@
 import { GetStaticProps } from 'next';
 import Layout from 'components/templates/Layout';
-import { useFetchPostList, useFetchTagList } from 'state/posts/hooks';
+import { useFetchMonthList, useFetchPostList, useFetchTagList } from 'state/posts/hooks';
 import PostList from 'components/templates/PostList';
 import Sidebar from 'components/organisms/Sidebar';
 import { SITE_TITLE } from 'lib/constants';
@@ -13,10 +13,10 @@ interface Props extends SidebarProps {
   metaDescription: string;
 }
 
-const IndexPage: React.FC<Props> = ({ metaDescription, items, avatar, socials, tags }) => (
+const IndexPage: React.FC<Props> = ({ metaDescription, items, avatar, socials, tags, archives }) => (
   <Layout title={SITE_TITLE} metaDescription={metaDescription}>
     <PostList items={items}>
-      <Sidebar avatar={avatar} socials={socials} items={items} tags={tags} />
+      <Sidebar avatar={avatar} socials={socials} items={items} tags={tags} archives={archives} />
     </PostList>
   </Layout>
 );
@@ -28,6 +28,7 @@ export const getStaticProps: GetStaticProps = async () => {
   const socials = useFetchSNSList();
   const items = useFetchPostList();
   const tags = useFetchTagList();
+  const archives = useFetchMonthList();
   const metaDescription = useGetProfileMetaDescription();
   return Promise.resolve({
     props: {
@@ -36,6 +37,7 @@ export const getStaticProps: GetStaticProps = async () => {
       socials,
       items,
       tags,
+      archives,
     },
   });
 };

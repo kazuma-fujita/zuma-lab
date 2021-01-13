@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Sidebar: React.FC<SidebarProps> = ({ avatar, socials, items, tags }) => {
+const Sidebar: React.FC<SidebarProps> = ({ avatar, socials, items, tags, archives }) => {
   const classes = useStyles();
 
   return (
@@ -60,6 +60,14 @@ const Sidebar: React.FC<SidebarProps> = ({ avatar, socials, items, tags }) => {
         Tags
       </Typography>
       <TagButtons tags={tags} />
+      <Typography variant='h6' gutterBottom className={classes.sidebarSection}>
+        Archives
+      </Typography>
+      {archives.map((month) => (
+        <Link display='block' variant='body1' color='inherit' href={`/archives/${month}`} key={month}>
+          {month}
+        </Link>
+      ))}
       <Typography variant='h6' gutterBottom className={classes.sidebarSection}>
         Recent Posts
       </Typography>

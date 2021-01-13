@@ -1,7 +1,7 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Layout from 'components/templates/Layout';
 import { PostItem } from 'interfaces/PostItem';
-import { useFetchPostList, useGetAllPostIds, useGetPostData } from 'state/posts/hooks';
+import { useFetchMonthList, useFetchPostList, useGetAllPostIds, useGetPostData } from 'state/posts/hooks';
 import PostDetail from 'components/templates/PostDetail';
 import Sidebar from 'components/organisms/Sidebar';
 import { SITE_TITLE } from 'lib/constants';
@@ -33,11 +33,12 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const item = useGetPostData(params?.id as string);
   const avatar = useFetchAvatarItem();
   const socials = useFetchSNSList();
   const items = useFetchPostList();
   const tags = useFetchTagList();
-  const item = useGetPostData(params?.id as string);
+  const archives = useFetchMonthList();
 
   return Promise.resolve({
     props: {
@@ -46,6 +47,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       socials,
       items,
       tags,
+      archives,
     },
   });
 };
