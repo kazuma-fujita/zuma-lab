@@ -8,6 +8,7 @@ import SocialLinkIcon from 'components/molecules/SocialLinkIcon';
 import Divider from '@material-ui/core/Divider';
 import { SidebarProps } from 'interfaces/SidebarProps';
 import Chips from 'components/molecules/Chips';
+import TagButtons from 'components/molecules/TagButtons';
 
 const useStyles = makeStyles((theme) => ({
   sidebarAboutBox: {
@@ -60,7 +61,7 @@ const Sidebar: React.FC<SidebarProps> = ({ avatar, socials, items, tags }) => {
       <Typography variant='h6' gutterBottom className={classes.sidebarSection}>
         Tags
       </Typography>
-      <Chips tags={tags} />
+      <TagButtons tags={tags} />
       <Typography variant='h6' gutterBottom className={classes.sidebarSection}>
         Recent Posts
       </Typography>
