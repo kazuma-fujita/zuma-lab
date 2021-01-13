@@ -1,4 +1,6 @@
 import { ProfileDescriptionItem } from 'interfaces/ProfileDescriptionItem';
+import { ProfileMainSkillItem } from 'interfaces/ProfileMainSkillItem';
+import { ProfileSubSkillItem } from '../../interfaces/ProfileSubSkillItem';
 
 const data = [
   {
@@ -31,6 +33,91 @@ const data = [
   },
 ];
 
+const mainSkillData = [
+  {
+    title: 'Web skills',
+    image: '/images/profile/web-skill-image.jpeg',
+    imageTitle: 'web skill image',
+    skills: [
+      { skill: 'React', rate: 60 },
+      { skill: 'TypeScript', rate: 60 },
+      { skill: 'Next.js', rate: 30 },
+    ],
+  },
+  {
+    title: 'Mobile skills',
+    image: '/images/profile/mobile-skill-image.jpeg',
+    imageTitle: 'mobile skill image',
+    skills: [
+      { skill: 'Swift', rate: 60 },
+      { skill: 'Kotlin', rate: 60 },
+      { skill: 'Flutter', rate: 30 },
+    ],
+  },
+  {
+    title: 'Backend skills',
+    image: '/images/profile/backend-skill-image.jpeg',
+    imageTitle: 'backend skill image',
+    skills: [
+      { skill: 'NodeJS', rate: 50 },
+      { skill: 'Amplify', rate: 50 },
+      { skill: 'DynamoDB', rate: 40 },
+    ],
+  },
+];
+
+const subSkillData = [
+  {
+    title: 'Other skills',
+    image: '/images/profile/other-skill-image.jpeg',
+    imageTitle: 'other skill image',
+    skills: ['Django', 'MySQL', 'Apache', 'Nginx', 'Git', 'Github', 'Docker', 'Cypress', 'Slack', 'Discode', 'Trello'],
+  },
+  {
+    title: 'AWS skills',
+    image: '/images/profile/aws-skill-image.jpeg',
+    imageTitle: 'aws skill image',
+    skills: [
+      'ElasticBeanstalk',
+      'EC2',
+      'ALB',
+      'RDS',
+      'Elasticsearch',
+      'S3',
+      'CloudFront',
+      'Route53',
+      'ACM',
+      'CloudWatch',
+    ],
+  },
+  {
+    title: 'Studying skills',
+    image: '/images/profile/studying-skill-image.jpeg',
+    imageTitle: 'Studying skill image',
+    skills: ['CDK', 'Lambda', 'Cognito', 'AppSync', 'CloudFormation', 'ECS', 'ECR', 'SMS', 'SES', 'DeviceFarm'],
+  },
+  {
+    title: 'Music play skills',
+    image: '/images/profile/music-skill-image.jpeg',
+    imageTitle: 'music skill image',
+    skills: ['Guitar', 'Banjo', 'Mandolin', 'Bass', 'Fiddle'],
+  },
+  {
+    title: 'Hobby',
+    image: '/images/profile/hobby-skill-image.jpeg',
+    imageTitle: 'Hobby skill image',
+    skills: ['Music', 'Rock festival', 'Camp', 'Road bike'],
+  },
+];
+
 export const useFetchProfileDescriptionList = (): Array<ProfileDescriptionItem> => {
   return data;
+};
+
+export const useFetchProfileMainSkillList = (): Array<ProfileMainSkillItem> => {
+  return mainSkillData;
+};
+
+export const useFetchProfileSubSkillList = (): Array<ProfileSubSkillItem> => {
+  return subSkillData;
 };

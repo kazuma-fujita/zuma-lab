@@ -8,8 +8,8 @@ const useStyles = makeStyles((theme: Theme) =>
       justifyContent: 'flex-start',
       flexWrap: 'wrap',
       '& > *': {
-        // margin: theme.spacing(0.3),
-        marginRight: theme.spacing(0.8),
+        margin: theme.spacing(0.3, 0.8, 0.3, 0),
+        // marginRight: theme.spacing(0.8),
       },
     },
     chipFontColor: {
@@ -27,7 +27,7 @@ const Chips: React.FC<Props> = ({ tags }) => {
   return (
     <div className={classes.chip}>
       {tags.map((tag) => (
-        <Chip variant='outlined' size='small' label={tag} className={classes.chipFontColor} />
+        <Chip variant='outlined' size='small' label={tag} className={classes.chipFontColor} key={tag} />
       ))}
     </div>
   );
