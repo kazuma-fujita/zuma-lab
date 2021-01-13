@@ -9,8 +9,9 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Hidden from '@material-ui/core/Hidden';
 import { PostItem } from 'interfaces/PostItem';
 import { FeaturedImageItem } from 'interfaces/FeaturedImageItem';
+import { Theme } from '@material-ui/core';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme: Theme) => ({
   card: {
     display: 'flex',
   },
@@ -20,7 +21,13 @@ const useStyles = makeStyles({
   cardMedia: {
     width: 160,
   },
-});
+  postTitle: {
+    // モバイル表示時に表示崩れを防ぐ為、強制文字折返しをいれる
+    [theme.breakpoints.down('md')]: {
+      wordBreak: 'break-all',
+    },
+  },
+}));
 
 interface Props {
   item: PostItem;
@@ -36,7 +43,7 @@ const FeaturedPost: React.FC<Props> = ({ item, featuredImage }) => {
         <Card className={classes.card}>
           <div className={classes.cardDetails}>
             <CardContent>
-              <Typography component='h2' variant='h5'>
+              <Typography component='h2' variant='h5' className={classes.postTitle}>
                 {item.title}
               </Typography>
               <Typography variant='subtitle1' color='textSecondary'>

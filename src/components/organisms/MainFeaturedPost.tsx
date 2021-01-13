@@ -17,6 +17,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
+    // wordBreak: 'break-all',
   },
   overlay: {
     position: 'absolute',
@@ -32,6 +33,10 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('md')]: {
       padding: theme.spacing(6, 6, 3, 6),
       paddingRight: 0,
+    },
+    // モバイル表示時に表示崩れを防ぐ為、強制文字折返しをいれる
+    [theme.breakpoints.down('md')]: {
+      wordBreak: 'break-all',
     },
   },
 }));
@@ -54,7 +59,7 @@ const MainFeaturedPost: React.FC<Props> = ({ item, featuredImage }) => {
           {/* <Grid item md={8}> */}
           <Grid item>
             <div className={classes.mainFeaturedPostContent}>
-              <Typography component='h2' variant='h4' color='inherit' gutterBottom>
+              <Typography component='h3' variant='h4' color='inherit' gutterBottom>
                 {item.title}
               </Typography>
               <Typography variant='h6' color='inherit' paragraph>

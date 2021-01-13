@@ -31,6 +31,9 @@ const useStyles = makeStyles((theme) => ({
       padding: theme.spacing(6),
       paddingRight: 0,
     },
+    [theme.breakpoints.down('md')]: {
+      wordBreak: 'break-all',
+    },
   },
 }));
 
