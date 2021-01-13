@@ -26,7 +26,6 @@ export default Post;
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = useGetAllPostIds();
-  console.log('id list:', paths);
   return Promise.resolve({
     paths,
     fallback: false,

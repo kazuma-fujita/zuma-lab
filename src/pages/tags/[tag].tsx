@@ -10,15 +10,15 @@ import { SidebarProps } from 'interfaces/SidebarProps';
 import React from 'react';
 import TagSearchResultList from 'components/templates/TagSearchResultList';
 import { PostItem } from 'interfaces/PostItem';
-
-const metaDescription = 'Tagの検索結果一覧です。';
+import { useGetProfileMetaDescription } from 'state/profile/hooks';
 
 interface Props extends SidebarProps {
+  metaDescription: string;
   searchTag: string;
   searchResults: Array<PostItem>;
 }
 
-const Tag: React.FC<Props> = ({ searchTag, searchResults, items, avatar, socials, tags }) => (
+const Tag: React.FC<Props> = ({ metaDescription, searchTag, searchResults, items, avatar, socials, tags }) => (
   <Layout title={SITE_TITLE} metaDescription={metaDescription}>
     <TagSearchResultList searchTag={searchTag} items={searchResults}>
       <Sidebar avatar={avatar} socials={socials} items={items} tags={tags} />
@@ -38,6 +38,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const searchTag = params?.tag as string;
+  const metaDescription = useGetProfileMetaDescription();
   const searchResults = useSearchTagList(searchTag);
   const avatar = useFetchAvatarItem();
   const socials = useFetchSNSList();
@@ -46,6 +47,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   return Promise.resolve({
     props: {
+      metaDescription,
       searchTag,
       searchResults,
       items,
