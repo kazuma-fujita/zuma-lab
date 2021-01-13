@@ -1,6 +1,6 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Layout from 'components/templates/Layout';
-import { useGetAllTagIds, useSearchTagList } from 'state/posts/hooks';
+import { useFetchPostList, useGetAllTagIds, useSearchTagList } from 'state/posts/hooks';
 import Sidebar from 'components/organisms/Sidebar';
 import { SITE_TITLE } from 'lib/constants';
 import { useFetchSNSList } from 'state/SNS/hooks';
@@ -9,16 +9,18 @@ import { useFetchTagList } from 'state/posts/hooks';
 import { SidebarProps } from 'interfaces/SidebarProps';
 import React from 'react';
 import TagSearchResultList from 'components/templates/TagSearchResultList';
+import { PostItem } from 'interfaces/PostItem';
 
 const metaDescription = 'Tagの検索結果一覧です。';
 
 interface Props extends SidebarProps {
   searchTag: string;
+  searchResults: Array<PostItem>;
 }
 
-const Tag: React.FC<Props> = ({ searchTag, items, avatar, socials, tags }) => (
+const Tag: React.FC<Props> = ({ searchTag, searchResults, items, avatar, socials, tags }) => (
   <Layout title={SITE_TITLE} metaDescription={metaDescription}>
-    <TagSearchResultList searchTag={searchTag} items={items}>
+    <TagSearchResultList searchTag={searchTag} items={searchResults}>
       <Sidebar avatar={avatar} socials={socials} items={items} tags={tags} />
     </TagSearchResultList>
   </Layout>
@@ -36,14 +38,16 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const searchTag = params?.tag as string;
+  const searchResults = useSearchTagList(searchTag);
   const avatar = useFetchAvatarItem();
   const socials = useFetchSNSList();
-  const items = useSearchTagList(searchTag);
+  const items = useFetchPostList();
   const tags = useFetchTagList();
 
   return Promise.resolve({
     props: {
       searchTag,
+      searchResults,
       items,
       avatar,
       socials,
