@@ -3,12 +3,11 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Link from '@material-ui/core/Link';
-import { SNSItem } from 'interfaces/SNSItem';
 import { Avatar, Box, Typography } from '@material-ui/core';
-import { AvatarItem } from 'interfaces/AvatarItem';
 import SocialLinkIcon from 'components/molecules/SocialLinkIcon';
-import { PostItem } from 'interfaces/PostItem';
 import Divider from '@material-ui/core/Divider';
+import { SidebarProps } from 'interfaces/SidebarProps';
+import Chips from 'components/molecules/Chips';
 
 const useStyles = makeStyles((theme) => ({
   sidebarAboutBox: {
@@ -31,20 +30,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-// interface Archive {
-//   title: string;
-//   url: string;
-// }
-
-interface Props {
-  // archives: Array<Archive>;
-  avatar: AvatarItem;
-  socials: Array<SNSItem>;
-  items: Array<PostItem>;
-}
-
-// const Sidebar: React.FC<Props> = ({ archives, description, socials, title }) => {
-const Sidebar: React.FC<Props> = ({ avatar, socials, items }) => {
+const Sidebar: React.FC<SidebarProps> = ({ avatar, socials, items, tags }) => {
   const classes = useStyles();
 
   return (
@@ -71,6 +57,10 @@ const Sidebar: React.FC<Props> = ({ avatar, socials, items }) => {
           ))}
         </Grid>
       </Paper>
+      <Typography variant='h6' gutterBottom className={classes.sidebarSection}>
+        Tags
+      </Typography>
+      <Chips tags={tags} />
       <Typography variant='h6' gutterBottom className={classes.sidebarSection}>
         Recent Posts
       </Typography>

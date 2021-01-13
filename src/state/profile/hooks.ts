@@ -59,7 +59,7 @@ const mainSkillData = [
     image: '/images/profile/backend-skill-image.jpeg',
     imageTitle: 'backend skill image',
     skills: [
-      { skill: 'NodeJS', rate: 50 },
+      { skill: 'Node.js', rate: 50 },
       { skill: 'Amplify', rate: 50 },
       { skill: 'DynamoDB', rate: 40 },
     ],

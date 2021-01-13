@@ -76,3 +76,13 @@ export const useGetAllPostIds = (): Array<{ params: { id: string } }> => {
 export const useGetPostData = (id: string): PostItem => {
   return createPostItemByMarkdown(`${id}.md`);
 };
+
+export const useFetchTagList = (): Array<string> => {
+  // 記事一覧取得
+  const items: Array<PostItem> = useFetchPostList();
+  // tagだけの配列を生成
+  // const tags: Array<string> = items.flatMap((item: PostItem) => item.tags);
+  const tags: Array<string> = items.flatMap(({ tags }) => tags);
+  // tagの重複を削除
+  return [...new Set(tags)];
+};
