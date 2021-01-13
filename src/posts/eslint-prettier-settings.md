@@ -3,6 +3,11 @@ title: 'TypeScriptのプロジェクトにESLintとPrettierを併用してVSCode
 date: '2021-01-11'
 isPublished: true
 metaDescription: 'Prettier/ESLintを併用してコードフォーマットします。かつTypeScriptに対応させます。Prettier はコードフォーマット、ESLint は構文チェックツールとして併用します。さらにVSCodeの保存時に自動フォーマットをする設定をします。'
+tags:
+  - 'Next.js'
+  - 'TypeScript'
+  - 'ESLint'
+  - 'Prettier'
 ---
 
 TypeScript のプロジェクトに ESLint と Prettier を併用して VSCode の保存時に自動フォーマットを実行します。

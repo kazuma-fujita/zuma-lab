@@ -4,6 +4,7 @@ import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import { PostItem } from 'interfaces/PostItem';
 import { Box, Link } from '@material-ui/core';
+import Chips from 'components/molecules/Chips';
 
 interface Props {
   title: string;
@@ -16,7 +17,7 @@ const NewPostList: React.FC<Props> = ({ title, items }) => (
       {title}
     </Typography>
     <Divider />
-    {items.map(({ id, title, date }) => (
+    {items.map(({ id, title, date, tags }) => (
       <div key={title}>
         <Box mt={4} mb={4}>
           <Typography component='h4' variant='h6'>
@@ -27,6 +28,7 @@ const NewPostList: React.FC<Props> = ({ title, items }) => (
           <Typography variant='subtitle1' color='textSecondary'>
             <time>{date}</time>
           </Typography>
+          <Chips tags={tags} />
         </Box>
       </div>
     ))}

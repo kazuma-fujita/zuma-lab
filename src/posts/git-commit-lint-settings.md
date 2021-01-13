@@ -3,6 +3,12 @@ title: 'Husky と lint-staged で git commit 時に lint チェックをする�
 date: '2021-01-05'
 isPublished: false
 metaDescription: 'Husky/lint-staged を利用して git commit 時に lint チェックがかかるようにします。'
+tags:
+  - 'Next.js'
+  - 'TypeScript'
+  - 'ESLint'
+  - 'Husky'
+  - 'lint-staged'
 ---
 
 Husky/lint-staged を利用して git commit 時に lint チェックがかかるようにする。

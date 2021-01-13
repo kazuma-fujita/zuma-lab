@@ -3,6 +3,9 @@ title: 'テスト投稿'
 date: '2021-01-07'
 isPublished: false
 metaDescription: 'テスト投稿'
+tags:
+  - 'Next.js'
+  - 'TypeScript'
 ---
 
 画像表示テスト
