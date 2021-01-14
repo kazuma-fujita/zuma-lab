@@ -59,7 +59,7 @@ const mainSkillData = [
     image: '/images/profile/backend-skill-image.jpeg',
     imageTitle: 'backend skill image',
     skills: [
-      { skill: 'NodeJS', rate: 50 },
+      { skill: 'Node.js', rate: 50 },
       { skill: 'Amplify', rate: 50 },
       { skill: 'DynamoDB', rate: 40 },
     ],
@@ -110,6 +110,9 @@ const subSkillData = [
   },
 ];
 
+const metaDescription =
+  '普段WebやMobileアプリ開発をしているエンジニアが個人開発を通して学んだ技術を発信をするブログです。React/TypeScript/Next/Flutter/GraphQL/AWS/Amplifyなどの話題を発信します。';
+
 export const useFetchProfileDescriptionList = (): Array<ProfileDescriptionItem> => {
   return data;
 };
@@ -120,4 +123,8 @@ export const useFetchProfileMainSkillList = (): Array<ProfileMainSkillItem> => {
 
 export const useFetchProfileSubSkillList = (): Array<ProfileSubSkillItem> => {
   return subSkillData;
+};
+
+export const useGetProfileMetaDescription = (): string => {
+  return metaDescription;
 };

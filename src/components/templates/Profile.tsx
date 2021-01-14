@@ -8,7 +8,7 @@ import DescriptionTypography from 'components/atoms/DescriptionTypography';
 import { Box, CardMedia, Container, Divider, Grid, Slider, Typography } from '@material-ui/core';
 import SocialLinkIcon from 'components/molecules/SocialLinkIcon';
 import Chips from 'components/molecules/Chips';
-import { ProfileProps } from 'pages/profile';
+import { ProfileProps } from 'interfaces/ProfileProps';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

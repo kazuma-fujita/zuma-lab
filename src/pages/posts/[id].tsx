@@ -1,33 +1,22 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Layout from 'components/templates/Layout';
 import { PostItem } from 'interfaces/PostItem';
-import { useFetchPostList, useGetAllPostIds, useGetPostData } from 'state/posts/hooks';
+import { useFetchMonthList, useFetchPostList, useGetAllPostIds, useGetPostData } from 'state/posts/hooks';
 import PostDetail from 'components/templates/PostDetail';
 import Sidebar from 'components/organisms/Sidebar';
 import { SITE_TITLE } from 'lib/constants';
 import { useFetchSNSList } from 'state/SNS/hooks';
-import { SNSItem } from 'interfaces/SNSItem';
-import { AvatarItem } from 'interfaces/AvatarItem';
 import { useFetchAvatarItem } from 'state/Avatar/hooks';
+import { useFetchTagList } from 'state/posts/hooks';
+import { SidebarProps } from 'interfaces/SidebarProps';
 
-// const sidebar = {
-//   archives: [{ title: 'March 2020', url: '#' }],
-// };
-
-interface Props {
+interface Props extends SidebarProps {
   item: PostItem;
-  avatar: AvatarItem;
-  socials: Array<SNSItem>;
-  items: Array<PostItem>;
-  // item?: PostItem;
-  // errors?: string;
 }
 
-// const Post: React.FC<Props> = ({ avatar, socials, item, errors }) => (
 const Post: React.FC<Props> = ({ item, ...rest }) => (
   <Layout title={`${item.title} | ${SITE_TITLE}`} metaDescription={item.metaDescription}>
     <PostDetail item={item}>
-      {/* <Sidebar title={sidebar.title} description={sidebar.description} archives={sidebar.archives} socials={socials} /> */}
       <Sidebar {...rest} />
     </PostDetail>
   </Layout>
@@ -44,17 +33,21 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  // const postData = await useGetPostData(params.id);
+  const item = useGetPostData(params?.id as string);
   const avatar = useFetchAvatarItem();
   const socials = useFetchSNSList();
   const items = useFetchPostList();
-  const item = useGetPostData(params?.id as string);
+  const tags = useFetchTagList();
+  const archives = useFetchMonthList();
+
   return Promise.resolve({
     props: {
       item,
       avatar,
       socials,
       items,
+      tags,
+      archives,
     },
   });
 };
