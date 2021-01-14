@@ -42,10 +42,12 @@ tags:
     - [x] シンタックスハイライト実装
   - [x] Profile 画面実装
   - [ ] Contact 画面実装
-  - [ ] Product 画面実装
   - [ ] プライバシーポリシー 画面実装
   - [ ] 免責事項 画面実装
 - 画面共通処理
+  - [ ] Performance 改善(現状 Lighthouse 80 点)
+  - [ ] Accessibility 改善(現状 Lighthouse 81 点)
+    - [ ] eslint-plugin-jsx-a11y 導入
   - [ ] カスタム 404 画面実装
   - [x] Twitter OGP タグ設定
   - [ ] その他 SNS OGP タグ調査・設定
@@ -53,10 +55,9 @@ tags:
   - [x] Title タグ設定
   - [x] ページ先頭に戻るボタン設置
 - Sidebar
-  - [ ] タグ一覧実装
+  - [x] タグ一覧実装
   - [x] 新着記事一覧実装
-  - [ ] 月別アーカイブ実装
-  - [ ] カテゴリ一覧実装
+  - [x] 月別アーカイブ実装
   - [ ] Google AdSense 設定
   - [x] SNS アイコン設置
 - Header
@@ -66,6 +67,9 @@ tags:
   - [x] Profile リンク表示
 - Footer
   - [x] Sections リンク設置
+- Output task
+  - [ ] GA 記事投稿
+  - [ ] ISR 記事投稿
 
 実装完了したものからチェックを付けてますが、果たして全機能実装出来るのでしょうか。
 
