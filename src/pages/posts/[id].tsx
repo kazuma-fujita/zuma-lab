@@ -14,7 +14,7 @@ interface Props extends SidebarProps {
   item: PostItem;
 }
 
-const Post: React.FC<Props> = ({ item, ...rest }) => (
+const PostPage: React.FC<Props> = ({ item, ...rest }) => (
   <Layout title={`${item.title} | ${SITE_TITLE}`} metaDescription={item.metaDescription}>
     <PostDetail item={item}>
       <Sidebar {...rest} />
@@ -22,7 +22,7 @@ const Post: React.FC<Props> = ({ item, ...rest }) => (
   </Layout>
 );
 
-export default Post;
+export default PostPage;
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = useGetAllPostIds();

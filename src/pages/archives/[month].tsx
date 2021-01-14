@@ -19,7 +19,7 @@ interface Props extends SidebarProps {
   searchResults: Array<PostItem>;
 }
 
-const Tag: React.FC<Props> = ({ metaDescription, searchMonth, searchResults, ...rest }) => (
+const ArchivesPage: React.FC<Props> = ({ metaDescription, searchMonth, searchResults, ...rest }) => (
   <Layout title={SITE_TITLE} metaDescription={metaDescription}>
     <SearchResultList searchTag={searchMonth} items={searchResults}>
       <Sidebar {...rest} />
@@ -27,7 +27,7 @@ const Tag: React.FC<Props> = ({ metaDescription, searchMonth, searchResults, ...
   </Layout>
 );
 
-export default Tag;
+export default ArchivesPage;
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = useGetAllArchiveIds();
