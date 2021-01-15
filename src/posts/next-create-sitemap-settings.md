@@ -2,16 +2,16 @@
 title: 'Next.js/TypeScriptプロジェクトのbuild時にsitemap.xmlを自動生成する'
 date: '2021-01-15'
 isPublished: true
-metaDescription: 'Next.js/TypeScriptプロジェクトのbuild時にsitemap.xmlを自動生成する方法です。今回はブログサイトの sitemap.xml を build 時に自動生成します。'
+metaDescription: 'Next.js/TypeScriptプロジェクトのbuild時にsitemap.xmlを自動生成する方法です。ブログ記事やコンテンツの作成・更新毎に生成サイトなどで sitemap.xml を作成していた手間を自動化しましょう。'
 tags:
   - 'Next.js'
   - 'TypeScript'
   - 'SEO'
 ---
 
-Next.js/TypeScript で dynamic routing に対応した sitemap.xml を自動生成する方法です。
+Next.js/TypeScript プロジェクトの build 時に sitemap.xml を自動生成する方法です。
 
-今回はブログサイトの sitemap.xml を build 時に自動生成します。
+ブログ記事やコンテンツの作成・更新毎に生成サイトなどで sitemap.xml を作成していた手間を自動化しましょう。
 
 ### 環境
 
@@ -52,7 +52,7 @@ sitemap.xml のフォーマット処理を行う為、コードフォーマッ�
 yarn add -D prettier
 ```
 
-## ファイル名から sitemap.xml を出力するスクリプトを実装する
+## sitemap.xml を出力するスクリプトを実装する
 
 プロジェクトルートディレクトリ(package.json がある階層)に `scripts` という名前のディレクトリを作成し、 `scripts/sitemap-generator.js` ファイルを作成します。
 
@@ -189,8 +189,6 @@ module.exports = {
 
 これで build 時の sitemap.xml の自動生成設定は完了です。
 
-この後 Google Search Console に sitemap.xml を登録するので、ホスティングサービスにデプロイして sitemap.xml を公開してください。
-
 ## robots.txt の作成
 
 Google のクローラーに sitemap.xml の場所を教えてクロールの促進をさせる為、`public` ディレクトリ直下に `robots.txt` を作成します。
@@ -206,6 +204,8 @@ Sitemap:https://your.website.com/sitemap.xml
 `User-Agent: *` で全てクローラーを対象として、 `Disallow:` で全てのページのクローリングを許可します。
 
 最後に `Sitemap:` に sitemap.xml がある URL を指定します。
+
+この後 Google Search Console に sitemap.xml を登録するので、ホスティングサービスにデプロイして sitemap.xml を公開してください。
 
 ## Google Search Console に sitemap.xml を登録する
 
