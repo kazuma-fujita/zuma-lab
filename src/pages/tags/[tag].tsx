@@ -18,7 +18,7 @@ interface Props extends SidebarProps {
   searchResults: Array<PostItem>;
 }
 
-const Tag: React.FC<Props> = ({ metaDescription, searchTag, searchResults, ...rest }) => (
+const TagsPage: React.FC<Props> = ({ metaDescription, searchTag, searchResults, ...rest }) => (
   <Layout title={SITE_TITLE} metaDescription={metaDescription}>
     <TagSearchResultList searchTag={searchTag} items={searchResults}>
       <Sidebar {...rest} />
@@ -26,7 +26,7 @@ const Tag: React.FC<Props> = ({ metaDescription, searchTag, searchResults, ...re
   </Layout>
 );
 
-export default Tag;
+export default TagsPage;
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = useGetAllTagIds();

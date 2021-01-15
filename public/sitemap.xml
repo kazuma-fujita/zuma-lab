@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"
+>
+  <url>
+    <loc>https://zuma-lab.com/</loc>
+    <lastmod>2021-01-15T07:51:44.924Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://zuma-lab.com/privacy</loc>
+    <lastmod>2021-01-15T07:51:44.924Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://zuma-lab.com/profile</loc>
+    <lastmod>2021-01-15T07:51:44.924Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://zuma-lab.com/posts/eslint-prettier-settings</loc>
+    <lastmod>2021-01-15T07:51:44.924Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://zuma-lab.com/posts/next-create-original-template</loc>
+    <lastmod>2021-01-15T07:51:44.924Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://zuma-lab.com/posts/next-create-sitemap-settings</loc>
+    <lastmod>2021-01-15T07:51:44.924Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://zuma-lab.com/posts/next-google-analytics-settings</loc>
+    <lastmod>2021-01-15T07:51:44.924Z</lastmod>
+  </url>
+
+  <url>
+    <loc
+      >https://zuma-lab.com/posts/next-material-ui-styled-components-settings</loc
+    >
+    <lastmod>2021-01-15T07:51:44.924Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://zuma-lab.com/posts/todo-list</loc>
+    <lastmod>2021-01-15T07:51:44.924Z</lastmod>
+  </url>
+
+  <url>
+    <loc
+      >https://zuma-lab.com/posts/typescript-import-absolute-path-settings</loc
+    >
+    <lastmod>2021-01-15T07:51:44.924Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://zuma-lab.com/posts/vercel-onamae-domain-settings</loc>
+    <lastmod>2021-01-15T07:51:44.924Z</lastmod>
+  </url>
+</urlset>
