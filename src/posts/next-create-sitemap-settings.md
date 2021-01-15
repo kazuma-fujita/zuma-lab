@@ -189,7 +189,23 @@ module.exports = {
 
 これで build 時の sitemap.xml の自動生成設定は完了です。
 
-次に Google Search Console に sitemap.xml を登録するので、ホスティングサービスにデプロイして sitemap.xml を公開してください。
+この後 Google Search Console に sitemap.xml を登録するので、ホスティングサービスにデプロイして sitemap.xml を公開してください。
+
+## robots.txt の作成
+
+Google のクローラーに sitemap.xml の場所を教えてクロールの促進をさせる為、`public` ディレクトリ直下に `robots.txt` を作成します。
+
+設定内容としては以下となります。
+
+```
+User-Agent: *
+Disallow:
+Sitemap:https://your.website.com/sitemap.xml
+```
+
+`User-Agent: *` で全てクローラーを対象として、 `Disallow:` で全てのページのクローリングを許可します。
+
+最後に `Sitemap:` に sitemap.xml がある URL を指定します。
 
 ## Google Search Console に sitemap.xml を登録する
 
