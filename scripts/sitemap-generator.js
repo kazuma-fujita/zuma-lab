@@ -2,15 +2,13 @@ const fs = require('fs');
 const globby = require('globby');
 const prettier = require('prettier');
 
-const getDate = new Date().toISOString();
-
 const WEBSITE_DOMAIN = 'https://zuma-lab.com';
 const SITEMAP_XML = 'sitemap.xml';
 
 const formatted = (sitemap) => prettier.format(sitemap, { parser: 'html' });
 
 (async () => {
-  const pages = await globby([
+  const paths = await globby([
     // include
     'src/pages/*.tsx', // index.tsxなど固定ページをsitemapに含める
     'src/posts/*.md', // markdownをsitemapに含める
@@ -18,10 +16,18 @@ const formatted = (sitemap) => prettier.format(sitemap, { parser: 'html' });
     '!src/pages/_*.tsx', // _app.tsx _document.tsxを除外する
   ]);
 
+  const pages = paths.map((path) => {
+    const stats = fs.statSync(path);
+    return {
+      path: path,
+      updateDate: stats.mtime,
+    };
+  });
+
   const pagesSitemap = `
     ${pages
       .map((page) => {
-        const path = page
+        const path = page.path
           .replace('src/pages/', '')
           .replace('src/', '')
           .replace('.tsx', '')
@@ -31,7 +37,7 @@ const formatted = (sitemap) => prettier.format(sitemap, { parser: 'html' });
         return `
           <url>
             <loc>${WEBSITE_DOMAIN}/${routePath}</loc>
-            <lastmod>${getDate}</lastmod>
+            <lastmod>${page.updateDate.toISOString()}</lastmod>
           </url>
         `;
       })
