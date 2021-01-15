@@ -205,7 +205,7 @@ Sitemap:https://your.website.com/sitemap.xml
 
 最後に `Sitemap:` に sitemap.xml がある URL を指定します。
 
-この後 Google Search Console に sitemap.xml を登録するので、ホスティングサービスにデプロイして sitemap.xml を公開してください。
+この後 Google Search Console に sitemap.xml を登録するので、ホスティングサービスにデプロイして sitemap.xml/robots.txt を公開してください。
 
 ## Google Search Console に sitemap.xml を登録する
 
