@@ -221,6 +221,10 @@ DNS の変更が適用されるまでに時間がかかる場合があるので�
 
 ## おわりに
 
+sitemap.xml を記事作成・更新時に生成サイトなどで都度生成するのはやはり手間がかかります。
+
+build 時に sitemap.xml を自動生成・更新しておけば記事を書くハードルが一つ下がるので是非お試し下さい。
+
 こちらは sitemap.xml 自動生成設定をした本 Web サイト repository になりますので参照ください。
 
 <iframe class="hatenablogcard" style="width:100%;height:155px;margin:15px 0;max-width:680px;" title="kazuma-fujita/zuma-lab: ZUMA Lab website repository." src="https://hatenablog-parts.com/embed?url=https://github.com/kazuma-fujita/zuma-lab" frameborder="0" scrolling="no"></iframe>
