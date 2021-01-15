@@ -63,15 +63,13 @@ const fs = require('fs');
 const globby = require('globby');
 const prettier = require('prettier');
 
-const getDate = new Date().toISOString();
-
 const WEBSITE_DOMAIN = 'https://website.com';
 const SITEMAP_XML = 'sitemap.xml';
 
 const formatted = (sitemap) => prettier.format(sitemap, { parser: 'html' });
 
 (async () => {
-  const pages = await globby([
+  const paths = await globby([
     // include
     'src/pages/*.tsx', // index.tsxなど固定ページをsitemapに含める
     'src/posts/*.md', // markdownをsitemapに含める
@@ -79,10 +77,18 @@ const formatted = (sitemap) => prettier.format(sitemap, { parser: 'html' });
     '!src/pages/_*.tsx', // _app.tsx _document.tsxを除外する
   ]);
 
+  const pages = paths.map((path) => {
+    const stats = fs.statSync(path);
+    return {
+      path: path,
+      updateDate: stats.mtime,
+    };
+  });
+
   const pagesSitemap = `
     ${pages
       .map((page) => {
-        const path = page
+        const path = page.path
           .replace('src/pages/', '')
           .replace('src/', '')
           .replace('.tsx', '')
@@ -92,7 +98,7 @@ const formatted = (sitemap) => prettier.format(sitemap, { parser: 'html' });
         return `
           <url>
             <loc>${WEBSITE_DOMAIN}/${routePath}</loc>
-            <lastmod>${getDate}</lastmod>
+            <lastmod>${page.updateDate.toISOString()}</lastmod>
           </url>
         `;
       })
@@ -116,9 +122,11 @@ const formatted = (sitemap) => prettier.format(sitemap, { parser: 'html' });
 
 この sitemap.xml 生成スクリプトは Node.js で動作させる為、 `import` は `require` になっていたり Node.js の記述になっています。
 
+`WEBSITE_DOMAIN` は対象の website ドメインに修正してください。
+
 `src/pages` と `src/posts` 配下のファイル名から 固定ページと記事ページの URL を生成して sitemap の xml を構築し、`public/sitemap.xml` として出力します。
 
-`WEBSITE_DOMAIN` は対象の website ドメインに修正してください。
+sitemap.xml のページ更新日時を指定するプロパティ `lastmod` には固定ページの tsx ファイル、記事コンテンツの markdown ファイルの更新日時を出力しています。
 
 ## sitemap.xml が出力されるか確認する
 

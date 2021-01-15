@@ -52,6 +52,7 @@ tags:
   - [x] Twitter OGP タグ設定
   - [ ] その他 SNS OGP タグ調査・設定
   - [ ] Meta タグ調査・設定
+  - [x] sitemap.xml 自動生成実装
   - [x] Title タグ設定
   - [x] ページ先頭に戻るボタン設置
 - Sidebar
@@ -67,9 +68,12 @@ tags:
   - [x] Profile リンク表示
 - Footer
   - [x] Sections リンク設置
-- Output task
-  - [ ] GA 記事投稿
-  - [ ] ISR 記事投稿
+- Posts task
+  - [x] GA 記事
+  - [ ] ISR 記事
+  - [ ] Markdown / Material-UI 記事
+  - [ ] Contact / Serverless 記事
+  - [ ] Amplify / TypeScript 記事
 
 実装完了したものからチェックを付けてますが、果たして全機能実装出来るのでしょうか。
 
