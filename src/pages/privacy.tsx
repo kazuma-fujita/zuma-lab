@@ -11,7 +11,7 @@ export interface Props extends PrivacyProps {
 
 const PrivacyPage: React.FC<Props> = ({ metaDescription, ...rest }) => {
   return (
-    <Layout title={`Privacy Policy | ${SITE_TITLE}`} metaDescription={metaDescription}>
+    <Layout title={`プライバシー ポリシー | ${SITE_TITLE}`} metaDescription={metaDescription}>
       <Privacy {...rest} />
     </Layout>
   );

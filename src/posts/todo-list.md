@@ -24,6 +24,7 @@ tags:
   - [x] Next/TypeScript 環境構築
   - [x] ESLint/Prettier 設定
   - [x] Google Analytics 設定
+    - [x] .env で本番/preview/ローカル環境測定 ID 出し分け
 - 画面実装
   - [ ] 記事一覧 画面実装
     - [ ] 新着記事ページング実装
@@ -42,6 +43,9 @@ tags:
     - [x] シンタックスハイライト実装
   - [x] Profile 画面実装
   - [ ] Contact 画面実装
+    - [ ] material-ui でフォーム実装
+    - [ ] react-hooks-form で validation
+    - [ ] static forms で serverless mail 送信
   - [ ] プライバシーポリシー 画面実装
   - [ ] 免責事項 画面実装
 - 画面共通処理
@@ -58,11 +62,13 @@ tags:
 - Sidebar
   - [x] タグ一覧実装
   - [x] 新着記事一覧実装
+    - [ ] 10 件以上は全ての記事を表示リンク設置
   - [x] 月別アーカイブ実装
   - [ ] Google AdSense 設定
   - [x] SNS アイコン設置
 - Header
   - [ ] Contact リンク設置
+  - [ ] RSS 購読ボタン設置
   - [x] SiteTitle に Top リンク設置
   - [x] SNS アイコン表示
   - [x] Profile リンク表示
@@ -74,6 +80,8 @@ tags:
   - [ ] Markdown / Material-UI 記事
   - [ ] Contact / Serverless 記事
   - [ ] Amplify / TypeScript 記事
+  - [ ] gray-matter / isPublished / tags 実装記事
+  - [ ] breadcrumb 実装記事
 
 実装完了したものからチェックを付けてますが、果たして全機能実装出来るのでしょうか。
 
