@@ -1,10 +1,10 @@
 import Layout from 'components/templates/Layout';
 import { SITE_TITLE } from 'lib/constants';
 import { GetStaticProps } from 'next';
-import { useGetPrivacyMetaDescription } from 'state/privacy/hooks';
 import Contact from 'components/templates/Contact';
 import { useFetchSNSList } from 'state/SNS/hooks';
 import { SNSItem } from 'interfaces/SNSItem';
+import { useGetContactMetaDescription } from 'state/contact/hooks';
 
 export interface Props {
   metaDescription: string;
@@ -22,7 +22,7 @@ const ContactPage: React.FC<Props> = ({ metaDescription, socials }) => {
 export default ContactPage;
 
 export const getStaticProps: GetStaticProps = async () => {
-  const metaDescription = useGetPrivacyMetaDescription();
+  const metaDescription = useGetContactMetaDescription();
   const socials = useFetchSNSList();
   return Promise.resolve({
     props: {
