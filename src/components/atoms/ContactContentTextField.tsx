@@ -15,8 +15,8 @@ const ContactContentTextField: React.FC<TextFieldProps> = ({ register, errorMess
     multiline
     rows={12}
     type='text'
-    id='content'
-    name='content'
+    id='message'
+    name='message'
     label='お問い合わせ内容'
     inputRef={register(validate)}
     inputProps={{
