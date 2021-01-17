@@ -32,22 +32,23 @@ tags:
   - [ ] 記事詳細 画面実装
     - [ ] AMP 対応
     - [ ] PWA 対応
-    - [x] OGP 画像動的生成実装
     - [ ] パンくずリスト実装
     - [ ] 前後記事リンク設置
-    - [x] Twitter/Facebook share ボタン設置
     - [ ] next/image component 埋め込み実装
+    - [x] OGP 画像動的生成実装
+    - [x] Twitter/Facebook share ボタン設置
     - [x] MainFeatured に記事タイトル設定
     - [x] Markdown から HTML 生成実装
     - [x] code タグ装飾実装
     - [x] シンタックスハイライト実装
   - [x] Profile 画面実装
-  - [ ] Contact 画面実装
-    - [ ] material-ui でフォーム実装
-    - [ ] react-hooks-form で validation
+  - [x] Contact 画面実装
+    - [x] material-ui でフォーム実装
+    - [x] react-hooks-form で validation
     - [ ] static forms で serverless mail 送信
   - [ ] プライバシーポリシー 画面実装
-  - [ ] 免責事項 画面実装
+    - [ ] 本本 markdown 化
+    - [ ] GA など外部リンク設定
 - 画面共通処理
   - [ ] Performance 改善(現状 Lighthouse 80 点)
   - [ ] Accessibility 改善(現状 Lighthouse 81 点)

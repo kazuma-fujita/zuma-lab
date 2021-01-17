@@ -4,7 +4,7 @@ import React from 'react';
 
 const MAX_LENGTH = 256;
 
-const validate = (data: string) => {
+const pattern = (data: string) => {
   const FORMAT_ERROR_MESSAGE = 'メールアドレスの形式が正しくありません';
   // 使用可能文字列だけで構成されているかホワイトリストでチェック
   // ローカルパート
@@ -46,6 +46,12 @@ const validate = (data: string) => {
   return true;
 };
 
+const validate = {
+  required: 'メールアドレスを入力してください',
+  maxLength: { value: MAX_LENGTH, message: `メールアドレスは${MAX_LENGTH}文字以下で入力してください` },
+  validate: pattern,
+};
+
 const EmailTextField: React.FC<TextFieldProps> = ({ register, errorMessage, ...rest }) => (
   <OutlinedTextField
     required
@@ -54,11 +60,7 @@ const EmailTextField: React.FC<TextFieldProps> = ({ register, errorMessage, ...r
     name='email'
     label='メールアドレス'
     autoComplete='email'
-    inputRef={register({
-      required: 'メールアドレスを入力してください',
-      maxLength: { value: MAX_LENGTH, message: `メールアドレスは${MAX_LENGTH}文字以下で入力してください` },
-      validate: validate,
-    })}
+    inputRef={register(validate)}
     inputProps={{
       maxLength: MAX_LENGTH,
     }}

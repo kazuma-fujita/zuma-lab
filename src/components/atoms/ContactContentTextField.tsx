@@ -4,10 +4,10 @@ import React from 'react';
 
 const MAX_LENGTH = 10000;
 
-// const validate = (data: string) => {
-//   const reg = /^[A-Z0-9!#$%&'*+/=?^_`{|}~.\-\\]+@[A-Z0-9-]+(\.[A-Z0-9-]+)+$/i;
-//   return !reg.test(data) ? 'お名前で使用できない文字が含まれています' : true;
-// };
+const validate = {
+  required: 'お問い合わせ内容を入力してください',
+  maxLength: { value: MAX_LENGTH, message: `お問い合わせ内容は${MAX_LENGTH}文字以下で入力してください` },
+};
 
 const ContactContentTextField: React.FC<TextFieldProps> = ({ register, errorMessage, ...rest }) => (
   <OutlinedTextField
@@ -18,10 +18,7 @@ const ContactContentTextField: React.FC<TextFieldProps> = ({ register, errorMess
     id='content'
     name='content'
     label='お問い合わせ内容'
-    inputRef={register({
-      required: 'お問い合わせ内容を入力してください',
-      maxLength: { value: MAX_LENGTH, message: `お問い合わせ内容は${MAX_LENGTH}文字以下で入力してください` },
-    })}
+    inputRef={register(validate)}
     inputProps={{
       maxLength: MAX_LENGTH,
     }}
