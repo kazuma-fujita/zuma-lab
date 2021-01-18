@@ -5,13 +5,23 @@
   xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"
 >
   <url>
+    <loc>https://zuma-lab.com/contact</loc>
+    <lastmod>2021-01-18T01:08:19.176Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://zuma-lab.com/contact_success</loc>
+    <lastmod>2021-01-18T01:08:30.091Z</lastmod>
+  </url>
+
+  <url>
     <loc>https://zuma-lab.com/</loc>
     <lastmod>2021-01-13T13:10:23.772Z</lastmod>
   </url>
 
   <url>
     <loc>https://zuma-lab.com/privacy</loc>
-    <lastmod>2021-01-14T03:06:05.805Z</lastmod>
+    <lastmod>2021-01-15T23:28:53.763Z</lastmod>
   </url>
 
   <url>
@@ -25,13 +35,20 @@
   </url>
 
   <url>
+    <loc
+      >https://zuma-lab.com/posts/next-create-contact-page-by-static-forms</loc
+    >
+    <lastmod>2021-01-18T05:58:32.024Z</lastmod>
+  </url>
+
+  <url>
     <loc>https://zuma-lab.com/posts/next-create-original-template</loc>
     <lastmod>2021-01-13T10:02:53.682Z</lastmod>
   </url>
 
   <url>
     <loc>https://zuma-lab.com/posts/next-create-sitemap-settings</loc>
-    <lastmod>2021-01-15T08:51:21.939Z</lastmod>
+    <lastmod>2021-01-15T22:51:14.826Z</lastmod>
   </url>
 
   <url>
@@ -43,12 +60,12 @@
     <loc
       >https://zuma-lab.com/posts/next-material-ui-styled-components-settings</loc
     >
-    <lastmod>2021-01-13T10:02:53.648Z</lastmod>
+    <lastmod>2021-01-18T00:55:31.773Z</lastmod>
   </url>
 
   <url>
     <loc>https://zuma-lab.com/posts/todo-list</loc>
-    <lastmod>2021-01-15T10:08:37.114Z</lastmod>
+    <lastmod>2021-01-17T05:39:18.290Z</lastmod>
   </url>
 
   <url>

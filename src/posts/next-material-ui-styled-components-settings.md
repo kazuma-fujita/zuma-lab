@@ -54,7 +54,7 @@ cd next-ts-lint-mui-template && mkdir src && mv components interfaces pages util
 - dependencies package
 
 ```
-yarn add @material-ui/core @material-ui/icons styled-components
+yarn add @material-ui/core @material-ui/icons @material-ui/lab styled-components
 ```
 
 - devDependencies package
@@ -73,6 +73,7 @@ $ yarn list --depth=0 |grep -e material-ui -e styled-components
 ├─ @material-ui/system@4.11.2
 ├─ @material-ui/types@5.1.0
 ├─ @material-ui/utils@4.11.2
+├─ @material-ui/lab@4.0.0-alpha.57
 ├─ @types/styled-components@5.1.7
 ├─ babel-plugin-styled-components@1.12.0
 ├─ styled-components@5.2.1

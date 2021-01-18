@@ -12,7 +12,7 @@ const sections = [
   { title: 'Home', url: '/' },
   { title: 'Profile', url: '/profile' },
   { title: 'Privacy', url: '/privacy' },
-  // { title: 'Contact', url: '#' },
+  { title: 'Contact', url: '/contact' },
 ];
 
 interface Props {

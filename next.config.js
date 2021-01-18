@@ -8,4 +8,7 @@ module.exports = {
     }
     return config;
   },
+  env: {
+    STATIC_FORMS_ACCESS_KEY: process.env.STATIC_FORMS_ACCESS_KEY,
+  },
 };

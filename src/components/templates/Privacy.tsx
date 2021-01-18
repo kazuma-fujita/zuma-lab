@@ -7,6 +7,7 @@ import { PrivacyProps } from 'interfaces/PrivacyProps';
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     description: {
+      marginTop: theme.spacing(4),
       margin: 'auto',
       lineHeight: theme.spacing(4),
       // PCサイズ時
