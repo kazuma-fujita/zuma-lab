@@ -105,7 +105,7 @@ export interface ContactParams {
 }
 ```
 
-form の値をまとめて保持する為のオブジェクトです。
+form の値を保持する為のオブジェクトです。
 
 - `src/state/contact/useFormState.ts`
 
@@ -249,7 +249,7 @@ export default ContactSuccessPage;
 
 <img src='/images/posts/2021-01-18-1.png' class='img' alt='post image' />
 
-まず (Static Forms)[https://www.staticforms.xyz/] にアクセスして `Step 1 - Create Access Key` にお問い合わせメールを受信するメールアドレスを入力してください。
+まず [Static Forms](https://www.staticforms.xyz/) にアクセスして `Step 1 - Create Access Key` にお問い合わせメールを受信するメールアドレスを入力してください。
 
 <img src='/images/posts/2021-01-18-2.png' class='img' alt='post image' />
 
