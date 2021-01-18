@@ -1,8 +1,8 @@
 import Layout from 'components/templates/Layout';
 import { SITE_TITLE } from 'lib/constants';
 import { GetStaticProps } from 'next';
-import { useGetContactMetaDescription } from 'state/contact/hooks';
 import ContactSuccess from 'components/templates/ContactSuccess';
+import { useGetContactMetaDescription } from 'state/contact/useGetContactMetaDescription';
 
 export interface Props {
   metaDescription: string;

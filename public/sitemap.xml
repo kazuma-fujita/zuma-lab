@@ -6,7 +6,12 @@
 >
   <url>
     <loc>https://zuma-lab.com/contact</loc>
-    <lastmod>2021-01-16T00:20:06.337Z</lastmod>
+    <lastmod>2021-01-18T01:08:19.176Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://zuma-lab.com/contact_success</loc>
+    <lastmod>2021-01-18T01:08:30.091Z</lastmod>
   </url>
 
   <url>
@@ -30,8 +35,10 @@
   </url>
 
   <url>
-    <loc>https://zuma-lab.com/posts/next-create-contact-page</loc>
-    <lastmod>2021-01-15T22:58:02.906Z</lastmod>
+    <loc
+      >https://zuma-lab.com/posts/next-create-contact-page-by-static-forms</loc
+    >
+    <lastmod>2021-01-18T05:58:32.024Z</lastmod>
   </url>
 
   <url>
@@ -53,12 +60,12 @@
     <loc
       >https://zuma-lab.com/posts/next-material-ui-styled-components-settings</loc
     >
-    <lastmod>2021-01-13T10:02:53.648Z</lastmod>
+    <lastmod>2021-01-18T00:55:31.773Z</lastmod>
   </url>
 
   <url>
     <loc>https://zuma-lab.com/posts/todo-list</loc>
-    <lastmod>2021-01-15T23:22:01.297Z</lastmod>
+    <lastmod>2021-01-17T05:39:18.290Z</lastmod>
   </url>
 
   <url>

@@ -1,14 +1,7 @@
 import React from 'react';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import DescriptionTypography from 'components/atoms/DescriptionTypography';
-import { Box, Button, Link, Typography } from '@material-ui/core';
-import EmailTextField from 'components/atoms/EmailTextField';
-import { ContactParams } from 'interfaces/ContactParams';
-import { useForm } from 'react-hook-form';
-import NameTextField from 'components/atoms/NameTextField';
-import { useCallback } from 'react';
-import ContactContentTextField from 'components/atoms/ContactContentTextField';
-import { SNSItem } from 'interfaces/SNSItem';
+import { Typography } from '@material-ui/core';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

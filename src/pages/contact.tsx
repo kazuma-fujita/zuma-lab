@@ -4,7 +4,7 @@ import { GetStaticProps } from 'next';
 import Contact from 'components/templates/Contact';
 import { useFetchSNSList } from 'state/SNS/hooks';
 import { SNSItem } from 'interfaces/SNSItem';
-import { useGetContactMetaDescription } from 'state/contact/hooks';
+import { useGetContactMetaDescription } from 'state/contact/useGetContactMetaDescription';
 
 export interface Props {
   metaDescription: string;
