@@ -2,7 +2,7 @@
 title: 'DockerとDocker ComposeでPythonの実行環境を作成する'
 date: '2021-01-20'
 isPublished: true
-metaDescription: 'Docker と Docker Compose で Python 実行環境を作ります。今回は docker コンテナ を build して python で Google 検索結果を表示する簡単な Web スクレイピングをしてみたいと思います。'
+metaDescription: 'Docker と Docker Compose で Python 実行環境を作ります。今回は docker コンテナ を build して python で簡単な Web スクレイピングをしてみたいと思います。'
 tags:
   - 'Docker'
   - 'Docker Compose'
@@ -11,7 +11,7 @@ tags:
 
 Docker と Docker Compose で Python 実行環境を作ります。
 
-今回は docker コンテナ を build して python で Google 検索結果を表示する簡単な Web スクレイピングをしてみたいと思います。
+今回は docker コンテナ を build して python で簡単な Web スクレイピングをしてみたいと思います。
 
 それでは作業手順です。
 
@@ -237,15 +237,15 @@ wheel          0.36.2
 import requests
 from bs4 import BeautifulSoup
 
-load_url = 'https://www.google.com/search?client=firefox-b-d&q=docker'
+load_url = 'https://zuma-lab.com/'
 data = requests.get(load_url)
 html = BeautifulSoup(data.content, 'html.parser')
 
-for element in html.find_all('h3'):
+for element in html.find_all('h4'):
   print(element.text)
 ```
 
-内容としては `docker` というキーワードで Google 検索をした結果の一覧を表示しています。
+内容としては本ブログの Top ページ  にある記事一覧を取得し表示しています。
 
 以下コマンドでプログラムを実行します。
 
@@ -255,17 +255,17 @@ docker exec -it python3 python sample.py
 
 ```
 $ docker exec -it python3 python sample.py
-Docker入門（第一回）～Dockerとは何か、何が良いのか～ | さくら ...
-Docker: Empowering App Development for Developers
-Docker - ウィキペディア
-【連載】世界一わかりみが深いコンテナ & Docker入門 〜 その1 ...
-Docker
-Docker ドキュメント日本語化プロジェクト — Docker-docs-ja 19.03 ...
-最短で使うDocker入門～Dockerを体験しよう (1/3)：CodeZine ...
-Docker とは - 解説、メリット、できること | Red Hat
-Dockerコンテナで何がうれしいのか | 1. 開発用コンテナの構築
-Docker とは | AWS
-コンテナにもエンジンが必要! ―その代表格と言える「Docker」とは ...
+AWS Amplify 初心者入門 amplify initでamplifyバックエンド環境を初期化する
+Next.js/TypeScriptのウェブサイトにStatic Formsでサーバレスなお問い合わせフォームを作成する
+AWS Amplify 初心者入門 amplify configureでIAMユーザーを作成する
+Next.js/TypeScriptプロジェクトのbuild時にsitemap.xmlを自動生成する
+Next.js/TypeScriptで本番/ステージング/ローカル環境別にGoogle Analyticsを利用する
+Next.js/TypeScript/ESLint/Prettier/Material-UI/styled-componentsの自作テンプレートを作る
+Next.js/TypeScriptプロジェクトにMaterial-UI/styled-componentsを対応させる
+TypeScriptのプロジェクトにESLintとPrettierを併用してVSCodeの保存時に自動フォーマットをする
+Reactのimport文を絶対パスで設定する(TypeScript版)
+Vercelにお名前.comで取得したドメインをカスタムドメインとして設定する
+Next/TypeScript/Material-UI/Vercelでブログ始めました
 ```
 
 このように検索結果一覧が表示されました。
