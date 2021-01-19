@@ -43,6 +43,12 @@ $ tree
 mkdir python-docker && cd python-docker
 ```
 
+また、作業ディレクトリで以下コマンドを実行して python のソースコードを配置する `src` ディレクトリを作成します。
+
+```
+mkdir src
+```
+
 ## requirements.txt を作成する
 
 docker build 時に install される python package を記述する requirements.txt を作成します。
@@ -50,6 +56,8 @@ docker build 時に install される python package を記述する requirement
 今回は試しに python の Web スクレイピングで使用する requests, beautifulsoup4 を install してみます。
 
 記述内容は以下です。
+
+- requirements.txt
 
 ```
 requests
@@ -61,6 +69,8 @@ beautifulsoup4
 docker コンテナ を build する `Dockerfile` を作成します。
 
 設定内容は以下です。
+
+- Dockerfile
 
 ```Dockerfile
 FROM python:3
@@ -100,6 +110,24 @@ docker image は docker hub 公式の python3 の image を利用します。
 
 `RUN pip install -r requirements.txt` で requirements.txt の package を install します。
 
+## 環境変数ファイルを作成する
+
+python のソースコードを配置するパスの環境変数を設定する `.env` ファイルを作成します。
+
+- .env
+
+```
+SRC_PATH=./src
+```
+
+`.env` ファイルは特殊なファイルで、設定した環境変数は Dockerfile や、後ほど作成する docker-compose.yml から参照できます。
+
+通常ソースコードは Dockerfile があるディレクトリとは違う階層に配置します。
+
+ソースコードのパスを環境変数で外出しにすることによって汎用性を持たせています。
+
+今回はサンプルなので、先程作成した `src` ディレクトリを指定しました。
+
 ## docker-compose.yml を作成する
 
 docker-compose コマンドを使った時の設定ファイルである `docker-compose.yml` を作成します。
@@ -109,6 +137,8 @@ docker-compose コマンドを使った時の設定ファイルである `docker
 よく Apache/Nginx や MySQL の コンテナ と組み合わせて使ったりします。
 
 今回は Python の実行環境のみを構築するので設定は以下になります。
+
+- docker-compose.yml
 
 ```yml:docker-compose.yml
 version: '3'
@@ -120,7 +150,7 @@ services:
     working_dir: '/root/src'
     tty: true
     volumes:
-      - ./src:/root/src
+      - ${SRC_PATH}:/root/src
 ```
 
 - build
@@ -135,6 +165,7 @@ services:
 - volumes
   - `volumes` にはローカルの `src` ディレクトリを `/root/src` にマウントする記述をしています。
   - マウントするとローカルの `src` 配下のファイルが コンテナ から参照されるようになります。
+  - 先程作成した `.env` ファイルの環境変数は `${SRC_PATH}` の記述で取得できます。
 
 ## コンテナを build する
 
