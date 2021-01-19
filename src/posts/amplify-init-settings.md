@@ -1,17 +1,17 @@
 ---
-title: 'AWS Amplify 初心者入門 amplify環境を構築するamplify initを実行する'
+title: 'AWS Amplify 初心者入門 amplify initでamplifyバックエンド環境を初期化する'
 date: '2021-01-19'
 isPublished: true
-metaDescription: 'AWS Amplify 初心者入門 amplify initでamplify環境を構築します。'
+metaDescription: 'AWS Amplify 初心者入門 amplify initでamplifyバックエンド環境を構築します。プロジェクトディレクトリで `amplify init` コマンドを実行することにより、そのプロジェクトを Amplify プロジェクトとして初期化します。'
 tags:
   - 'Amplify'
 ---
 
 AWS Amplify 初心者入門です。
 
-今回は `amplify init` コマンドを使用して amplify バックエンド環境構築をします。
+今回は `amplify init` コマンドを使用して amplify バックエンド環境の初期化をします。
 
-プロジェクトディレクトリで `amplify init` コマンドを実行することにより、そのプロジェクトを Amplify プロジェクトとして初期化します。
+実際の動くアプリケーションは次回の記事で書きますので、ここでは初期化手順のみを解説します。
 
 初期化すると今後 API カテゴリや認証カテゴリを追加する為の `amplify add api` や `amplify add auth` コマンドを実行することができます。
 
@@ -27,6 +27,14 @@ AWS Amplify 初心者入門です。
 
 - Amplify 4.41.2
 - Node 14.9.0
+
+## amplify IAM ユーザーを作成する
+
+`amplify configure` コマンドで amplify cli を実行する IAM ユーザーを作成します。
+
+[AWS Amplify 初心者入門 amplify configure で IAM ユーザーを作成する](https://hatenablog-parts.com/embed?url=https://zuma-lab.com/posts/amplify-configure-settings) に詳しい手順を書いたので参照ください。
+
+<iframe class="hatenablogcard" style="width:100%;height:155px;margin:15px 0;max-width:680px;" title="AWS Amplify 初心者入門 amplify configureでIAMユーザーを作成する | ZUMA Lab" src="https://hatenablog-parts.com/embed?url=https://zuma-lab.com/posts/amplify-configure-settings" frameborder="0" scrolling="no"></iframe>
 
 ## amplify init コマンドを実行する
 
