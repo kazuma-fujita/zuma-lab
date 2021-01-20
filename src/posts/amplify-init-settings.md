@@ -4,6 +4,7 @@ date: '2021-01-19'
 isPublished: true
 metaDescription: 'AWS Amplify 初心者入門 amplify initでamplifyバックエンド環境を構築します。プロジェクトディレクトリで `amplify init` コマンドを実行することにより、そのプロジェクトを Amplify プロジェクトとして初期化します。'
 tags:
+  - 'AWS'
   - 'Amplify'
 ---
 
@@ -25,8 +26,8 @@ AWS Amplify 初心者入門です。
 
 ## 環境
 
+- macOS Catalina 10.15.5(19F101)
 - Amplify 4.41.2
-- Node 14.9.0
 
 ## amplify IAM ユーザーを作成する
 

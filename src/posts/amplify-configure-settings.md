@@ -4,6 +4,7 @@ date: '2021-01-18'
 isPublished: true
 metaDescription: 'AWS Amplify 初心者入門 amplify configureでIAMユーザーを作成する手順です。'
 tags:
+  - 'AWS'
   - 'Amplify'
 ---
 
@@ -19,8 +20,8 @@ AWS Amplify 初心者入門です。
 
 ## 環境
 
+- macOS Catalina 10.15.5(19F101)
 - Amplify 4.41.2
-- Node 14.9.0
 
 ## amplify configure コマンドを実行する
 
