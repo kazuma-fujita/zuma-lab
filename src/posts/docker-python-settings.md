@@ -325,7 +325,7 @@ $ docker-compose ps
 
 作成した Dockerfile は Github で公開し、開発メンバーにはローカルにコンテナを立ててもらいます。
 
-そうすることによりメンバー感の python の version 差異が発生するのを防いでいます。
+そうすることによりメンバー間の python の version 差異が発生するのを防いでいます。
 
 また、2020 年の AWS の Re:Invent で Lambda Container Support が発表され、現在 Lambda で docker コンテナ が利用できるようになっています。
 
