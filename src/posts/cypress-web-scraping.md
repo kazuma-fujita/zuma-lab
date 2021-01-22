@@ -1,8 +1,8 @@
 ---
-title: 'Cypress/TypeScriptでWebスクレイピングをする'
+title: 'Cypress/TypeScriptでGoogleのクチコミをスクレイピングをする'
 date: '2021-01-22'
 isPublished: true
-metaDescription: '今回は Cypress を利用して Web スクレイピングをします。また TypeScript にも対応します。'
+metaDescription: '今回は Cypress を利用してGoogleのクチコミをスクレイピングをします。また TypeScript にも対応します。'
 tags:
   - 'Cypress'
   - 'TypeScript'
@@ -19,7 +19,7 @@ Cypress には有料/無料プランがありますが、無料枠だけでも�
 
 プランについて詳しくは [Cypress Dashboard Pricing Plans](https://www.cypress.io/pricing) を参照ください。
 
-Web E2E テストではブラウザを起動して要素を選択する為のクエリをクリックで検出できるので、Google の検索結果をスクレイピングしてみたいと思います。
+Web E2E テストではブラウザを起動して要素を選択する為のクエリをクリックで検出できるので、Google の検索結果の店舗クチコミ情報をスクレイピングしてみたいと思います。
 
 本来の E2E テストの使い方では無いのですが、イメージを掴みやすくする為にスクレイピングを題材にしました。
 

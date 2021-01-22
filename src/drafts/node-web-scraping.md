@@ -1,8 +1,8 @@
 ---
-title: 'Node.js/PuppeteerでWebスクレイピングをする'
+title: 'Node.js/PuppeteerでGoogleの店舗クチコミをスクレイピングする'
 date: '2021-01-XX'
 isPublished: false
-metaDescription: ''
+metaDescription: 'Node.js/PuppeteerでGoogleの店舗クチコミをスクレイピングする'
 tags:
   - 'Node.js'
   - 'Puppeteer'
@@ -10,8 +10,6 @@ tags:
 ---
 
 今回は Node.js/Puppeteer で Web スクレイピングをします。
-
-また TypeScript にも対応します。
 
 ※ Web 上のデータにも著作権があるので、スクレイピングしたデータは解析用に自分で使う程度にしましょう。
 
