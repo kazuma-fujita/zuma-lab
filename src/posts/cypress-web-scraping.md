@@ -1,5 +1,5 @@
 ---
-title: 'Cypress/TypeScriptでGoogleのクチコミをスクレイピングをする'
+title: 'Cypress/TypeScriptでGoogleの店舗クチコミ情報をスクレイピングする'
 date: '2021-01-22'
 isPublished: true
 metaDescription: '今回は Cypress を利用してGoogleのクチコミをスクレイピングをします。また TypeScript にも対応します。'
