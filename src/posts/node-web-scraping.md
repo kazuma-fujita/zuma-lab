@@ -36,7 +36,7 @@ Puppeteer は install するだけで Chromium がバンドルされ利用でき
 
 以下コマンドを実行して作業ディレクトリを作成します。
 
-```
+```txt
 mkdir node-scraping-sample && cd node-scraping-sample
 ```
 
@@ -48,13 +48,13 @@ ignore する内容は [gitignore/Node.gitignore](https://github.com/github/giti
 
 以下コマンドで puppeteer を install します。
 
-```
+```txt
 yarn add puppeteer
 ```
 
 install が完了したら package を確認します。
 
-```
+```txt
 $ yarn list --depth=0 | grep -e puppeteer
 warning package.json: No license field
 warning No license field
@@ -67,7 +67,7 @@ warning No license field
 
 その前にソースを置くディレクトリとスクリーンショットを置くディレクトリを作成します。
 
-```
+```txt
 mkdir src screenshot
 ```
 
@@ -94,7 +94,7 @@ const puppeteer = require("puppeteer");
 
 以下コマンドでプログラムを実行します。
 
-```
+```txt
 node src/screenshot.js
 ```
 
@@ -102,7 +102,7 @@ node src/screenshot.js
 
 以下のコマンドでファイルを開いてスクリーンショットを確認できます。
 
-```
+```txt
 open screenshot/screenshot.png
 ```
 
@@ -143,7 +143,7 @@ const puppeteer = require("puppeteer");
 
 以下コマンドでプログラムを実行します。
 
-```
+```txt
 node src/search.js
 ```
 
@@ -166,7 +166,7 @@ yarn add csv-writer date-fns
 
 `src` 配下にスクレイピングするソースコードを置くディレクトリ、検索ワードの入力ファイル・ディレクトリ、スクレイピング結果をファイル出力するディレクトリを作成します。
 
-```
+```txt
 mkdir -p src/review/lib src/review/output src/review/input
 ```
 
@@ -174,7 +174,7 @@ mkdir -p src/review/lib src/review/output src/review/input
 
 最終的に以下のようなファイル構成になります。
 
-```
+```txt
 ├── src
 │   ├── review
 │   │   ├── input
@@ -549,7 +549,7 @@ const WINDOW_HIGHT = 950;
 
 それでは以下コマンドを実行してスクレピングを実行しましょう。
 
-```
+```txt
 node src/review/main.js
 ```
 
@@ -561,7 +561,7 @@ Chromium が立ち上がり、 `search_keywords.txt` に記述した検索キー
 
 以下のログが表示されたら処理の完了です。
 
-```
+```txt
 Output csv complete.
 ```
 
