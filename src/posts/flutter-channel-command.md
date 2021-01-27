@@ -1,13 +1,15 @@
 ---
-title: 'Flutter Tips'
-date: '2021-01-XX'
+title: 'Flutter channelの確認方法と切り替え方法'
+date: '2021-01-27'
 isPublished: false
-metaDescription: ''
+metaDescription: 'Flutter channelの確認方法と切り替え方法を解説します。channel コマンド で Flutter SDK の 安定版や β 版を切り替えることができます。'
 tags:
   - 'Flutter'
 ---
 
-Flutter を勉強してる中で遭遇した Tips トラブルシューティングを書き溜めていきます。
+Flutter channel の確認方法と切り替え方法を解説します。
+
+channel コマンド で Flutter SDK の 安定版や β 版を切り替えることができます。
 
 ### 環境
 
@@ -16,13 +18,13 @@ Flutter を勉強してる中で遭遇した Tips トラブルシューティン
 
 ## Flutter Version 確認方法
 
-version を確認したい時は以下のコマンドを実行します。
+まず Flutter の version を確認方法です。
 
 ```txt
 flutter --version
 ```
 
-実行結果には 現在の chanel や Dart の version も併せて表示されます。
+実行結果には 現在使用している chanel や Dart の version も併せて表示されます。
 
 ```txt
 $ flutter --version
@@ -34,9 +36,7 @@ Tools • Dart 2.10.4
 
 ## Flutter channel 切り替え方法
 
-channel コマンド で Flutter SDK の 安定版や β 版を切り替えることができます。
-
-現在どの channel なのか確認するには以下コマンドを実行します。
+現在使用している channel は以下コマンドでも確認できます。
 
 ```
 flutter channel
@@ -52,7 +52,7 @@ Flutter channels:
 * stable
 ```
 
-それぞれ内容は以下です。
+それぞれの channel の内容は以下です。
 
 - master
   - 現在の最新ソースがコミットされる開発ブランチ。最新の機能が取り込まれる反面、もっとも不安定ともいえるチャンネル
@@ -76,3 +76,17 @@ channel を切り替えたら以下コマンドを実行して切り替えた ch
 ```txt
 flutter upgrade
 ```
+
+また、channel の切り替えにより package が変更になっている場合は以下コマンドで package も更新します。
+
+```txt
+flutter pub get
+```
+
+## おわりに
+
+簡単ですが、Flutter の channel 確認・切り替え方法でした。
+
+筆者は最初 channel の存在を知らずに、オンラインの Flutter もくもく会でコマンドを教えて貰いました。
+
+Flutter で開発していて未知のエラーに遭遇した場合、channel を切り替えると解決する場面があるので困ったら channel を切り替えを試してみてください。
