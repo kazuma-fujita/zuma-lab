@@ -1,10 +1,11 @@
 ---
 title: 'Flutter channelの確認方法と切り替え方法'
 date: '2021-01-27'
-isPublished: false
+isPublished: true
 metaDescription: 'Flutter channelの確認方法と切り替え方法を解説します。channel コマンド で Flutter SDK の 安定版や β 版を切り替えることができます。'
 tags:
   - 'Flutter'
+  - 'Dart'
 ---
 
 Flutter channel の確認方法と切り替え方法を解説します。
