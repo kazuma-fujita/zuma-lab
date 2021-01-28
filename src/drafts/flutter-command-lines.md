@@ -12,8 +12,8 @@ Flutter コマンドライン集です。
 
 ### 環境
 
-- Flutter 1.22.5
-- Dart 2.10.4
+- Flutter 1.22.6
+- Dart 2.10.5
 - Android Studio 4.1.2
 
 ## Flutter package の取得
