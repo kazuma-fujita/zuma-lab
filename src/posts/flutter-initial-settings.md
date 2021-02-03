@@ -6,6 +6,7 @@ metaDescription: 'Flutterのプロジェクトを新規作成したらする設�
 tags:
   - 'Flutter'
   - 'Dart'
+  - 'Android Studio'
 ---
 
 筆者は Flutter 歴まだ浅い初心者なのですが、その中で筆者が学んだオススメ設定を紹介します。
@@ -21,9 +22,9 @@ tags:
 ### 環境
 
 - macOS Big Sur 11.1
+- Android Studio 4.1.2
 - Flutter 1.22.6
 - Dart 2.10.5
-- Android Studio 4.1.2
 
 ## コード保存時に自動フォーマットをする設定
 
