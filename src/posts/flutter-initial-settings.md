@@ -11,7 +11,7 @@ tags:
 
 筆者は Flutter 歴まだ浅い初心者なのですが、その中で筆者が学んだオススメ設定を紹介します。
 
-筆者は Widget を試す時にプロジェクトの新規作成を繰り返すので、プロジェクト新規作成したら真っ先にする設定です。
+筆者は Flutter の Widget を試す度に Android Studio のプロジェクトの新規作成を繰り返すので、プロジェクト新規作成したら真っ先にする設定です。
 
 特にある程度開発をしてから静的解析をするとほぼコードを修正するハメになるので、Lint 設定はマストでいれています。
 
@@ -117,16 +117,16 @@ sample_project
 │       └── images5.jpg
 ```
 
-次に `pubspec.yaml` に `- assets/images/` を追加します。
+次に `pubspec.yaml` に以下のコードを追加します。
 
 以下の指定で `assets/images` 配下の全てのローカル画像ファイルを対象とします。
 
 ```yaml:pubspec.yaml
   assets:
-     -  assets/images/
+    -  assets/images/
 ```
 
-呼び出し方は以下になります。
+コードからの呼び出し方は以下になります。
 
 ```dart
 Image.asset('assets/images/images1.jpg')
