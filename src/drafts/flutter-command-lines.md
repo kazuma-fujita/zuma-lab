@@ -6,15 +6,17 @@ metaDescription: ''
 tags:
   - 'Flutter'
   - 'Dart'
+  - 'Android Studio'
 ---
 
 Flutter コマンドライン集です。
 
 ### 環境
 
+- macOS Big Sur 11.1
+- Android Studio 4.1.2
 - Flutter 1.22.6
 - Dart 2.10.5
-- Android Studio 4.1.2
 
 ## Flutter package の取得
 
