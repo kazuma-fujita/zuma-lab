@@ -9,6 +9,7 @@ import { Box, CardMedia, Container, Divider, Grid, Slider, Typography } from '@m
 import SocialLinkIcon from 'components/molecules/SocialLinkIcon';
 import Chips from 'components/molecules/Chips';
 import { ProfileProps } from 'interfaces/ProfileProps';
+import HighlightedMarkdown from 'components/atoms/HighlightedMarkdown';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -75,7 +76,8 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-const Profile: React.FC<ProfileProps> = ({ avatar, socials, descriptions, mainSkills, subSkills }) => {
+// const Profile: React.FC<ProfileProps> = ({ avatar, socials, descriptions, mainSkills, subSkills, contents }) => {
+const Profile: React.FC<ProfileProps> = ({ avatar, socials, mainSkills, subSkills, contents }) => {
   const classes = useStyles();
 
   return (
@@ -147,7 +149,7 @@ const Profile: React.FC<ProfileProps> = ({ avatar, socials, descriptions, mainSk
         </Grid>
       </Container>
       <div className={classes.description}>
-        {descriptions.map((item) => (
+        {/* {descriptions.map((item) => (
           <div key={item.caption}>
             <Typography variant='h6' gutterBottom>
               {item.caption}
@@ -155,7 +157,8 @@ const Profile: React.FC<ProfileProps> = ({ avatar, socials, descriptions, mainSk
             <Divider />
             <DescriptionTypography>{item.description}</DescriptionTypography>
           </div>
-        ))}
+        ))} */}
+        <HighlightedMarkdown>{contents}</HighlightedMarkdown>
       </div>
     </>
   );

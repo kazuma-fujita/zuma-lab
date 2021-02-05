@@ -1,6 +1,8 @@
 import { ProfileDescriptionItem } from 'interfaces/ProfileDescriptionItem';
 import { ProfileMainSkillItem } from 'interfaces/ProfileMainSkillItem';
 import { ProfileSubSkillItem } from '../../interfaces/ProfileSubSkillItem';
+import path from 'path';
+import fs from 'fs';
 
 const data = [
   {
@@ -127,4 +129,11 @@ export const useFetchProfileSubSkillList = (): Array<ProfileSubSkillItem> => {
 
 export const useGetProfileMetaDescription = (): string => {
   return metaDescription;
+};
+
+export const useGetProfileContents = (): string => {
+  // マークダウンファイルのフルパスを文字列として読み取る
+  const fullPath = path.join(process.cwd(), 'src/profile/profile.md');
+  const fileContents = fs.readFileSync(fullPath, 'utf8');
+  return fileContents;
 };
