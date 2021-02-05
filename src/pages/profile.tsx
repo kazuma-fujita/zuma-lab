@@ -4,7 +4,7 @@ import { SITE_TITLE } from 'lib/constants';
 import { GetStaticProps } from 'next';
 import { useFetchAvatarItem } from 'state/Avatar/hooks';
 import {
-  useFetchProfileDescriptionList,
+  // useFetchProfileDescriptionList,
   useFetchProfileMainSkillList,
   useGetProfileContents,
 } from 'state/profile/hooks';
