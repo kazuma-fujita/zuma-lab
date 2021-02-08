@@ -4,11 +4,12 @@ import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
 import Avatar from '@material-ui/core/Avatar';
-import DescriptionTypography from 'components/atoms/DescriptionTypography';
+// import DescriptionTypography from 'components/atoms/DescriptionTypography';
 import { Box, CardMedia, Container, Divider, Grid, Slider, Typography } from '@material-ui/core';
 import SocialLinkIcon from 'components/molecules/SocialLinkIcon';
 import Chips from 'components/molecules/Chips';
 import { ProfileProps } from 'interfaces/ProfileProps';
+import HighlightedMarkdown from 'components/atoms/HighlightedMarkdown';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -62,7 +63,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     description: {
       margin: 'auto',
-      lineHeight: theme.spacing(4),
+      // lineHeight: theme.spacing(4),
       // PCサイズ時
       [theme.breakpoints.up('sm')]: {
         width: '70%',
@@ -75,7 +76,8 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-const Profile: React.FC<ProfileProps> = ({ avatar, socials, descriptions, mainSkills, subSkills }) => {
+// const Profile: React.FC<ProfileProps> = ({ avatar, socials, descriptions, mainSkills, subSkills, contents }) => {
+const Profile: React.FC<ProfileProps> = ({ avatar, socials, mainSkills, subSkills, contents }) => {
   const classes = useStyles();
 
   return (
@@ -147,7 +149,7 @@ const Profile: React.FC<ProfileProps> = ({ avatar, socials, descriptions, mainSk
         </Grid>
       </Container>
       <div className={classes.description}>
-        {descriptions.map((item) => (
+        {/* {descriptions.map((item) => (
           <div key={item.caption}>
             <Typography variant='h6' gutterBottom>
               {item.caption}
@@ -155,7 +157,8 @@ const Profile: React.FC<ProfileProps> = ({ avatar, socials, descriptions, mainSk
             <Divider />
             <DescriptionTypography>{item.description}</DescriptionTypography>
           </div>
-        ))}
+        ))} */}
+        <HighlightedMarkdown key={contents.substr(0, 10)}>{contents}</HighlightedMarkdown>
       </div>
     </>
   );

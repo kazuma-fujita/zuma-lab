@@ -47,6 +47,7 @@ tags:
     - [x] code タグ装飾実装
     - [x] シンタックスハイライト実装
   - [x] Profile 画面実装
+    - [x] description の markdown 化
     - [ ] next/image component で画像 lazy-load 実装
   - [x] Contact 画面実装
     - [x] material-ui でフォーム実装

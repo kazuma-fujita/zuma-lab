@@ -12,6 +12,6 @@ For the time being, I would like to make it a place to disseminate the technical
 
 The URL of the website that hosted this repository.
 
-(https://zuma-lab.com)[https://zuma-lab.com/]
+[https://zuma-lab.com](https://zuma-lab.com)
 
 Please take a look:)
