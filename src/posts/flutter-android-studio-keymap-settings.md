@@ -47,7 +47,7 @@ Keyboard Shortcut window からショートカットコマンドを入力して 
 
 <img src='/images/posts/2021-02-09-5.png' class='img' />
 
-キーマップを追加して、デフォルトのキーマップを削除する場合は先程の Edit Shortcut window から `Remove {キーマップ}` をクリックします。
+キーマップを追加して、デフォルトのキーマップを削除する場合は先程の Edit Shortcut window から `Remove {キーマップ名}` をクリックします。
 
 # オススメキーマップ
 
@@ -110,7 +110,6 @@ command と `Usages` の頭文字 U を組み合わせます。
 - デフォルト
 
 `command` + `F12`
-`
 
 - オススメキーマップ
 

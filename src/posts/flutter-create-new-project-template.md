@@ -86,7 +86,9 @@ void main() {
 include: package:pedantic_mono/analysis_options.yaml
 ```
 
-筆者はまだ個別の細かい Lint ルールを把握していないので、ここでは推奨設定がまとまっている `pedantic_mono` package を利用しています。
+筆者はまだ個別の細かい Lint ルールを把握していないので、ここでは mono さんが作成した推奨設定がまとまっている `pedantic_mono` package を利用しています。
+
+<iframe class="hatenablogcard" style="width:100%;height:155px;margin:15px 0;max-width:680px;" title="Dart/Flutter の静的解析強化のススメ. プロジェクトには analysis_options.yaml… | by mono  | Flutter 🇯🇵 | Medium" src="https://hatenablog-parts.com/embed?url=https://medium.com/flutter-jp/analysis-b8dbb19d3978" frameborder="0" scrolling="no"></iframe>
 
 個別設定する場合の Lint ルールは [Linter for Dart - Supported Lint Rules](https://dart-lang.github.io/linter/lints/) に記載されています。
 
