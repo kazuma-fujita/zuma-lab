@@ -1,19 +1,23 @@
 ---
-title: 'Flutter/Android 開発で利用しているAndroid Studioショートカット集'
-date: '2021-02-xx'
+title: 'Flutter/Android 開発で個人的に良く使うAndroid Studioショートカットキー集'
+date: '2021-02-10'
 isPublished: true
-metaDescription: 'Flutter/Android 開発で利用しているAndroid Studioショートカット集です。'
+metaDescription: 'Flutter/Android 開発で個人的に良く使うAndroid Studioショートカットキー集です。'
 tags:
   - 'Flutter'
   - 'Android'
   - 'Android Studio'
 ---
 
-Flutter/Android 開発の生産性を上げてくれる Android Studio のショートカット集です。
+Flutter/Android 開発の生産性を上げてくれる Android Studio のショートカットキー集です。
 
 筆者は Android Studio の plugin である IdeaVim を利用しています。
 
 Vim のキーバインドと競合しないキーマップかつ、筆者の利用頻度の高いショートカットを集めてみました。
+
+全てのショートカットはこちらを参照ください。
+
+<iframe class="hatenablogcard" style="width:100%;height:155px;margin:15px 0;max-width:680px;" title="キーボード ショートカット  |  Android デベロッパー  |  Android Developers" src="https://hatenablog-parts.com/embed?url=https://developer.android.com/studio/intro/keyboard-shortcuts?hl=ja" frameborder="0" scrolling="no"></iframe>
 
 またオススメの ショートカットキーマップ設定も紹介します。
 
@@ -34,31 +38,35 @@ Vim のキーバインドと競合しないキーマップかつ、筆者の利�
 
 `command` + `shift` + `[` or `]`
 
-### Message window
+### Message window を開く
 
 `command` + `0`
 
-### Project window
+### Project window を開く
 
 `command` + `1`
 
-### Find window
+### Find window を開く
 
 `command` + `3`
 
-### Run window
+### Run window を開く
 
 `command` + `4`
 
-### Logcat window
+### Logcat window を開く
 
 `command` + `6`
 
-### Git window
+### Git window を開く
 
 `command` + `9`
 
-### Terminal window
+### Preferences(設定) window を開く
+
+`command` + `,`
+
+### Terminal window を開く
 
 - デフォルト
 
@@ -80,13 +88,23 @@ VSCode も利用している ユーザーなら VSCode と同じ Keymap にす�
 
 ## Find in Path（パスの中から検索）
 
-検索キーワードを全てのファイルの中身から検索できます。
+全てのファイルの中身から検索できます。
 
 `command` + `shift` + `F`
 
+## 宣言に移動/呼び出し元に移動
+
+クラスやメソッド、変数にカーソルを当てショートカットを実行すると宣言元の移動することができます。
+
+また宣言元でショートカットを実行すると、呼び出し元に移動します。
+
+呼び出し元が複数ある場合、一覧が表示されて呼び出し元を選択できます。
+
+`command` + `B`
+
 ## Call Hierarchy(呼び出し階層を開く)
 
-あるメソッドがどこから呼ばれているか、さらにその呼び出し元がどこから呼ばれているか、さらにそれは……と呼び出し元を階層的に一覧できます。
+あるメソッドがどこから呼ばれているか、さらにその呼び出し元がどこから呼ばれているか呼び出し元を階層的に一覧できます。
 
 - デフォルト
 
