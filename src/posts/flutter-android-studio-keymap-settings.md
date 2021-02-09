@@ -5,6 +5,7 @@ isPublished: true
 metaDescription: 'Flutter/Android開発時の Android Studio ショートカットキーマップ設定方法とオススメのキーマップ設定です'
 tags:
   - 'Flutter'
+  - 'Android'
   - 'Android Studio'
 ---
 
@@ -18,8 +19,6 @@ Flutter/Android 開発時の生産性を上げてくれる Android Studio のシ
 
 - macOS Big Sur 11.1
 - Android Studio 4.1.2
-- Flutter 1.22.6
-- Dart 2.10.5
 
 ## Android キーマップ設定方法
 

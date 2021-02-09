@@ -1,37 +1,38 @@
 ---
-title: 'Flutter 開発で利用しているAndroid Studioショートカット集'
+title: 'Flutter/Android 開発で利用しているAndroid Studioショートカット集'
 date: '2021-02-xx'
 isPublished: true
-metaDescription: 'Flutter 開発で利用しているAndroid Studioショートカット集'
+metaDescription: 'Flutter/Android 開発で利用しているAndroid Studioショートカット集です。'
 tags:
   - 'Flutter'
+  - 'Android'
   - 'Android Studio'
 ---
 
-Flutter 開発時の生産性を上げてくれる Android Studio のショートカット集です。
+Flutter/Android 開発の生産性を上げてくれる Android Studio のショートカット集です。
 
 筆者は Android Studio の plugin である IdeaVim を利用しています。
 
-vim と競合しない keymap かつ、筆者の利用頻度の高いショートカットを集めてみました。
+Vim のキーバインドと競合しないキーマップかつ、筆者の利用頻度の高いショートカットを集めてみました。
 
-オススメの keymap 設定も紹介します。
+またオススメの ショートカットキーマップ設定も紹介します。
 
-前提として OS は macOS ですので Windows ユーザーの方ごめんなさい。
+キーマップ設定方法は以下の記事で詳しく書いたので参照ください。
+
+<iframe class="hatenablogcard" style="width:100%;height:155px;margin:15px 0;max-width:680px;" title="Android Studioのショートカットキーマップ設定方法とオススメのキーマップ設定 | ZUMA Lab" src="https://hatenablog-parts.com/embed?url=https://zuma-lab.com/posts/flutter-android-studio-keymap-settings" frameborder="0" scrolling="no"></iframe>
+
+※ 前提として OS は macOS ですので Windows ユーザーの方ごめんなさい。
 
 ### 環境
 
 - macOS Big Sur 11.1
 - Android Studio 4.1.2
-- Flutter 1.22.6
-- Dart 2.10.5
 
 # Window 操作系
 
-## Tab 切り替え
+### Editor Tab 切り替え
 
 `command` + `shift` + `[` or `]`
-
-## Window 切り替え
 
 ### Message window
 
@@ -41,15 +42,29 @@ vim と競合しない keymap かつ、筆者の利用頻度の高いショー�
 
 `command` + `1`
 
+### Find window
+
+`command` + `3`
+
 ### Run window
 
 `command` + `4`
 
+### Logcat window
+
+`command` + `6`
+
+### Git window
+
+`command` + `9`
+
 ### Terminal window
+
+- デフォルト
 
 `option` + `F12`
 
-オススメ Keymap
+- オススメキーマップ
 
 `control` + `
 
@@ -73,9 +88,11 @@ VSCode も利用している ユーザーなら VSCode と同じ Keymap にす�
 
 あるメソッドがどこから呼ばれているか、さらにその呼び出し元がどこから呼ばれているか、さらにそれは……と呼び出し元を階層的に一覧できます。
 
+- デフォルト
+
 `control` + `option` + `H`
 
-- オススメ Keymap
+- オススメキーマップ
 
 `option` を省くことでスムーズに操作できます。
 
@@ -87,9 +104,11 @@ VSCode も利用している ユーザーなら VSCode と同じ Keymap にす�
 
 変数は、その変数を read している場所と write している場所とを分けて表示してくれます。
 
+- デフォルト
+
 `option` + `F7`
 
-- オススメ Keymap
+- オススメキーマップ
 
 command と `Usages` の頭文字 U を組み合わせます。
 
@@ -101,9 +120,11 @@ command と `Usages` の頭文字 U を組み合わせます。
 
 その一覧を検索して、変数やメソッドを定義してある場所へ飛ぶことが出来ます。
 
+- デフォルト
+
 `command` + `F12`
 
-- オススメ Keymap
+- オススメキーマップ
 
 command と `Method` `Member` の頭文字 M を組み合わせます。
 
@@ -113,13 +134,17 @@ command と `Method` `Member` の頭文字 M を組み合わせます。
 
 ## Assist・Quick Fix
 
+エラーや警告が発生している箇所にカーソルを当て、ショートカットを実行するとエラーを解消する為のアシスタントが表示されます。
+
+使用頻度が高いショートカットになります。
+
 `option` + `Enter`
 
 ## StatefulWidget のテンプレートを作成
 
 `stf` と入力
 
-以下テンプレートが作成されます。
+自動で以下テンプレートが作成されます。
 
 ```dart
 class MyComponent extends StatefulWidget {
@@ -139,7 +164,7 @@ class _MyAppState extends State<MyApp> {
 
 `stl` と入力
 
-以下テンプレートが作成されます。
+自動で以下テンプレートが作成されます。
 
 ```dart
 class MyComponent extends StatelessWidget {
@@ -149,3 +174,57 @@ class MyComponent extends StatelessWidget {
   }
 }
 ```
+
+# 入力支援・リファクタ系
+
+## Delete Line（行を削除）
+
+行単位で削除できます。
+
+`command` + `Backspace`
+
+## Extend Selection, Shrink Selection（選択範囲を拡大、選択範囲を縮小）
+
+実行するごとにカーソル位置を起点とした選択範囲が拡大/縮小します。
+
+- 選択範囲を拡大
+
+`option` + `↑`
+
+- 選択範囲を縮小
+
+`option` + `↓`
+
+## Extract Variable（変数として抽出）
+
+カーソルの周辺のものを変数として抽出します。
+
+`=` の右辺だけを書いて実行するとの左辺の値を自動的に補完してくれます。
+
+`command` + `option` + `V`
+
+## Rename（リネーム）
+
+変数、クラス名、ファイル名、メソッド名を一括リネームできます。
+
+対象の文字列にカーソルを当てコマンドを実行すると `Rename Field` window が立ち上がるので、変更したい文字列を入力して `Refactor` ボタンを押して一括リネームを実行します。
+
+`shift` + `F6`
+
+## Next Highlited Error, Previous Highlited Error（次のエラー、前のエラー）
+
+発生している次のエラーや前のエラーにジャンプできます。
+
+- 次のエラー
+
+`F2`
+
+- 前のエラー
+
+`shift` + `F2`
+
+## おわりに
+
+Android Studio のショートカットを使いこなすと生産性が上がります。
+
+筆者はまだ Flutter/Android 開発初学者なので、もし他にもこんな便利なショートカットがあるよ、という方はぜひ [Twitter](https://twitter.com/____ZUMA____) で DM していただくか [Contact](/contact) で連絡お願いします。
