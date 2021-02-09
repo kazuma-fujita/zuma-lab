@@ -84,6 +84,8 @@ FUJI ROCK は 10 年以上通ってるフジロッカーです。
   - Cognito
 - Serverless
   - Lambda
+- Data Store
+  - DynamoDB
 - Storage
   - S3
 - Tools
