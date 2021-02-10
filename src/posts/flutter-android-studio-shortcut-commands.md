@@ -11,13 +11,7 @@ tags:
 
 Flutter/Android 開発の生産性を上げてくれる Android Studio のショートカットキー集です。
 
-筆者は Android Studio の plugin である IdeaVim を利用しています。
-
-Vim のキーバインドと競合しないキーマップかつ、筆者の利用頻度の高いショートカットを集めてみました。
-
-全てのショートカットはこちらを参照ください。
-
-<iframe class="hatenablogcard" style="width:100%;height:155px;margin:15px 0;max-width:680px;" title="キーボード ショートカット  |  Android デベロッパー  |  Android Developers" src="https://hatenablog-parts.com/embed?url=https://developer.android.com/studio/intro/keyboard-shortcuts?hl=ja" frameborder="0" scrolling="no"></iframe>
+筆者の利用頻度の高いショートカットを集めてみました。
 
 またオススメの ショートカットキーマップ設定も紹介します。
 
@@ -25,12 +19,16 @@ Vim のキーバインドと競合しないキーマップかつ、筆者の利�
 
 <iframe class="hatenablogcard" style="width:100%;height:155px;margin:15px 0;max-width:680px;" title="Android Studioのショートカットキーマップ設定方法とオススメのキーマップ設定 | ZUMA Lab" src="https://hatenablog-parts.com/embed?url=https://zuma-lab.com/posts/flutter-android-studio-keymap-settings" frameborder="0" scrolling="no"></iframe>
 
-※ 前提として OS は macOS ですので Windows ユーザーの方ごめんなさい。
+全てのショートカットはこちらを参照ください。
+
+<iframe class="hatenablogcard" style="width:100%;height:155px;margin:15px 0;max-width:680px;" title="キーボード ショートカット  |  Android デベロッパー  |  Android Developers" src="https://hatenablog-parts.com/embed?url=https://developer.android.com/studio/intro/keyboard-shortcuts?hl=ja" frameborder="0" scrolling="no"></iframe>
 
 ### 環境
 
 - macOS Big Sur 11.1
 - Android Studio 4.1.2
+
+※ 前提として OS は macOS ですので Windows ユーザーの方ごめんなさい。
 
 # Window 操作系
 
@@ -78,6 +76,44 @@ Vim のキーバインドと競合しないキーマップかつ、筆者の利�
 
 VSCode も利用している ユーザーなら VSCode と同じ Keymap にすると直感的に利用できます。
 
+# ビルドとデバッグの実行
+
+### ビルドと実行
+
+`control` + `R`
+
+### デバッグ実行
+
+`control` + `D`
+
+### ステップイン/オーバー
+
+|                      |                |
+| :------------------: | :------------: |
+|     ステップイン     |      `F7`      |
+|   ステップオーバー   |      `F8`      |
+| スマートステップイン | `shift` + `F7` |
+|    ステップアウト    | `shift` + `F8` |
+
+### ブレークポイント
+
+|                            |                            |
+| :------------------------: | :------------------------: |
+| ブレークポイントの切り替え |      `command` + `F8`      |
+|   ブレークポイントを表示   | `command` + `shift` + `F8` |
+
+### 式を評価
+
+`option` + `F8`
+
+### カーソル位置まで実行
+
+`option` + `F9`
+
+### プログラムを再開
+
+`command` + `option` + `R`
+
 # 検索系
 
 ## Search Everywhere（クラス、ファイルなどを全体から検索）
@@ -94,7 +130,7 @@ VSCode も利用している ユーザーなら VSCode と同じ Keymap にす�
 
 ## 宣言に移動/呼び出し元に移動
 
-クラスやメソッド、変数にカーソルを当てショートカットを実行すると宣言元の移動することができます。
+クラスやメソッド、変数にカーソルを当てショートカットを実行する宣言元の移動することができます。
 
 また宣言元でショートカットを実行すると、呼び出し元に移動します。
 
@@ -148,7 +184,7 @@ command と `Method` `Member` の頭文字 M を組み合わせます。
 
 `command` + `M`
 
-# 入力補完系
+# 入力支援・リファクタ系
 
 ## Assist・Quick Fix
 
@@ -157,43 +193,6 @@ command と `Method` `Member` の頭文字 M を組み合わせます。
 使用頻度が高いショートカットになります。
 
 `option` + `Enter`
-
-## StatefulWidget のテンプレートを作成
-
-`stf` と入力
-
-自動で以下テンプレートが作成されます。
-
-```dart
-class MyComponent extends StatefulWidget {
-  @override
-  _MyAppState createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  @override
-  Widget build(BuildContext context) {
-    return Container();
-  }
-}
-```
-
-## StatelessWidget のテンプレートを作成
-
-`stl` と入力
-
-自動で以下テンプレートが作成されます。
-
-```dart
-class MyComponent extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container();
-  }
-}
-```
-
-# 入力支援・リファクタ系
 
 ## Delete Line（行を削除）
 
@@ -240,6 +239,61 @@ class MyComponent extends StatelessWidget {
 - 前のエラー
 
 `shift` + `F2`
+
+## import 文 の最適化
+
+import 文の並び順整理、また使用していない import 文を削除します。
+
+`control` + `option` + `O`
+
+## コードフォーマット
+
+コードフォーマットをかけます。
+
+`command` + `option` + `L`
+
+Android Studio では import 文の最適化とコードフォーマットをコード保存時に自動で実行する設定があります。
+
+設定方法は以下の記事に書いたので参照ください。
+
+<iframe class="hatenablogcard" style="width:100%;height:155px;margin:15px 0;max-width:680px;" title="Flutterのプロジェクトを新規作成したらする設定(コード自動フォーマット/Lint静的解析/Visual Debugging設定) | ZUMA Lab" src="https://hatenablog-parts.com/embed?url=https://zuma-lab.com/posts/flutter-initial-settings" frameborder="0" scrolling="no"></iframe>
+
+# Flutter 入力補完系
+
+## StatefulWidget のテンプレートを作成
+
+`stful` と入力
+
+自動で以下テンプレートが作成されます。
+
+```dart
+class MyComponent extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}
+```
+
+## StatelessWidget のテンプレートを作成
+
+`stless` と入力
+
+自動で以下テンプレートが作成されます。
+
+```dart
+class MyComponent extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}
+```
 
 ## おわりに
 
