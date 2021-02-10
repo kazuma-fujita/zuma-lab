@@ -226,7 +226,15 @@ command と `Method` `Member` の頭文字 M を組み合わせます。
 
 対象の文字列にカーソルを当てコマンドを実行すると `Rename Field` window が立ち上がるので、変更したい文字列を入力して `Refactor` ボタンを押して一括リネームを実行します。
 
+- デフォルト
+
 `shift` + `F6`
+
+- オススメキーマップ
+
+command と `Rename` の頭文字 R を組み合わせます。
+
+`command` + `R`
 
 ## Next Highlited Error, Previous Highlited Error（次のエラー、前のエラー）
 
