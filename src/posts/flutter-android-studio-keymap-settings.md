@@ -5,6 +5,7 @@ isPublished: true
 metaDescription: 'Flutter/Android開発時の Android Studio ショートカットキーマップ設定方法とオススメのキーマップ設定です'
 tags:
   - 'Flutter'
+  - 'Android'
   - 'Android Studio'
 ---
 
@@ -18,8 +19,6 @@ Flutter/Android 開発時の生産性を上げてくれる Android Studio のシ
 
 - macOS Big Sur 11.1
 - Android Studio 4.1.2
-- Flutter 1.22.6
-- Dart 2.10.5
 
 ## Android キーマップ設定方法
 
@@ -29,11 +28,11 @@ Preferences window の `Keymap` から 変更したいキーマップ名を開�
 
 <img src='/images/posts/2021-02-09-1.png' class='img' />
 
-キーマップの種類が多いので、検索ボックスから対象のキーマップ名を入力して探すのが早いです。
+キーマップの種類が多いので、検索ボックスから対象のショートカット名を入力して探すのが早いです。
 
 <img src='/images/posts/2021-02-09-2.png' class='img' />
 
-キーマップ名をダブルクリックして Edit Shortcut window を開いて `Add Keyboard Shortcut` をクリックしてください。
+ショートカット名をダブルクリックして Edit Shortcut window を開いて `Add Keyboard Shortcut` をクリックしてください。
 
 <img src='/images/posts/2021-02-09-4.png' class='img' />
 
@@ -121,4 +120,4 @@ command と `Method` `Member` の頭文字 M を組み合わせます。
 
 Android Studio のショートカットを使いこなすと生産性が上がります。
 
-筆者はまだ Flutter/Android Studio 初学者なので、もし他にもこんな便利な設定があるよ、という方はぜひ [Twitter](https://twitter.com/____ZUMA____) で DM していただくか [Contact](/contact) で連絡お願いします
+筆者はまだ Flutter/Android 開発初学者なので、もし他にもこんな便利な設定があるよ、という方はぜひ [Twitter](https://twitter.com/____ZUMA____) で DM していただくか [Contact](/contact) で連絡お願いします
