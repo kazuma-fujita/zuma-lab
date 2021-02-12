@@ -42,19 +42,37 @@ FUJI ROCK は 10 年以上通ってるフジロッカーです。
 
 ## GENOVA.Inc, June 2012 - Present
 
-### Google クチコミレビュー抽出スクレイピングツール開発 January 2021 - February 2021
+### Google クチコミレビューマーケティングツール開発 January 2021 - February 2021
+
+- Role
+  - Lead Engineer
+
+全国の病院の 全ての Google のクチコミレビューを抽出し、キーワードでフィルタリングをかけるマーケティングツールの設計・開発を担当。
+
+3 週間の短納期を実現させる為実装コストの低い Node.js を採用した。
 
 - Language
   - Node.js
 - Web Scraping Library
   - Puppeteer
+- Unit Test
+  - Jest
 - Tools
   - Github/Slack
 
 ### オンライン診療システム フロントエンド開発技術検証 July 2020 - December 2020
 
+- Role
+  - Lead Engineer
+
+オンライン診療システム開発要望に伴い、フロントエンド技術検証を担当。
+
+Amplify で利用出来る React フレームワークを試験導入した。
+
 - Language
-  - React/TypeScript
+  - JavaScript/TypeScript
+- Framework
+  - React
 - State Management
   - React Hooks
 - UI
@@ -76,6 +94,13 @@ FUJI ROCK は 10 年以上通ってるフジロッカーです。
 
 ### オンライン診療システム バックエンド開発技術検証 July 2020 - December 2020
 
+- Role
+  - Lead Engineer
+
+オンライン診療システム開発要望に伴い、バックエンド技術検証を担当。
+
+インフラ運用コストを抑えるため、Amplify を試験導入した。
+
 - Language
   - Node.js
 - Framework
@@ -92,6 +117,17 @@ FUJI ROCK は 10 年以上通ってるフジロッカーです。
   - Github/Slack
 
 ### 診察券電子化 Android アプリ開発 July 2019 - November 2019
+
+- Role
+  - Lead Engineer
+
+Android アプリ開発プロジェクトで技術選定・設計・開発・運用保守を担当。
+
+iOS 同様、Android のモバイルアプリ開発経験者不在だった為、Kotlin 言語の習得、Android フレームワークの習得の学習コストが掛けながらの開発となった。
+
+その中でも実装コストを減らす為、Jetpack Library を優先して導入。
+
+DataBinding x ViewModel x Coroutine x LiveData x Room を利用し、DB(SQLite)をトリガーとしたモダンな状態管理、非同期処理、データバインディングを取り入れ、開発期間 5 ヶ月でのリリースを実現した。
 
 - Language
   - Kotlin
@@ -119,6 +155,17 @@ FUJI ROCK は 10 年以上通ってるフジロッカーです。
   - Github/Slack/ZenHub
 
 ### 診察券電子化 iOS アプリ開発 April 2019 - August 2019
+
+- Role
+  - Lead Engineer
+
+iOS アプリ開発プロジェクトで技術選定・設計・開発・運用保守を担当。
+
+iOS のモバイルアプリ開発経験者不在だった為、Swift 言語の習得、iOS フレームワークの習得の学習コストが掛けながらの開発となった。
+
+Architecture は MVVM + Clean Architecture を導入しテスタビリティ・メンテナンス性を意識した設計にした。
+
+当時人気のあった RxSwift と ReSwift を利用した非同期処理、状態管理、データバインディングを導入し、開発期間 5 ヶ月でのリリースを実現した。
 
 - Language
   - Swift
@@ -149,6 +196,13 @@ FUJI ROCK は 10 年以上通ってるフジロッカーです。
 
 ### 診察券電子化システムバックエンド開発 July 2017 - August 2019
 
+- Role
+  - Lead Engineer
+
+基盤インフラを AWS にリプレイスする為、バックエンドアプリケーションの技術選定・再設計・開発・運用保守を担当。
+
+AWS の設計・開発を同時に行っていた為、クラウド要件に沿ったアプリケーション開発を経験した。
+
 - Language
   - Python
 - Framework
@@ -163,6 +217,15 @@ FUJI ROCK は 10 年以上通ってるフジロッカーです。
   - Github/Slack/ZenHub
 
 ### 診察券電子化システムインフラ開発 July 2017 - Present
+
+- Role
+  - Lead Engineer
+
+開発当初抑えられていた運用コストが要件と共に肥大化し、100 万/月を超える状態が続いた為、基盤インフラの再設計プロジェクトを発足。
+
+AWS にリプレイスする為、AWS 要件に合ったアプリケーションの技術選定・再設計・開発を実施。
+
+基盤インフラの以下アーキテクチャを選定・再設計・開発を担当し、Reserved Instance 導入の結果、実績として 3 万/月まで大幅コストカットを実現した。
 
 - Instance
   - EC2/ALB
