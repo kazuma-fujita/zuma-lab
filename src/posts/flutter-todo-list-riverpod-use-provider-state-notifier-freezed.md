@@ -1,24 +1,26 @@
 ---
-title: 'FlutterのTodoアプリで Riverpod / useProvider / ChangeNotifier の基本的な使い方を覚える'
-date: '2021-02-12'
+title: 'FlutterのTodoアプリで Riverpod / useProvider / StateNotifier / Freezed の基本的な使い方を覚える'
+date: '2021-02-15'
 isPublished: true
-metaDescription: 'FlutterのTodoアプリで Riverpod / useProvider / ChangeNotifier の基本的な使い方を覚えます'
+metaDescription: 'FlutterのTodoアプリで Riverpod / useProvider / StateNotifier / Freezed の基本的な使い方を覚えます'
 tags:
   - 'Flutter'
   - 'Dart'
 ---
 
-Flutter の Riverpod / useProvider / ChangeNotifier の基本的な使い方を覚えます。
+Flutter の Riverpod / useProvider / StateNotifier / Freezed の基本的な使い方を覚えます。
 
 筆者は Flutter 初学者の為、 題材として簡単な Todo アプリを選びました。
+
+前回の記事で Todo アプリを題材に Riverpod / useProvider / ChangeNotifier の基本的な使い方を書いているので、今回はこちらの記事をアップデートする形で実装していきます。
+
+<iframe class="hatenablogcard" style="width:100%;height:155px;margin:15px 0;max-width:680px;" title="FlutterのTodoアプリで Riverpod / useProvider / ChangeNotifier の基本的な使い方を覚える | ZUMA Lab" src="https://hatenablog-parts.com/embed?url=https://zuma-lab.com/posts/flutter-todo-list-riverpod-use-provider-change-notifier" frameborder="0" scrolling="no"></iframe>
 
 アーキテクチャは簡易版の MVVM で、今回外からデータ取得などしないので Model は作成せず、View と View からロジックを引き剥がす為、 ViewModel のみ実装します。
 
 最終的にこんなアプリを作ります。
 
 <img src='/images/posts/2021-02-12-01.gif' class='img' style='width: 70%' />
-
-<iframe class="hatenablogcard" style="width:100%;height:155px;margin:15px 0;max-width:680px;" title="FlutterのTodoアプリで Riverpod / useProvider / StateNotifier / Freezed の基本的な使い方を覚える | ZUMA Lab" src="https://hatenablog-parts.com/embed?url=https://zuma-lab.com/posts/flutter-todo-list-riverpod-use-provider-state-notifier-freezed" frameborder="0" scrolling="no"></iframe>
 
 Flutter のまだ正しい実装方法が分からないので実装が誤っていたら [Twitter](https://twitter.com/____ZUMA____) で DM 頂くか、[Contact](/contact) まで連絡お願いします！
 
@@ -33,23 +35,35 @@ Flutter のまだ正しい実装方法が分からないので実装が誤って
 
 まず riverpod などの package を install します。
 
-pubspec.yaml に以下 package を追記します。
+pubspec.yaml の dependencies に以下 package を追記します。
 
 - pubspec.yaml
 
-```
+```yaml
 dependencies:
   flutter:
     sdk: flutter
-  hooks_riverpod: ^0.12.3+1 # add
-  fluttertoast: ^7.1.6 # add
+  hooks_riverpod: ^0.12.3+1
+  state_notifier: ^0.6.0
+  freezed_annotation: ^0.12.0
+  fluttertoast: ^7.1.6
 ```
 
-`hooks_riverpod` は `riverpod` と `useProvider` を利用する為に install します。
+`hooks_riverpod` は `riverpod` と `useProvider` を利用する為の package です。
 
 `fluttertoast` は Todo の追加・更新・削除時にトーストメッセージを表示する package です。
 
-`flutter pub get` を実行して package を install してください。
+```yaml
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  build_runner: ^1.11.1
+  freezed: ^0.12.7
+```
+
+次に、freezed を利用する為、`dev_dependencies` に `build_runner`と `freezed` を追記します。
+
+最後に `flutter pub get` を実行して package を install してください。
 
 ## main.dart に Provider を実装する
 
@@ -59,11 +73,11 @@ main.dart を開いて、以下コードを実装します。
 
 ```dart
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/all.dart';
 import 'package:flutter_todo_list/todo_list_view.dart';
 import 'package:flutter_todo_list/todo_view_model.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-final todoProvider = ChangeNotifierProvider(
+final todoViewModelProvider = StateNotifierProvider(
   (ref) => TodoViewModel(),
 );
 
@@ -76,19 +90,19 @@ void main() {
 }
 ```
 
-ここで登場する `ChangeNotifierProvider` が riverpod の provider です。
+ここで登場する `StateNotifierProvider` は riverpod の provider です。
 
-後ほど実装する ViewModel は `ChangeNotifier` を継承します。
+後ほど実装する ViewModel は `StateNotifier` を継承します。
 
-その為、ViewModel の `ChangeNotifier` に対応する `ChangeNotifierProvider` を利用します。
+その為、ViewModel の `StateNotifier` に対応する `StateNotifierProvider` を利用します。
 
-provider とはクラスインスタンスを保持する為のもので(今回でいう ViewModel)、riverpod で提供される関数を通してはじめてアクセスできます(今回でいう useProvider)。
+riverpod の provider とはクラスインスタンスを保持する為のもので(今回でいう ViewModel)、riverpod で提供される関数を通してはじめてアクセスできます(今回でいう useProvider)。
 
 provider 引数には provider で保持する ViewModel を指定します。
 
 ちなみに provider は immutable(不変)で provider をグローバルに定義して問題ないので、`main` メソッドの外側で宣言しています。
 
-また、ChangeNotifierProvider の ref オブジェクトを利用すると他の provider にアクセス出来るようです。
+また、StateNotifierProvider の ref オブジェクトを利用すると他の provider にアクセス出来るようです。
 
 複数 provider が出てくるパターンはまた次回以降検証していきます。
 
@@ -104,103 +118,168 @@ void main() {
 }
 ```
 
-この仕組により、provider を使用する Widget を限定出来るようです。
+## UI の状態を表現するクラスの作成
 
-複数の provider が登場してきた時に scope を限定出来るのは便利かもしれません。
+次に UI の状態を表現するクラスを作成します。
 
-## UI の状態を保持するクラスの作成
+状態を表現するオブジェクトは意図しない状態の変更を避ける為、初期化後に変更できない immutable(不変)な状態が望ましいです。
 
-UI の状態を保持するクラスを作成します。
+immutable にするには `@immutable` アノテーションを付与します。
+
+`@immutable` アノテーションを付ける場合、メンバ変数は `final`、コンストラクタは `const` 修飾子を付けます。
 
 - lib/todo.dart
 
 ```
+import 'package:flutter/material.dart';
+
+@immutable
 class Todo {
-  Todo(this.id, this.title);
+  const Todo(this.id, this.title);
   final int id;
-  String title;
+  final String title;
 }
 ```
 
-title は値が代入されるので `final` 修飾子は付与していないです。
+## UI の状態を保持する State クラスを作成して freezed で immutable にする
 
-ただし本来、状態を保持するオブジェクトは意図しない状態の変更を避けるため、immutable(不変)に操作されるべきです。
+次に先程作成した UI を表現する `Todo` オブジェクト配列を保持する State クラス `lib/todo_state.dart` を作成します。
 
-`Provide` と同じ作者が、状態を持つオブジェクトを immutable に管理できる便利な `freezed` というパッケージを出しているので次回以降、こちらも検証していきます。
+TodoState クラスでは Todo リストの状態を保持している為、Todo 作成、更新、削除操作により、リストの状態が変更される可能性があります。
 
-<iframe class="hatenablogcard" style="width:100%;height:155px;margin:15px 0;max-width:680px;" title="freezed | Dart Package" src="https://hatenablog-parts.com/embed?url=https://pub.dev/packages/freezed" frameborder="0" scrolling="no"></iframe>
+ここでは安全に状態を変更できるように freezed を使用してオブジェクトを immutable にします。
+
+freezed を使用すると、オブジェクトが immutable になるだけでは無く、自動で自身のオブジェクトをコピーする `copyWith` メソッドが生えます。
+
+今後 `copyWith` を使用して Todo リストの状態管理を行います。
+
+本題の State クラスに freezed を適用するコードは以下です。
+
+- `lib/todo_state.dart`
+
+```
+import 'package:flutter_todo_list/todo.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:flutter/foundation.dart';
+
+part 'todo_state.freezed.dart';
+
+@freezed
+abstract class TodoState with _$TodoState {
+  const factory TodoState({
+    @Default(<Todo>[]) List<Todo> todoList,
+  }) = _TodoState;
+}
+```
+
+便利な freezed ですが、デメリットとして新しい State クラスを作成する度に、コマンドラインで freezed のコードが記述された dart ファイルを生成する必要があります。
+
+生成するファイル名を `part` の後に記述します。
+
+今回は `todo_state.freezed.dart` というファイル名を指定しました。
+
+次に `@freezed` アノテーションを付与します。
+
+次に State クラスに freezed で生成されるクラスを `with` で mixin します。
+
+あとは factory コンストラクタに状態を保持するリストと、そのデフォルト値を記述します。
+
+`@Default` は freezed のアノテーション記法で、（）内に初期値を記述します。
+
+この時点でエラーが出ていますが、この後実行するコマンドラインで解消します。
+
+## freezed のコード生成を実行する
+
+以下のコマンドラインをプロジェクトルートで実行します。
+
+```
+flutter pub run build_runner build --delete-conflicting-outputs
+```
+
+`--delete-conflicting-outputs` は既に生成しているファイルとコンフリクトしないようにするオプションです。
+
+競合する既存ファイルを削除してからファイル生成をします。
+
+正常終了すると、`lib/todo_state.freezed.dart` が作成されます。
+
+## freezed ファイルの Warning を 無視する analysis_options.yaml を作成する
+
+生成された freezed ファイルのコードは整形されていないので Warning が発生する場合があります。
+
+生成されたファイルの Warning を無視するにはプロジェクトルートに `analysis_options.yaml` ファイルを作成して以下を追記します。
+
+- `analysis_options.yaml`
+
+```
+analyzer:
+ exclude:
+   - "**/*.freezed.dart"
+```
 
 ## ViewModel を作成する
 
-画面状態を保持する todoList 配列を操作、管理する為の ViewModel を実装します。
+次に State クラスを管理する為の ViewModel を実装します。
 
 `lib/todo_view_model.dart` を作成して以下コードを実装します。
 
 - `lib/todo_view_model.dart`
 
 ```dart:todo_view_model.dart
-import 'dart:collection';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_todo_list/todo.dart';
+import 'package:flutter_todo_list/todo_state.dart';
+import 'package:state_notifier/state_notifier.dart';
 
-class TodoViewModel extends ChangeNotifier {
-
-  List<Todo> _todoList = [];
-  UnmodifiableListView<Todo> get todoList => UnmodifiableListView(_todoList);
+class TodoViewModel extends StateNotifier<TodoState> {
+  TodoViewModel() : super(const TodoState());
 
   void createTodo(String title) {
-    final id = _todoList.length + 1;
-    _todoList = [...todoList, Todo(id, title)];
-    notifyListeners();
+    final id = state.todoList.length + 1;
+    final newList = [...state.todoList, Todo(id, title)];
+    state = state.copyWith(todoList: newList);
   }
 
   void updateTodo(int id, String title) {
-    todoList.asMap().forEach((int index, Todo todo) {
-      if (todo.id == id) {
-        _todoList[index].title = title;
-      }
-    });
-    notifyListeners();
+    final newList = state.todoList
+        .map((todo) => todo.id == id ? Todo(id, title) : todo)
+        .toList();
+    state = state.copyWith(todoList: newList);
   }
 
   void deleteTodo(int id) {
-    _todoList = todoList.where((todo) => todo.id != id).toList();
-    notifyListeners();
+    final newList = state.todoList.where((todo) => todo.id != id).toList();
+    state = state.copyWith(todoList: newList);
   }
 }
 ```
 
-Todo タスクを保持する配列である todoList は `_todoList` と宣言して private にします。
+StateNotifier を利用する為、TodoViewModel の class 宣言 で StateNotifier を継承します。
 
-外から呼ぶ public な `todoList` は `UnmodifiableListView<Todo> get todoList => UnmodifiableListView(_todoList);` で `todoList` を外から直接プロパティ操作させない為、UnmodifiableListView でラップしています。
+StateNotifier では、ViewModel が扱う状態クラスを指定します。
 
-次に、class 宣言の `class TodoViewModel` で `extends ChangeNotifier` しているのが View 側に `_todoList` の状態を変更通知する為に利用する `ChangeNotifier` です。
+今回は先程作成した `TodoState` を指定します。
 
-`_todoList` を操作した後に、 `notifyListeners()` を呼ぶと View 側に todoList の状態変更が通知されます。
-
-ただ毎回 todoList の操作箇所で `notifyListeners()` を呼ぶのは面倒なので、そこら辺をうまく吸収してくれる便利な `StateNotifier` パッケージが出ているので、次回以降そちらも検証していきます。
-
-<iframe class="hatenablogcard" style="width:100%;height:155px;margin:15px 0;max-width:680px;" title="flutter_state_notifier | Flutter Package" src="https://hatenablog-parts.com/embed?url=https://pub.dev/packages/flutter_state_notifier" frameborder="0" scrolling="no"></iframe>
-
-ここでは基本的な `ChangeNotifier` で実装します。
-
-次に、todoList 要素にアクセスする際は、以下のように private な `_todoList` を操作しています。
+次に、todoList の状態を変更する為、CRUD 操作のメソッドを実装していきます。
 
 ```dart
   void deleteTodo(int id) {
-    _todoList = todoList.where((todo) => todo.id != id).toList();
-    notifyListeners();
+    final newList = state.todoList.where((todo) => todo.id != id).toList();
+    state = state.copyWith(todoList: newList);
   }
 ```
 
-ここでは配列の要素の削除操作をしていますが、やっていることは `_todoList.removeAt(index)` などで配列を直接操作しているのと変わりません。
+ここでは todoList の要素の削除操作をしています。
 
-配列要素削除操作を `todoList.where` を使って回りくどく書いているのは、将来 `_todoList` を immutable(不変)に操作するようにしたいので、意識付けとしてあえて書いています。
+StateNotifier を継承すると `state` オブジェクトを使用できるようになります。
 
-基本的に画面の状態をもっているオブジェクト(今回でいう`_todoList`)を mutable(可変)に直接操作するのはバグが生まれやすく、アンチパターンだと思っています。
+`state.todoList` で先程作成した State クラスである `TodoState` のリストを取得できます。
 
-こちらも freezed を使えは解決しそうですが、freezed はコードジェネレーターでデータクラスを作成するらしいので、導入コストを考えて今回はライトに `_todoList` を mutable に操作します。
+state の状態を変更するには、まず既存の state か変更後の状態の配列を生成します。
+
+次に freezed で自動生成された `copyWith` メソッドで変更後のリストをコピーした state を新しい state とします。
+
+変更後の状態を UI に反映するには `ChangeNotifier` の場合、 `notifyListeners` を call して変更後の状態を View に通知します。
+
+`StateNotifier` の場合は state を変更するだけで、View 側が state の変更を検知して変更後の状態が UI に反映されます。
 
 ## Todo 一覧 View を作成する
 
@@ -252,9 +331,9 @@ class TodoList extends HookWidget {
   }
 
   Widget _buildList() {
-    final viewModel = useProvider(todoProvider);
+    final todoState = useProvider(todoViewModelProvider.state);
     // viewModelからtodoList取得/監視
-    final List<Todo> _todoList = viewModel.todoList;
+    final _todoList = todoState.todoList;
     return ListView.builder(
       padding: const EdgeInsets.all(16),
       itemCount: _todoList.length,
@@ -277,7 +356,7 @@ class TodoList extends HookWidget {
       },
       onDismissed: (DismissDirection direction) {
         // viewModelのtodoList要素を削除
-        context.read(todoProvider).deleteTodo(todo.id);
+        context.read(todoViewModelProvider).deleteTodo(todo.id);
         // ToastMessageを表示
         Fluttertoast.showToast(
           msg: '${todo.title}を削除しました',
@@ -290,8 +369,8 @@ class TodoList extends HookWidget {
         // backgroundが赤/ゴミ箱Icon表示
         color: Colors.red,
         child: const Padding(
-          padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
-          child: const Icon(
+          padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
+          child: Icon(
             Icons.delete,
             color: Colors.white,
           ),
@@ -304,7 +383,7 @@ class TodoList extends HookWidget {
   Widget _todoItem(Todo todo, BuildContext context) {
     return Container(
       decoration: const BoxDecoration(
-        border: const Border(bottom: BorderSide(width: 1, color: Colors.grey)),
+        border: Border(bottom: BorderSide(width: 1, color: Colors.grey)),
       ),
       child: ListTile(
         title: Text(
@@ -322,13 +401,13 @@ class TodoList extends HookWidget {
   }
 
   Future<void> _transitionToNextScreen(BuildContext context,
-      {Todo todo = null}) async {
+      {Todo todo}) async {
     final result = await Navigator.pushNamed(context, Const.routeNameUpsertTodo,
         arguments: todo);
 
     if (result != null) {
       // ToastMessageを表示
-      Fluttertoast.showToast(
+      await Fluttertoast.showToast(
         msg: result.toString(),
         backgroundColor: Colors.grey,
       );
@@ -361,12 +440,12 @@ class TodoList extends HookWidget {
 }
 ```
 
-ポイントは `final viewModel = useProvider(todoProvider);` で先程 main.dart で作成した todoProvider と `useProvider` を利用して viewModel を取得しています。
+ポイントは `useProvider(todoViewModelProvider.state)` で先程 main.dart で作成した todoViewModelProvider と `useProvider` を利用して viewModel から State クラスを取得しています。
 
 ```dart
   Widget _buildList() {
-    final viewModel = useProvider(todoProvider);
-    final List<Todo> _todoList = viewModel.todoList;
+    final todoState = useProvider(todoViewModelProvider.state);
+    final _todoList = todoState.todoList;
     return ListView.builder(
       padding: const EdgeInsets.all(16),
       itemCount: _todoList.length,
@@ -377,15 +456,15 @@ class TodoList extends HookWidget {
   }
 ```
 
-次に `final List<Todo> _todoList = viewModel.todoList;`　で viewModel から todoList を取得しています。
+次に `final _todoList = todoState.todoList`　で State クラス から todoList を取得しています。
 
 取得した todoList は `ListView.builder` の itemCount と itemBuilder に指定します。
 
 `useProvider` を通して取得したオブジェクトは状態監視されて変更が起きたら Widget をリビルドします。
 
-Flutter の宣言的 UI の仕組みと `ChangeNotifier` の通知の仕組み、 flutter hooks の`useProvider`、 riverpod の `ChangeNotifierProvider` の状態監視のおかげで、 ViewModel で起きた todoList の変更を監視し、変更があれば自動で UI に反映されるようになります。
+`useProvider`、 riverpod の `StateNotifierProvider` の状態監視のおかげで、StateNotifier の state が変更されたら View 側で検知して自動的に UI に反映されるようになります。
 
-`useProvider` は flutter hooks と呼ばれるもので、利用するには、 `HookWidget` を継承する必要があります。
+また、 `useProvider` は flutter hooks と呼ばれるもので、利用するには、 `HookWidget` を継承する必要があります。
 
 ```dart
 class TodoList extends HookWidget {
@@ -407,29 +486,6 @@ class TodoList extends HookWidget {
 ```
 
 今回は親 Widget の `class TodoList` に `extends HookWidget` をして flutter hooks を利用出来るようにしています。
-
-その他、 `Navigator.pushNamed` の箇所で、Todo 作成・更新画面に選択した Todo のオブジェクトを渡しています。
-
-```dart
-  Future<void> _transitionToNextScreen(BuildContext context,
-      {Todo todo = null}) async {
-    final result = await Navigator.pushNamed(context, Const.routeNameUpsertTodo,
-        arguments: todo);
-
-    if (result != null) {
-      Fluttertoast.showToast(
-        msg: result.toString(),
-        backgroundColor: Colors.grey,
-      );
-    }
-  }
-```
-
-Todo 新規作成の場合 null が渡されるので、次に実装する Todo 作成・更新画面で Todo が null の場合の条件分岐で表示出し分けをしています。
-
-また、 `Navigator.pushNamed` の戻り値の result には Todo 作成 or 更新メッセージが返ってきます。
-
-Todo 作成 or 更新メッセージを `Fluttertoast` で表示するようにしています。
 
 ## Todo 作成・更新をする View を作成する
 
@@ -478,6 +534,7 @@ class _TodoFormState extends State<TodoForm> {
             TextFormField(
               initialValue: todo != null ? todo.title : '',
               maxLength: 20,
+              // maxLength以上入力不可
               maxLengthEnforced: true,
               decoration: const InputDecoration(
                 hintText: 'Todoタイトルを入力してください',
@@ -505,10 +562,10 @@ class _TodoFormState extends State<TodoForm> {
       _formKey.currentState.save();
       if (todo != null) {
         // viewModelのtodoListを更新
-        context.read(todoProvider).updateTodo(todo.id, _title);
+        context.read(todoViewModelProvider).updateTodo(todo.id, _title);
       } else {
         // viewModelのtodoListを作成
-        context.read(todoProvider).createTodo(_title);
+        context.read(todoViewModelProvider).createTodo(_title);
       }
       // 前の画面に戻る
       Navigator.pop(context, '$_titleを${todo == null ? '作成' : '更新'}しました');
@@ -517,7 +574,7 @@ class _TodoFormState extends State<TodoForm> {
 }
 ```
 
-ポイントは `context.read(todoProvider)` の処理で、先程作成した ViewModel の `updateTodo` と `createTodo` メソッドを呼び出しています。
+ポイントは `context.read(todoViewModelProvider)` の処理で、先程作成した ViewModel の `updateTodo` と `createTodo` メソッドを呼び出しています。
 
 ```dart
   void _submission(BuildContext context, Todo todo) {
@@ -525,10 +582,10 @@ class _TodoFormState extends State<TodoForm> {
       _formKey.currentState.save();
       if (todo != null) {
         // viewModelのtodoListを更新
-        context.read(todoProvider).updateTodo(todo.id, _title);
+        context.read(todoViewModelProvider).updateTodo(todo.id, _title);
       } else {
         // viewModelのtodoListを作成
-        context.read(todoProvider).createTodo(_title);
+        context.read(todoViewModelProvider).createTodo(_title);
       }
       Navigator.pop(context, '$_titleを${todo == null ? '作成' : '更新'}しました');
     }
@@ -540,37 +597,16 @@ class _TodoFormState extends State<TodoForm> {
 
 Todo 一覧では状態の検知・監視をする `useProvider` を通して Provider で保持している ViewModel の todoList を取得、ListView.builder にセットしています。
 
-`context.read` で Provider で保持している ViewModel の関数呼び出し、ViewModel で UI の状態を保持した todoList の変更、`ChangeNotifier`で変更を通知、`useProvider` と Provider で状態変更を検知して ListView.builder をリビルドをします。
+`context.read` で Provider で保持している ViewModel の関数呼び出し、ViewModel で UI の状態を保持した todoList の変更、`StateNotifier` で変更を通知、`useProvider` と `StateNotifierProvider` で状態変更を検知して ListView.builder をリビルドをします。
 
 この一連の流れで状態変更による自動 UI 反映が実現できるという訳です。
 
-そのほか、`ModalRoute.of(context).settings.arguments as Todo` で Todo 一覧画面から Todo オブジェクトを取得しています。
-
-```
-class UpsertTodoView extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    final todo = ModalRoute.of(context).settings.arguments as Todo;
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Todo${todo == null ? '作成' : '更新'}'),
-      ),
-      body: TodoForm(),
-    );
-  }
-}
-```
-
-Todo オブジェクトがあれば更新、無ければ新規作成の表示出し分けをいれています。
-
 ## おわりに
 
-Flutter の宣言的 UI と ChangeNotifier による通知の仕組み、riverpod + useProvider による状態監視の組み合わせで直感的かつコード量を抑えて Todo アプリを実装することができました。
-
-次のステップとして、同じ Todo アプリに Freezed を導入して状態を持つオブジェクトを immutable に管理しつつ、StateNotifier、StateProvider で直感的かつ、更にコードを減らす実装をしてみたいと思います。
+Flutter の宣言的 UI と StateNotifier による通知の仕組み、riverpod の StateNotifierProvider、Flutter hooks の useProvider による状態監視の組み合わせで直感的かつコード量を抑えて Todo アプリを実装することができました。
 
 筆者は Flutter 初学者の為、まだ正しい実装方法が分からないので実装が誤っていたら [Twitter](https://twitter.com/____ZUMA____) で DM 頂くか、[Contact](/contact) まで連絡お願いします！
 
 最後に今回実装した Todo アプリは Github にあるので参照ください。
 
-<iframe class="hatenablogcard" style="width:100%;height:155px;margin:15px 0;max-width:680px;" title="kazuma-fujita/flutter_todo_list_with_riverpod: Practice Flutter riverpod with todo list." src="https://hatenablog-parts.com/embed?url=https://github.com/kazuma-fujita/flutter_todo_list_with_riverpod" frameborder="0" scrolling="no"></iframe>
+<iframe class="hatenablogcard" style="width:100%;height:155px;margin:15px 0;max-width:680px;" title="kazuma-fujita/flutter_todo_list_with_state_notifier_freezed: Practice Flutter riverpod and useProvider and StateNotifier and freezed with todo list." src="https://hatenablog-parts.com/embed?url=https://github.com/kazuma-fujita/flutter_todo_list_with_state_notifier_freezed" frameborder="0" scrolling="no"></iframe>

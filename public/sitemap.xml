@@ -67,11 +67,6 @@
   </url>
 
   <url>
-    <loc>https://zuma-lab.com/posts/flutter-basic-riverpod</loc>
-    <lastmod>2021-02-12T05:31:35.983Z</lastmod>
-  </url>
-
-  <url>
     <loc>https://zuma-lab.com/posts/flutter-channel-command</loc>
     <lastmod>2021-01-27T04:40:04.591Z</lastmod>
   </url>
@@ -84,6 +79,20 @@
   <url>
     <loc>https://zuma-lab.com/posts/flutter-initial-settings</loc>
     <lastmod>2021-02-09T03:07:45.755Z</lastmod>
+  </url>
+
+  <url>
+    <loc
+      >https://zuma-lab.com/posts/flutter-todo-list-riverpod-use-provider-change-notifier</loc
+    >
+    <lastmod>2021-02-15T07:45:02.555Z</lastmod>
+  </url>
+
+  <url>
+    <loc
+      >https://zuma-lab.com/posts/flutter-todo-list-riverpod-use-provider-state-notifier-freezed</loc
+    >
+    <lastmod>2021-02-15T07:45:17.228Z</lastmod>
   </url>
 
   <url>
