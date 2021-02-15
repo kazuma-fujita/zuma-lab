@@ -50,16 +50,16 @@ Riverpod / StateNotifier / Freezed package を `pubspec.yaml.tmpl` に追記し�
 dependencies:
   flutter:
     sdk: flutter
-  hooks_riverpod: ^0.12.3+1
-  state_notifier: ^0.6.0
-  freezed_annotation: ^0.12.0
-  fluttertoast: ^7.1.6
+  hooks_riverpod:
+  state_notifier:
+  freezed_annotation:
+  fluttertoast:
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  build_runner: ^1.11.1
-  freezed: ^0.12.7
+  build_runner:
+  freezed:
 ```
 
 `hooks_riverpod` は `riverpod` と `useProvider` を利用する為の package です。

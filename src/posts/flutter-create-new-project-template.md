@@ -96,13 +96,13 @@ include: package:pedantic_mono/analysis_options.yaml
 
 - {flutter-sdk-path}/flutter/packages/flutter_tools/templates/app/pubspec.yaml.tmpl
 
-`pubspec.yaml.tmpl` の `dev_dependencies` に `pedantic_mono: any` を追記します。
+`pubspec.yaml.tmpl` の `dev_dependencies` に `pedantic_mono:` を追記します。
 
 ```yml:pubspec.yaml
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  pedantic_mono: any # add
+  pedantic_mono: # add
 ```
 
 ## ローカル画像を扱えるようにする設定

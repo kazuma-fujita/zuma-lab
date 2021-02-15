@@ -41,8 +41,8 @@ pubspec.yaml に以下 package を追記します。
 dependencies:
   flutter:
     sdk: flutter
-  hooks_riverpod: ^0.12.3+1 # add
-  fluttertoast: ^7.1.6 # add
+  hooks_riverpod:
+  fluttertoast:
 ```
 
 `hooks_riverpod` は `riverpod` と `useProvider` を利用する為に install します。
