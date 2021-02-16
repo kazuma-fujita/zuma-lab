@@ -43,10 +43,10 @@ pubspec.yaml の dependencies に以下 package を追記します。
 dependencies:
   flutter:
     sdk: flutter
-  hooks_riverpod: ^0.12.3+1
-  state_notifier: ^0.6.0
-  freezed_annotation: ^0.12.0
-  fluttertoast: ^7.1.6
+  hooks_riverpod:
+  state_notifier:
+  freezed_annotation:
+  fluttertoast:
 ```
 
 `hooks_riverpod` は `riverpod` と `useProvider` を利用する為の package です。
@@ -57,8 +57,8 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  build_runner: ^1.11.1
-  freezed: ^0.12.7
+  build_runner:
+  freezed:
 ```
 
 次に、freezed を利用する為、`dev_dependencies` に `build_runner`と `freezed` を追記します。

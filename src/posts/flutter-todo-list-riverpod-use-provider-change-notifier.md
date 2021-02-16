@@ -22,6 +22,14 @@ Flutter の Riverpod / useProvider / ChangeNotifier の基本的な使い方を�
 
 Flutter のまだ正しい実装方法が分からないので実装が誤っていたら [Twitter](https://twitter.com/____ZUMA____) で DM 頂くか、[Contact](/contact) まで連絡お願いします！
 
+**2021/02/15 追記**
+
+Flutter の Todo アプリで Riverpod / useProvider / StateNotifier / Freezed の使い方を覚える記事を書きました。
+
+筆者の感想としては ChangeNotifier よりも StateNotifier + Freezed の組み合わせの方が便利と感じたので、ぜひこちらの記事もご覧ください。
+
+<iframe class="hatenablogcard" style="width:100%;height:155px;margin:15px 0;max-width:680px;" title="FlutterのTodoアプリで Riverpod / useProvider / StateNotifier / Freezed の基本的な使い方を覚える | ZUMA Lab" src="https://hatenablog-parts.com/embed?url=https://zuma-lab.com/posts/flutter-todo-list-riverpod-use-provider-state-notifier-freezed" frameborder="0" scrolling="no"></iframe>
+
 ### 環境
 
 - macOS Big Sur 11.1
@@ -41,8 +49,8 @@ pubspec.yaml に以下 package を追記します。
 dependencies:
   flutter:
     sdk: flutter
-  hooks_riverpod: ^0.12.3+1 # add
-  fluttertoast: ^7.1.6 # add
+  hooks_riverpod:
+  fluttertoast:
 ```
 
 `hooks_riverpod` は `riverpod` と `useProvider` を利用する為に install します。

@@ -79,7 +79,7 @@ include: package:pedantic_mono/analysis_options.yaml
 
 個別設定する場合の Lint ルールは [Linter for Dart - Supported Lint Rules](https://dart-lang.github.io/linter/lints/) に記載されています。
 
-次に `pubspec.yaml` の `dev_dependencies` に `pedantic_mono: any` を追記します。
+次に `pubspec.yaml` の `dev_dependencies` に `pedantic_mono:` を追記します。
 
 - pubspec.yaml
 
@@ -87,7 +87,7 @@ include: package:pedantic_mono/analysis_options.yaml
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  pedantic_mono: any # add
+  pedantic_mono: # add
 ```
 
 最後に以下コマンドを実行するか、Android Studio から pub get をして `pedantic_mono` package を install して Lint 設定の完了です。

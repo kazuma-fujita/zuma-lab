@@ -21,7 +21,9 @@ tags:
 
 Flutter テンプレートは Flutter SDK をインストールしたディレクトリ配下にあります。
 
-- {flutter-sdk-path}/flutter/packages/flutter_tools/templates/app/
+```txt
+{flutter-sdk-path}/flutter/packages/flutter_tools/templates/app/
+```
 
 それではテンプレートをカスタマイズしていきましょう。
 
@@ -44,7 +46,9 @@ Flutter テンプレートは Flutter SDK をインストールしたディレ�
 
 `main.dart.tmpl` の場所は以下になります。
 
-- {flutter-sdk-path}/flutter/packages/flutter_tools/templates/app/lib/main.dart.tmpl
+```txt
+{flutter-sdk-path}/flutter/packages/flutter_tools/templates/app/lib/main.dart.tmpl
+```
 
 ファイルを開いてコメントの `add` のコードを追記します。
 
@@ -78,7 +82,9 @@ void main() {
 
 `analysis_options.yaml` のテンプレートとして以下の階層に `analysis_options.yaml.tmpl` を作成します。
 
-- {flutter-sdk-path}/flutter/packages/flutter_tools/templates/app/analysis_options.yaml.tmpl
+```txt
+{flutter-sdk-path}/flutter/packages/flutter_tools/templates/app/analysis_options.yaml.tmpl
+```
 
 `analysis_options.yaml.tmpl` に以下 1 行を追記します。
 
@@ -94,15 +100,17 @@ include: package:pedantic_mono/analysis_options.yaml
 
 次に以下に階層にある `pubspec.yaml` のテンプレート `pubspec.yaml.tmpl` を開きます。
 
-- {flutter-sdk-path}/flutter/packages/flutter_tools/templates/app/pubspec.yaml.tmpl
+```
+{flutter-sdk-path}/flutter/packages/flutter_tools/templates/app/pubspec.yaml.tmpl
+```
 
-`pubspec.yaml.tmpl` の `dev_dependencies` に `pedantic_mono: any` を追記します。
+`pubspec.yaml.tmpl` の `dev_dependencies` に `pedantic_mono:` を追記します。
 
 ```yml:pubspec.yaml
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  pedantic_mono: any # add
+  pedantic_mono: # add
 ```
 
 ## ローカル画像を扱えるようにする設定
@@ -127,7 +135,9 @@ cp sample_image.jpeg {flutter-sdk-path}/flutter/packages/flutter_tools/templates
 
 最後に以下に階層にある `pubspec.yaml` のテンプレート `pubspec.yaml.tmpl` を編集します。
 
-- {flutter-sdk-path}/flutter/packages/flutter_tools/templates/app/pubspec.yaml.tmpl
+```txt
+{flutter-sdk-path}/flutter/packages/flutter_tools/templates/app/pubspec.yaml.tmpl
+```
 
 `pubspec.yaml.tmpl` に 以下を追記してください。
 
@@ -148,7 +158,9 @@ Image.asset('assets/images/sample_image.jpeg')
 
 以下の場所に `template_manifest.json` があるので、新規で追加したテンプレートファイルを追記していきます。
 
-- {flutter-sdk-path}/flutter/packages/flutter_tools/templates/template_manifest.json
+```
+{flutter-sdk-path}/flutter/packages/flutter_tools/templates/template_manifest.json
+```
 
 今回 `analysis_options.yaml.tmpl` を新規で作成しているのでファイルパスを追記します。
 
