@@ -64,6 +64,7 @@ dev_dependencies:
     sdk: flutter
   build_runner:
   freezed:
+  json_serializable:
 ```
 
 `hooks_riverpod` は `riverpod` と `useProvider` を利用する為の package です。
