@@ -72,27 +72,34 @@
   </url>
 
   <url>
+    <loc
+      >https://zuma-lab.com/posts/flutter-create-new-project-template-with-riverpod-state-notifire-freezed</loc
+    >
+    <lastmod>2021-02-15T09:53:27.204Z</lastmod>
+  </url>
+
+  <url>
     <loc>https://zuma-lab.com/posts/flutter-create-new-project-template</loc>
-    <lastmod>2021-02-09T03:07:15.768Z</lastmod>
+    <lastmod>2021-02-15T09:54:31.020Z</lastmod>
   </url>
 
   <url>
     <loc>https://zuma-lab.com/posts/flutter-initial-settings</loc>
-    <lastmod>2021-02-09T03:07:45.755Z</lastmod>
+    <lastmod>2021-02-15T09:54:37.439Z</lastmod>
   </url>
 
   <url>
     <loc
       >https://zuma-lab.com/posts/flutter-todo-list-riverpod-use-provider-change-notifier</loc
     >
-    <lastmod>2021-02-15T07:45:02.555Z</lastmod>
+    <lastmod>2021-02-15T09:53:37.865Z</lastmod>
   </url>
 
   <url>
     <loc
       >https://zuma-lab.com/posts/flutter-todo-list-riverpod-use-provider-state-notifier-freezed</loc
     >
-    <lastmod>2021-02-15T07:45:17.228Z</lastmod>
+    <lastmod>2021-02-15T09:54:08.462Z</lastmod>
   </url>
 
   <url>

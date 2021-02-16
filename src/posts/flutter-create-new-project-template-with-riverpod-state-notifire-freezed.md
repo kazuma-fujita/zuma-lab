@@ -1,8 +1,8 @@
 ---
-title: 'Android StudioのFlutterテンプレートをカスタマイズしてRiverpod/StateNotifier/Freezedをプロジェクト新規作成時から使用出来るようにする'
+title: 'Android StudioのFlutterテンプレートをカスタマイズして Riverpod / StateNotifier / Freezed をデフォルトで使用できるプロジェクトを作成する'
 date: '2021-02-16'
 isPublished: true
-metaDescription: 'Android StudioのFlutterテンプレートをカスタマイズする方法です。プロジェクト作成時のLint静的解析/Riverpod/StateNotifier/Freezed設定を自動化できます。Flutter テンプレートをカスタマイズして設定を自動化しましょう。'
+metaDescription: 'Android StudioのFlutterテンプレートをカスタマイズする方法です。今回は Flutter の画面状態を直感的に、そして immutable に管理できる Riverpod、StateNotifier、Freezed の package をプロジェクト新規作成時から使用できるようにしたいと思います。'
 tags:
   - 'Flutter'
   - 'Dart'
@@ -27,7 +27,9 @@ Riverpod、StateNotifier、Freezed についてはこちらの記事で紹介し
 
 Flutter テンプレートは Flutter SDK をインストールしたディレクトリ配下にあります。
 
-- {flutter-sdk-path}/flutter/packages/flutter_tools/templates/app/
+```
+{flutter-sdk-path}/flutter/packages/flutter_tools/templates/app/
+```
 
 それではテンプレートをカスタマイズしていきましょう。
 
@@ -40,11 +42,13 @@ Flutter テンプレートは Flutter SDK をインストールしたディレ�
 
 ## Riverpod / StateNotifier / Freezed package を pubspec.yaml に追記する
 
-次に以下に階層にある `pubspec.yaml` のテンプレート `pubspec.yaml.tmpl` を開きます。
+以下の階層にある pubspec.yaml のテンプレート `pubspec.yaml.tmpl` を開きます。
 
-- {flutter-sdk-path}/flutter/packages/flutter_tools/templates/app/pubspec.yaml.tmpl
+```
+{flutter-sdk-path}/flutter/packages/flutter_tools/templates/app/pubspec.yaml.tmpl
+```
 
-Riverpod / StateNotifier / Freezed package を `pubspec.yaml.tmpl` に追記します。
+次に Riverpod / StateNotifier / Freezed package を `pubspec.yaml.tmpl` に追記します。
 
 ```yml:pubspec.yaml
 dependencies:
@@ -70,13 +74,15 @@ freezed を利用する為、`dev_dependencies` に `build_runner`と `freezed` 
 
 ## analysis_options.yaml に freezed ファイルの Warning を無視する設定を追記する
 
-freezed で生成された freezed ファイルのコードは整形されていないので Warning が発生します。
+freezed で生成された freezed ファイルのコードは整形されていないので Lint の静的解析で Warning が発生します。
 
-生成されたファイルの Warning を無視するには `analysis_options.yaml` ファイルに設定を追記します。
+自動生成されたファイルの Warning を無視する為 `analysis_options.yaml` ファイルに設定を追記します。
 
 `analysis_options.yaml` のテンプレートとして以下の階層に `analysis_options.yaml.tmpl` を作成します。
 
-- {flutter-sdk-path}/flutter/packages/flutter_tools/templates/app/analysis_options.yaml.tmpl
+```txt
+{flutter-sdk-path}/flutter/packages/flutter_tools/templates/app/analysis_options.yaml.tmpl
+```
 
 `analysis_options.yaml.tmpl` に以下を追記します。
 
@@ -92,7 +98,9 @@ analyzer:
 
 以下の場所に `template_manifest.json` があるので、新規で追加したテンプレートファイルを追記していきます。
 
-- {flutter-sdk-path}/flutter/packages/flutter_tools/templates/template_manifest.json
+```txt
+{flutter-sdk-path}/flutter/packages/flutter_tools/templates/template_manifest.json
+```
 
 今回 `analysis_options.yaml.tmpl` を新規で作成しているのでファイルパスを追記します。
 
