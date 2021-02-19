@@ -234,7 +234,7 @@ GET クエリの `q={検索キーワード}` が空文字の場合は Http ス�
 
 まず API response の情報を格納する入れ物である Entity クラスを実装します。
 
-- `lib/RepositoryEntity.dart`
+- `lib/repository_entity.dart`
 
 ```
 @freezed

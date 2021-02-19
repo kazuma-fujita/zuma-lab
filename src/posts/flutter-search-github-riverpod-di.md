@@ -1,8 +1,8 @@
 ---
-title: 'Flutter Riverpod で DI をしてテスタビリティを向上させる'
+title: 'Flutter Riverpod の Provider と StateNotifierProvider で DI をしてテスタビリティを向上させる'
 date: '2021-02-19'
 isPublished: true
-metaDescription: 'Flutter Riverpod は状態管理の package です。Flutter Riverpod で DI をしてテスタビリティを向上させることができます。DI をするとインスタンスの mocking が可能になり、テスタビリティが向上します。 Flutter では Mockito という mock package があるので、そちらを利用して Repository や ViewModel の UnitTest を書くことができます。また、Http 通信をする ApiClient は、通信を mock する MockWebServer という package があるので、そちらを利用して UnitTest を書くことができます'
+metaDescription: 'Flutter Riverpod は状態管理の package です。Flutter Riverpod は DI としても利用できてテスタビリティを向上させることができます。DI をするとインスタンスの mocking が可能になり、テスタビリティが向上します。 Flutter では Mockito という mock package があるので、そちらを利用して Repository や ViewModel の UnitTest を書くことができます。また、Http 通信をする ApiClient は、通信を mock する MockWebServer という package があるので、そちらを利用して UnitTest を書くことができます'
 tags:
   - 'Flutter'
   - 'Dart'
@@ -10,7 +10,13 @@ tags:
 
 Flutter Riverpod は状態管理の package です。
 
-Flutter Riverpod は DI として利用もできてテスタビリティを向上させることができます。
+Flutter Riverpod は DI としても利用できてテスタビリティを向上させることができます。
+
+DI をするとインスタンスの mocking が可能になり、テスタビリティが向上します。
+
+Flutter では代表的な Mockito という mock package があるので、そちらを利用して 基本的な UnitTest を書くことができます。
+
+また、Http 通信をする 箇所は通信を mock する MockWebServer という package があるので、そちらを利用して UnitTest を書くことができます。
 
 今回は題材として簡単な Github の repository 検索アプリを選びました。
 
@@ -85,7 +91,7 @@ Riverpod の package は他にも `riverpod` や `flutter_riverpod` があるの
 
 まず API response の情報を格納する入れ物である Entity クラスを実装します。
 
-- `lib/RepositoryEntity.dart`
+- `lib/repository_entity.dart`
 
 ```
 @freezed
@@ -246,7 +252,7 @@ class RepositoryListViewModel
 
 DI できるように `RepositoryListViewModel(this._githubRepository)` で Repository を受け取っています。
 
-## Riverpod の Provider で DI をする
+## Riverpod の Provider と StateNotifierProvider で DI をする
 
 先程実装した、ApiClient クラス、Repository クラス、ViewModel クラスをそれぞれ DI していきたいと思います。
 
@@ -302,15 +308,9 @@ final repositoryListViewModelProvider = StateNotifierProvider.autoDispose(
 
 ## おわりに
 
-DI をするとインスタンスの mocking が可能になり、テスタビリティが向上します。
-
-Flutter では Mockito という mock package があるので、そちらを利用して Repository や ViewModel の UnitTest を書くことができます。
-
-また、Http 通信をする ApiClient は、通信を mock する MockWebServer という package があるので、そちらを利用して UnitTest を書くことができます。
-
 次回は Mockito と MockWebServer を利用して、Riverpod で DI したクラスの UnitTest を書いていきます。
 
-Riverpod はとても便利な package ですね。
+しかし Riverpod はとても便利な package ですね。
 
 Riverpod の中でも非同期処理時のローディングとエラー処理を楽に実装できる AsyncValue はありそうで無かった機能なのでオススメです。
 
