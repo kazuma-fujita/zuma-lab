@@ -26,7 +26,7 @@ Riverpod 自体の使い方に関しては前回の記事で Todo リストア�
 
 アーキテクチャは簡易的な MVVM を利用しています。
 
-外部データ通信を行う Model は Repository と命名しています。
+Model 層は API response を処理する Repository と Http 通信を行う ApiClient で構成します。
 
 repository 検索アプリで使用している package はこちらです。
 
@@ -49,8 +49,9 @@ repository 検索アプリで使用している package はこちらです。
   - Http
 - ToastMessage 表示
   - FlutterToast
-- Mock
-  - mockito
+- Testing with mock
+  - Mockito
+  - MockWebServer
 
 検索した時に発生する Http 通信中のローディング処理、またエラー発生時のエラー処理を Riverpod の AsyncValue で実装します。
 
@@ -218,23 +219,80 @@ GET クエリの `q={検索キーワード}` が空文字の場合は Http ス�
 }
 ```
 
+`https://api.github.com/hoge` など存在しないエンドポイントを叩いた時は Http ステータス 400 でこちらの json が返却されます。
+
+```json
+{
+  "message": "Not Found",
+  "documentation_url": "https://docs.github.com/rest"
+}
+```
+
 こちらを元に ApiClient と GithubRepository クラスを実装します。
+
+## API からの response 情報を格納する RepositoryEntity クラスを実装する
+
+まず API response の情報を格納する入れ物である Entity クラスを実装します。
+
+- `lib/RepositoryEntity.dart`
+
+```
+@freezed
+abstract class RepositoryEntity with _$RepositoryEntity {
+  const factory RepositoryEntity({
+    @required final int id,
+    @required final String fullName,
+    final String description,
+    final String language,
+    @required final String htmlUrl,
+    @required final int stargazersCount,
+    @required final int watchersCount,
+    @required final int forksCount,
+    @required final RepositoryOwnerEntity owner,
+  }) = _RepositoryEntity;
+
+  factory RepositoryEntity.fromJson(Map<String, dynamic> json) =>
+      _$RepositoryEntityFromJson(json);
+}
+
+@freezed
+abstract class RepositoryOwnerEntity with _$RepositoryOwnerEntity {
+  const factory RepositoryOwnerEntity({
+    @required final String avatarUrl,
+  }) = _RepositoryOwnerEntity;
+
+  factory RepositoryOwnerEntity.fromJson(Map<String, dynamic> json) =>
+      _$RepositoryOwnerEntityFromJson(json);
+}
+```
+
+Freezed を利用してオブジェクトを immutable(不変)にしています。
+
+また、 `factory RepositoryEntity.fromJson` で API からの json response を解析し、json 要素を entity の property に mapping しています。
+
+Freezed の説明は今回本質では無いので割愛いたします。
+
+Freezed はとても便利な package なので別の記事で紹介したいと思います。
 
 ## Http 通信をする ApiClient クラスを実装する
 
-まず実際に Http 通信を行う ApiClient クラスを実装します。
+実際に Http 通信を行う ApiClient クラスを実装します。
 
 - `lib/github_api_client.dart`
 
 ```dart
 class GithubApiClient {
+  // factory コンストラクタは instanceを生成せず常にキャッシュを返す(singleton)
   factory GithubApiClient() => _instance;
+  // クラス生成時に instance を生成する class コンストラクタ
   GithubApiClient._internal();
+  // singleton にする為の instance キャッシュ
   static final GithubApiClient _instance = GithubApiClient._internal();
+  // GithubAPIの基底Url
   static const baseUrl = 'https://api.github.com';
 
-  Future<String> get(String query) async {
-    final url = '$baseUrl$query';
+  Future<String> get(String endpoint) async {
+    final url = '$baseUrl$endpoint';
     try {
       final response = await http.get(url);
       return _parseResponse(response.statusCode, response.body);
@@ -248,12 +306,9 @@ class GithubApiClient {
       case 200:
         return responseBody;
         break;
-      case 422:
-        final decodedJson = json.decode(responseBody) as Map<String, dynamic>;
-        throw Exception(decodedJson['message']);
-        break;
       default:
-        throw Exception('$httpStatus Unknown Error');
+        final decodedJson = json.decode(responseBody) as Map<String, dynamic>;
+        throw Exception('$httpStatus: ${decodedJson['message']}');
         break;
     }
   }
@@ -262,7 +317,9 @@ class GithubApiClient {
 
 SocketException の通信エラーハンドリングや、Http ステータスの分岐処理を行うヘルパークラスです。
 
-今回は次に実装する GithubRepository クラスからしかアクセスしませんが、様々な箇所で呼ばれることを想定して singleton パターンで実装しています。
+今回 GET しか実装していませんが、本来は POST/PUT/DELETE メソッドも実装します。
+
+また、今回は次に実装する GithubRepository クラスからしかアクセスしませんが、様々な箇所で呼ばれることを想定して singleton パターンで実装しています。
 
 ## Http 通信結果を処理する Repository クラスを実装する
 
@@ -272,13 +329,13 @@ SocketException の通信エラーハンドリングや、Http ステータス�
 
 ```dart
 class GithubRepository {
-  GithubRepository(this.apiClient);
+  GithubRepository(this._apiClient);
 
-  final GithubApiClient apiClient;
+  final GithubApiClient _apiClient;
 
   Future<List<RepositoryEntity>> searchRepositories(
       String searchKeyword) async {
-    final responseBody = await apiClient
+    final responseBody = await _apiClient
         .get('/search/repositories?q=$searchKeyword&sort=stars&order=desc');
 
     final decodedJson = json.decode(responseBody) as Map<String, dynamic>;
@@ -295,7 +352,7 @@ class GithubRepository {
 }
 ```
 
-ここでは `api.github.com` の searchAPI を GET して repository 情報の response を取得しています。
+ここでは `api.github.com` の searchAPI を GET して repository 情報の json response を取得、内容を entity 配列に変換し返却しています。
 
 `throw Exception` の引数に指定しているエラーメッセージは後述する AsyncValue を経由して画面に表示させます。
 
@@ -312,12 +369,12 @@ ViewModel は View の状態を扱うクラスで、先程作成した repositor
 ```dart
 class RepositoryListViewModel
     extends StateNotifier<AsyncValue<List<RepositoryEntity>>> {
-  RepositoryListViewModel(this.githubRepository)
+  RepositoryListViewModel(this._githubRepository)
       : super(const AsyncValue.loading()) {
     searchRepositories('flutter');
   }
 
-  final GithubRepository githubRepository;
+  final GithubRepository _githubRepository;
 
   Future<void> searchRepositories(String searchKeyword) async {
     if (searchKeyword.isEmpty) {
@@ -327,7 +384,7 @@ class RepositoryListViewModel
     state = const AsyncValue.loading();
     try {
       final repositoryList =
-          await githubRepository.searchRepositories(searchKeyword);
+          await _githubRepository.searchRepositories(searchKeyword);
       state = AsyncValue.data(repositoryList);
     } on Exception catch (error) {
       state = AsyncValue.error(error);
