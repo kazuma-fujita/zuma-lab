@@ -397,7 +397,9 @@ class RepositoryListViewModel
 
 実際に DI している箇所は [こちら](https://github.com/kazuma-fujita/flutter_search_github_repos/blob/master/lib/main.dart#L14) を参照ください。
 
-DI に関してはまた別に記事で紹介したいと思います。
+DI に関してはこちらの記事で詳しく解説しているので参照ください。
+
+<iframe class="hatenablogcard" style="width:100%;height:155px;margin:15px 0;max-width:680px;" title="Flutter Riverpod の Provider と StateNotifierProvider で DI をしてテスタビリティを向上させる | ZUMA Lab" src="https://hatenablog-parts.com/embed?url=https://zuma-lab.com/posts/flutter-search-github-riverpod-di" frameborder="0" scrolling="no"></iframe>
 
 本題の AsyncValue ですが、まず ViewModel で継承している `StateNotifier` の箇所で登場しています。
 

@@ -1,5 +1,5 @@
 ---
-title: 'Flutter Riverpod の Provider と StateNotifierProvider で DI をしてテスタビリティを向上させる'
+title: 'Flutter RiverpodでDIをしてテスタビリティを向上させる'
 date: '2021-02-19'
 isPublished: true
 metaDescription: 'Flutter Riverpod は状態管理の package です。Flutter Riverpod は DI としても利用できてテスタビリティを向上させることができます。DI をするとインスタンスの mocking が可能になり、テスタビリティが向上します。 Flutter では Mockito という mock package があるので、そちらを利用して Repository や ViewModel の UnitTest を書くことができます。また、Http 通信をする ApiClient は、通信を mock する MockWebServer という package があるので、そちらを利用して UnitTest を書くことができます'
@@ -138,15 +138,21 @@ Freezed はとても便利な package なので別の記事で紹介したいと
 - `lib/github_api_client.dart`
 
 ```dart
-class GithubApiClient {
+abstract class GithubApiClient {
+  Future<String> get(String endpoint);
+}
+
+class GithubApiClientImpl implements GithubApiClient {
   // factory コンストラクタは instanceを生成せず常にキャッシュを返す(singleton)
-  factory GithubApiClient() => _instance;
+  factory GithubApiClientImpl({String baseUrl = 'https://api.github.com'}) {
+    return _instance ??= GithubApiClientImpl._internal(baseUrl);
+  }
   // クラス生成時に instance を生成する class コンストラクタ
-  GithubApiClient._internal();
+  GithubApiClientImpl._internal(this.baseUrl);
   // singleton にする為の instance キャッシュ
-  static final GithubApiClient _instance = GithubApiClient._internal();
+  static GithubApiClientImpl _instance;
   // GithubAPIの基底Url
-  static const baseUrl = 'https://api.github.com';
+  final String baseUrl;
 
   Future<String> get(String endpoint) async {
     final url = '$baseUrl$endpoint';
@@ -165,11 +171,12 @@ class GithubApiClient {
         break;
       default:
         final decodedJson = json.decode(responseBody) as Map<String, dynamic>;
-        throw Exception('$httpStatus: ${decodedJson['message']}');
+        throw Exception('$httpStatus ${decodedJson['message']}');
         break;
     }
   }
 }
+
 ```
 
 SocketException の通信エラーハンドリングや、Http ステータスの分岐処理を行うヘルパークラスです。
@@ -178,6 +185,8 @@ SocketException の通信エラーハンドリングや、Http ステータス�
 
 また、今回は次に実装する GithubRepository クラスからしかアクセスしませんが、様々な箇所で呼ばれることを想定して singleton パターンで実装しています。
 
+他、ApiClient と Repository は DI するインスタンスの差し替えを容易にする為、abstract class を実装し implements で継承しています。
+
 ## Http 通信結果を処理する Repository クラスを実装する
 
 次に Http 通信結果を処理する Repository クラスを実装します。
@@ -185,11 +194,16 @@ SocketException の通信エラーハンドリングや、Http ステータス�
 - `lib/github_repository.dart`
 
 ```dart
-class GithubRepository {
-  GithubRepository(this._apiClient);
+abstract class GithubRepository {
+  Future<List<RepositoryEntity>> searchRepositories(String searchKeyword);
+}
+
+class GithubRepositoryImpl implements GithubRepository {
+  GithubRepositoryImpl(this._apiClient);
 
   final GithubApiClient _apiClient;
 
+  @override
   Future<List<RepositoryEntity>> searchRepositories(
       String searchKeyword) async {
     final responseBody = await _apiClient
@@ -262,11 +276,11 @@ Riverpod で DI する箇所は main.dart です。
 
 ```dart
 final apiClientProvider = Provider.autoDispose(
-  (_) => GithubApiClient(),
+  (_) => GithubApiClientImpl(),
 );
 
 final githubRepositoryProvider = Provider.autoDispose(
-  (ref) => GithubRepository(ref.read(apiClientProvider)),
+  (ref) => GithubRepositoryImpl(ref.read(apiClientProvider)),
 );
 
 final repositoryListViewModelProvider = StateNotifierProvider.autoDispose(
@@ -274,6 +288,7 @@ final repositoryListViewModelProvider = StateNotifierProvider.autoDispose(
 );
 
 void main() {
+  debugPaintSizeEnabled = false;
   runApp(
     ProviderScope(
       child: RepositoryListView(),

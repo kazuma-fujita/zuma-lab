@@ -1,5 +1,5 @@
 ---
-title: 'FlutterのTodoアプリで Riverpod / useProvider / StateNotifier / Freezed の基本的な使い方を覚える'
+title: 'FlutterのTodoアプリで Riverpod useProvider StateNotifier Freezed の基本的な使い方を覚える'
 date: '2021-02-15'
 isPublished: true
 metaDescription: 'FlutterのTodoアプリで Riverpod / useProvider / StateNotifier / Freezed の基本的な使い方を覚えます'

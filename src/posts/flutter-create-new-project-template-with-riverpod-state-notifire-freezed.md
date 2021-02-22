@@ -57,7 +57,6 @@ dependencies:
   hooks_riverpod:
   state_notifier:
   freezed_annotation:
-  fluttertoast:
 
 dev_dependencies:
   flutter_test:
@@ -69,11 +68,9 @@ dev_dependencies:
 
 `hooks_riverpod` は `riverpod` と `useProvider` を利用する為の package です。
 
-`fluttertoast` は Todo の追加・更新・削除時にトーストメッセージを表示する package です。
-
 freezed を利用する為、`dev_dependencies` に `build_runner`と `freezed` を追記します。
 
-## analysis_options.yaml に freezed ファイルの Warning を無視する設定を追記する
+## analysis_options.yaml を作成して freezed ファイルの Warning を無視する設定をする
 
 freezed で生成された freezed ファイルのコードは整形されていないので Lint の静的解析で Warning が発生します。
 
@@ -95,6 +92,50 @@ analyzer:
    - "**/*.freezed.dart"
 ```
 
+`**/*.g.dart` は JsonSerializable で出力されるファイルです。
+`**/*.freezed.dart` は freezed で出力されるファイルです。
+
+## build.yaml を作成して JsonSerializable の json 解析設定をする
+
+Freezed と併用して使用する JsonSerializable は json オブジェクトを解析して、json 要素をクラスの property に mapping してくれます。
+
+ただ、そのままの設定だと例えば json 要素に `full_name` のキーがあったとすると、それに対応するクラスの property 名は `fullName` として、`@JsonKey(name: 'full_name')` アノテーションを付ける必要があります。
+
+都度 `@JsonKey` を付けるのは面倒なので、自動でスネークケースの要素を キャメルケースの property に mapping して `@JsonKey` を省略する設定をします。
+
+`build.yaml` のテンプレートとして以下の階層に `build.yaml.tmpl` を作成します。
+
+```txt
+{flutter-sdk-path}/flutter/packages/flutter_tools/templates/app/build.yaml.tmpl
+```
+
+`build.yaml.tmpl` に以下を追記します。
+
+```yaml
+targets:
+  $default:
+    builders:
+      json_serializable:
+        options:
+          # Options configure how source code is generated for every
+          # `@JsonSerializable`-annotated class in the package.
+          #
+          # The default value for each is listed.
+          any_map: false
+          checked: true
+          create_factory: true
+          create_to_json: true
+          disallow_unrecognized_keys: false
+          explicit_to_json: false
+          field_rename: snake # none -> snake
+          generic_argument_factories: false
+          ignore_unannotated: false
+          include_if_null: true
+          nullable: true
+```
+
+`field_rename: snake` 設定をすると自動でスネークケースの要素を キャメルケースの property に mapping してくれます。
+
 ## template_manifest.json にプロジェクト作成時にコピーするファイルを追記する
 
 以下の場所に `template_manifest.json` があるので、新規で追加したテンプレートファイルを追記していきます。
@@ -103,7 +144,7 @@ analyzer:
 {flutter-sdk-path}/flutter/packages/flutter_tools/templates/template_manifest.json
 ```
 
-今回 `analysis_options.yaml.tmpl` を新規で作成しているのでファイルパスを追記します。
+今回 `analysis_options.yaml.tmpl` `build.yaml.tmpl` を新規で作成しているのでファイルパスを追記します。
 
 ```
 {
@@ -111,6 +152,7 @@ analyzer:
     "_comment": "A listing of all possible template output files.",
     "files": [
         "templates/app/analysis_options.yaml.tmpl",
+        "templates/app/build.yaml.tmpl",
 ```
 
 `template_manifest.json` にテンプレートファイルを追記するとプロジェクト新規作成にファイルをコピーしてくれます。
@@ -121,9 +163,9 @@ analyzer:
 
 それでは Android Studio を開いて、 `Create New Flutter Project` > `Flutter Application` から新規プロジェクトを作成しましょう。
 
-<img src='/images/posts/2021-02-04-1.png' class='img' alt='post image' />
+<img src='/images/posts/2021-02-04-3.png' class='img' alt='post image' />
 
-このようにプロジェクトに今回新規で追加したテンプレートの `analysis_options.yaml` が作成されています。
+このようにプロジェクトに今回新規で追加したテンプレートの `analysis_options.yaml` `build.yaml` が作成されています。
 
 `pubspec.yaml` には今回追加した package が追記されています。
 
