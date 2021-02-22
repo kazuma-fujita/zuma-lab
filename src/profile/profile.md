@@ -134,7 +134,11 @@ DataBinding x ViewModel x Coroutine x LiveData x Room を利用し、DB(SQLite)�
 - Architecture
   - MVVM
 - Android Jetpack
-  - ViewModel/Coroutine/LiveData/Room/Paging
+  - ViewModel
+  - Coroutine
+  - LiveData
+  - Room
+  - Paging
 - UI
   - Material Component
 - Http

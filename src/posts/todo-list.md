@@ -106,6 +106,7 @@ tags:
   - [ ] Flutter Riverpod DI 箇所の MockWebServer を利用した UnitTest 記事
   - [ ] Flutter Riverpod DI 箇所の Mockito を利用した UnitTest 記事
   - [ ] Flutter Riverpod DI 箇所の WidgetTest を利用した UnitTest 記事
+  - [ ] Flutter Riverpod DI 箇所の WidgetTest を利用した Loading 中処理の 記事
 
 実装完了したものからチェックを付けてますが、果たして全機能実装出来るのでしょうか。
 
