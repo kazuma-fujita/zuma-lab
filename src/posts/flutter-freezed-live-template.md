@@ -82,6 +82,10 @@ abstract class $CLASS_NAME$ with _$$$CLASS_NAME$ {
 }
 ```
 
+`part '$FILE_NAME$.g.dart'` と `$CLASS_NAME$.fromJson(...)` の箇所は json のフィールドをクラスの property にマッピングする JsonSerializable の記述です。
+
+JsonSerializable を使用しない場合は削除して構いません。
+
 次に `$CLASS_NAME`、`$FILE_NAME` の変数の値を設定します。
 
 <img src='/images/posts/2021-02-24-3.png' class='img' alt='posts image' />
