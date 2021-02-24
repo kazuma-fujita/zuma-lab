@@ -2,7 +2,7 @@
 title: 'Flutter JsonSerializableでスネークケースのjsonフィールドを自動で変換する'
 date: '2021-02-22'
 isPublished: true
-metaDescription: ''
+metaDescription: 'Flutter で API 通信のレスポンスをオブジェクトに変換する便利な package の JsonSerializable の小ネタです。JsonSerializable の build.yaml を設置して `@JsonKey` のマッピングを自動化しましょう。設定は簡単で、プロジェクトルートの階層に `build.yaml` を作成します。'
 tags:
   - 'Flutter'
   - 'Dart'
@@ -41,6 +41,15 @@ abstract class RepositoryEntity with _$RepositoryEntity {
 このようにクラスのプロパティ数が少ない場合は良いですが、これが何十個もある場合都度 `@JsonKey` アノテーションをつけるのはミスも発生しやすくオススメしません。
 
 そこで JsonSerializable の build.yaml を設置して `@JsonKey` のマッピングを自動化しましょう。
+
+### 環境
+
+- macOS Big Sur 11.1
+- Android Studio 4.1.2
+- Flutter 1.22.6
+- Dart 2.10.5
+
+## 設定方法
 
 設定は簡単で、プロジェクトルートの階層に `build.yaml` を作成して以下コピペします。
 
