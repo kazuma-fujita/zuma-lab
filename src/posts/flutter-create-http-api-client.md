@@ -259,7 +259,25 @@ ApiClient はテスタビリティを考慮して DI を前提として interfac
 
 また、ApiClient は様々な Repository から呼ばれることを想定して singleton パターンを採用しています。
 
-実際の通信部分は共通で必要なエラー処理する `_safeApiCall` メソッドを実装しています。
+その他、コンストラクタで `baseUrl` に `http://10.0.2.2:3030` を指定しています。
+
+```dart
+  factory TodoApiClientImpl({String baseUrl = 'http://10.0.2.2:3030'}) {
+    return _instance ??= TodoApiClientImpl._internal(baseUrl);
+  }
+```
+
+Android のエミュレーターからは `localhost` や `172.0.0.1` にアクセスできません。
+
+ローカルには `10.0.2.2` にアクセスします。
+
+また、先程 NodeServer をオプション `--port` で 3030 番で立ち上げました。
+
+ですので baseUrl には `10.0.2.2:3030` を指定します。
+
+ポート番号に関しては適宜ご自身の環境で書き換えてください。
+
+次に、実際の通信部分は共通で必要なエラー処理する `_safeApiCall` メソッドを実装しています。
 
 ```dart
   Future<String> _safeApiCall(Function callback) async {
