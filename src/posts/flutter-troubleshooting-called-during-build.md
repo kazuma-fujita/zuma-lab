@@ -1,5 +1,5 @@
 ---
-title: '[Flutter]setState() or markNeedsBuild() called during build エラートラブルシューティング'
+title: 'FlutterでsetState() or markNeedsBuild() called during buildエラーが発生した場合のトラブルシューティング'
 date: '2021-02-27'
 isPublished: true
 metaDescription: 'Flutter 初学者の筆者が setState() or markNeedsBuild() called during build エラーに遭遇し???の状態からエラー解消を解消できたので記録として残します。setState() or markNeedsBuild() called during build.エラーはビルド中に画面状態を変更しようとすると発生するエラーでした。'

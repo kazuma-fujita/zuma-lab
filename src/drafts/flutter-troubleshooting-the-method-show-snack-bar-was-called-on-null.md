@@ -1,5 +1,5 @@
 ---
-title: '[Flutter]The method 'showSnackBar' was called on nullエラートラブルシューティング'
+title: 'FlutterでThe method 'showSnackBar' was called on nullエラーが発生した場合のトラブルシューティング'
 date: '2021-02-28'
 isPublished: true
 metaDescription: 'Flutter 初学者の筆者が The method 'showSnackBar' was called on null エラーに遭遇し???の状態からエラー解消を解消できたので記録として残します。The method 'showSnackBar' was called on null エラーはビルド中に SnackBar を表示(画面状態を変更)しようとすると発生するエラーでした。'
