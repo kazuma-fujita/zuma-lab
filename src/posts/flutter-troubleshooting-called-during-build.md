@@ -10,7 +10,7 @@ tags:
 
 Flutter 初学者の筆者が setState() or markNeedsBuild() called during build エラーに遭遇し???の状態からエラー解消を解消できたので記録として残します。
 
-## setState() or markNeedsBuild() called during build エラー発生箇所
+## エラー発生箇所
 
 Todo アプリで Todo 一覧から Todo 作成画面に遷移して、Todo 作成後に一覧画面へ遷移する実装をしていました。
 
@@ -57,7 +57,7 @@ The widget on which setState() or markNeedsBuild() was called was: Overlay-[Labe
   state: OverlayState#84b7b(entries: [OverlayEntry#07a4d(opaque: true; maintainState: false), OverlayEntry#82e92(opaque: false; maintainState: true), OverlayEntry#257e9(opaque: false; maintainState: false), OverlayEntry#9c6b1(opaque: false; maintainState: true)])
 ```
 
-## setState() or markNeedsBuild() called during build.エラーの原因
+## 原因
 
 エラーログを Google 翻訳する限り、Widget のビルド中に状態を変更しちゃ駄目ですよ、と強引に意訳。
 
@@ -114,7 +114,7 @@ This Overlay widget cannot be marked as needing to build because the framework i
 
 原因は EasyLoading 自体が非同期で動いており、`dismiss()` のローディング終了中(Widget リビルド中)に `Navigator.pop` で前の画面遷移をしようとして、 setState() or markNeedsBuild() called during build.エラーが発生していたのです。
 
-## setState() or markNeedsBuild() called during build.エラーの解決方法
+## 解決方法
 
 - 解決方法 1
 

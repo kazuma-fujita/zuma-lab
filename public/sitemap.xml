@@ -73,7 +73,7 @@
 
   <url>
     <loc>https://zuma-lab.com/posts/flutter-create-http-api-client</loc>
-    <lastmod>2021-02-26T12:02:43.979Z</lastmod>
+    <lastmod>2021-02-26T12:33:49.990Z</lastmod>
   </url>
 
   <url>
@@ -129,6 +129,13 @@
       >https://zuma-lab.com/posts/flutter-todo-list-riverpod-use-provider-state-notifier-freezed</loc
     >
     <lastmod>2021-02-22T09:32:12.593Z</lastmod>
+  </url>
+
+  <url>
+    <loc
+      >https://zuma-lab.com/posts/flutter-troubleshooting-called-during-build</loc
+    >
+    <lastmod>2021-02-27T07:45:09.780Z</lastmod>
   </url>
 
   <url>
