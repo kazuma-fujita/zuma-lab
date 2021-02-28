@@ -1,14 +1,32 @@
 ---
-title: 'FlutterでThe method 'showSnackBar' was called on nullエラーが発生した場合のトラブルシューティング'
+title: 'FlutterでThe method showSnackBar was called on nullエラーが発生した場合のトラブルシューティング'
 date: '2021-02-28'
 isPublished: true
-metaDescription: 'Flutter 初学者の筆者が The method 'showSnackBar' was called on null エラーに遭遇し???の状態からエラー解消を解消できたので記録として残します。The method 'showSnackBar' was called on null エラーはビルド中に SnackBar を表示(画面状態を変更)しようとすると発生するエラーでした。'
+metaDescription: 'Flutter 初学者の筆者が The method showSnackBar was called on null エラーに遭遇し???の状態からエラー解消を解消できたので記録として残します。The method showSnackBar was called on null エラーはビルド中に SnackBar を表示(画面状態を変更)しようとすると発生するエラーでした。'
 tags:
   - 'Flutter'
   - 'Dart'
 ---
 
 Flutter 初学者の筆者が The method 'showSnackBar' was called on null エラーに遭遇し???の状態からエラー解消を解消できたので記録として残します。
+
+## SnackBar を表示する為の ScaffoldState を取得する方法
+
+まず SnackBar の基本として、SnackBar は ScaffoldState を利用します。
+
+Flutter では Scaffold の状態を保持する ScaffoldState オブジェクトから スナックバーを表示するための showSnackBar メソッドを呼ぶことでスナックバーを表示できます。
+
+Scaffold の状態を表す ScaffoldState をどうやってとるかというと、ふた通りあります。
+
+ひとつは `Scaffold.of(context)` とする方法です。of メソッドが渡したコンテキストの ScaffoldState を返します。
+
+もう１つの方法は、Scaffold のグローバルキーから取得する方法です。
+
+グローバルキーはウィジェットの key プロパティに設定でき、 一般にウィジェットを外部から参照するための変数として使えます。
+
+この Scaffold のグローバルキーが currentState プロパティを持っていて、 これが現在の ScaffoldState を保持しています。
+
+今回エラーが発生したケースでは `Scaffold.of(context)` ではなく、グローバルキー `GlobalKey<ScaffoldState>` で ScaffoldState を保持するやり方となります。
 
 ## The method 'showSnackBar' was called on null エラー発生箇所
 
