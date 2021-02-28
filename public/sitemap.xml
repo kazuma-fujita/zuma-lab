@@ -73,7 +73,7 @@
 
   <url>
     <loc>https://zuma-lab.com/posts/flutter-create-http-api-client</loc>
-    <lastmod>2021-02-26T12:02:43.979Z</lastmod>
+    <lastmod>2021-02-26T12:33:49.990Z</lastmod>
   </url>
 
   <url>
@@ -129,6 +129,20 @@
       >https://zuma-lab.com/posts/flutter-todo-list-riverpod-use-provider-state-notifier-freezed</loc
     >
     <lastmod>2021-02-22T09:32:12.593Z</lastmod>
+  </url>
+
+  <url>
+    <loc
+      >https://zuma-lab.com/posts/flutter-troubleshooting-called-during-build</loc
+    >
+    <lastmod>2021-02-27T08:20:01.064Z</lastmod>
+  </url>
+
+  <url>
+    <loc
+      >https://zuma-lab.com/posts/flutter-troubleshooting-the-method-show-snack-bar-was-called-on-null</loc
+    >
+    <lastmod>2021-02-28T01:06:51.366Z</lastmod>
   </url>
 
   <url>
