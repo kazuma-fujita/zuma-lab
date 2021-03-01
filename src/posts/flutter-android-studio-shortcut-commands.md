@@ -200,6 +200,14 @@ command と `Method` `Member` の頭文字 M を組み合わせます。
 
 `command` + `Backspace`
 
+## Widget のメソッド抽出
+
+Widget から新しいメソッドを作成します。
+
+Widget にカーソルを当てて以下ショートカットを実行します。
+
+`command` + `option` + `Enter`
+
 ## Extend Selection, Shrink Selection（選択範囲を拡大、選択範囲を縮小）
 
 実行するごとにカーソル位置を起点とした選択範囲が拡大/縮小します。
