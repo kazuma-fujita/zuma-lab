@@ -63,7 +63,7 @@
     <loc
       >https://zuma-lab.com/posts/flutter-android-studio-shortcut-commands</loc
     >
-    <lastmod>2021-02-10T01:46:24.578Z</lastmod>
+    <lastmod>2021-03-01T05:23:38.103Z</lastmod>
   </url>
 
   <url>
@@ -118,6 +118,11 @@
   </url>
 
   <url>
+    <loc>https://zuma-lab.com/posts/flutter-tab-bar-with-riverpod</loc>
+    <lastmod>2021-03-01T11:17:00.313Z</lastmod>
+  </url>
+
+  <url>
     <loc
       >https://zuma-lab.com/posts/flutter-todo-list-riverpod-use-provider-change-notifier</loc
     >
@@ -142,7 +147,7 @@
     <loc
       >https://zuma-lab.com/posts/flutter-troubleshooting-the-method-show-snack-bar-was-called-on-null</loc
     >
-    <lastmod>2021-02-28T01:06:51.366Z</lastmod>
+    <lastmod>2021-02-28T01:27:05.526Z</lastmod>
   </url>
 
   <url>
