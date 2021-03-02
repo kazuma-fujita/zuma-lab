@@ -73,6 +73,88 @@ class LandScapeForm extends HookWidget {
 
 TextField が一つあるシンプルな画面です。
 
+ソフトウェアキーボードの Enter をトリガーに実行される `onSubmitted` で 作成処理を実装します。
+
+```dart
+        onSubmitted: (String name) {
+          viewModel.createLandscape(name);
+          Navigator.pop(context);
+        },
+```
+
+`viewModel.createLandscape` メソッドを呼んでいます。
+
+viewModel の `createLandscape` はこのように実装しています。
+
+- `lib/landscape_view_model.dart`
+
+```dart
+class LandscapeViewModel extends StateNotifier<LandscapeList> {
+  LandscapeViewModel() : super(const LandscapeList());
+
+  void createLandscape(String name) {
+    final currentList = state.landscapes;
+    final id = currentList.length + 1;
+    final imageUrl = 'https://source.unsplash.com/random/200x200?sig=$id';
+    state = state.copyWith(
+      landscapes: [
+        ...currentList,
+        Landscape(id: id, name: name, imageUrl: imageUrl)
+      ],
+    );
+  }
+}
+```
+
+`StateNotifier<LandscapeList>` で指定している `LandscapeList` は TabBar に表示するデータの配列を保持するクラスです。
+
+`state.landscapes` で配列を取得して、Landscape オブジェクトを配列に追加しています。
+
+この LandscapeList の配列を View 側で取得して、配列の状態に変更があれば Widget の再ビルドが走ります。
+
+LandscapeList は `Landscape` オブジェクトを保持しています。
+
+- `lib/landscape.dart`
+
+```dart
+@freezed
+abstract class Landscape with _$Landscape {
+  const factory Landscape({
+    @required final int id,
+    @required final String name,
+    @required final String imageUrl,
+  }) = _Landscape;
+}
+
+@freezed
+abstract class LandscapeList with _$LandscapeList {
+  const factory LandscapeList({
+    @Default(<Landscape>[]) final List<Landscape> landscapes,
+  }) = _LandscapeList;
+}
+```
+
+ここでは Freezed を利用して、オブジェクトを immutable(不変)にしています。
+
+LandscapeList と Landscape オブジェクトは immutable な為、ViewModel 側で `state.copyWith` を使用してオブジェクトを直接上書きせずコピーを新たに生成して state に代入しています。
+
+```dart
+    state = state.copyWith(
+      landscapes: [
+        ...currentList,
+        Landscape(id: id, name: name, imageUrl: imageUrl)
+      ],
+    );
+```
+
+StateNotifier や Freezed に関しては以前の記事で紹介してますので参照ください。
+
+```
+<iframe class="hatenablogcard" style="width:100%;height:155px;margin:15px 0;max-width:680px;" title="FlutterのTodoアプリで Riverpod useProvider StateNotifier Freezed の基本的な使い方を覚える | ZUMA Lab" src="https://hatenablog-parts.com/embed?url=https://zuma-lab.com/posts/flutter-todo-list-riverpod-use-provider-state-notifier-freezed" frameborder="0" scrolling="no"></iframe>
+```
+
+前置きが長くなってしまいましたが、次は実際に LandscapeList を取得して TabBar を表示する View を作成します。
+
 ## TabBar を表示する View を実装する
 
 - `lib/landscape_tab_bar_view.dart`
