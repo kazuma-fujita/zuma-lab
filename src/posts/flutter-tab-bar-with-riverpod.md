@@ -108,6 +108,8 @@ class LandscapeViewModel extends StateNotifier<LandscapeList> {
 
 `StateNotifier<LandscapeList>` で指定している `LandscapeList` は TabBar に表示するデータの配列を保持するクラスです。
 
+Landscape オブジェクトの `imageUrl` にはランダム画像を取得する URL を代入しています。
+
 `state.landscapes` で配列を取得して、Landscape オブジェクトを配列に追加しています。
 
 この LandscapeList の配列を View 側で取得して、配列の状態に変更があれば Widget の再ビルドが走ります。
@@ -149,9 +151,7 @@ LandscapeList と Landscape オブジェクトは immutable な為、ViewModel �
 
 StateNotifier や Freezed に関しては以前の記事で紹介してますので参照ください。
 
-```
 <iframe class="hatenablogcard" style="width:100%;height:155px;margin:15px 0;max-width:680px;" title="FlutterのTodoアプリで Riverpod useProvider StateNotifier Freezed の基本的な使い方を覚える | ZUMA Lab" src="https://hatenablog-parts.com/embed?url=https://zuma-lab.com/posts/flutter-todo-list-riverpod-use-provider-state-notifier-freezed" frameborder="0" scrolling="no"></iframe>
-```
 
 前置きが長くなってしまいましたが、次は実際に LandscapeList を取得して TabBar を表示する View を作成します。
 
