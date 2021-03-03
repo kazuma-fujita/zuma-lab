@@ -205,7 +205,7 @@ ListView の縦リストのレイアウトを実装しています。
 
 赤枠の部分です。
 
-この数字が大きければ、表示中画像の隣の画像がより広く表示されます。
+この数字が小さければ、表示中画像の隣の画像がより広く表示されます。
 
 この調整が iOS や Android ネイティブだと難しくて、Flutter は一発で出来るので感動しました。
 
@@ -219,7 +219,7 @@ ListView の縦リストのレイアウトを実装しています。
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8),
       child: Card(
-        child: Image.network(imageUrl),
+        child: Image.network(imageUrl, fit: BoxFit.cover),
       ),
     );
   }
@@ -232,6 +232,17 @@ ListView の縦リストのレイアウトを実装しています。
 画像カルーセルをキレイに表示する為、この padding 値と、`viewportFraction` の値を同時に微調整しました。
 
 ランダム画像は `https://source.unsplash.com/random/` から取得しています。
+
+Image.network の第二引数に `fit: BoxFit.cover` を指定して画像を親 Widget(今回でいう Padding)に収めるようにします。
+
+筆者が BoxFit で主に使用するパラメータは `contain` と `cover` です。
+
+- contain
+  - 画像の縦横比は変えずに親をはみ出さない範囲で最大の大きさまで拡大縮小する
+- cover
+  - 画像の縦横比は変えずに親を埋めていない部分ができない範囲で最小の大きさまで拡大縮小する
+
+こちらはお好みで設定してください。
 
 表示する画像サイズを変える場合は画像表示領域に合わせて padding と viewportFraction を調整しましょう。
 
