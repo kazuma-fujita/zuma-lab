@@ -77,7 +77,7 @@ Flutter が 2.0.0、Dart が 2.12.0 に upgrade されていますね。
 
 次に pubspec.yaml に追加している package を Null Safety に対応している version に upgrade します。
 
-Flutter 公式に Null Safety 導入手順が解説されているのでそちらを元に修正していきます。
+Flutter 公式に Null Safety 導入手順が解説されているのでそちらを元に進めていきます。
 
 <iframe class="hatenablogcard" style="width:100%;height:155px;margin:15px 0;max-width:680px;" title="Migrating to null safety | Dart" src="https://hatenablog-parts.com/embed?url=https://dart.dev/null-safety/migration-guide#migration-tool" frameborder="0" scrolling="no"></iframe>
 
@@ -122,7 +122,7 @@ To update these dependencies, use `dart pub upgrade`.
 To update these dependencies, edit pubspec.yaml, or run `dart pub upgrade --null-safety`.
 ```
 
-`Resolvable` の列が Null Safety 対応可能な Version です。
+ちょっと分かりづらいですが `Resolvable` の列が Null Safety 対応可能な Version です。
 
 `✓` がついている package は Null Safety に対応しているのですが、 `✗` ついている package は非対応となります。
 
@@ -243,6 +243,10 @@ dev_dependencies:
 - 手動で Null Safety に対応する
 
 ファイル数が少ないプロジェクトや、初期段階のプロジェクトは手動で Null Safety に対応させた方がいい場面があると思うので、自動と手動に分けて説明します。
+
+また、自動 Migration ツールの欠点として意図しない修正が発生する場合があります。
+
+その場合 Migration ツールと手動修正を併用する必要があります。
 
 ## 手動で Null Safety に対応する
 
@@ -470,7 +474,9 @@ Null Safety エラーになっているファイル名の横にバッジでエ�
 
 このケースの場合、修正内容が `Changed type 'int' to be nullable` となっていて int 型を Optional 型にラッピングする内容になっています。
 
-問題無ければ左ペインの Source Tree を見てエラーを修正するファイル名を選択します。
+修正内容に問題がある場合、手動でソースコードを修正して、 `RERUN FROM SOURCES` ボタンを押してソースコードを再読み込みします。
+
+最終的に問題無ければ左ペインの Source Tree を見てエラーを修正するファイル名を選択します。
 
 `APPLY MIGRATION` ボタンを押して migration を実行します。
 
