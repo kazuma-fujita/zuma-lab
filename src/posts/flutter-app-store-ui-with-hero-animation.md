@@ -1,5 +1,5 @@
 ---
-title: 'FlutterのHero animationsでAppStore風UIを作る'
+title: 'FlutterのHero AnimationsでAppStore風UIを作る'
 date: '2021-03-09'
 isPublished: true
 metaDescription: 'Flutter の Hero Animation で AppStore 風 UI を作ってみました。画面遷移する時に Hero animations でカード UI が拡大するアニメーションを実装してAppStore風UIを実装します。'
@@ -166,7 +166,7 @@ class ListCardItem extends HookWidget {
 }
 ```
 
-アニメーションに関わるところで、Flutter hooks の `useState` でカード UI が押されたかどうかの条件判定用フラグを作成しています。
+アニメーションに関わるところで、Flutter Hooks の `useState` でカード UI が押されたかどうかの条件判定用フラグを作成しています。
 
 ```dart
   @override
@@ -174,7 +174,7 @@ class ListCardItem extends HookWidget {
     final isPushed = useState<bool>(false);
 ```
 
-Flutter hooks はここでは詳しく説明しませんが、 `useState` は `StatefulWidget` で Widget の状態管理をしているようなものです。
+Flutter Hooks はここでは詳しく説明しませんが、 `useState` は `StatefulWidget` で Widget の状態管理をしているようなものです。
 
 詳しくは [Flutter Hooks](https://pub.dev/packages/flutter_hooks) のドキュメントを参照ください。
 
