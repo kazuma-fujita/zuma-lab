@@ -116,10 +116,15 @@
   </url>
 
   <url>
+    <loc>https://zuma-lab.com/posts/flutter-qr-code-scanner-camera</loc>
+    <lastmod>2021-03-10T11:22:17.137Z</lastmod>
+  </url>
+
+  <url>
     <loc
-      >https://zuma-lab.com/posts/flutter-replace-fluttertoast-to-scaffold-manager-show-snack-bar</loc
+      >https://zuma-lab.com/posts/flutter-replace-fluttertoast-to-scaffold-messenger-show-snack-bar</loc
     >
-    <lastmod>2021-03-09T08:13:42.798Z</lastmod>
+    <lastmod>2021-03-09T08:17:42.195Z</lastmod>
   </url>
 
   <url>
@@ -150,7 +155,7 @@
     <loc
       >https://zuma-lab.com/posts/flutter-todo-list-riverpod-use-provider-change-notifier</loc
     >
-    <lastmod>2021-02-22T09:31:59.467Z</lastmod>
+    <lastmod>2021-03-10T01:47:57.318Z</lastmod>
   </url>
 
   <url>
@@ -165,6 +170,13 @@
       >https://zuma-lab.com/posts/flutter-troubleshooting-called-during-build</loc
     >
     <lastmod>2021-02-27T08:20:01.064Z</lastmod>
+  </url>
+
+  <url>
+    <loc
+      >https://zuma-lab.com/posts/flutter-troubleshooting-pod-install-undefined-method-each-child</loc
+    >
+    <lastmod>2021-03-10T11:21:59.965Z</lastmod>
   </url>
 
   <url>
