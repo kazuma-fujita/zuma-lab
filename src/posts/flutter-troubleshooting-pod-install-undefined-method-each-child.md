@@ -1,8 +1,8 @@
 ---
-title: 'Flutterのpod installで発生するundefined method each_child for #<Dir:0x0000XXXXX> Did you mean? each_sliceエラーのトラブルシューティング'
+title: 'Flutterのpod installで発生するundefined method each_child for ... Did you mean? each_sliceエラーのトラブルシューティング'
 date: '2021-03-10'
 isPublished: true
-metaDescription: 'Flutterのpod installで発生するundefined method each_child for #<Dir:0x0000XXXXX> Did you mean? each_sliceエラーはRuby Version を上げて CocoaPods を再 install して解決しました。解決までの記録を残します。'
+metaDescription: 'Flutterのpod installで発生するundefined method each_child for ... Did you mean? each_sliceエラーはRuby Version を上げて CocoaPods を再 install して解決しました。解決までの記録を残します。'
 tags:
   - 'Flutter'
   - 'Dart'
