@@ -582,3 +582,11 @@ Flutter の宣言的 UI と ChangeNotifier による通知の仕組み、riverpo
 最後に今回実装した Todo アプリは Github にあるので参照ください。
 
 <iframe class="hatenablogcard" style="width:100%;height:155px;margin:15px 0;max-width:680px;" title="kazuma-fujita/flutter_todo_list_with_riverpod: Practice Flutter riverpod with todo list." src="https://hatenablog-parts.com/embed?url=https://github.com/kazuma-fujita/flutter_todo_list_with_riverpod" frameborder="0" scrolling="no"></iframe>
+
+**2021/02/15 追記**
+
+Flutter の Todo アプリで Riverpod / useProvider / StateNotifier / Freezed の使い方を覚える記事を書きました。
+
+筆者の感想としては ChangeNotifier よりも StateNotifier + Freezed の組み合わせの方が便利と感じたので、ぜひこちらの記事もご覧ください。
+
+<iframe class="hatenablogcard" style="width:100%;height:155px;margin:15px 0;max-width:680px;" title="FlutterのTodoアプリで Riverpod / useProvider / StateNotifier / Freezed の基本的な使い方を覚える | ZUMA Lab" src="https://hatenablog-parts.com/embed?url=https://zuma-lab.com/posts/flutter-todo-list-riverpod-use-provider-state-notifier-freezed" frameborder="0" scrolling="no"></iframe>
