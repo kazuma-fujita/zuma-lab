@@ -79,34 +79,23 @@ dependencies:
     }
 ```
 
-minSdkVersion が低いまま qr_code_scanner を Android の実機、エミュレーターで実行すると以下のエラーが発生します。
+## Xcode で Bundle Identifier をユニークにする
 
+QR コードの動作確認は実機が必要です。
+
+iPhone の実機でアプリを実行するには iOS プロジェクトの `Bundle Identifier` をユニークな名前に修正します。
+
+プロジェクトルートで以下コマンドを実行して Xcode を開きます。
+
+```txt
+open ios/Runner.xcworkspace
 ```
-Launching lib/main.dart on Android SDK built for x86 in debug mode...
-Running Gradle task 'assembleDebug'...
-/Users/kazuma/Documents/github/flutter/flutter_qr_code_scanner/android/app/src/debug/AndroidManifest.xml Error:
-	uses-sdk:minSdkVersion 16 cannot be smaller than version 20 declared in library [:qr_code_scanner] /Users/kazuma/Documents/github/flutter/flutter_qr_code_scanner/build/qr_code_scanner/intermediates/library_manifest/debug/AndroidManifest.xml as the library might be using APIs not available in 16
-	Suggestion: use a compatible library with a minSdk of at most 16,
-		or increase this project's minSdk version to at least 20,
-		or use tools:overrideLibrary="net.touchcapture.qr.flutterqr" to force usage (may lead to runtime failures)
 
-FAILURE: Build failed with an exception.
+TARGETS > Runner > Signing & Capabilities を開きます。
 
-* What went wrong:
-Execution failed for task ':app:processDebugMainManifest'.
-> Manifest merger failed : uses-sdk:minSdkVersion 16 cannot be smaller than version 20 declared in library [:qr_code_scanner] /Users/kazuma/Documents/github/flutter/flutter_qr_code_scanner/build/qr_code_scanner/intermediates/library_manifest/debug/AndroidManifest.xml as the library might be using APIs not available in 16
-  	Suggestion: use a compatible library with a minSdk of at most 16,
-  		or increase this project's minSdk version to at least 20,
-  		or use tools:overrideLibrary="net.touchcapture.qr.flutterqr" to force usage (may lead to runtime failures)
+Bundle Identifier の `com.example.projectName` をユニークな名前に変更します。
 
-* Try:
-Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output. Run with --scan to get full insights.
-
-* Get more help at https://help.gradle.org
-
-BUILD FAILED in 8s
-Exception: Gradle task assembleDebug failed with exit code 1
-```
+<img src='/images/posts/2021-03-10-1.png' class='img' alt='posted image' />
 
 ## iOS Info.plist に Key を追加する
 
