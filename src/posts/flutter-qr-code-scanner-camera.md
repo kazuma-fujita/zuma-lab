@@ -8,27 +8,27 @@ tags:
   - 'Dart'
 ---
 
-今回は Flutter の qr_code_scanner で QR コード読み込みをしてみたいと思います。
+今回は Flutter の `qr_code_scanner` で QR コード読み込みをしてみたいと思います。
 
-調べると QR コード読み込みをする package は qr_code_scanner か barcode_scan が pub.dev の Like 数が多かったです。
+調べると QR コード読み込みをする package は `qr_code_scanner` か barcode_scan が pub.dev の Like 数が多かったです。
 
-- qr_code_scanner
+- `qr_code_scanner`
 
-<iframe class="hatenablogcard" style="width:100%;height:155px;margin:15px 0;max-width:680px;" title="qr_code_scanner | Flutter Package" src="https://hatenablog-parts.com/embed?url=https://pub.dev/packages/qr_code_scanner" frameborder="0" scrolling="no"></iframe>
+<iframe class="hatenablogcard" style="width:100%;height:155px;margin:15px 0;max-width:680px;" title="qr_code_scanner | Flutter Package" src="https://hatenablog-parts.com/embed?url=https://pub.dev/packages/`qr_code_scanner`" frameborder="0" scrolling="no"></iframe>
 
-- barcode_scan
+- `barcode_scan`
 
 <iframe class="hatenablogcard" style="width:100%;height:155px;margin:15px 0;max-width:680px;" title="barcode_scan | Flutter Package" src="https://hatenablog-parts.com/embed?url=https://pub.dev/packages/barcode_scan" frameborder="0" scrolling="no"></iframe>
 
-barcode_scan の方が日本語記事が多く、qr_code_scanner についての記事が少なかったので今回記事にしました。
+`barcode_scan` の方が日本語記事が多く、`qr_code_scanner` についての記事が少なかったので今回記事にしました。
 
-また、qr_code_scanner は 2021/03/17 現在、Prerelease version 0.4.0-nullsafety.0 で Flutter2(Dart 2.12.0)の Null Safety に対応しています。
+また、`qr_code_scanner` は 2021/03/17 現在、Prerelease version 0.4.0-nullsafety.0 で Flutter2(Dart 2.12.0)の Null Safety に対応しています。
 
 barcode_scan は Published May 8, 2020 で更新が止まっています。
 
-Flutter2 で Null Safety を導入している筆者は qr_code_scanner 一択でした。
+Flutter2 で Null Safety を導入している筆者は `qr_code_scanner` 一択でした。
 
-という訳で今回は qr_code_scanner を利用してこのようなアプリを作ります。
+という訳で今回は `qr_code_scanner` を利用してこのようなアプリを作ります。
 
 <img src='/images/posts/2021-03-17-1.gif' class='img' alt='posted gif' styled='width: 70%'/>
 
@@ -45,7 +45,7 @@ Flutter2 で Null Safety を導入している筆者は qr_code_scanner 一択�
 - Flutter 2.0.0
 - Dart 2.12.0
 
-### qr_code_scanner の利用条件を確認する
+### `qr_code_scanner` の利用条件を確認する
 
 まず必須条件として、Android SDK 21 以降、iOS8 以降となっています。
 
@@ -55,7 +55,7 @@ Requires at least SDK 21 (Android 5.0). Requires at least iOS 8.
 
 ほとんどの場合問題にならないと思いますが、引っかかる場合は利用の検討が必要です。
 
-## qr_code_scanner を install する
+## `qr_code_scanner` を install する
 
 pubspec.yaml に以下追記します。
 
@@ -67,7 +67,7 @@ dependencies:
   permission_handler: // added
 ```
 
-今回は qr_code_scanner の他、カメラの許可状態を取得する為の permission_handler を利用します。
+今回は `qr_code_scanner` の他、カメラの許可状態を取得する為の permission_handler を利用します。
 
 追記後は忘れずに `flutter pub get` を実行しましょう。
 
@@ -75,14 +75,14 @@ dependencies:
 
 プロジェクトの `android/app/` 配下にある build.gradle ファイルの `minSdkVersion` を修正します。
 
-筆者の場合、 `minSdkVersion` が 16 だった為、qr_code_scanner の必須条件である 21 に変更しました。
+筆者の場合、 `minSdkVersion` が 16 だった為、`qr_code_scanner` の必須条件である 21 に変更しました。
 
 - `android/app/build.gradle`
 
 ```gradle
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "com.example.flutter_qr_code_scanner"
+        applicationId "com.example.flutter_`qr_code_scanner`"
         minSdkVersion 21 // 16 -> 21
         targetSdkVersion 30
         versionCode flutterVersionCode.toInteger()
@@ -287,7 +287,7 @@ if (await Permission.camera.request().isGranted) {
 
 `permission_handler` の `openAppSettings` で設定画面へ遷移させることができます。
 
-## qr_code_scanner で QR コード読み取り画面を実装する
+## `qr_code_scanner` で QR コード読み取り画面を実装する
 
 - `lib/qr_code_scanner_view.dart`
 
@@ -629,7 +629,7 @@ class ConfirmView extends StatelessWidget {
 
 また再度 QR コードを読み取るボタンと、`Navigator.pushNamedAndRemoveUntil` で最初の画面に戻るボタンを設置しています。
 
-以上で簡単ですが、qr_code_scanner を利用した QR コード読み取りアプリの実装でした。
+以上で簡単ですが、`qr_code_scanner` を利用した QR コード読み取りアプリの実装でした。
 
 ## カメラパーミッション許可ダイアログのテスト Tips
 
