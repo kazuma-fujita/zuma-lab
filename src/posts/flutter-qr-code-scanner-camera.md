@@ -631,36 +631,6 @@ class ConfirmView extends StatelessWidget {
 
 以上で簡単ですが、`qr_code_scanner` を利用した QR コード読み取りアプリの実装でした。
 
-## カメラパーミッション許可ダイアログのテスト Tips
-
-OS 固有のカメラパーミッション許可ダイアログを表示させるテストをする時の Tips です。
-
-カメラパーミッション許可ダイアログは build run でアプリの install 後、一度許可、不許可を選択するとアプリを再び build run しても表示されません。
-
-実機でカメラパーミッションの許可、不許可をテストする時にカメラパーミッション許可ダイアログを再度表示させたくなると思います。
-
-Android は実機に install したアプリを削除、再度 build run すればパーミッション許可ダイアログが表示されます。
-
-問題は iOS で、アプリを削除しても OS が一定期間アプリのパーミッションを保持しているので、再度 build run で install しても前回選択したパーミッション情報が残った状態になります。
-
-カメラパーミッション許可ダイアログを表示させる為には違うアプリと認識させる必要があります。
-
-具体的には、プロジェクトの `Bundle Identifier` を前回使用した名前とは別のユニークな名前に修正します。
-
-プロジェクトルートで以下コマンドを実行して Xcode を開きます。
-
-```txt
-open ios/Runner.xcworkspace
-```
-
-TARGETS > Runner > Signing & Capabilities を開きます。
-
-Bundle Identifier の `com.example.projectName` をユニークな名前に変更します。
-
-<img src='/images/posts/2021-03-10-1.png' class='img' alt='posted image' />
-
-これで `build run` すれば別のアプリとして install されて、カメラパーミッション許可ダイアログが表示されるようになります。
-
 ### iOS でカメラパーミッションを途中で変更するとアプリが落ちる問題
 
 これは iOS のカメラパーミッションのテストをしていて遭遇したバグです。
