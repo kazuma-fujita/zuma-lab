@@ -14,6 +14,8 @@ FCM (Firebase Cloud Messaging) のプッシュ通知設定とプッシュ通知�
 
 前回 Firebase のプロジェクト設定から iOS/Android の FCM 設定を解説しました。
 
+<iframe class="hatenablogcard" style="width:100%;height:155px;margin:15px 0;max-width:680px;" title="Flutter初心者がFCMを使ってプッシュ通知を受け取る〜設定編〜(2021/3/22版) | ZUMA Lab" src="https://hatenablog-parts.com/embed?url=https://zuma-lab.com/posts/flutter-fcm-push-notify-settings" frameborder="0" scrolling="no"></iframe>
+
 初学者にとって最初の壁の iOS の証明書周りも詳しく解説しているので、まだ設定が終わっていない方は是非こちらの記事をご覧ください。
 
 筆者は Flutter 初学者の為もし内容の誤りや、もっとこういうやり方があるよ、という方は [Twitter](https://twitter.com/____ZUMA____) で DM していただくか [Contact](/contact) で連絡して頂けると大変助かります。
@@ -1223,13 +1225,15 @@ Remote Notification にはプッシュ通知のタイトル、本文が表示さ
 
 ## おわりに
 
-どうでしたでしょうか。
-
-Flutter でプッシュ通知を送信するまでに設定から実装までやる事が多かったですね。
-
 前回 Firebase のプロジェクト設定から iOS/Android の FCM 設定を解説しました。
 
+<iframe class="hatenablogcard" style="width:100%;height:155px;margin:15px 0;max-width:680px;" title="Flutter初心者がFCMを使ってプッシュ通知を受け取る〜設定編〜(2021/3/22版) | ZUMA Lab" src="https://hatenablog-parts.com/embed?url=https://zuma-lab.com/posts/flutter-fcm-push-notify-settings" frameborder="0" scrolling="no"></iframe>
+
 初学者にとって最初の壁の iOS の証明書周りも詳しく解説しているので、まだ設定が終わっていない方は是非こちらの記事をご覧ください。
+
+さて前後編で FCM を利用したプッシュ通知の実装をしていきましたがどうでしたでしょうか。
+
+Flutter でプッシュ通知を送信するまでに設定から実装までやる事が多かったですね。
 
 筆者は Flutter 初学者ですが、過去実装した中でもプッシュ通知周りが一番大変でした。
 
@@ -1237,7 +1241,7 @@ Flutter は iOS/Android のネイティブな要素が入ると難易度が途�
 
 まだまだ Android の channel(カテゴリ)別の push 通知など未検証な部分がありますが、それはまた別の記事にしたいと思います。
 
-再掲になりますが、今回のサンプルアプリ実装は部分的に掲載していますので、全てのソースを参照したい場合は上記の公式 examples か、筆者の Github を参照ください。
+最後に再掲になりますが、今回のサンプルアプリ実装は部分的に掲載していますので、全てのソースを参照したい場合は上記の公式 examples か、筆者の Github を参照ください。
 
 <iframe class="hatenablogcard" style="width:100%;height:155px;margin:15px 0;max-width:680px;" title="flutterfire/packages/firebase_messaging/firebase_messaging/example at master · FirebaseExtended/flutterfire" src="https://hatenablog-parts.com/embed?url=https://github.com/FirebaseExtended/flutterfire/tree/master/packages/firebase_messaging/firebase_messaging/example" frameborder="0" scrolling="no"></iframe>
 

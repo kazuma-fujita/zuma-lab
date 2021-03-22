@@ -20,9 +20,11 @@ FCM (Firebase Cloud Messaging) のプッシュ通知設定とプッシュ通知�
 
 記事が長くなったので、設定編とアプリ実装編の前後編に分けました。
 
-今回は Firebase のプロジェクト作成から FCM の iOS/Android 設定までをご紹介します。
+アプリの実装編の記事はこちらになります。
 
-アプリの実装編はこちらになります。
+<iframe class="hatenablogcard" style="width:100%;height:155px;margin:15px 0;max-width:680px;" title="Flutter初心者がFCMを使ってプッシュ通知を受け取る〜アプリ実装編〜(2021/3/22版) | ZUMA Lab" src="https://hatenablog-parts.com/embed?url=https://zuma-lab.com/posts/flutter-fcm-push-notify-development" frameborder="0" scrolling="no"></iframe>
+
+今回は Firebase のプロジェクト作成から FCM の iOS/Android 設定までをご紹介します。
 
 ### 環境
 
@@ -551,4 +553,6 @@ iOS の Podfile 周りは落とし穴が多いです。
 
 アプリの実装編の記事こちらになります。
 
-プッシュ通知を送信して、フォアグラウンド、バッググラウンド、アプリのタスクを落としたターミネイト状態でプッシュ通知メッセージを表示、アプリの起動までを実装します。
+<iframe class="hatenablogcard" style="width:100%;height:155px;margin:15px 0;max-width:680px;" title="Flutter初心者がFCMを使ってプッシュ通知を受け取る〜アプリ実装編〜(2021/3/22版) | ZUMA Lab" src="https://hatenablog-parts.com/embed?url=https://zuma-lab.com/posts/flutter-fcm-push-notify-development" frameborder="0" scrolling="no"></iframe>
+
+プッシュ通知を送信して、フォアグラウンド、バッググラウンド、アプリのタスクを落としたターミネイト状態でプッシュ通知メッセージを表示、アプリの起動までを実装してテストまで行います。
