@@ -29,15 +29,15 @@ FCM (Firebase Cloud Messaging) のプッシュ通知設定とプッシュ通知�
 - Flutter 2.0.0
 - Dart 2.12.0
 
-# Flutter でプッシュ通知を受信する実装をする
+## 前提
 
-アプリはこちらの Firebase Messaging 公式の examples にあるサンプルアプリをそのまま実装します。
+今回はこちらの Firebase Messaging 公式の examples にあるサンプルアプリを解説する形で進めます。
 
 <iframe class="hatenablogcard" style="width:100%;height:155px;margin:15px 0;max-width:680px;" title="flutterfire/packages/firebase_messaging/firebase_messaging/example at master · FirebaseExtended/flutterfire" src="https://hatenablog-parts.com/embed?url=https://github.com/FirebaseExtended/flutterfire/tree/master/packages/firebase_messaging/firebase_messaging/example" frameborder="0" scrolling="no"></iframe>
 
 今回部分的に掲載するので、全てのソースを参照したい場合は上記の公式 examples か、筆者の Github を参照くださいませ。
 
-筆者のソースはクライアントアプリからプッシュ通知を送信する機能などは不要だったので省いてますが基本的には examples の内容です。
+筆者のソースはクライアントアプリからプッシュ通知を送信する機能は不要だったので省いていたり、examples で実装している通知設定をよりモバイルプッシュ通知向けに修正しています。
 
 <iframe class="hatenablogcard" style="width:100%;height:155px;margin:15px 0;max-width:680px;" title="kazuma-fujita/flutter_fcm_push_notify: Sample program for push notifications using FCM." src="https://hatenablog-parts.com/embed?url=https://github.com/kazuma-fujita/flutter_fcm_push_notify" frameborder="0" scrolling="no"></iframe>
 
@@ -1025,7 +1025,7 @@ const AndroidNotificationChannel channel = AndroidNotificationChannel(
 
 アプリがフォアグラウンド時にプッシュ通知を受信した時に、画面上部に通知メッセージを表示、バッチ数を更新、通知音を鳴らす設定をしています。
 
-詳しくは [FlutterFire Foreground Notifications] (https://firebase.flutter.dev/docs/messaging/notifications/#foreground-notifications) 参照ください。
+詳しくは [FlutterFire Foreground Notifications](https://firebase.flutter.dev/docs/messaging/notifications/#foreground-notifications) を参照ください。
 
 ちなみに Android はアプリがフォアグラウンドにある場合、目に見える通知は表示されません。
 

@@ -423,7 +423,7 @@ Generate ボタンをクリックします。
 
 <img src='/images/posts/2021-03-22-29.png' class='img' alt='posted image'/>
 
-`Flutter_sample_project_iOS_Development.mobileprovision` という名前の profile が DL されたので、ファイルをダブルクリックして Mac に profile を登録します。
+`.mobileprovision` という拡張子の profile が DL されたので、ファイルをダブルクリックして Mac に profile を登録します。
 
 ## Xcode で Capabilities を設定する
 
@@ -489,7 +489,7 @@ Xcode のプロジェクトナビゲータから Runner を選択し、Signin & 
 
 筆者の Flutter version 2.0.0 環境ではデフォルトで `platform :ios, '9.0'` がコメントアウトの状態なので以下のようになりました。
 
-```Podfile
+```txt
 # Uncomment this line to define a global platform for your project
 # platform :ios, '9.0'
 platform :ios, '12.1'
@@ -555,4 +555,6 @@ iOS の Podfile 周りは落とし穴が多いです。
 
 <iframe class="hatenablogcard" style="width:100%;height:155px;margin:15px 0;max-width:680px;" title="Flutter初心者がFCMを使ってプッシュ通知を受け取る〜アプリ実装編〜(2021/3/22版) | ZUMA Lab" src="https://hatenablog-parts.com/embed?url=https://zuma-lab.com/posts/flutter-fcm-push-notify-development" frameborder="0" scrolling="no"></iframe>
 
-プッシュ通知を送信して、フォアグラウンド、バッググラウンド、アプリのタスクを落としたターミネイト状態でプッシュ通知メッセージを表示、アプリの起動までを実装してテストまで行います。
+プッシュ通知の送信、フォアグラウンド、バッググラウンド、アプリのタスクを落としたターミネイト状態でプッシュ通知メッセージを表示する実装を行います。
+
+また、プッシュ通知メッセージをタップしてアプリの特定の画面を開く実装も行います。
