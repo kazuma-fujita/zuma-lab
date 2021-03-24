@@ -114,12 +114,12 @@
 
   <url>
     <loc>https://zuma-lab.com/posts/flutter-fcm-push-notify-development</loc>
-    <lastmod>2021-03-22T11:05:01.718Z</lastmod>
+    <lastmod>2021-03-22T23:53:02.693Z</lastmod>
   </url>
 
   <url>
     <loc>https://zuma-lab.com/posts/flutter-fcm-push-notify-settings</loc>
-    <lastmod>2021-03-22T11:05:01.720Z</lastmod>
+    <lastmod>2021-03-22T23:45:35.706Z</lastmod>
   </url>
 
   <url>
@@ -211,6 +211,11 @@
       >https://zuma-lab.com/posts/flutter-troubleshooting-the-method-show-snack-bar-was-called-on-null</loc
     >
     <lastmod>2021-02-28T01:27:05.526Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://zuma-lab.com/posts/flutter-web-view</loc>
+    <lastmod>2021-03-24T07:23:01.928Z</lastmod>
   </url>
 
   <url>
