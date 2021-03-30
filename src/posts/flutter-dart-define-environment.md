@@ -1,5 +1,5 @@
 ---
-title: 'Flutterの--dart-defineで環境変数を設定してソースコードやAndroidManifest.xmlで環境変数の値を使用する'
+title: 'Flutterのdart-defineで設定した環境変数をソースコードやAndroidManifest.xmlで使用する'
 date: '2021-03-30'
 isPublished: true
 metaDescription: 'Flutterの--dart-defineで環境変数を設定してソースコードや AndroidManifest.xml で環境変数の値を使用する方法です。'
@@ -112,7 +112,7 @@ AndroidManifest.xml は Android ネイティブ固有の設定ファイルなの
 - `launchctl` コマンドで環境変数を設定する
 - Android/iOS ビルド時に `--dart-define` の環境変数を渡す
 
-前者 2 つはの方はライトに利用できます。
+前者 2 つはライトに利用できます。
 
 ただそれぞれ欠点があり、`flutter run or build` コマンドに環境変数を渡す方法は Android Studio の IDE に環境変数が渡せず、 Run や Debug の実行時には利用できませんでした。
 
@@ -124,7 +124,7 @@ VSCode では launch.json で環境変数を IDE に渡す設定できるよう�
 
 まずは各方法を見ていきます。
 
-### flutter run/build コマンドに環境変数を渡す
+## flutter run/build コマンドに環境変数を渡す
 
 flutter run or build コマンド実行時に環境変数を渡す方法です。
 
@@ -139,7 +139,7 @@ flutter run
 GOOGLE_API_KEY=dummy_key flutter run
 ```
 
-### launchctl コマンドで環境変数を設定する
+## launchctl コマンドで環境変数を設定する
 
 以下のコマンドで GOOGLE_API_KEY 環境変数をセットします。
 
@@ -153,7 +153,7 @@ launchctl setenv GOOGLE_API_KEY dummy_key
 launchctl getenv GOOGLE_API_KEY
 ```
 
-### Android のビルド時に `--dart-define` 環境変数を渡す
+## Android のビルド時に `--dart-define` 環境変数を渡す
 
 `android/app/build.gradle` に以下のスクリプトを追記します。
 
@@ -189,7 +189,7 @@ android {
 
 これは build.gradle で Android のビルド時に `--dart-define` の環境変数を取得、パースし配列に格納するスクリプトです。
 
-### android/app/build.gradle で環境変数からビルド変数を定義する
+## android/app/build.gradle で環境変数からビルド変数を定義する
 
 次に AndroidManifest.xml から環境変数の値を呼び出せるように build.gradle に環境変数の値を読み込む設定をします。
 
@@ -245,7 +245,7 @@ android {
 }
 ```
 
-### AndroidManifest.xml でビルド変数を取得する
+## AndroidManifest.xml でビルド変数を取得する
 
 最後に AndroidManifest.xml に build.gradle に定義したビルド変数を取得します。
 
@@ -272,7 +272,7 @@ iOS のソースコードから環境変数の値を取得する方法です。
 
 なので iOS のビルド時に `--dart-define` 環境変数を Xcode に設定する必要があります。
 
-### iOS ビルド時に環境設定ファイルを出力する
+## iOS ビルド時に環境設定ファイルを出力する
 
 まず Xcode を開きます。
 
@@ -336,7 +336,7 @@ GOOGLE_API_KEY=dummy_key
 flutter.inspector.structuredErrors=true
 ```
 
-### 生成した環境設定ファイルを Xcode で利用できるようにする
+## 生成した環境設定ファイルを Xcode で利用できるようにする
 
 `ios/Flutter` ディレクトリにある `Debug.xcconfig` を開きます。
 
@@ -368,7 +368,7 @@ flutter.inspector.structuredErrors=true
 
 これで `#include` で EnvironmentVariables.xcconfig を読み込んで Xcode から環境変数が利用できるようになりました。
 
-### .gitignore に EnvironmentVariables.xcconfig を追記する
+## .gitignore に EnvironmentVariables.xcconfig を追記する
 
 `ios/.gitignore` ファイルを開いて以下の１行を追記します。
 
@@ -380,7 +380,7 @@ EnvironmentVariables.xcconfig を git に上げると人により環境変数が
 
 また、API Key など秘匿情報が含まれる可能性があるので ignore しておきます。
 
-### Info.plist に環境変数をビルド変数として定義する
+## Info.plist に環境変数をビルド変数として定義する
 
 まだ iOS のソースコードでは利用できません。
 
@@ -392,7 +392,7 @@ EnvironmentVariables.xcconfig を git に上げると人により環境変数が
 
 <img src='/images/posts/2021-03-29-5.png' class='img' alt='posted image' />
 
-### iOS のソースコードから環境変数の値を取得する
+## iOS のソースコードから環境変数の値を取得する
 
 環境変数を取得するには `Bundle.main.object` メソッドを利用します。
 
