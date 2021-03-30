@@ -129,7 +129,7 @@ Bundle Identifier の `com.example.projectName` をユニークな名前に変�
 
 - `ios/Podfile`
 
-```Podfile
+```txt
 # Uncomment this line to define a global platform for your project
 platform :ios, '9.0' # Comment in.
 
