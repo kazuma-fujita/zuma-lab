@@ -1,7 +1,7 @@
 ---
 title: 'FlutterでiOSの開発/ステージング/本番環境を切り替える'
 date: '2021-03-XX'
-isPublished: false
+isPublished: true
 metaDescription: ''
 tags:
   - 'Flutter'
@@ -16,7 +16,19 @@ Flutter で開発/ステージング/本番環境を切り替える方法です�
 
 Flutter で環境を切り替えるには Debug build/Release build で切り替える方法や Flavor を使う方法がありますが、今回は dart-define を利用して環境を切り替えてみます。
 
-内容自体は @tetsufe さんの [こちらの記事](https://qiita.com/tetsufe/items/3f2257ac12f812d3f2d6) を参考にして加筆、修正した内容となっております。
+また、dart-define で環境変数を設定して Flutter や iOS のソースコード、Android の AndroidManifest.xml で環境変数の値を使用する記事を以前書きました。
+
+dart-define の環境変数の利用方法をもっと知りたい方はこちらの記事を参考にしてください。
+
+<iframe class="hatenablogcard" style="width:100%;height:155px;margin:15px 0;max-width:680px;" title="Flutterの--dart-defineで環境変数を設定してソースコードやAndroidManifest.xmlで環境変数の値を使用する | ZUMA Lab" src="https://hatenablog-parts.com/embed?url=https://zuma-lab.com/posts/flutter-dart-define-environment" frameborder="0" scrolling="no"></iframe>
+
+それでは iOS で dart-define を利用して環境の切り替え方法を解説していきます。
+
+今回は dart-define で開発/ステージング/本番環境を定義して、環境ごとにアプリの BundleID やアプリ表示名、Firebase の GoogleService-Info.plist の切り替えをします。
+
+前提として、利用する OS は macOS、IDE は Android Studio になります。
+
+途中 IDE 特有の設定が出てきますが、VSCode の方は読み替えて頂ければ幸いです。
 
 ### 環境
 
@@ -25,4 +37,333 @@ Flutter で環境を切り替えるには Debug build/Release build で切り替
 - Flutter 2.0.3
 - Dart 2.12.2
 
-###
+## IDE に環境変数を設定する
+
+環境変数は以下のフォーマットで設定します。
+
+```txt
+--dart-define=ENVIRONMENT_NAME=value
+```
+
+例えば、以下のケースでは `flutter run` コマンドの引数で環境変数を設定します。
+
+- コマンドラインからアプリをビルド/実行してテストする
+- 本番 Release ビルドを作成する
+- Circle CI や Github Actions など CI 環境で環境変数を利用する
+
+コマンドラインから環境変数を設定する場合は以下のように引数に `--dart-define` を指定します。
+
+- 開発環境
+
+```txt
+flutter run --debug --dart-define=BUNDLE_ID_SUFFIX=.dev --dart-define=BUILD_ENV=dev
+```
+
+- ステージング環境
+
+```txt
+flutter run --dart-define=BUNDLE_ID_SUFFIX=.stg --dart-define=BUILD_ENV=stg
+```
+
+- 本番環境
+
+```txt
+flutter run –release --dart-define=BUNDLE_ID_SUFFIX="" --dart-define=BUILD_ENV=prod
+```
+
+Android Studio で `--dart-define` で環境変数を設定するには `Configurations` 画面から行います。
+
+画面上部の `main.dart` をクリックするとプルダウンで `Edit Configurations...` が選択できます。
+
+<img src='/images/posts/2021-03-29-1.png' class='img' alt='posted image' />
+
+Configurations 画面を開いて `Additional run args` に `--dart-define` を入力します。
+
+<img src='/images/posts/2021-03-30-6.png' class='img' alt='posted image' />
+
+開発環境は `Name` を `main.dart` から develop にして、`Additional run args` 以下を追記します。
+
+```txt
+--dart-define=BUNDLE_ID_SUFFIX=.dev --dart-define=BUILD_ENV=dev
+```
+
+次にステージング環境の Configurations を作成します。
+
++ボタンをクリックして表示される Add New Configuration から Flutter を選択します。
+
+<img src='/images/posts/2021-03-30-7.png' class='img' alt='posted image' />
+
+ステージング環境は `Name` を staging にして、`Additional run args` 以下を追記します。
+
+```txt
+--dart-define=BUNDLE_ID_SUFFIX=.stg --dart-define=BUILD_ENV=stg
+```
+
+Dart entrypoint は `lib/main.dart` を選択します。
+
+<img src='/images/posts/2021-03-30-8.png' class='img' alt='posted image' />
+
+本来、本番環境は IDE での debug build はせず、`flutter run --release --dart-define=...` のようにコマンドラインから release build します。
+
+今回は検証用のプロジェクトのため、Configurations を追加します。
+
+本番環境は `Name` を production にして、`Additional run args` 以下を追記します。
+
+```txt
+--dart-define=BUNDLE_ID_SUFFIX="" --dart-define=BUILD_ENV=prod
+```
+
+Dart entrypoint は `lib/main.dart` を選択します。
+
+設定後の Android Studio は以下のように Configurations が選択できるようになります。
+
+<img src='/images/posts/2021-03-30-9.png' class='img' alt='posted image' />
+
+VSCode でも環境変数の設定が可能です。
+
+詳しくは [こちら](https://qiita.com/mr-hisa-child/items/a7efc63044fa52bf3db6) を参照ください。
+
+## Firebase プロジェクトを作成する
+
+ここでは Firebase プロジェクトが既に作成してあると仮定します。
+
+Firebase のプロジェクトの作成方法は以前の記事を参照ください。
+
+<iframe class="hatenablogcard" style="width:100%;height:155px;margin:15px 0;max-width:680px;" title="Flutter初心者がFCMを使ってプッシュ通知を受け取る〜設定編〜(2021/3/22版) | ZUMA Lab" src="https://hatenablog-parts.com/embed?url=https://zuma-lab.com/posts/flutter-fcm-push-notify-settings" frameborder="0" scrolling="no"></iframe>
+
+## 本番環境の GoogleService-Info.plist を取得する
+
+まず [Firebase Console](https://console.firebase.google.com/u/0/?hl=ja) を開き Firebase プロジェクトに移動します。
+
+以下のアプリを追加ボタンをクリックして iOS を選択します。
+
+<img src='/images/posts/2021-03-30-1.png' class='img' alt='posted image'/>
+
+iOS バンドル ID を入力します。今回サンプルなので `com.example.flutter-fcm-push-notify` としました。
+
+こちらは本番環境のバンドル ID となります。
+
+`アプリを登録` ボタンをクリックします。
+
+<img src='/images/posts/2021-03-22-11.png' class='img' alt='posted image'/>
+
+次にプッシュ通知をする際に必須の設定である `GoogleService-Info.plist` を DL します。
+
+後は何もせず 次へ 押してコンソールへ戻ります。
+
+## 開発・ステージング環境の GoogleService-Info.plist を取得する
+
+次に同じ要領で、開発環境、ステージング環境用のアプリを登録します。
+
+iOS バンドル ID はそれぞれ以下を入力します。
+
+- 開発環境
+  - com.example.flutter-fcm-push-notify.dev
+- ステージング環境
+  - com.example.flutter-fcm-push-notify.stg
+
+<img src='/images/posts/2021-03-30-2.png' class='img' alt='posted image'/>
+
+各環境それぞれプッシュ通知をする際に必須の設定である `GoogleService-Info.plist` を DL します。
+
+## GoogleService-Info.plist を Xcode にコピーする
+
+各環境で DL した GoogleService-Info.plist はそれぞれ以下ファイル名にリネームします。
+
+- 開発環境
+  - GoogleService-Info.dev.plist
+- ステージング環境
+  - GoogleService-Info.stg.plist
+- 本番環境
+  - GoogleService-Info.prod.plist
+
+まず Xcode を開きます。
+
+プロジェクトのルートで以下コマンドを実行してください。
+
+```txt
+open ios/Runner.xcworkspace
+```
+
+事前に Xcode で `Runner/Configurations` フォルダーを作成します。
+
+Xcode の Configurations フォルダーにドラッグ&ドロップでリネームした三種の GoogleService-Info.plist をコピーします。
+
+コピーの際は Destination の Copy items if needed にチェックを入れます。
+
+<img src='/images/posts/2021-03-30-3.png' class='img' alt='posted image'/>
+
+コピー後の Xcode の状態はこのようになります。
+
+<img src='/images/posts/2021-03-30-4.png' class='img' alt='posted image'/>
+
+## 環境変数に応じて GoogleService-Info.plist を書き換えるスクリプトを記述する
+
+次に Xcode の TARGETS Runner > Build Phases を開きます。
+
+左上の+ボタンをクリックして New Run Script Phase を選択します。
+
+<img src='/images/posts/2021-03-30-5.png' class='img' alt='posted image'/>
+
+Run Script が追加されるので、Shell に以下スクリプトを追記します。
+
+```sh
+echo "run start"
+if [ "${$BUILD_ENV}" = "dev" ]; then
+cp "${PROJECT_DIR}/${PROJECT_NAME}/Configurations/GoogleService-Info.dev.plist" "${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/GoogleService-Info.plist"
+echo "Debug GoogleService-Info copied."
+elif [ "${BUILD_ENV}" = "stg" ]; then
+cp "${PROJECT_DIR}/${PROJECT_NAME}/Configurations/GoogleService-Info.stg.plist" "${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/GoogleService-Info.plist"
+echo "Staging GoogleService-Info copied."
+elif [ "${BUILD_ENV}" = "prod" ]; then
+cp "${PROJECT_DIR}/${PROJECT_NAME}/Configurations/GoogleService-Info.prod.plist" "${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/GoogleService-Info.plist"
+echo "Production GoogleService-Info copied."
+fi
+echo "run end"
+```
+
+これで build 時に環境変数に応じて GoogleService-Info.plist を書き換えることができるようになりました。
+
+次に実際の環境変数を `--dart-define` から取得して Xcode に設定する作業をします。
+
+## iOS ビルド時に環境設定ファイルを出力する
+
+iOS ビルド時に `--dart-define` の環境変数の値を書き出した環境設定ファイルを出力するスクリプトを実行します。
+
+<img src='/images/posts/2021-03-29-2.png' class='img' alt='posted image' />
+
+Xcode を開いたら Runner > Edit Scheme... をクリックします。
+
+<img src='/images/posts/2021-03-29-3.png' class='img' alt='posted image' />
+
+Build > Pre-actions をクリックします。
+
+ウィンドウ左下の+ボタンをクリックしてプルダウンの中から New Run Script Action を選択します。
+
+<img src='/images/posts/2021-03-29-4.png' class='img' alt='posted image' />
+
+まず Provide build settings from のプルダウンから Runner を選択します。
+
+次に以下のスクリプトを追記します。
+
+```sh
+function urldecode() {
+    : "${*//+/ }";
+    echo "${_//%/\\x}";
+}
+
+IFS=',' read -r -a define_items <<< "$DART_DEFINES"
+
+
+for index in "${!define_items[@]}"
+do
+    define_items[$index]=$(urldecode "${define_items[$index]}");
+done
+
+printf "%s\n" "${define_items[@]}" > ${SRCROOT}/Flutter/EnvironmentVariables.xcconfig
+```
+
+これは iOS の build 時に `--dart-define` 環境変数を取得し、環境設定ファイルである `ios/Flutter/EnvironmentVariables.xcconfig` を自動生成するスクリプトです。
+
+スクリプトを記述したらウィンドウを閉じて Android Studio から開発環境(develop)でビルドしてみましょう。
+
+Android Studio には各環境に応じて以下の `--dart-define` を定義しましたね。
+
+- 開発環境(develop)
+
+```txt
+--dart-define=BUNDLE_ID_SUFFIX=.dev --dart-define=BUILD_ENV=dev
+```
+
+- ステージング環境(staging)
+
+```txt
+--dart-define=BUNDLE_ID_SUFFIX=.stg --dart-define=BUILD_ENV=stg
+```
+
+- 本番環境(production)
+
+```txt
+--dart-define=BUNDLE_ID_SUFFIX="" --dart-define=BUILD_ENV=prod
+```
+
+`ios/Flutter` ディレクトリを Finder で開いてみると `EnvironmentVariables.xcconfig` というファイルが生成されています。
+
+中身を確認してみると以下環境変数が記述されています。
+
+```txt
+BUNDLE_ID_SUFFIX=.dev
+BUILD_ENV=dev
+flutter.inspector.structuredErrors=true
+```
+
+## 生成した環境設定ファイルを Xcode で利用できるようにする
+
+`ios/Flutter` ディレクトリにある `Debug.xcconfig` を開きます。
+
+以下 1 行を追記します。
+
+```
+#include "EnvironmentVariables.xcconfig"
+```
+
+また、同じく `ios/Flutter` ディレクトリにある `Release.xcconfig` を開いて同様 1 行追記します。
+
+追記後のファイルは以下のようになります。
+
+- `ios/Flutter/Debug.xcconfig`
+
+```
+#include? "Pods/Target Support Files/Pods-Runner/Pods-Runner.debug.xcconfig"
+#include "Generated.xcconfig"
+#include "EnvironmentVariables.xcconfig"
+```
+
+- `ios/Flutter/Release.xcconfig`
+
+```
+#include? "Pods/Target Support Files/Pods-Runner/Pods-Runner.release.xcconfig"
+#include "Generated.xcconfig"
+#include "EnvironmentVariables.xcconfig"
+```
+
+これで `#include` で EnvironmentVariables.xcconfig を読み込んで Xcode から環境変数が利用できるようになりました。
+
+## .gitignore に EnvironmentVariables.xcconfig を追記する
+
+`ios/.gitignore` ファイルを開いて以下の１行を追記します。
+
+```txt
+Flutter/EnvironmentVariables.xcconfig
+```
+
+EnvironmentVariables.xcconfig を git に上げると人により環境変数が違う場合がある為チーム開発に支障がでます。
+
+また、API Key など秘匿情報が含まれる可能性があるので ignore しておきます。
+
+## 環境変数に応じて開発/ステージング/本番の Bundle Id を変更する
+
+Xcode の TARGETS Runner > Build Settings を開きます。
+
+右上の検索から `Product Bundle Identifier` を入力して Product Bundle Identifier を表示します。
+
+<img src='/images/posts/2021-03-30-10.png' class='img' alt='posted image'/>
+
+Runner で現在設定されている Bundle Identifier の末尾に `${BUNDLE_ID_SUFFIX}` を追記します。
+
+今回は `com.example.flutter-fcm-push-notify${BUNDLE_ID_SUFFIX}` と入力しました。
+
+<img src='/images/posts/2021-03-30-11.png' class='img' alt='posted image'/>
+
+Debug/Profile/Release それぞれ `${BUNDLE_ID_SUFFIX}` を追記します。
+
+環境変数により BundleID を分けることにより、Firebase のアプリ設定で設定した各環境の BundleID と合わせることができます。
+
+Firebase のアプリを追加した時に以下 BundleID を設定しましたね。
+
+- 開発環境
+  - com.example.flutter-fcm-push-notify.dev
+- ステージング環境
+  - com.example.flutter-fcm-push-notify.stg
+- 本番環境
+  - com.example.flutter-fcm-push-notify

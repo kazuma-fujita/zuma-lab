@@ -87,7 +87,7 @@ DL した `google-services.json` は プロジェクトの `/android/app/` の�
 
 <img src='/images/posts/2021-03-22-10.png' class='img' alt='posted image'/>
 
-AndroidiOS バンドル ID を入力します。今回サンプルなので `com.example.flutter-fcm-push-notify` としました。
+iOS バンドル ID を入力します。今回サンプルなので `com.example.flutter-fcm-push-notify` としました。
 
 Android では `com.example.flutter_fcm_push_notify` ですが、iOS のバンドル ID にはアンダースコアが使用できないので、`flutter_fcm_push_notify` から `flutter-fcm-push-notify` としています。
 
@@ -98,6 +98,8 @@ Android では `com.example.flutter_fcm_push_notify` ですが、iOS のバン�
 次にプッシュ通知をする際に必須の設定である `GoogleService-Info.plist` を DL します。
 
 <img src='/images/posts/2021-03-22-12.png' class='img' alt='posted image'/>
+
+後は何もせず `次へ` 押してコンソールへ戻ります。
 
 DL した `GoogleService-Info.plist` は Xcode プロジェクトの `Runner` の下に置きます。
 
@@ -115,9 +117,7 @@ Xcode に実ファイルをコピーしてくれます。
 
 `Runner` 配下に `GoogleService-Info.plist` をコピーした後はこのような状態になります。
 
-<img src='/images/posts/2021-03-22-14.png' class='img' alt='posted image'/>
-
-後は何もせず `次へ` 押してコンソールへ戻ります。
+<img src='/images/posts/2021-03-22-14.png' class='img' alt='posted image' style='width: 50%'/>
 
 # Android のプッシュ通知設定
 
