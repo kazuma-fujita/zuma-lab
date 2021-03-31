@@ -1,7 +1,7 @@
 ---
 title: 'FlutterでiOSの開発/ステージング/本番環境を切り替える'
 date: '2021-03-XX'
-isPublished: true
+isPublished: false
 metaDescription: ''
 tags:
   - 'Flutter'
@@ -68,7 +68,7 @@ flutter run --dart-define=BUNDLE_ID_SUFFIX=.stg --dart-define=BUILD_ENV=stg
 - 本番環境
 
 ```txt
-flutter run –release --dart-define=BUNDLE_ID_SUFFIX="" --dart-define=BUILD_ENV=prod
+flutter run –release --dart-define=BUNDLE_ID_SUFFIX= --dart-define=BUILD_ENV=prod
 ```
 
 Android Studio で `--dart-define` で環境変数を設定するには `Configurations` 画面から行います。
@@ -110,7 +110,7 @@ Dart entrypoint は `lib/main.dart` を選択します。
 本番環境は `Name` を production にして、`Additional run args` 以下を追記します。
 
 ```txt
---dart-define=BUNDLE_ID_SUFFIX="" --dart-define=BUILD_ENV=prod
+--dart-define=BUNDLE_ID_SUFFIX= --dart-define=BUILD_ENV=prod
 ```
 
 Dart entrypoint は `lib/main.dart` を選択します。
@@ -284,7 +284,7 @@ Android Studio には各環境に応じて以下の `--dart-define` を定義し
 - 本番環境(production)
 
 ```txt
---dart-define=BUNDLE_ID_SUFFIX="" --dart-define=BUILD_ENV=prod
+--dart-define=BUNDLE_ID_SUFFIX= --dart-define=BUILD_ENV=prod
 ```
 
 `ios/Flutter` ディレクトリを Finder で開いてみると `EnvironmentVariables.xcconfig` というファイルが生成されています。
