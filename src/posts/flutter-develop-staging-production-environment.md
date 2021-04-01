@@ -1,11 +1,13 @@
 ---
 title: 'FlutterでiOSの開発/ステージング/本番環境を切り替える'
-date: '2021-03-XX'
-isPublished: false
-metaDescription: ''
+date: '2021-04-01'
+isPublished: true
+metaDescription: 'FlutterでiOSの開発/ステージング/本番環境を切り替える方法です。Flutter で環境を切り替えるには Debug build/Release build で切り替える方法や Flavor を使う方法がありますが、今回は dart-define を利用して環境を切り替えてみます。'
 tags:
   - 'Flutter'
   - 'Dart'
+  - 'Firebase'
+  - 'FCM'
 ---
 
 Flutter で開発/ステージング/本番環境を切り替える方法です。
@@ -24,7 +26,26 @@ dart-define の環境変数の利用方法をもっと知りたい方はこち�
 
 それでは iOS で dart-define を利用して環境の切り替え方法を解説していきます。
 
-今回は dart-define で開発/ステージング/本番環境を定義して、環境ごとにアプリの BundleID やアプリ表示名、Firebase の GoogleService-Info.plist の切り替えをします。
+今回は dart-define で開発/ステージング/本番環境を定義して環境ごとにアプリの BundleID やアプリアイコン、Firebase の GoogleService-Info.plist の切り替えをします。
+
+今回 FCM でプッシュ通知をする用途で GoogleService-Info.plist を環境別に出力して切り替えをしたいと思います。
+
+途中で FCM の設定が出てきますが、不要な方は読み飛ばしてください。
+
+また、環境は以下のような構成を実現できるようにします。
+
+- Debug build
+  - 開発環境
+  - ステージング環境
+- Release build
+  - ステージング環境
+  - 本番環境
+
+Debug build は IDE から Run/Debug を実行するか、`flutter run (or build) --debug` を実行した時を指します。
+
+Release build は `flutter run (or build) --release` を実行した時を指します。
+
+`flutter run (or build)` の引数で dart-define で 開発環境、ステージング環境、本番環境を切り替えます。
 
 前提として、利用する OS は macOS、IDE は Android Studio になります。
 
@@ -45,7 +66,7 @@ dart-define の環境変数の利用方法をもっと知りたい方はこち�
 --dart-define=ENVIRONMENT_NAME=value
 ```
 
-例えば、以下のケースでは `flutter run` コマンドの引数で環境変数を設定します。
+例えば、以下のケースでは `flutter run` もしくは `flutter build` コマンドの引数で環境変数を設定します。
 
 - コマンドラインからアプリをビルド/実行してテストする
 - 本番 Release ビルドを作成する
@@ -62,7 +83,7 @@ flutter run --debug --dart-define=BUNDLE_ID_SUFFIX=.dev --dart-define=BUILD_ENV=
 - ステージング環境
 
 ```txt
-flutter run --dart-define=BUNDLE_ID_SUFFIX=.stg --dart-define=BUILD_ENV=stg
+flutter run --debug (or --release) --dart-define=BUNDLE_ID_SUFFIX=.stg --dart-define=BUILD_ENV=stg
 ```
 
 - 本番環境
@@ -70,6 +91,10 @@ flutter run --dart-define=BUNDLE_ID_SUFFIX=.stg --dart-define=BUILD_ENV=stg
 ```txt
 flutter run –release --dart-define=BUNDLE_ID_SUFFIX= --dart-define=BUILD_ENV=prod
 ```
+
+`BUNDLE_ID_SUFFIX` は BundleID の切り替えや、アプリアイコンの切り替えで使用します。
+
+本番環境ではこの識別子が不要なので空で問題ないです。
 
 Android Studio で `--dart-define` で環境変数を設定するには `Configurations` 画面から行います。
 
@@ -91,7 +116,7 @@ Configurations 画面を開いて `Additional run args` に `--dart-define` を�
 
 +ボタンをクリックして表示される Add New Configuration から Flutter を選択します。
 
-<img src='/images/posts/2021-03-30-7.png' class='img' alt='posted image' />
+<img src='/images/posts/2021-03-30-7.png' class='img' alt='posted image' style='width: 50%' />
 
 ステージング環境は `Name` を staging にして、`Additional run args` 以下を追記します。
 
@@ -125,9 +150,17 @@ VSCode でも環境変数の設定が可能です。
 
 ## Firebase プロジェクトを作成する
 
+ここからは FCM を利用した開発・ステージング・本番環境別のプッシュ通知を実現する為の手順です。
+
+今回は Firebase の GoogleService-Info.plist を環境別に取得します。
+
 ここでは Firebase プロジェクトが既に作成してあると仮定します。
 
 Firebase のプロジェクトの作成方法は以前の記事を参照ください。
+
+また事前準備として Apple Developer Console でアプリの Identifier を作成する必要があります。
+
+こちらも以前の記事を参照ください。
 
 <iframe class="hatenablogcard" style="width:100%;height:155px;margin:15px 0;max-width:680px;" title="Flutter初心者がFCMを使ってプッシュ通知を受け取る〜設定編〜(2021/3/22版) | ZUMA Lab" src="https://hatenablog-parts.com/embed?url=https://zuma-lab.com/posts/flutter-fcm-push-notify-settings" frameborder="0" scrolling="no"></iframe>
 
@@ -145,7 +178,7 @@ iOS バンドル ID を入力します。今回サンプルなので `com.exampl
 
 `アプリを登録` ボタンをクリックします。
 
-<img src='/images/posts/2021-03-22-11.png' class='img' alt='posted image'/>
+<img src='/images/posts/2021-03-22-11.png' class='img' alt='posted image' style='width: 50%'/>
 
 次にプッシュ通知をする際に必須の設定である `GoogleService-Info.plist` を DL します。
 
@@ -165,6 +198,89 @@ iOS バンドル ID はそれぞれ以下を入力します。
 <img src='/images/posts/2021-03-30-2.png' class='img' alt='posted image'/>
 
 各環境それぞれプッシュ通知をする際に必須の設定である `GoogleService-Info.plist` を DL します。
+
+## Apple Developer Console で APNs Key を作成する
+
+Apple Developer Console の [Certificates, Identifiers & Profiles](https://developer.apple.com/account/resources/certificates/list) にアクセスします。
+
+左メニュー Keys から Key 一覧画面を開きます。
+
+`+` ボタンをクリックして Key 作成画面を開きます。
+
+<img src='/images/posts/2021-03-22-15.png' class='img' alt='posted image'/>
+
+Key Name に作成する Key 名を入力します。
+
+また Apple Push Notifications service(APNs) の ENABLE にチェックをします。
+
+Continue ボタンをクリックして次の画面に進みます。
+
+<img src='/images/posts/2021-03-22-16.png' class='img' alt='posted image'/>
+
+Register ボタンをクリックします。
+
+<img src='/images/posts/2021-03-22-17.png' class='img' alt='posted image'/>
+
+Download Your Key 画面で Key を DL します。
+
+<img src='/images/posts/2021-03-22-18.png' class='img' alt='posted image'/>
+
+```txt
+After downloading your key, it cannot be re-downloaded as the server copy is removed. If you are not prepared to download your key at this time, click Done and download it at a later time. Be sure to save a backup of your key in a secure place.
+```
+
+> キーをダウンロードした後、サーバーコピーが削除されているため、キーを再ダウンロードすることはできません。現時点でキーをダウンロードする準備ができていない場合は、[完了]をクリックして、後でダウンロードしてください。キーのバックアップは必ず安全な場所に保存してください。
+
+こちらの警告が表示されている通り、一度 DL すると再取得できないので Key のバックアップを必ずとりましょう。
+
+DL した Key は `AuthKey_XXXXXXXX.p8` のようなファイル名です。
+
+## APNs 認証キーをアップロード
+
+FirebaseConsole > プロジェクトの設定 > CloudMessaging タブをクリックします。
+
+<img src='/images/posts/2021-03-22-34.png' class='img' alt='posted image'/>
+
+iOS アプリの設定で APNs 認証キーのアップロードをクリックします。
+
+<img src='/images/posts/2021-03-22-35.png' class='img' alt='posted image'/>
+
+APNs 認証キーには、先程ダウンロードしておいた p8 のキーファイルをドラッグ&ドロップします。
+
+キー ID は、Apple Developer Console の Keys より Key を選択すると確認できます。
+
+チーム ID は Apple Developer Member Center メンバーシップより確認できます。
+
+入力したらアップロードボタンをクリックします。
+
+<img src='/images/posts/2021-03-22-36.png' class='img' alt='posted image' style='width: 50%'/>
+
+もしも、「このアプリにチーム ID が保存されていません」というエラーが表示された場合は Key を削除後もう一度設定し直します。
+
+このエラーが表示された後、チーム ID がプロジェクト全体設定に反映される為、再度アップロードダイアログを開くとちゃんとチーム ID が設定されています。
+
+<img src='/images/posts/2021-03-22-37.png' class='img' alt='posted image' style='width: 50%'/>
+
+後は以下の開発・ステージング環境のアプリにも同様に 認証キーファイルをアップロードします。
+
+- 開発環境
+  - com.example.flutter-fcm-push-notify.dev
+- ステージング環境
+  - com.example.flutter-fcm-push-notify.stg
+
+<img src='/images/posts/2021-03-30-12.png' class='img' alt='posted image'/>
+
+筆者は本番環境のみ認証キーを設定して、後の環境は認証キーを設定し忘れていた為、いつまでも本番環境以外にプッシュ通知が送信されずにハマりました。
+
+## Provisioning Profile を取得する
+
+開発環境/ステージング環境/本番環境別に Provisioning Profile を取得します。
+
+こちらは以前の記事で取得方法を解説していますので記事を参照ください。
+
+<iframe class="hatenablogcard" style="width:100%;height:155px;margin:15px 0;max-width:680px;" title="Flutter初心者がFCMを使ってプッシュ通知を受け取る〜設定編〜(2021/3/22版) | ZUMA Lab" src="https://hatenablog-parts.com/embed?url=https://zuma-lab.com/posts/flutter-fcm-push-notify-settings" frameborder="0" scrolling="no"></iframe>
+
+取得した Profile は DL して Xcode に登録しておきます。
 
 ## GoogleService-Info.plist を Xcode にコピーする
 
@@ -195,7 +311,7 @@ Xcode の Configurations フォルダーにドラッグ&ドロップでリネー
 
 コピー後の Xcode の状態はこのようになります。
 
-<img src='/images/posts/2021-03-30-4.png' class='img' alt='posted image'/>
+<img src='/images/posts/2021-03-30-4.png' class='img' alt='posted image' style='width: 50%'/>
 
 ## 環境変数に応じて GoogleService-Info.plist を書き換えるスクリプトを記述する
 
@@ -297,6 +413,10 @@ BUILD_ENV=dev
 flutter.inspector.structuredErrors=true
 ```
 
+注意点として、`flutter clean` などをしてプロジェクトを clean した直後や `EnvironmentVariables.xcconfig` が無い状態で build した場合など環境変数が xcconfig ファイル内に出力されていない場合があります。
+
+その場合何度か build して、 `ios/Flutter/EnvironmentVariables.xcconfig` に環境変数が出力されているか確認してください。
+
 ## 生成した環境設定ファイルを Xcode で利用できるようにする
 
 `ios/Flutter` ディレクトリにある `Debug.xcconfig` を開きます。
@@ -339,7 +459,7 @@ Flutter/EnvironmentVariables.xcconfig
 
 EnvironmentVariables.xcconfig を git に上げると人により環境変数が違う場合がある為チーム開発に支障がでます。
 
-また、API Key など秘匿情報が含まれる可能性があるので ignore しておきます。
+また、プロジェクトによっては API Key など秘匿情報が含まれる可能性があるので ignore しておきます。
 
 ## 環境変数に応じて開発/ステージング/本番の Bundle Id を変更する
 
@@ -349,13 +469,15 @@ Xcode の TARGETS Runner > Build Settings を開きます。
 
 <img src='/images/posts/2021-03-30-10.png' class='img' alt='posted image'/>
 
-Runner で現在設定されている Bundle Identifier の末尾に `${BUNDLE_ID_SUFFIX}` を追記します。
+Runner で現在設定されている Bundle Identifier の末尾に `$(BUNDLE_ID_SUFFIX)` を追記します。
 
-今回は `com.example.flutter-fcm-push-notify${BUNDLE_ID_SUFFIX}` と入力しました。
+今回は `com.example.flutter-fcm-push-notify$(BUNDLE_ID_SUFFIX)` と入力しました。
 
 <img src='/images/posts/2021-03-30-11.png' class='img' alt='posted image'/>
 
-Debug/Profile/Release それぞれ `${BUNDLE_ID_SUFFIX}` を追記します。
+Debug/Profile/Release それぞれ `$(BUNDLE_ID_SUFFIX)` を追記します。
+
+`$(BUNDLE_ID_SUFFIX)` には環境変数である `--dart-define=BUNDLE_ID_SUFFIX=XX` の値が代入されいます。
 
 環境変数により BundleID を分けることにより、Firebase のアプリ設定で設定した各環境の BundleID と合わせることができます。
 
@@ -367,3 +489,162 @@ Firebase のアプリを追加した時に以下 BundleID を設定しました�
   - com.example.flutter-fcm-push-notify.stg
 - 本番環境
   - com.example.flutter-fcm-push-notify
+
+## 環境変数に応じてアプリアイコンを変更する
+
+Xcode の Runner > Assets.xcassets ファイルを開きます。
+
+右クリックのコンテキストメニュー > iOS > iOS App Icon で AppIcon を追加します。
+
+<img src='/images/posts/2021-03-30-14.png' class='img' alt='posted image'/>
+
+それぞれ環境別に色違いの Icon を用意して登録します。
+
+その際の AppIcon は以下命名をします。
+
+- 開発環境
+  - AppIcon.dev
+- ステージング環境
+  - AppIcon.stg
+- 本番環境
+  - AppIcon
+
+<img src='/images/posts/2021-03-30-13.png' class='img' alt='posted image' style='width: 50%'/>
+
+次に環境変数に応じて AppIcon を出し分ける設定をします。
+
+TARGETS Runner > Build Settings を開きます。
+
+画面右上の検索から `Asset Catalog App Icon` と入力します。
+
+Debug/Profile/Release それぞれ AppIcon の末尾に `$(BUNDLE_ID_SUFFIX)` を付けて `AppIcon$(BUNDLE_ID_SUFFIX)` とします。
+
+<img src='/images/posts/2021-03-30-15.png' class='img' alt='posted image'/>
+
+これで BundleID 同様環境変数に応じて AppIcon の出し分けができます。
+
+## 環境変数に応じて API の向き先を変更する
+
+プロダクトの開発・ステージング・本番環境別に API のエンドポイントが別れてるユースケースです。
+
+環境変数に応じて API の向き先を変更するには Dart ソースコード内で `String.fromEnvironment` メソッドを利用して環境変数を取得して出し分けを行います。
+
+ちなみに bool の値は `bool.fromEnvironment` で取得します。
+
+bool 値は以下のように設定できます。
+
+```txt
+--dart-define=BOOL_VALUE=true
+```
+
+取得フォーマットはこちらです。
+
+```dart
+String.fromEnvironment('STRING_VALUE');
+bool.fromEnvironment('BOOL_VALUE');
+```
+
+環境変数を複数の箇所から利用する場合を想定して以下のように纏めて宣言しておくと使いやすいです。
+
+```dart
+class EnvironmentVariables {
+  static const environment = String.fromEnvironment('BUILD_ENV');
+  static const isDebugging = bool.fromEnvironment('IS_DEBUGGING');
+}
+```
+
+環境変数は以下の `BUILD_ENV` の値を利用します。
+
+```txt
+--dart-define=BUILD_ENV=XXX
+```
+
+`BUILD_ENV` は GoogleService-Info.plist の出し分けでも利用しました。
+
+プログラムからはこんな感じで呼び出せます。
+
+```dart
+class EnvironmentVariables {
+  static const environment = String.fromEnvironment('BUILD_ENV');
+}
+
+class Environment {
+  static const development = 'dev';
+  static const staging = 'stg';
+  static const production = 'prod';
+}
+
+class ApiEndPoint {
+  static const development = 'http://localhost:8080/endpoint';
+  static const staging = 'https://api-stg.sample.com/endpoint';
+  static const production = 'https://api.sample.com/endpoint';
+}
+
+void main() {
+  const apiEndpoint =
+      (EnvironmentVariables.environment == Environment.development)
+          ? ApiEndPoint.development
+          : ((EnvironmentVariables.environment == Environment.staging)
+              ? ApiEndPoint.staging
+              : ApiEndPoint.production);
+
+  print('ApiEndPoint: $apiEndpoint');
+                 :
+                 :
+                 :
+}
+```
+
+## 動作確認
+
+それでは動作確認を行います。
+
+Debug Build で開発環境を実行するには IDE から develop を選択して Run or Debug するか以下のコマンドを実行します。
+
+```txt
+flutter run --debug --dart-define=BUNDLE_ID_SUFFIX=.dev --dart-define=BUILD_ENV=dev
+```
+
+次に Debug Build でステージング環境を実行するには IDE から staging を選択して Run or Debug するか以下コマンドを実行します。
+
+```txt
+flutter run --debug --dart-define=BUNDLE_ID_SUFFIX=.stg --dart-define=BUILD_ENV=stg
+```
+
+Release Build でステージング環境を実行するには以下コマンドを実行します。
+
+```txt
+flutter run --release --dart-define=BUNDLE_ID_SUFFIX=.stg --dart-define=BUILD_ENV=stg
+```
+
+Release Build で本番環境を実行するには以下コマンドを実行します。
+
+```txt
+flutter run --release --dart-define=BUNDLE_ID_SUFFIX= --dart-define=BUILD_ENV=prod
+```
+
+それぞれ実行すると以下のように環境別でアプリアイコンが色分けして表示されます。
+
+<img src='/images/posts/2021-03-30-16.png' class='img' alt='posted image' style='width: 50%'/>
+
+注意点として、筆者の環境では Debug build で開発環境とステージング環境など複数環境を同時に iPhone にデプロイすることができませんでした。
+
+複数環境を一つの端末にデプロイしたい場合は開発環境を Debug Build でデプロイして、ステージング環境、本番環境はコマンドラインから Release Build する必要がありました。
+
+Debug build で開発環境、ステージング環境をテストする際は片方のアプリ削除しておく必要があったのでメモまでに残しておきます。
+
+最後に、環境変数に応じて BundleID を環境ごとに出し分けてるので、環境別でプッシュ通知も問題なく受信できました。
+
+スクリーンショットはステージング環境でプッシュ通知を受信した例です。
+
+<img src='/images/posts/2021-03-30-17.png' class='img' alt='posted image' style='width: 50%'/>
+
+## おわりに
+
+本来は AppIcon の他に iPhone に表示されるアプリ名である `Product Name` も環境に応じて出し分けをしたかったのですが、筆者の環境で上手く動作させることができませんでした。
+
+具体的には TARGETS Runner > Build Settings から Product Name に設定してある `$(TARGET_NAME)` に `$(BUNDLE_ID_SUFFIX)` を付与して `$(TARGET_NAME)$(BUNDLE_ID_SUFFIX)` と設定しました。
+
+実行すると何故か設定が効かず `--dart-define` の環境変数がスルーされ、本番環境の build しかできませんでした。
+
+こちら `Product Name` を動的に変更できたよいう方いらっしゃいましたら [Twitter](https://twitter.com/____ZUMA____) まで連絡頂けると助かります。

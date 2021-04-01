@@ -39,15 +39,15 @@ FCM (Firebase Cloud Messaging) のプッシュ通知設定とプッシュ通知�
 
 プロジェクトを追加をクリックします。
 
-<img src='/images/posts/2021-03-22-1.png' class='img' alt='posted image'/>
+<img src='/images/posts/2021-03-22-1.png' class='img' alt='posted image' style='width: 50%'/>
 
 次に任意のプロジェクト名を入力、親リソースを選択します。
 
-<img src='/images/posts/2021-03-22-2.png' class='img' alt='posted image'/>
+<img src='/images/posts/2021-03-22-2.png' class='img' alt='posted image' style='width: 50%'/>
 
 次に Google アナリティクス(以後 GA)の設定をします。
 
-<img src='/images/posts/2021-03-22-3.png' class='img' alt='posted image'/>
+<img src='/images/posts/2021-03-22-3.png' class='img' alt='posted image' style='width: 50%'/>
 
 こちらは任意で選択してください。
 
@@ -55,13 +55,13 @@ FCM (Firebase Cloud Messaging) のプッシュ通知設定とプッシュ通知�
 
 `続行` ボタンを押すしてしばらくするとプロジェクトが作成されます。
 
-<img src='/images/posts/2021-03-22-4.png' class='img' alt='posted image'/>
+<img src='/images/posts/2021-03-22-4.png' class='img' alt='posted image' style='width: 50%'/>
 
 ## Firebase プロジェクトに Android アプリを追加する
 
 プロジェクト作成後、Firebase のプロジェクト Top ページで以下ハイライト部分のボタンをクリックします。
 
-<img src='/images/posts/2021-03-22-5.png' class='img' alt='posted image'/>
+<img src='/images/posts/2021-03-22-5.png' class='img' alt='posted image' style='width: 50%'/>
 
 今回 Flutter のプロジェクト名は `flutter_fcm_push_notify` とします。
 
@@ -69,7 +69,7 @@ Android パッケージ名を入力しますが今回サンプルなので `com.
 
 Google Play Store では `com.example` のパッケージ名は審査が通らないのでプロダクトで利用する場合は注意しましょう。
 
-<img src='/images/posts/2021-03-22-6.png' class='img' alt='posted image'/>
+<img src='/images/posts/2021-03-22-6.png' class='img' alt='posted image' style='width: 50%'/>
 
 次にプッシュ通知をする際に必須の設定である `google-services.json` を DL します。
 
@@ -77,7 +77,7 @@ Google Play Store では `com.example` のパッケージ名は審査が通ら�
 
 DL した `google-services.json` は プロジェクトの `/android/app/` の下に置きます。
 
-<img src='/images/posts/2021-03-22-8.png' class='img' alt='posted image'/>
+<img src='/images/posts/2021-03-22-8.png' class='img' alt='posted image' style='width: 50%'/>
 
 後は何もせず `次へ` 押してコンソールへ戻ります。
 
@@ -93,11 +93,11 @@ Android では `com.example.flutter_fcm_push_notify` ですが、iOS のバン�
 
 `アプリを登録` ボタンをクリックします。
 
-<img src='/images/posts/2021-03-22-11.png' class='img' alt='posted image'/>
+<img src='/images/posts/2021-03-22-11.png' class='img' alt='posted image' style='width: 50%'/>
 
 次にプッシュ通知をする際に必須の設定である `GoogleService-Info.plist` を DL します。
 
-<img src='/images/posts/2021-03-22-12.png' class='img' alt='posted image'/>
+<img src='/images/posts/2021-03-22-12.png' class='img' alt='posted image' />
 
 後は何もせず `次へ` 押してコンソールへ戻ります。
 
@@ -447,11 +447,11 @@ BackgroundModes の Background fetch と Remote notifications にチェックを
 
 FirebaseConsole > プロジェクトの設定 > CloudMessaging タブをクリックします。
 
-<img src='/images/posts/2021-03-22-34.png' class='img' alt='posted image'/>
+<img src='/images/posts/2021-03-22-34.png' class='img' alt='posted image' style='width: 50%'/>
 
 iOS アプリの設定で APNs 認証キーのアップロードをクリックします。
 
-<img src='/images/posts/2021-03-22-35.png' class='img' alt='posted image'/>
+<img src='/images/posts/2021-03-22-35.png' class='img' alt='posted image' style='width: 50%'/>
 
 APNs 認証キーには、先程ダウンロードしておいた p8 のキーファイルをドラッグ&ドロップします。
 
