@@ -114,9 +114,16 @@
 
   <url>
     <loc
-      >https://zuma-lab.com/posts/flutter-develop-staging-production-environment</loc
+      >https://zuma-lab.com/posts/flutter-develop-staging-production-android-environment</loc
     >
-    <lastmod>2021-03-30T11:31:42.101Z</lastmod>
+    <lastmod>2021-04-01T07:57:53.162Z</lastmod>
+  </url>
+
+  <url>
+    <loc
+      >https://zuma-lab.com/posts/flutter-develop-staging-production-ios-environment</loc
+    >
+    <lastmod>2021-04-01T07:54:37.579Z</lastmod>
   </url>
 
   <url>
@@ -131,7 +138,7 @@
 
   <url>
     <loc>https://zuma-lab.com/posts/flutter-fcm-push-notify-settings</loc>
-    <lastmod>2021-03-30T09:21:29.858Z</lastmod>
+    <lastmod>2021-04-01T04:38:48.318Z</lastmod>
   </url>
 
   <url>
