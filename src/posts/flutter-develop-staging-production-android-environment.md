@@ -1,6 +1,6 @@
 ---
 title: 'FlutterでAndroidの開発/ステージング/本番環境を切り替える'
-date: '2021-04-01'
+date: '2021-04-02'
 isPublished: true
 metaDescription: 'FlutterでAndroidの開発/ステージング/本番環境を切り替える方法です。Flutter で環境を切り替えるには Debug build/Release build で切り替える方法や Flavor を使う方法がありますが、今回は dart-define を利用して環境を切り替えてみます。'
 tags:
@@ -10,13 +10,17 @@ tags:
   - 'FCM'
 ---
 
-Flutter で開発/ステージング/本番環境を切り替える方法です。
+Flutter で開発、ステージング、本番環境を切り替える方法です。
 
 プロダクト開発だと開発環境の他、本番環境、本番環境により近いステージング環境と 3 種類の環境を用意するケースが多いと思います。
 
 ステージング環境は QA 環境やテスト環境とも呼んだりしますね。
 
 Flutter で環境を切り替えるには Debug build/Release build で切り替える方法や Flavor を使う方法がありますが、今回は dart-define を利用して環境を切り替えてみます。
+
+iOS で開発、ステージング、本番環境を切り替える方法はこちらの記事をご覧ください。
+
+<iframe class="hatenablogcard" style="width:100%;height:155px;margin:15px 0;max-width:680px;" title="FlutterでiOSの開発/ステージング/本番環境を切り替える | ZUMA Lab" src="https://hatenablog-parts.com/embed?url=https://zuma-lab.com/posts/flutter-develop-staging-production-ios-environment" frameborder="0" scrolling="no"></iframe>
 
 また、dart-define で環境変数を設定して Flutter や iOS のソースコード、Android の AndroidManifest.xml で環境変数の値を使用する記事を以前書きました。
 
@@ -62,7 +66,9 @@ Release build は `flutter run --release` を実行した時を指します。
 
 こちらは iOS と共通の設定ですので、本記事の iOS 版であるこちらの記事を参照して設定お願いします。
 
-`--dart-define` で以下の環境変数を定義します。
+<iframe class="hatenablogcard" style="width:100%;height:155px;margin:15px 0;max-width:680px;" title="FlutterでiOSの開発/ステージング/本番環境を切り替える | ZUMA Lab" src="https://hatenablog-parts.com/embed?url=https://zuma-lab.com/posts/flutter-develop-staging-production-ios-environment" frameborder="0" scrolling="no"></iframe>
+
+内容としては `--dart-define` で以下の環境変数を定義します。
 
 - 開発環境
 
@@ -470,3 +476,11 @@ flutter run --release --dart-define=BUILD_ENV=prod
 <img src='/images/posts/2021-04-01-4.png' class='img' alt='posted image' style='width: 50%'/>
 
 ## おわりに
+
+筆者は Flutter 初心者ですがなんとか開発、ステージング、本番環境の切り替えを行うことができました。
+
+もっといい方法があるよ、という方はぜひ [Twitter](https://twitter.com/____ZUMA____) で DM していただくか [Contact](/contact) で連絡頂けると嬉しいです。
+
+最後に 再掲ですが iOS で開発、ステージング、本番環境を切り替える方法がまだの方はこちらの記事をご覧ください。
+
+<iframe class="hatenablogcard" style="width:100%;height:155px;margin:15px 0;max-width:680px;" title="FlutterでiOSの開発/ステージング/本番環境を切り替える | ZUMA Lab" src="https://hatenablog-parts.com/embed?url=https://zuma-lab.com/posts/flutter-develop-staging-production-ios-environment" frameborder="0" scrolling="no"></iframe>

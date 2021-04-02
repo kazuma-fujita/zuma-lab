@@ -1,6 +1,6 @@
 ---
 title: 'FlutterでiOSの開発/ステージング/本番環境を切り替える'
-date: '2021-04-01'
+date: '2021-04-02'
 isPublished: true
 metaDescription: 'FlutterでiOSの開発/ステージング/本番環境を切り替える方法です。Flutter で環境を切り替えるには Debug build/Release build で切り替える方法や Flavor を使う方法がありますが、今回は dart-define を利用して環境を切り替えてみます。'
 tags:
@@ -18,6 +18,10 @@ Flutter で開発/ステージング/本番環境を切り替える方法です�
 
 Flutter で環境を切り替えるには Debug build/Release build で切り替える方法や Flavor を使う方法がありますが、今回は dart-define を利用して環境を切り替えてみます。
 
+android で開発、ステージング、本番環境を切り替える方法はこちらの記事をご覧ください。
+
+<iframe class="hatenablogcard" style="width:100%;height:155px;margin:15px 0;max-width:680px;" title="FlutterでAndroidの開発/ステージング/本番環境を切り替える | ZUMA Lab" src="https://hatenablog-parts.com/embed?url=https://zuma-lab.com/posts/flutter-develop-staging-production-android-environment" frameborder="0" scrolling="no"></iframe>
+
 また、dart-define で環境変数を設定して Flutter や iOS のソースコード、Android の AndroidManifest.xml で環境変数の値を使用する記事を以前書きました。
 
 dart-define の環境変数の利用方法をもっと知りたい方はこちらの記事を参考にしてください。
@@ -26,7 +30,7 @@ dart-define の環境変数の利用方法をもっと知りたい方はこち�
 
 それでは iOS で dart-define を利用して環境の切り替え方法を解説していきます。
 
-今回は dart-define で開発/ステージング/本番環境を定義して環境ごとにアプリの BundleID やアプリアイコン、Firebase の GoogleService-Info.plist の切り替えをします。
+今回は dart-define で開発/ステージング/本番環境を定義して環境ごとにアプリ表示名、 BundleID やアプリアイコン、Firebase の GoogleService-Info.plist の切り替えをします。
 
 今回 FCM でプッシュ通知をする用途で GoogleService-Info.plist を環境別に出力して切り替えをしたいと思います。
 
@@ -658,3 +662,11 @@ Debug build で開発環境、ステージング環境をテストする際は�
 <img src='/images/posts/2021-03-30-17.png' class='img' alt='posted image' style='width: 50%'/>
 
 ## おわりに
+
+筆者は Flutter 初心者ですがなんとか開発、ステージング、本番環境の切り替えを行うことができました。
+
+もっといい方法があるよ、という方はぜひ [Twitter](https://twitter.com/____ZUMA____) で DM していただくか [Contact](/contact) で連絡頂けると嬉しいです。
+
+最後に 再掲ですが android で開発、ステージング、本番環境を切り替える方法がまだの方はこちらの記事をご覧ください。
+
+<iframe class="hatenablogcard" style="width:100%;height:155px;margin:15px 0;max-width:680px;" title="FlutterでAndroidの開発/ステージング/本番環境を切り替える | ZUMA Lab" src="https://hatenablog-parts.com/embed?url=https://zuma-lab.com/posts/flutter-develop-staging-production-android-environment" frameborder="0" scrolling="no"></iframe>
