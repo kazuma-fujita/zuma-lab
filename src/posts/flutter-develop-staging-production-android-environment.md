@@ -125,9 +125,9 @@ Google Play Store では `com.example` のパッケージ名は審査が通ら�
 Android のパッケージ名 はそれぞれ以下を入力します。
 
 - 開発環境
-  - com.example.flutter_fcm_push_notify.dev
+  - `com.example.flutter_fcm_push_notify.dev`
 - ステージング環境
-  - com.example.flutter_fcm_push_notify.stg
+  - `com.example.flutter_fcm_push_notify.stg`
 
 <img src='/images/posts/2021-04-01-1.png' class='img' alt='posted image' style='width: 50%'/>
 
@@ -139,7 +139,7 @@ iOS の GoogleService-Info.plist は各環境でそれぞれ Firebase の設定�
 
 どの環境で google-services.json を DL しても同じファイルなので、どれかの環境一つの google-services.json を利用します。
 
-DL した `google-services.json` は プロジェクトの `/android/app/` の下に置きます。
+DL した `google-services.json` は プロジェクトの `android/app/` の下に置きます。
 
 <img src='/images/posts/2021-03-22-8.png' class='img' alt='posted image' style='width: 50%'/>
 
@@ -158,14 +158,14 @@ DL した `google-services.json` は プロジェクトの `/android/app/` の�
 各環境別に以下命名規則のファイルを用意します。
 
 - 開発環境
-  - ic_launcher_dev.png
-  - ic_launcher_round_dev.png
+  - `ic_launcher_dev.png`
+  - `ic_launcher_round_dev.png`
 - ステージング環境
-  - ic_launcher_stg.png
-  - ic_launcher_round_stg.png
+  - `ic_launcher_stg.png`
+  - `ic_launcher_round_stg.png`
 - 本番環境
-  - ic_launcher.png
-  - ic_launcher_round.png
+  - `ic_launcher.png`
+  - `ic_launcher_round.png`
 
 ic_launcher アイコンは正方形のアイコンで、ic_launcher_round は Android7.1 以降で使用する丸形アイコンです。
 
@@ -342,11 +342,11 @@ applicationIdSuffix を追加すると、パッケージ名の末尾に任意の
 Firebase でアプリを追加した時に Android パッケージ名を環境別に設定しましたね。
 
 - 開発環境
-  - com.example.flutter_fcm_push_notify.dev
+  - `com.example.flutter_fcm_push_notify.dev`
 - ステージング環境
-  - com.example.flutter_fcm_push_notify.stg
+  - `com.example.flutter_fcm_push_notify.stg`
 - 本番環境
-  - com.example.flutter_fcm_push_notify
+  - `com.example.flutter_fcm_push_notify`
 
 applicationIdSuffix でこのパッケージ名に対応させる訳です。
 
@@ -406,8 +406,6 @@ class EnvironmentVariables {
 ```txt
 --dart-define=BUILD_ENV=XXX
 ```
-
-`BUILD_ENV` は GoogleService-Info.plist の出し分けでも利用しました。
 
 プログラムからはこんな感じで呼び出せます。
 
