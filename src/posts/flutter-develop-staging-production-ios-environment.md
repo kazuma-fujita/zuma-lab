@@ -41,9 +41,9 @@ dart-define の環境変数の利用方法をもっと知りたい方はこち�
   - ステージング環境
   - 本番環境
 
-Debug build は IDE から Run/Debug を実行するか、`flutter run (or build) --debug` を実行した時を指します。
+Debug build は IDE から Run/Debug を実行するか、`flutter run --debug` を実行した時を指します。
 
-Release build は `flutter run (or build) --release` を実行した時を指します。
+Release build は `flutter run --release` もしくは `flutter build` を実行した時を指します。
 
 `flutter run (or build)` の引数で dart-define で 開発環境、ステージング環境、本番環境を切り替えます。
 
@@ -89,7 +89,7 @@ flutter run --debug (or --release) --dart-define=BUNDLE_ID_SUFFIX=.stg --dart-de
 - 本番環境
 
 ```txt
-flutter run –release --dart-define=BUNDLE_ID_SUFFIX= --dart-define=BUILD_ENV=prod
+flutter run –release --dart-define=BUILD_ENV=prod
 ```
 
 `BUNDLE_ID_SUFFIX` は BundleID の切り替えや、アプリアイコンの切り替えで使用します。
@@ -135,7 +135,7 @@ Dart entrypoint は `lib/main.dart` を選択します。
 本番環境は `Name` を production にして、`Additional run args` 以下を追記します。
 
 ```txt
---dart-define=BUNDLE_ID_SUFFIX= --dart-define=BUILD_ENV=prod
+--dart-define=BUILD_ENV=prod
 ```
 
 Dart entrypoint は `lib/main.dart` を選択します。
@@ -400,7 +400,7 @@ Android Studio には各環境に応じて以下の `--dart-define` を定義し
 - 本番環境(production)
 
 ```txt
---dart-define=BUNDLE_ID_SUFFIX= --dart-define=BUILD_ENV=prod
+--dart-define=BUILD_ENV=prod
 ```
 
 `ios/Flutter` ディレクトリを Finder で開いてみると `EnvironmentVariables.xcconfig` というファイルが生成されています。
@@ -413,9 +413,9 @@ BUILD_ENV=dev
 flutter.inspector.structuredErrors=true
 ```
 
-注意点として、`flutter clean` などをしてプロジェクトを clean した直後や `EnvironmentVariables.xcconfig` が無い状態で build した場合など環境変数が xcconfig ファイル内に出力されていない場合があります。
+注意点として、`flutter clean` などをしてプロジェクトを clean した直後や `EnvironmentVariables.xcconfig` が無い状態で実行した場合など環境変数が xcconfig ファイル内に出力されていない場合があります。
 
-その場合何度か build して、 `ios/Flutter/EnvironmentVariables.xcconfig` に環境変数が出力されているか確認してください。
+その場合は IDE からではなくコマンドラインから 何度か build してみて、 `ios/Flutter/EnvironmentVariables.xcconfig` に環境変数が出力されているか確認してください。
 
 ## 生成した環境設定ファイルを Xcode で利用できるようにする
 
@@ -490,9 +490,23 @@ Firebase のアプリを追加した時に以下 BundleID を設定しました�
 - 本番環境
   - com.example.flutter-fcm-push-notify
 
+## 環境変数に応じてアプリ表示名を変更する
+
+環境変数に応じて iPhone に表示するアプリ名を変更します。
+
+Xcode の TARGETS Runner > Info を開きます。
+
+Bundle name の Value にデフォルトで Flutter のプロジェクト名がアプリ表示名としてセットされています。
+
+アプリ表示名の末尾に `$(BUNDLE_ID_SUFFIX)` を追記します。
+
+<img src='/images/posts/2021-03-30-18.png' class='img' alt='posted image'/>
+
+例えば `App$(BUNDLE_ID_SUFFIX)` と設定すると、開発環境では `App.dev` とアプリ名に表示されます。
+
 ## 環境変数に応じてアプリアイコンを変更する
 
-Xcode の Runner > Assets.xcassets ファイルを開きます。
+Xcode の Runner/Assets.xcassets ファイルを開きます。
 
 右クリックのコンテキストメニュー > iOS > iOS App Icon で AppIcon を追加します。
 
@@ -605,6 +619,10 @@ Debug Build で開発環境を実行するには IDE から develop を選択し
 flutter run --debug --dart-define=BUNDLE_ID_SUFFIX=.dev --dart-define=BUILD_ENV=dev
 ```
 
+`flutter clean` などをしてプロジェクトを clean した直後や `EnvironmentVariables.xcconfig` が無い状態で実行した場合など環境変数が xcconfig ファイル内に出力されていない場合があります。
+
+その場合、環境変数が反映されないので IDE からではなくコマンドラインから実行してみたり何度か run してみて、 `ios/Flutter/EnvironmentVariables.xcconfig` に環境変数が出力されているか確認してください。
+
 次に Debug Build でステージング環境を実行するには IDE から staging を選択して Run or Debug するか以下コマンドを実行します。
 
 ```txt
@@ -620,10 +638,10 @@ flutter run --release --dart-define=BUNDLE_ID_SUFFIX=.stg --dart-define=BUILD_EN
 Release Build で本番環境を実行するには以下コマンドを実行します。
 
 ```txt
-flutter run --release --dart-define=BUNDLE_ID_SUFFIX= --dart-define=BUILD_ENV=prod
+flutter run --release --dart-define=BUILD_ENV=prod
 ```
 
-それぞれ実行すると以下のように環境別でアプリアイコンが色分けして表示されます。
+それぞれ実行すると以下のように環境別でアプリ名が設定され、アプリアイコンが色分けして表示されます。
 
 <img src='/images/posts/2021-03-30-16.png' class='img' alt='posted image' style='width: 50%'/>
 
@@ -640,11 +658,3 @@ Debug build で開発環境、ステージング環境をテストする際は�
 <img src='/images/posts/2021-03-30-17.png' class='img' alt='posted image' style='width: 50%'/>
 
 ## おわりに
-
-本来は AppIcon の他に iPhone に表示されるアプリ名である `Product Name` も環境に応じて出し分けをしたかったのですが、筆者の環境で上手く動作させることができませんでした。
-
-具体的には TARGETS Runner > Build Settings から Product Name に設定してある `$(TARGET_NAME)` に `$(BUNDLE_ID_SUFFIX)` を付与して `$(TARGET_NAME)$(BUNDLE_ID_SUFFIX)` と設定しました。
-
-実行すると何故か設定が効かず `--dart-define` の環境変数がスルーされ、本番環境の build しかできませんでした。
-
-こちら `Product Name` を動的に変更できたよいう方いらっしゃいましたら [Twitter](https://twitter.com/____ZUMA____) まで連絡頂けると助かります。
