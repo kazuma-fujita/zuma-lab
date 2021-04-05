@@ -104,7 +104,7 @@
 
   <url>
     <loc>https://zuma-lab.com/posts/flutter-dart-define-environment</loc>
-    <lastmod>2021-03-30T11:37:08.434Z</lastmod>
+    <lastmod>2021-04-05T04:03:12.555Z</lastmod>
   </url>
 
   <url>
@@ -116,14 +116,14 @@
     <loc
       >https://zuma-lab.com/posts/flutter-develop-staging-production-android-environment</loc
     >
-    <lastmod>2021-04-01T07:57:53.162Z</lastmod>
+    <lastmod>2021-04-02T09:04:39.102Z</lastmod>
   </url>
 
   <url>
     <loc
       >https://zuma-lab.com/posts/flutter-develop-staging-production-ios-environment</loc
     >
-    <lastmod>2021-04-01T07:54:37.579Z</lastmod>
+    <lastmod>2021-04-02T08:54:02.402Z</lastmod>
   </url>
 
   <url>
@@ -149,6 +149,13 @@
   <url>
     <loc>https://zuma-lab.com/posts/flutter-google-maps-with-location</loc>
     <lastmod>2021-03-19T10:55:48.016Z</lastmod>
+  </url>
+
+  <url>
+    <loc
+      >https://zuma-lab.com/posts/flutter-hiding-api-key-with-dart-define</loc
+    >
+    <lastmod>2021-04-05T03:04:24.303Z</lastmod>
   </url>
 
   <url>
@@ -190,6 +197,11 @@
   <url>
     <loc>https://zuma-lab.com/posts/flutter-search-github-riverpod-di</loc>
     <lastmod>2021-02-22T07:37:16.930Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://zuma-lab.com/posts/flutter-static-google-map</loc>
+    <lastmod>2021-04-05T04:14:47.870Z</lastmod>
   </url>
 
   <url>
