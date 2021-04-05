@@ -2,7 +2,7 @@
 title: 'Google Maps Static APIを使ってFlutterで地図画像を表示する'
 date: '2021-04-05'
 isPublished: true
-metaDescription: 'Google Maps Static APIを使ってFlutterで地図画像を表示する方法です。ef'
+metaDescription: 'Google Maps Static APIを使ってFlutterで地図画像を表示する方法です。'
 tags:
   - 'Flutter'
   - 'Dart'

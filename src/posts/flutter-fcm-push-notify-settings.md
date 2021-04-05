@@ -558,3 +558,9 @@ iOS の Podfile 周りは落とし穴が多いです。
 プッシュ通知の送信、フォアグラウンド、バッググラウンド、アプリのタスクを落としたターミネイト状態でプッシュ通知メッセージを表示する実装を行います。
 
 また、プッシュ通知メッセージをタップしてアプリの特定の画面を開く実装も行います。
+
+最後に開発・ステージング・本番環境別にプッシュ通知を配信する方法の記事を書いたので、より実践的にプッシュ通知を配信したい方はこちらをご覧ください。
+
+<iframe class="hatenablogcard" style="width:100%;height:155px;margin:15px 0;max-width:680px;" title="FlutterでAndroidの開発/ステージング/本番環境を切り替える | ZUMA Lab" src="https://hatenablog-parts.com/embed?url=https://zuma-lab.com/posts/flutter-develop-staging-production-android-environment" frameborder="0" scrolling="no"></iframe>
+
+<iframe class="hatenablogcard" style="width:100%;height:155px;margin:15px 0;max-width:680px;" title="FlutterでiOSの開発/ステージング/本番環境を切り替える | ZUMA Lab" src="https://hatenablog-parts.com/embed?url=https://zuma-lab.com/posts/flutter-develop-staging-production-ios-environment" frameborder="0" scrolling="no"></iframe>
