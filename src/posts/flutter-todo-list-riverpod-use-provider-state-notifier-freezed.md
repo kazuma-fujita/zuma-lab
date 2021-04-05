@@ -102,10 +102,6 @@ provider 引数には provider で保持する ViewModel を指定します。
 
 ちなみに provider は immutable(不変)で provider をグローバルに定義して問題ないので、`main` メソッドの外側で宣言しています。
 
-また、StateNotifierProvider の ref オブジェクトを利用すると他の provider にアクセス出来るようです。
-
-複数 provider が出てくるパターンはまた次回以降検証していきます。
-
 最後に provider を使用する Widget を ProviderScope でくくります。
 
 ```dart
@@ -117,6 +113,12 @@ void main() {
   );
 }
 ```
+
+蛇足ですが、StateNotifierProvider の ref オブジェクトを利用すると他の provider にアクセス出来ます。
+
+複数の provider を ref で参照するパターンを記事にしたので、興味がある方はご覧ください。
+
+<iframe class="hatenablogcard" style="width:100%;height:155px;margin:15px 0;max-width:680px;" title="Flutter RiverpodでDIをしてテスタビリティを向上させる | ZUMA Lab" src="https://hatenablog-parts.com/embed?url=https://zuma-lab.com/posts/flutter-search-github-riverpod-di" frameborder="0" scrolling="no"></iframe>
 
 ## UI の状態を表現するクラスの作成
 

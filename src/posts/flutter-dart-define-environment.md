@@ -1,14 +1,14 @@
 ---
-title: 'Flutterのdart-defineで設定した環境変数をソースコードやAndroidManifest.xmlで使用する'
+title: 'Flutterのdart-defineで設定した環境変数をSwiftのソースコードやAndroidManifest.xmlで使用する'
 date: '2021-03-30'
 isPublished: true
-metaDescription: 'Flutterの--dart-defineで環境変数を設定してソースコードや AndroidManifest.xml で環境変数の値を使用する方法です。'
+metaDescription: 'Flutterの--dart-defineで環境変数を設定してSwiftのソースコードや AndroidManifest.xml で環境変数の値を使用する方法です。'
 tags:
   - 'Flutter'
   - 'Dart'
 ---
 
-Flutter の--dart-define で環境変数を設定してソースコードや AndroidManifest.xml で環境変数を使用する方法です。
+Flutter の--dart-define で環境変数を設定して iOS ネイティブである Swift のソースコードや Android のネイティブ設定である AndroidManifest.xml で環境変数を使用する方法です。
 
 Google の API キーなどを秘匿情報をソースコードにハードコーディングして Github などに上げてしまうと、その API キーが悪用される恐れがあります。
 
@@ -96,7 +96,9 @@ GOOGLE_API_KEY=dummy_key flutter run
 
 ## launchctl コマンドで環境変数を設定する
 
-以下のコマンドで GOOGLE_API_KEY 環境変数をセットします。
+launchctl コマンドを利用する方法です。
+
+以下のコマンドで `GOOGLE_API_KEY` 環境変数をセットします。
 
 ```txt
 launchctl setenv GOOGLE_API_KEY dummy_key
@@ -110,7 +112,9 @@ launchctl getenv GOOGLE_API_KEY
 
 ## Android のビルド時に `--dart-define` 環境変数を渡す
 
-`android/app/build.gradle` に以下のスクリプトを追記します。
+Android ビルド時に環境変数を渡す方法です。
+
+まず　`android/app/build.gradle` に以下のスクリプトを追記します。
 
 ```java
 apply plugin: 'com.android.application'
