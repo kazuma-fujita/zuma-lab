@@ -25,78 +25,33 @@ API キーなどの秘匿情報は環境変数で設定してソースコード�
 - Flutter 2.0.3
 - Dart 2.12.2
 
-## Android Studio に環境変数を設定する
+## コマンドラインで環境変数を定義する
 
-環境変数は以下のフォーマットで設定します。
+環境変数である dart-define は以下のフォーマットで設定します。
 
 ```txt
 --dart-define=ENVIRONMENT_NAME=value
 ```
 
-例えば、Circle CI や Github Actions など CI 環境で環境変数を利用したい場合やコマンドラインから実行する場合は `flutter run` コマンドの引数で環境変数を設定します。
+- 通常の開発時にコマンドラインのデバッグビルドで dart-define を定義する例
 
 ```txt
-$ flutter run --dart-define=GOOGLE_API_KEY=dummy_key
+$ flutter run --debug --dart-define=GOOGLE_API_KEY=dummy_key
 ```
 
-Android Studio で `--dart-define` で環境変数を設定するには `Configurations` 画面から行います。
-
-画面上部の `main.dart` をクリックするとプルダウンで `Edit Configurations...` が選択できます。
-
-<img src='/images/posts/2021-03-29-1.png' class='img' alt='posted image' />
-
-Configurations 画面を開いて `Additional run args` に `--dart-define` を入力します。
-
-<img src='/images/posts/2021-03-29-2.png' class='img' alt='posted image' />
-
-今回は `GOOGLE_API_KEY` という名前の環境変数を設定しました。
+- Circle CI や Github Actions など CI 環境からリリースビルドで dart-define を定義する例
 
 ```txt
---dart-define=GOOGLE_API_KEY=dummy_key
+$ flutter run --release --dart-define=GOOGLE_API_KEY=dummy_key
 ```
 
-## Dart のソースコードから環境変数の値を取得する
+開発時は Android Studio で Run や Debug を実行する方は Android Studio の Configurations に `--dart-define` を設定できます。
 
-Dart のソースコードから環境変数の値を取得する場合は `String.fromEnvironment` で取得します。
+Android Studio の環境変数設定方法こちらの記事で紹介してますので参照ください。
 
-bool の値は `bool.fromEnvironment` で取得します。
-
-bool 値は以下のように設定できます。
-
-```txt
---dart-define=BOOL_VALUE=true
-```
-
-取得フォーマットはこちらです。
-
-```dart
-String.fromEnvironment('STRING_VALUE');
-bool.fromEnvironment('BOOL_VALUE');
-```
-
-環境変数を複数の箇所から利用する場合を想定して以下のように纏めて宣言しておくと使いやすいです。
-
-```dart
-class EnvironmentVariables {
-  static const googleApiKey = String.fromEnvironment('GOOGLE_API_KEY');
-  static const isDebugging = bool.fromEnvironment('IS_DEBUGGING');
-}
-```
-
-プログラムからはこんな感じで呼び出せます。
-
-```dart
-　　 static const baseMapURL = 'https://maps.googleapis.com/maps/api/staticmap';
-    final apiKey = 'key=${EnvironmentVariables.googleApiKey}';
-                           :
-                           :
-                           :
-    final imageUrl = '$baseMapURL?$mapCenter&$mapZoom&$mapMarkers&$mapSize&$apiKey';
-```
+<iframe class="hatenablogcard" style="width:100%;height:155px;margin:15px 0;max-width:680px;" title="Flutterのdart-defineを使ってAPIキーを隠蔽する | ZUMA Lab" src="https://hatenablog-parts.com/embed?url=https://zuma-lab.com/posts/flutter-hiding-api-key-with-dart-define" frameborder="0" scrolling="no"></iframe>
 
 ## AndroidManifest.xml から環境変数の値を取得する
-
-先程は Dart のソースコードから環境変数の値を取得する方法を紹介しました。
 
 次は AndroidManifest.xml から環境変数の値を取得する方法です。
 
@@ -429,7 +384,11 @@ import GoogleMaps
 
 ここで設定した環境変数は秘匿情報を隠蔽する目的の他、開発環境、ステージング環境、本番環境で環境を分けた場合の環境別に環境変数を利用したい時などにも利用します。
 
-環境別に環境変数を設定する方法はまた記事にしたいと思います。
+詳しくはこちらの記事を参照ください。
+
+<iframe class="hatenablogcard" style="width:100%;height:155px;margin:15px 0;max-width:680px;" title="FlutterでiOSの開発/ステージング/本番環境を切り替える | ZUMA Lab" src="https://hatenablog-parts.com/embed?url=https://zuma-lab.com/posts/flutter-develop-staging-production-ios-environment" frameborder="0" scrolling="no"></iframe>
+
+<iframe class="hatenablogcard" style="width:100%;height:155px;margin:15px 0;max-width:680px;" title="FlutterでAndroidの開発/ステージング/本番環境を切り替える | ZUMA Lab" src="https://hatenablog-parts.com/embed?url=https://zuma-lab.com/posts/flutter-develop-staging-production-android-environment" frameborder="0" scrolling="no"></iframe>
 
 最後に今回環境変数を設定したサンプルは Github にありますので参照ください。
 
