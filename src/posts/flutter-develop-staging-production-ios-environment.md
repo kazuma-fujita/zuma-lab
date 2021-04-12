@@ -613,6 +613,24 @@ void main() {
 }
 ```
 
+もしくはエンドポイント自体を隠蔽する為に dart-define で定義する方法もあります。
+
+```txt
+--dart-define=API_URL=http://localhost:8080/endpoint
+```
+
+```dart
+class EnvironmentVariables {
+  static const apiUrl = String.fromEnvironment('API_URL');
+}
+```
+
+Http パッケージで通信する例です。
+
+```dart
+http.get(EnvironmentVariables.apiUrl);
+```
+
 ## 動作確認
 
 それでは動作確認を行います。
