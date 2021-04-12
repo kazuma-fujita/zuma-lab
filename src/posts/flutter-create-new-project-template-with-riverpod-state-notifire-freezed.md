@@ -131,7 +131,6 @@ targets:
           generic_argument_factories: false
           ignore_unannotated: false
           include_if_null: true
-          nullable: true
 ```
 
 `field_rename: snake` 設定をすると自動でスネークケースの要素を キャメルケースの property に mapping してくれます。

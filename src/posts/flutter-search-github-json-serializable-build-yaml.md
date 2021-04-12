@@ -75,7 +75,6 @@ targets:
           generic_argument_factories: false
           ignore_unannotated: false
           include_if_null: true
-          nullable: true
 ```
 
 `field_rename` を `none` から `snake` にします。
