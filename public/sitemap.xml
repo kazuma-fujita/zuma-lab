@@ -86,6 +86,11 @@
   </url>
 
   <url>
+    <loc>https://zuma-lab.com/posts/flutter-connect-to-the-localhost-api</loc>
+    <lastmod>2021-04-12T05:21:49.796Z</lastmod>
+  </url>
+
+  <url>
     <loc>https://zuma-lab.com/posts/flutter-create-http-api-client</loc>
     <lastmod>2021-02-26T12:33:49.990Z</lastmod>
   </url>
@@ -104,7 +109,7 @@
 
   <url>
     <loc>https://zuma-lab.com/posts/flutter-dart-define-environment</loc>
-    <lastmod>2021-04-05T04:03:12.555Z</lastmod>
+    <lastmod>2021-04-05T06:35:03.323Z</lastmod>
   </url>
 
   <url>
@@ -133,12 +138,12 @@
 
   <url>
     <loc>https://zuma-lab.com/posts/flutter-fcm-push-notify-development</loc>
-    <lastmod>2021-03-22T23:53:02.693Z</lastmod>
+    <lastmod>2021-04-05T06:27:51.962Z</lastmod>
   </url>
 
   <url>
     <loc>https://zuma-lab.com/posts/flutter-fcm-push-notify-settings</loc>
-    <lastmod>2021-04-01T04:38:48.318Z</lastmod>
+    <lastmod>2021-04-05T06:28:05.188Z</lastmod>
   </url>
 
   <url>
@@ -155,7 +160,7 @@
     <loc
       >https://zuma-lab.com/posts/flutter-hiding-api-key-with-dart-define</loc
     >
-    <lastmod>2021-04-05T03:04:24.303Z</lastmod>
+    <lastmod>2021-04-05T06:32:07.441Z</lastmod>
   </url>
 
   <url>
@@ -201,7 +206,7 @@
 
   <url>
     <loc>https://zuma-lab.com/posts/flutter-static-google-map</loc>
-    <lastmod>2021-04-05T04:14:47.870Z</lastmod>
+    <lastmod>2021-04-05T06:31:32.611Z</lastmod>
   </url>
 
   <url>
@@ -213,14 +218,14 @@
     <loc
       >https://zuma-lab.com/posts/flutter-todo-list-riverpod-use-provider-change-notifier</loc
     >
-    <lastmod>2021-03-10T01:47:57.318Z</lastmod>
+    <lastmod>2021-04-05T06:47:04.954Z</lastmod>
   </url>
 
   <url>
     <loc
       >https://zuma-lab.com/posts/flutter-todo-list-riverpod-use-provider-state-notifier-freezed</loc
     >
-    <lastmod>2021-02-22T09:32:12.593Z</lastmod>
+    <lastmod>2021-04-05T06:48:06.958Z</lastmod>
   </url>
 
   <url>

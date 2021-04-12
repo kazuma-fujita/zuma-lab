@@ -2,7 +2,7 @@
 title: 'Flutterのdart-defineを使ってAPIキーを隠蔽する'
 date: '2021-04-05'
 isPublished: true
-metaDescription: 'Flutterのdart-defineを使ってAPIキーを隠蔽する方法です。'
+metaDescription: 'Flutterのdart-defineを使ってAPIキーを隠蔽する方法です。API キーなどの秘匿情報は環境変数で設定してソースコードから値を取得するようにしましょう。'
 tags:
   - 'Flutter'
   - 'Dart'
