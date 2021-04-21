@@ -40,6 +40,11 @@
   </url>
 
   <url>
+    <loc>https://zuma-lab.com/posts/aws-cdk-s3-cloudfront-deploy</loc>
+    <lastmod>2021-04-21T03:18:28.261Z</lastmod>
+  </url>
+
+  <url>
     <loc>https://zuma-lab.com/posts/cypress-web-scraping</loc>
     <lastmod>2021-01-26T06:28:23.859Z</lastmod>
   </url>
@@ -87,7 +92,7 @@
 
   <url>
     <loc>https://zuma-lab.com/posts/flutter-connect-to-the-localhost-api</loc>
-    <lastmod>2021-04-12T05:21:49.796Z</lastmod>
+    <lastmod>2021-04-12T06:23:22.530Z</lastmod>
   </url>
 
   <url>
@@ -99,7 +104,7 @@
     <loc
       >https://zuma-lab.com/posts/flutter-create-new-project-template-with-riverpod-state-notifire-freezed</loc
     >
-    <lastmod>2021-02-22T09:32:43.979Z</lastmod>
+    <lastmod>2021-04-12T07:24:42.803Z</lastmod>
   </url>
 
   <url>
@@ -121,14 +126,14 @@
     <loc
       >https://zuma-lab.com/posts/flutter-develop-staging-production-android-environment</loc
     >
-    <lastmod>2021-04-02T09:04:39.102Z</lastmod>
+    <lastmod>2021-04-12T06:31:19.373Z</lastmod>
   </url>
 
   <url>
     <loc
       >https://zuma-lab.com/posts/flutter-develop-staging-production-ios-environment</loc
     >
-    <lastmod>2021-04-02T08:54:02.402Z</lastmod>
+    <lastmod>2021-04-12T06:31:28.435Z</lastmod>
   </url>
 
   <url>
@@ -189,7 +194,7 @@
     <loc
       >https://zuma-lab.com/posts/flutter-search-github-json-serializable-build-yaml</loc
     >
-    <lastmod>2021-02-24T00:33:03.755Z</lastmod>
+    <lastmod>2021-04-12T07:24:44.675Z</lastmod>
   </url>
 
   <url>
