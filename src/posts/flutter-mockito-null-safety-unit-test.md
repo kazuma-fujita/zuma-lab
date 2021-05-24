@@ -575,3 +575,7 @@ MVVM などのアーキテクチャを採用している場合、更に複雑さ
 <iframe class="hatenablogcard" style="width:100%;height:155px;margin:15px 0;max-width:680px;" title="Flutter RiverpodでDIをしてテスタビリティを向上させる | ZUMA Lab" src="https://hatenablog-parts.com/embed?url=https://zuma-lab.com/posts/flutter-search-github-riverpod-di" frameborder="0" scrolling="no"></iframe>
 
 次回は DI したクラスをどうやってモックしていくか見ていきたいと思います。
+
+最後に今回記事中に使用したソースはこちらにあるので参照ください。
+
+<iframe class="hatenablogcard" style="width:100%;height:155px;margin:15px 0;max-width:680px;" title="kazuma-fujita/flutter_mockito_mocking_test: Testing of flutter with mockito package." src="https://hatenablog-parts.com/embed?url=https://github.com/kazuma-fujita/flutter_mockito_mocking_test" frameborder="0" scrolling="no"></iframe>
