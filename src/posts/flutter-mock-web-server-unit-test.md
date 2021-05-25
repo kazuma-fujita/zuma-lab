@@ -17,9 +17,9 @@ Mockito を利用して Http 通信をする API Client をモックしても Un
 
 ですが、モックサーバーを立てないと通信エラーのテストまでは書くことが出来ません。
 
-今回はその名の通りの mock_web_server package を利用して Unit Test を書いていきます。
+今回はその名の通りの `mock_web_server` package を利用して Unit Test を書いていきます。
 
-<iframe class="hatenablogcard" style="width:100%;height:155px;margin:15px 0;max-width:680px;" title="mock_web_server | Dart Package" src="https://hatenablog-parts.com/embed?url=https://pub.dev/packages/mock_web_server" frameborder="0" scrolling="no"></iframe>
+<iframe class="hatenablogcard" style="width:100%;height:155px;margin:15px 0;max-width:680px;" title="`mock_web_server` | Dart Package" src="https://hatenablog-parts.com/embed?url=https://pub.dev/packages/mock_web_server" frameborder="0" scrolling="no"></iframe>
 
 ### 環境
 
@@ -30,7 +30,7 @@ Mockito を利用して Http 通信をする API Client をモックしても Un
 
 ## Package install
 
-pubspec.yaml の dependencies に http、dev_dependencies に mock_web_server を追記してください。
+pubspec.yaml の dependencies に http、dev_dependencies に `mock_web_server` を追記してください。
 
 ```yaml
 dependencies:
@@ -46,7 +46,7 @@ dev_dependencies:
 
 注意点として、`^5.0.0-nullsafety.1` version を指定してください。
 
-2021/05/25 時点の mock_web_server は prerelease version である 5.0.0 から Null safety に対応しています。
+2021/05/25 時点の `mock_web_server` は prerelease version である 5.0.0 から Null safety に対応しています。
 
 Flutter 2.0.0 から Null safety が推奨され、2.2.0 からデフォルトで Null safety が適用されるようになりました。
 
@@ -163,7 +163,7 @@ API Client は様々な画面から呼ばれる可能性があるので、Single
 ```dart
 import 'package:your_flutter_package/api_client.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mock_web_server/mock_web_server.dart';
+import 'package:`mock_web_server`/`mock_web_server`.dart';
 
 void main() {
   final _server = MockWebServer(port: 8081);
@@ -280,7 +280,7 @@ ApiClientImpl は Singleton なので、1 インスタンスの副作用がで�
 
 また、コンストラクタ引数の baseUrl には `http://127.0.0.1:8081` を指定しています。
 
-`http://127.0.0.1` mock_web_server で立てるモックサーバーの URL です。
+`http://127.0.0.1` は `mock_web_server` で立てるモックサーバーの URL です。
 
 また、`8081` port は先程 MockWebServer のコンストラクタ引数で指定した値です。
 
@@ -347,11 +347,11 @@ expect でその endpoint が間違いないか検証できます。
   }
 ```
 
-このように mock_web_server package を使用してリアルなサーバーの動きを再現することができます。
+このように `mock_web_server` package を使用してリアルなサーバーの動きを再現することができます。
 
 ## おわりに
 
-今回は mock_web_server でモックサーバーを立てて API Client から通信する部分の Unit Test を書きました。
+今回は `mock_web_server` でモックサーバーを立てて API Client から通信する部分の Unit Test を書きました。
 
 Unit Test に関しては、前回 Class の Mocking package である Mockito の紹介記事を書いたので興味があれば御覧ください。
 
