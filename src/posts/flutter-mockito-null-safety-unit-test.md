@@ -6,6 +6,8 @@ metaDescription: 'Mocking packageであるMockitoがnull safetyに対応しま�
 tags:
   - 'Flutter'
   - 'Dart'
+  - 'UnitTest'
+  - 'Mockito'
 ---
 
 Flutter の Mocking package である Mockito が Null safety に対応しました。
