@@ -175,17 +175,17 @@
 
   <url>
     <loc>https://zuma-lab.com/posts/flutter-mock-web-server-unit-test</loc>
-    <lastmod>2021-05-25T10:11:16.283Z</lastmod>
+    <lastmod>2021-05-25T10:28:03.681Z</lastmod>
   </url>
 
   <url>
     <loc>https://zuma-lab.com/posts/flutter-mockito-di-unit-test</loc>
-    <lastmod>2021-05-25T08:24:17.501Z</lastmod>
+    <lastmod>2021-05-25T10:17:28.025Z</lastmod>
   </url>
 
   <url>
     <loc>https://zuma-lab.com/posts/flutter-mockito-null-safety-unit-test</loc>
-    <lastmod>2021-05-24T09:47:11.778Z</lastmod>
+    <lastmod>2021-05-25T10:17:21.305Z</lastmod>
   </url>
 
   <url>
@@ -250,6 +250,13 @@
 
   <url>
     <loc
+      >https://zuma-lab.com/posts/flutter-troubleshooting-build-runner-getter-not-found-error</loc
+    >
+    <lastmod>2021-05-26T08:51:37.457Z</lastmod>
+  </url>
+
+  <url>
+    <loc
       >https://zuma-lab.com/posts/flutter-troubleshooting-called-during-build</loc
     >
     <lastmod>2021-02-27T08:20:01.064Z</lastmod>
@@ -267,6 +274,11 @@
       >https://zuma-lab.com/posts/flutter-troubleshooting-the-method-show-snack-bar-was-called-on-null</loc
     >
     <lastmod>2021-02-28T01:27:05.526Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://zuma-lab.com/posts/flutter-using-fixtures-in-testing</loc>
+    <lastmod>2021-05-27T08:30:00.345Z</lastmod>
   </url>
 
   <url>
