@@ -1,5 +1,5 @@
 ---
-title: 'Flutter RiverpodのFutureProviderを利用したUnit TestとViewとWidget Testを書く'
+title: 'Flutter RiverpodのFutureProviderを利用したUnit TestとViewのWidget Testを書く'
 date: '2021-06-07'
 isPublished: true
 metaDescription: '今回は FutureProvider の Unit Test と、画面表示の責務を担う View の Widget Test を書いていきます。'
@@ -76,9 +76,9 @@ Repository は前回記事に登場した非同期で Entity 配列を取得す�
 
 以前 Mockito の使い方を解説した記事を書いたので、ぜひこちらも参照ください。
 
-<iframe class="hatenablogcard" style="width:100%;height:155px;margin:15px 0;max-width:680px;" title="Flutter RiverpodのFutureProviderでAPI通信処理を楽に実装する | ZUMA Lab" src="https://hatenablog-parts.com/embed?url=https://zuma-lab.com/posts/flutter-future-provider-of-riverpod" frameborder="0" scrolling="no"></iframe>
+<iframe class="hatenablogcard" style="width:100%;height:155px;margin:15px 0;max-width:680px;" title="FlutterのNull safetyに対応したMockitoの基本的な使い方 | ZUMA Lab" src="https://hatenablog-parts.com/embed?url=https://zuma-lab.com/posts/flutter-mockito-null-safety-unit-test" frameborder="0" scrolling="no"></iframe>
 
-<iframe class="hatenablogcard" style="width:100%;height:155px;margin:15px 0;max-width:680px;" title="Flutter RiverpodのFutureProviderでAPI通信処理を楽に実装する | ZUMA Lab" src="https://hatenablog-parts.com/embed?url=https://zuma-lab.com/posts/flutter-future-provider-of-riverpod" frameborder="0" scrolling="no"></iframe>
+<iframe class="hatenablogcard" style="width:100%;height:155px;margin:15px 0;max-width:680px;" title="Flutter RiverpodでDIしたクラスをMockitoでモック化してUnitTestを書く | ZUMA Lab" src="https://hatenablog-parts.com/embed?url=https://zuma-lab.com/posts/flutter-mockito-di-unit-test" frameborder="0" scrolling="no"></iframe>
 
 ## FutureProvider の UnitTest を書く
 
