@@ -205,7 +205,7 @@ class View extends StatelessWidget {
     final asyncValue = context.read(listProvider);
 ```
 
-注意点としては、flutter_riverpod を import しておかないと context.read が利用できないので、必ず flutter_riverpod を import しましょう。
+注意点としては、`flutter_riverpod` を import しておかないと context.read が利用できないので、必ず `flutter_riverpod` を import しましょう。
 
 ```dart
 import 'package:flutter_riverpod/flutter_riverpod.dart';
