@@ -659,7 +659,7 @@ Android OS のカメラ許可パーミッションは OS の version により `
 
 Permission.camera.request() で強制的に `今回のみ` を表示させないオプションがあれば良かったのですが、リファレンスをみてもそれらしきオプションがありませんでした。
 
-この 2 件は引き続き調査しますが、もし原因がわかる方いらっしゃいましたら [Twitter](https://twitter.com/____ZUMA____) で DM 頂くか、[Contact](/contact) まで連絡頂けると助かります。
+この 2 件は引き続き調査しますが、もし原因がわかる方いらっしゃいましたら [Twitter](https://twitter.com/zuma_lab) で DM 頂くか、[Contact](/contact) まで連絡頂けると助かります。
 
 ## おわりに
 

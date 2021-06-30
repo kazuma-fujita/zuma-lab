@@ -315,4 +315,4 @@ class MyComponent extends StatelessWidget {
 
 Android Studio のショートカットを使いこなすと生産性が上がります。
 
-筆者はまだ Flutter/Android 開発初学者なので、もし他にもこんな便利なショートカットがあるよ、という方はぜひ [Twitter](https://twitter.com/____ZUMA____) で DM していただくか [Contact](/contact) で連絡お願いします。
+筆者はまだ Flutter/Android 開発初学者なので、もし他にもこんな便利なショートカットがあるよ、という方はぜひ [Twitter](https://twitter.com/zuma_lab) で DM していただくか [Contact](/contact) で連絡お願いします。

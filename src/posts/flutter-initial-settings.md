@@ -138,4 +138,4 @@ Image.asset('assets/images/images1.jpg')
 
 筆者はまだ Flutter 歴が浅いのでもっと有用な設定が他にもあると思います。
 
-もし他にもこんな便利な設定があるよ、という方はぜひ [Twitter](https://twitter.com/____ZUMA____) で DM していただくか [Contact](/contact) で連絡お願いします。
+もし他にもこんな便利な設定があるよ、という方はぜひ [Twitter](https://twitter.com/zuma_lab) で DM していただくか [Contact](/contact) で連絡お願いします。

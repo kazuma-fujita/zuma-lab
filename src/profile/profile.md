@@ -18,7 +18,7 @@ Vercel でホスティングしています。
 
 モバイル開発は Flutter を勉強中です。Hot reload 最高です。
 
-思いついた時に [Twitter](https://twitter.com/____ZUMA____) で技術発信をしているので、お気軽にフォローお願いします。
+思いついた時に [Twitter](https://twitter.com/zuma_lab) で技術発信をしているので、お気軽にフォローお願いします。
 
 ## 趣味
 

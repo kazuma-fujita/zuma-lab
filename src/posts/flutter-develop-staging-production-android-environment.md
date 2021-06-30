@@ -495,7 +495,7 @@ flutter run --release --dart-define=BUILD_ENV=prod
 
 筆者は Flutter 初心者ですがなんとか開発、ステージング、本番環境の切り替えを行うことができました。
 
-もっといい方法があるよ、という方はぜひ [Twitter](https://twitter.com/____ZUMA____) で DM していただくか [Contact](/contact) で連絡頂けると嬉しいです。
+もっといい方法があるよ、という方はぜひ [Twitter](https://twitter.com/zuma_lab) で DM していただくか [Contact](/contact) で連絡頂けると嬉しいです。
 
 最後に 再掲ですが iOS で開発、ステージング、本番環境を切り替える方法がまだの方はこちらの記事をご覧ください。
 
