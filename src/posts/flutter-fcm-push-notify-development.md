@@ -18,7 +18,7 @@ FCM (Firebase Cloud Messaging) のプッシュ通知設定とプッシュ通知�
 
 初学者にとって最初の壁の iOS の証明書周りも詳しく解説しているので、まだ設定が終わっていない方は是非こちらの記事をご覧ください。
 
-筆者は Flutter 初学者の為もし内容の誤りや、もっとこういうやり方があるよ、という方は [Twitter](https://twitter.com/____ZUMA____) で DM していただくか [Contact](/contact) で連絡して頂けると大変助かります。
+筆者は Flutter 初学者の為もし内容の誤りや、もっとこういうやり方があるよ、という方は [Twitter](https://twitter.com/zuma_lab) で DM していただくか [Contact](/contact) で連絡して頂けると大変助かります。
 
 それではアプリの実装をみていきましょう。
 

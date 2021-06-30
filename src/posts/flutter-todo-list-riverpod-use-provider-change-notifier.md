@@ -20,7 +20,7 @@ Flutter の Riverpod / useProvider / ChangeNotifier の基本的な使い方を�
 
 <iframe class="hatenablogcard" style="width:100%;height:155px;margin:15px 0;max-width:680px;" title="FlutterのTodoアプリで Riverpod / useProvider / StateNotifier / Freezed の基本的な使い方を覚える | ZUMA Lab" src="https://hatenablog-parts.com/embed?url=https://zuma-lab.com/posts/flutter-todo-list-riverpod-use-provider-state-notifier-freezed" frameborder="0" scrolling="no"></iframe>
 
-Flutter のまだ正しい実装方法が分からないので実装が誤っていたら [Twitter](https://twitter.com/____ZUMA____) で DM 頂くか、[Contact](/contact) まで連絡お願いします！
+Flutter のまだ正しい実装方法が分からないので実装が誤っていたら [Twitter](https://twitter.com/zuma_lab) で DM 頂くか、[Contact](/contact) まで連絡お願いします！
 
 **2021/02/15 追記**
 
@@ -575,7 +575,7 @@ Flutter の宣言的 UI と ChangeNotifier による通知の仕組み、riverpo
 
 次のステップとして、同じ Todo アプリに Freezed を導入して状態を持つオブジェクトを immutable に管理しつつ、StateNotifier、StateProvider で直感的かつ、更にコードを減らす実装をしてみたいと思います。
 
-筆者は Flutter 初学者の為、まだ正しい実装方法が分からないので実装が誤っていたら [Twitter](https://twitter.com/____ZUMA____) で DM 頂くか、[Contact](/contact) まで連絡お願いします！
+筆者は Flutter 初学者の為、まだ正しい実装方法が分からないので実装が誤っていたら [Twitter](https://twitter.com/zuma_lab) で DM 頂くか、[Contact](/contact) まで連絡お願いします！
 
 最後に今回実装した Todo アプリは Github にあるので参照ください。
 

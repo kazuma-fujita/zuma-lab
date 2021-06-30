@@ -367,7 +367,7 @@ S3 と CloudFront のコンソールにアクセスして、Bucket や Distribut
 
 簡単ですが S3 と CloudFront で Web サイトを配信する方法でした。
 
-筆者は CDK 初心者の為、内容が誤っていたり、もっとこういうやり方があるよ！という方はぜひ [Twitter](https://twitter.com/____ZUMA____) で DM していただくか [Contact](/contact) で教えて頂けると助かります。
+筆者は CDK 初心者の為、内容が誤っていたり、もっとこういうやり方があるよ！という方はぜひ [Twitter](https://twitter.com/zuma_lab) で DM していただくか [Contact](/contact) で教えて頂けると助かります。
 
 更に調べてみるとローカルのソースを CDK で S3 にデプロイしたり、CloudFront のキャッシュ削除の自動化、独自ドメインを CloudFront に割り当てるなど色々出来そうです。
 

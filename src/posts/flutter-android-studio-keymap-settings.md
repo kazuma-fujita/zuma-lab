@@ -136,4 +136,4 @@ command と `Rename` の頭文字 R を組み合わせます。
 
 Android Studio のショートカットを使いこなすと生産性が上がります。
 
-筆者はまだ Flutter/Android 開発初学者なので、もし他にもこんな便利な設定があるよ、という方はぜひ [Twitter](https://twitter.com/____ZUMA____) で DM していただくか [Contact](/contact) で連絡お願いします
+筆者はまだ Flutter/Android 開発初学者なので、もし他にもこんな便利な設定があるよ、という方はぜひ [Twitter](https://twitter.com/zuma_lab) で DM していただくか [Contact](/contact) で連絡お願いします

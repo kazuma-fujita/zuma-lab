@@ -59,7 +59,7 @@ repository 検索アプリで使用している package はこちらです。
 
 <iframe class="hatenablogcard" style="width:100%;height:155px;margin:15px 0;max-width:680px;" title="kazuma-fujita/flutter_search_github_repos: Find the all github repository." src="https://hatenablog-parts.com/embed?url=https://github.com/kazuma-fujita/flutter_search_github_repos" frameborder="0" scrolling="no"></iframe>
 
-筆者はまだ Flutter 初学者の為、正しい実装方法が分からないので、説明や実装が誤っていたらぜひ [Twitter](https://twitter.com/____ZUMA____) で DM 頂くか、[Contact](/contact) まで連絡お願いします！
+筆者はまだ Flutter 初学者の為、正しい実装方法が分からないので、説明や実装が誤っていたらぜひ [Twitter](https://twitter.com/zuma_lab) で DM 頂くか、[Contact](/contact) まで連絡お願いします！
 
 ### 環境
 
@@ -596,7 +596,7 @@ AsyncValue のオブジェクトには `when` が生えていて `data` / `loadi
 
 今後は AsyncValue のテストの方法を調べてみたいと思います。
 
-筆者はまだ　 Flutter 初学者の為、正しい実装方法が分からないので、実装や説明が誤っていたらぜひ [Twitter](https://twitter.com/____ZUMA____) で DM 頂くか、[Contact](/contact) まで連絡お願いします！
+筆者はまだ　 Flutter 初学者の為、正しい実装方法が分からないので、実装や説明が誤っていたらぜひ [Twitter](https://twitter.com/zuma_lab) で DM 頂くか、[Contact](/contact) まで連絡お願いします！
 
 最後に、今回実装したアプリの全てのソースコードは Github にあるので参照ください。
 

@@ -431,4 +431,4 @@ callback 内では scroll 量を計算して `widget.loadNext()` で追加のリ
 
 しかし addListener の callback 内がキャプチャされているのか外から isLoading フラグを渡しても意図した判定が出来ませんでした。
 
-もし ScrollController でも非同期通信対応できるよ！という方 [Twitter](https://twitter.com/____ZUMA____) で DM 頂くか、[Contact](/contact) まで連絡頂けると助かります。
+もし ScrollController でも非同期通信対応できるよ！という方 [Twitter](https://twitter.com/zuma_lab) で DM 頂くか、[Contact](/contact) まで連絡頂けると助かります。

@@ -22,7 +22,7 @@ Flutter の Riverpod / useProvider / StateNotifier / Freezed の基本的な使�
 
 <img src='/images/posts/2021-02-12-01.gif' class='img' style='width: 70%' />
 
-Flutter のまだ正しい実装方法が分からないので実装が誤っていたら [Twitter](https://twitter.com/____ZUMA____) で DM 頂くか、[Contact](/contact) まで連絡お願いします！
+Flutter のまだ正しい実装方法が分からないので実装が誤っていたら [Twitter](https://twitter.com/zuma_lab) で DM 頂くか、[Contact](/contact) まで連絡お願いします！
 
 ### 環境
 
@@ -607,7 +607,7 @@ Todo 一覧では状態の検知・監視をする `useProvider` を通して Pr
 
 Flutter の宣言的 UI と StateNotifier による通知の仕組み、riverpod の StateNotifierProvider、Flutter hooks の useProvider による状態監視の組み合わせで直感的かつコード量を抑えて Todo アプリを実装することができました。
 
-筆者は Flutter 初学者の為、まだ正しい実装方法が分からないので実装が誤っていたら [Twitter](https://twitter.com/____ZUMA____) で DM 頂くか、[Contact](/contact) まで連絡お願いします！
+筆者は Flutter 初学者の為、まだ正しい実装方法が分からないので実装が誤っていたら [Twitter](https://twitter.com/zuma_lab) で DM 頂くか、[Contact](/contact) まで連絡お願いします！
 
 最後に今回実装した Todo アプリは Github にあるので参照ください。
 

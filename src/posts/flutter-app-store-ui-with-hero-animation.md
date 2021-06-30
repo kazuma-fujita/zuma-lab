@@ -297,7 +297,7 @@ class DetailViewArguments {
 
 onGenerateRoute を利用した場合、遷移先画面で ModalRoute で値が取れなかったので、遷移先画面のコンストラクタで値を受け取るということをしています。
 
-もっといいやり方がある場合、ぜひ [Twitter](https://twitter.com/____ZUMA____) で DM していただくか [Contact](/contact) で教えて頂けると助かります。
+もっといいやり方がある場合、ぜひ [Twitter](https://twitter.com/zuma_lab) で DM していただくか [Contact](/contact) で教えて頂けると助かります。
 
 ## Hero animations で遷移時にカード UI が拡大するアニメーションを実装する
 

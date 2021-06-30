@@ -59,7 +59,7 @@ repository 検索アプリで使用している package はこちらです。
 
 <iframe class="hatenablogcard" style="width:100%;height:155px;margin:15px 0;max-width:680px;" title="kazuma-fujita/flutter_search_github_repos: Find the all github repository." src="https://hatenablog-parts.com/embed?url=https://github.com/kazuma-fujita/flutter_search_github_repos" frameborder="0" scrolling="no"></iframe>
 
-筆者はまだ Flutter 初学者の為、説明や実装が誤っていたらぜひ [Twitter](https://twitter.com/____ZUMA____) で DM 頂くか、[Contact](/contact) まで連絡お願いします！
+筆者はまだ Flutter 初学者の為、説明や実装が誤っていたらぜひ [Twitter](https://twitter.com/zuma_lab) で DM 頂くか、[Contact](/contact) まで連絡お願いします！
 
 ### 環境
 
@@ -337,4 +337,4 @@ AsyncValue は検索してもあまり情報がなかったので記事にしま
 
 <iframe class="hatenablogcard" style="width:100%;height:155px;margin:15px 0;max-width:680px;" title="kazuma-fujita/flutter_search_github_repos: Find the all github repository." src="https://hatenablog-parts.com/embed?url=https://github.com/kazuma-fujita/flutter_search_github_repos" frameborder="0" scrolling="no"></iframe>
 
-筆者はまだ　 Flutter 初学者の為、実装や説明が誤っていたらぜひ [Twitter](https://twitter.com/____ZUMA____) で DM 頂くか、[Contact](/contact) まで連絡お願いします！
+筆者はまだ　 Flutter 初学者の為、実装や説明が誤っていたらぜひ [Twitter](https://twitter.com/zuma_lab) で DM 頂くか、[Contact](/contact) まで連絡お願いします！
