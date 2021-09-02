@@ -43,7 +43,7 @@ FCM (Firebase Cloud Messaging) のプッシュ通知設定とプッシュ通知�
 
 ## Flutter に firebase_messaging を install する
 
-pubspec.yaml に `firebase_messaging` を追記します。
+pubspec.yaml に `firebase_core` と `firebase_messaging` を追記します。
 
 また `flutter_local_notifications` も追記します。
 
@@ -56,6 +56,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  firebase_core:
   firebase_messaging:
   flutter_local_notifications:
 ```
