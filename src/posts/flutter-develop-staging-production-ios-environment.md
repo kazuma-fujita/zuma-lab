@@ -329,7 +329,7 @@ Run Script が追加されるので、Shell に以下スクリプトを追記し
 
 ```sh
 echo "run start"
-if [ "${$BUILD_ENV}" = "dev" ]; then
+if [ "${BUILD_ENV}" = "dev" ]; then
 cp "${PROJECT_DIR}/${PROJECT_NAME}/Configurations/GoogleService-Info.dev.plist" "${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/GoogleService-Info.plist"
 echo "Debug GoogleService-Info copied."
 elif [ "${BUILD_ENV}" = "stg" ]; then
@@ -385,6 +385,24 @@ printf "%s\n" "${define_items[@]}" > ${SRCROOT}/Flutter/EnvironmentVariables.xcc
 
 これは iOS の build 時に `--dart-define` 環境変数を取得し、環境設定ファイルである `ios/Flutter/EnvironmentVariables.xcconfig` を自動生成するスクリプトです。
 
+Flutter2.2 からは `--dart-define` の値が Base64 で encode されるようになりました。
+
+Flutter2.2 以降の方は以下を利用してください。
+
+```sh
+function entry_decode() { echo "${*}" | base64 --decode; }
+
+IFS=',' read -r -a define_items <<< "$DART_DEFINES"
+
+
+for index in "${!define_items[@]}"
+do
+    define_items[$index]=$(entry_decode "${define_items[$index]}");
+done
+
+printf "%s\n" "${define_items[@]}" > ${SRCROOT}/Flutter/EnvironmentVariables.xcconfig
+```
+
 スクリプトを記述したらウィンドウを閉じて Android Studio から開発環境(develop)でビルドしてみましょう。
 
 Android Studio には各環境に応じて以下の `--dart-define` を定義しましたね。
@@ -419,7 +437,11 @@ flutter.inspector.structuredErrors=true
 
 注意点として、`flutter clean` などをしてプロジェクトを clean した直後や `EnvironmentVariables.xcconfig` が無い状態で実行した場合など環境変数が xcconfig ファイル内に出力されていない場合があります。
 
-その場合は IDE からではなくコマンドラインから 何度か build してみて、 `ios/Flutter/EnvironmentVariables.xcconfig` に環境変数が出力されているか確認してください。
+その場合は IDE からではなく以下のコマンドラインから 何度か build してみて、 `ios/Flutter/EnvironmentVariables.xcconfig` に環境変数が出力されているか確認してください。
+
+```txt
+flutter build ios --debug --dart-define=BUNDLE_ID_SUFFIX=.dev --dart-define=BUILD_ENV=dev
+```
 
 ## 生成した環境設定ファイルを Xcode で利用できるようにする
 
