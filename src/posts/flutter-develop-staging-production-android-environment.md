@@ -237,7 +237,7 @@ def appName = "App"
 def launcherIconPath = "@mipmap/ic_launcher"
 def launcherRoundIconPath = "@mipmap/ic_launcher_round"
 if (dartEnvironmentVariables.BUNDLE_ID_SUFFIX != null) {
-    appName = dartEnvironmentVariables.BUNDLE_ID_SUFFIX
+    appName += dartEnvironmentVariables.BUNDLE_ID_SUFFIX
     launcherIconPath += "_${dartEnvironmentVariables.BUILD_ENV}"
     launcherRoundIconPath += "_${dartEnvironmentVariables.BUILD_ENV}"
 }
@@ -298,6 +298,27 @@ if (project.hasProperty('dart-defines')) {
             .split(',')
             .collectEntries { entry ->
                 def pair = URLDecoder.decode(entry, 'UTF-8').split('=')
+                [(pair.first()): pair.last()]
+            }
+}
+```
+
+Flutter2.2 からは `--dart-define` の値が Base64 で encode されるようになりました。
+
+Flutter2.2 以降の方は以下を利用してください。
+
+```java
+// 環境変数配列
+def dartEnvironmentVariables = [
+        BUNDLE_ID_SUFFIX: null,
+        BUILD_ENV: ''
+]
+// --dart-define読み込み
+if (project.hasProperty('dart-defines')) {
+    dartEnvironmentVariables = dartEnvironmentVariables + project.property('dart-defines')
+            .split(',')
+            .collectEntries { entry ->
+                def pair = new String(entry.decodeBase64(), 'UTF-8').split('=')
                 [(pair.first()): pair.last()]
             }
 }
