@@ -44,7 +44,7 @@ yarn create next-app sample-app --example with-typescript
 この作業は好みですが、CRA で開発をする時は基本プロダクトソースコードを `src` ディレクトリ配下に置くので、慣例として実行します。
 
 ```
-cd next-ts-lint-mui-template && mkdir src && mv components interfaces pages utils src/.
+cd sample-app && mkdir src && mv components interfaces pages utils src/.
 ```
 
 雛形を作成したら、 `yarn dev` でアプリケーションを起動し、 [http://localhost:3000](http://localhost:3000) を開いて Next の初期画面が表示されることを確認します。

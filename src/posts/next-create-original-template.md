@@ -14,10 +14,13 @@ tags:
 
 Next.js/TypeScript/ESLint/Prettier/Material-UI/styled-components の自作テンプレートを作りました。
 
+- 2021/09/13 update
+  - Next.js11 に対応しました。
+
 作ったテンプレートは Github に公開してますので、以下のコマンドでどなたでもご利用可能です。
 
 ```
-yarn create next-app --example "https://github.com/kazuma-fujita/next-ts-lint-mui-template" sample-app
+yarn create next-app sample-app --example "https://github.com/kazuma-fujita/next11-ts-lint-mui-template"
 ```
 
 テンプレートには以下 package が含まれます。
@@ -54,20 +57,20 @@ TypeScript/ESLint/Prettier を個別に設定されたい方は以下ファイ�
 ### 環境
 
 - macOS Catalina 10.15.5(19F101)
-- VSCode 1.52.1
-- Next 10.0.5
-- React 16.14.0
-- TypeScript 4.0.5
-- yarn 1.22.4
+- VSCode 1.59.1
+- Next 11.1.2
+- React 17.0.2
+- TypeScript 4.0.8
+- yarn 1.22.5
 
 ## テンプレートを作成する
 
-`yarn create next-app` で今回公開する `next-ts-lint-mui-template` という名前の雛形を作成します。
+`yarn create next-app` で今回公開する `next11-ts-lint-mui-template` という名前の雛形を作成します。
 
 今回はあらかじめ TypeScript が設定された `with-typescript` テンプレートを流用します。
 
 ```
-yarn create next-app --example with-typescript next-ts-lint-mui-template
+yarn create next-app next11-ts-lint-mui-template --example with-typescript
 ```
 
 雛形が作成されたら、 `yarn dev` でアプリケーションを起動し、 [http://localhost:3000](http://localhost:3000) を開いて Next の初期画面が表示されることを確認します。
@@ -81,7 +84,7 @@ yarn create next-app --example with-typescript next-ts-lint-mui-template
 この作業は好みですが、CRA で開発をする時は基本プロダクトソースコードを `src` ディレクトリ配下に置くので、慣例として実行します。
 
 ```
-cd next-ts-lint-mui-template && mkdir src && mv components interfaces pages utils src/.
+cd next11-ts-lint-mui-template && mkdir src && mv components interfaces pages utils src/.
 ```
 
 ## import 文を src ディレクトリからの絶対パスに設定する
@@ -106,12 +109,12 @@ cd next-ts-lint-mui-template && mkdir src && mv components interfaces pages util
 
 Github に public repository を作成します。
 
-今回は `next-ts-lint-mui-template` という名前にしました。
+今回は `next11-ts-lint-mui-template` という名前にしました。
 
 ローカルリポジトリに リモートリポジトリを追加します。
 
 ```
-git remote add origin git@github.com.zuma:kazuma-fujita/next-ts-lint-mui-template.git
+git remote add origin git@github.com.zuma:kazuma-fujita/next11-ts-lint-mui-template.git
 ```
 
 通常は `git flow init` などで develop ブランチを作成し、main ブランチ read-only にしますが、今回は割愛して直接 main に push します。
@@ -128,4 +131,4 @@ Github の public repository に置くだけでテンプレートの公開は完
 
 今回作成したテンプレートはこちらにありますので参照ください。
 
-<iframe class="hatenablogcard" style="width:100%;height:155px;margin:15px 0;max-width:680px;" title="kazuma-fujita/next-ts-lint-mui-template: Next.js/TypeScript/ESLint/Prettier/Material-UI Template." src="https://hatenablog-parts.com/embed?url=https://github.com/kazuma-fujita/next-ts-lint-mui-template" frameborder="0" scrolling="no"></iframe>
+<iframe class="hatenablogcard" style="width:100%;height:155px;margin:15px 0;max-width:680px;" title="kazuma-fujita/next11-ts-lint-mui-template: Next.js11/TypeScript/ESLint/Prettier/Material-UI Template." src="https://hatenablog-parts.com/embed?url=https://github.com/kazuma-fujita/next11-ts-lint-mui-template" frameborder="0" scrolling="no"></iframe>
