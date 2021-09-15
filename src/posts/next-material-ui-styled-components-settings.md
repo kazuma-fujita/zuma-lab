@@ -44,7 +44,7 @@ yarn create next-app sample-app --example with-typescript
 この作業は好みですが、CRA で開発をする時は基本プロダクトソースコードを `src` ディレクトリ配下に置くので、慣例として実行します。
 
 ```
-cd next-ts-lint-mui-template && mkdir src && mv components interfaces pages utils src/.
+cd sample-app && mkdir src && mv components interfaces pages utils src/.
 ```
 
 雛形を作成したら、 `yarn dev` でアプリケーションを起動し、 [http://localhost:3000](http://localhost:3000) を開いて Next の初期画面が表示されることを確認します。
@@ -67,16 +67,16 @@ yarn add -D @types/styled-components babel-plugin-styled-components
 
 ```
 $ yarn list --depth=0 |grep -e material-ui -e styled-components
-├─ @material-ui/core@4.11.2
-├─ @material-ui/icons@4.11.2
-├─ @material-ui/styles@4.11.2
-├─ @material-ui/system@4.11.2
-├─ @material-ui/types@5.1.0
-├─ @material-ui/utils@4.11.2
-├─ @material-ui/lab@4.0.0-alpha.57
-├─ @types/styled-components@5.1.7
-├─ babel-plugin-styled-components@1.12.0
-├─ styled-components@5.2.1
+(standard input):30:├─ @material-ui/core@4.12.3
+(standard input):31:├─ @material-ui/icons@4.11.2
+(standard input):32:├─ @material-ui/lab@4.0.0-alpha.60
+(standard input):33:├─ @material-ui/styles@4.11.4
+(standard input):34:├─ @material-ui/system@4.12.1
+(standard input):35:├─ @material-ui/types@5.1.0
+(standard input):36:├─ @material-ui/utils@4.11.2
+(standard input):58:├─ @types/styled-components@5.1.14
+(standard input):81:├─ babel-plugin-styled-components@1.13.2
+(standard input):366:├─ styled-components@5.3.1
 ```
 
 ## .babelrc を作成する
@@ -108,8 +108,8 @@ Material-UI の theme 作成の為、 `src/styles/theme.ts` を作成します�
 こちらのファイルは今後開発中に Material-UI のデフォルト theme を変更したい時に利用します。
 
 ```ts:theme.ts
-import { createMuiTheme } from '@material-ui/core';
-const theme = createMuiTheme();
+import { createTheme } from '@material-ui/core';
+const theme = createTheme();
 export default theme;
 ```
 

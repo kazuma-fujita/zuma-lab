@@ -372,6 +372,8 @@ function urldecode() {
     echo "${_//%/\\x}";
 }
 
+rm -rf ${SRCROOT}/Flutter/EnvironmentVariables.xcconfig
+
 IFS=',' read -r -a define_items <<< "$DART_DEFINES"
 
 
@@ -380,7 +382,7 @@ do
     define_items[$index]=$(urldecode "${define_items[$index]}");
 done
 
-printf "%s\n" "${define_items[@]}" > ${SRCROOT}/Flutter/EnvironmentVariables.xcconfig
+printf "%s\n" "${define_items[@]}" | grep -e '^BUNDLE_ID_SUFFIX' -e '^BUILD_ENV' > ${SRCROOT}/Flutter/EnvironmentVariables.xcconfig
 ```
 
 これは iOS の build 時に `--dart-define` 環境変数を取得し、環境設定ファイルである `ios/Flutter/EnvironmentVariables.xcconfig` を自動生成するスクリプトです。
@@ -392,6 +394,8 @@ Flutter2.2 以降の方は以下を利用してください。
 ```sh
 function entry_decode() { echo "${*}" | base64 --decode; }
 
+rm -rf ${SRCROOT}/Flutter/EnvironmentVariables.xcconfig
+
 IFS=',' read -r -a define_items <<< "$DART_DEFINES"
 
 
@@ -400,7 +404,7 @@ do
     define_items[$index]=$(entry_decode "${define_items[$index]}");
 done
 
-printf "%s\n" "${define_items[@]}" > ${SRCROOT}/Flutter/EnvironmentVariables.xcconfig
+printf "%s\n" "${define_items[@]}" | grep -e '^BUNDLE_ID_SUFFIX' -e '^BUILD_ENV' > ${SRCROOT}/Flutter/EnvironmentVariables.xcconfig
 ```
 
 スクリプトを記述したらウィンドウを閉じて Android Studio から開発環境(develop)でビルドしてみましょう。
