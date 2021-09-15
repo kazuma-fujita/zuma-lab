@@ -42,6 +42,48 @@ FUJI ROCK は 10 年以上通ってるフジロッカーです。
 
 ## GENOVA.Inc, June 2012 - Present
 
+### Flutter 診察券電子化&医療ポータルアプリ開発 February 2021 - August 2021
+
+- Role
+  - Lead Engineer
+
+iOS/Android で開発したネイティブアプリを Flutter でリプレイスを実施。
+
+リプレイスプロジェクトで技術選定・設計・開発・運用保守を担当。
+
+Flutter を選定した理由として、以下を挙げる。
+
+- iOS/Android で得たネイティブアプリ開発の知見を活かせる
+- Dart は Javascript に近い記法で学習コストが低い
+- Flutter の Widget の仕組みに React/Next で得た Component 指向、 Atomic Design の考えを導入できる
+
+- Language
+  - Dart
+- Framework
+  - Flutter
+- State Management
+  - riverpod
+- UI
+  - Flutter(material component)
+- Http
+  - http
+- Database
+  - hive
+- DI
+  - riverpod
+- Immutable Object Generator
+  - freezed
+- Image Cache
+  - cached_network_image
+- Push Notifier
+  - firebase_messaging
+- Unit Test
+  - flutter_test
+- Widget Test
+  - flutter_test
+- Mock
+  - mockito / mock_web_server
+
 ### Google クチコミレビューマーケティングツール開発 January 2021 - February 2021
 
 - Role
@@ -116,7 +158,7 @@ Amplify で利用出来る React フレームワークを試験導入した。
 - Tools
   - Github/Slack
 
-### 診察券電子化 Android アプリ開発 July 2019 - November 2019
+### Android 診察券電子化&医療ポータルアプリ開発 July 2019 - November 2019
 
 - Role
   - Lead Engineer
@@ -158,7 +200,7 @@ DataBinding x ViewModel x Coroutine x LiveData x Room を利用し、DB(SQLite)�
 - Tools
   - Github/Slack/ZenHub
 
-### 診察券電子化 iOS アプリ開発 April 2019 - August 2019
+### iOS 診察券電子化&医療ポータルアプリ開発 April 2019 - August 2019
 
 - Role
   - Lead Engineer
@@ -198,7 +240,7 @@ Architecture は MVVM + Clean Architecture を導入しテスタビリティ・�
 - Tools
   - Github/Slack/ZenHub
 
-### 診察券電子化システムバックエンド開発 July 2017 - August 2019
+### 診察券電子化&医療ポータルアプリ バリバックエンド開発 July 2017 - August 2019
 
 - Role
   - Lead Engineer
@@ -220,7 +262,7 @@ AWS の設計・開発を同時に行っていた為、クラウド要件に沿�
 - Tools
   - Github/Slack/ZenHub
 
-### 診察券電子化システムインフラ開発 July 2017 - Present
+### 診察券電子化&医療ポータルアプリ インフラ開発 July 2017 - Present
 
 - Role
   - Lead Engineer
