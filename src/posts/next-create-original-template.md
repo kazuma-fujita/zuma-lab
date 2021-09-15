@@ -19,19 +19,17 @@ Next.js/TypeScript/ESLint/Prettier/Material-UI/styled-components の自作テン
 
 作ったテンプレートは Github に公開してますので、以下のコマンドでどなたでもご利用可能です。
 
+- Next11 + Typescript + ESLint + Prettier
+
+```
+yarn create next-app sample-app --example "https://github.com/kazuma-fujita/next11-ts-lint-template"
+```
+
+- Next11 + Typescript + ESLint + Prettier + Material-UI + styled-component
+
 ```
 yarn create next-app sample-app --example "https://github.com/kazuma-fujita/next11-ts-lint-mui-template"
 ```
-
-テンプレートには以下 package が含まれます。
-
-- Next
-- React
-- TypeScript
-- EsLint
-- Prettier
-- Material-UI
-- styled-components
 
 TypeScript/ESLint/Prettier を個別に設定されたい方は以下ファイルをそれぞれ調整してください。
 
