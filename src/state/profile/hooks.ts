@@ -43,7 +43,7 @@ const mainSkillData = [
     skills: [
       { skill: 'React', rate: 60 },
       { skill: 'TypeScript', rate: 60 },
-      { skill: 'Next.js', rate: 30 },
+      { skill: 'Next.js', rate: 60 },
     ],
   },
   {
@@ -51,9 +51,9 @@ const mainSkillData = [
     image: '/images/profile/mobile-skill-image.jpeg',
     imageTitle: 'mobile skill image',
     skills: [
-      { skill: 'Swift', rate: 60 },
-      { skill: 'Kotlin', rate: 60 },
-      { skill: 'Flutter', rate: 30 },
+      { skill: 'Swift', rate: 50 },
+      { skill: 'Kotlin', rate: 50 },
+      { skill: 'Flutter', rate: 70 },
     ],
   },
   {
@@ -62,7 +62,7 @@ const mainSkillData = [
     imageTitle: 'backend skill image',
     skills: [
       { skill: 'Node.js', rate: 50 },
-      { skill: 'Amplify', rate: 50 },
+      { skill: 'Amplify', rate: 60 },
       { skill: 'DynamoDB', rate: 40 },
     ],
   },

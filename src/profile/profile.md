@@ -57,32 +57,36 @@ Flutter を選定した理由として、以下を挙げる。
 - Dart は Javascript に近い記法で学習コストが低い
 - Flutter の Widget の仕組みに React/Next で得た Component 指向、 Atomic Design の考えを導入できる
 
+技術 Stack
+
 - Language
   - Dart
 - Framework
   - Flutter
+- Architecture
+  - MVVM
 - State Management
-  - riverpod
+  - Riverpod
 - UI
-  - Flutter(material component)
+  - Material-UI
 - Http
-  - http
+  - Http
 - Database
-  - hive
+  - Hive
 - DI
-  - riverpod
+  - Riverpod
 - Immutable Object Generator
-  - freezed
+  - Freezed
 - Image Cache
-  - cached_network_image
+  - CachedNetworkImage
 - Push Notifier
-  - firebase_messaging
+  - FirebaseMessaging
 - Unit Test
   - flutter_test
 - Widget Test
   - flutter_test
 - Mock
-  - mockito / mock_web_server
+  - Mockito / MockWebServer
 
 ### Google クチコミレビューマーケティングツール開発 January 2021 - February 2021
 

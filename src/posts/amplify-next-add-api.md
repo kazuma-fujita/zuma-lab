@@ -1,8 +1,8 @@
 ---
-title: 'amplify add apiでGraphQLのAPIを追加する'
+title: 'AmplifyでNext.jsアプリにGraphQLのAPIを追加する'
 date: '2021-09-27'
 isPublished: true
-metaDescription: 'amplify add apiでGraphQLのAPIを追加する方法です。'
+metaDescription: 'AmplifyでNext.jsアプリにGraphQLのAPIを追加する方法です。'
 tags:
   - 'AWS'
   - 'Amplify'
