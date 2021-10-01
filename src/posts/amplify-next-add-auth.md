@@ -243,10 +243,10 @@ npm install aws-amplify @aws-amplify/ui-react
 yarn add aws-amplify @aws-amplify/ui-react
 ```
 
-最初に URL パスの `src/constants.d.ts` 定数ファイルを作成します。
+最初に URL パスの `src/constants.ts` 定数ファイルを作成します。
 
 ```ts
-export declare enum Path {
+export enum Path {
   Index = '/',
   Dashboard = 'dashboard',
 }
