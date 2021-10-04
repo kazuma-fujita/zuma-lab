@@ -79,7 +79,7 @@ $ amplify add api
 
 エディタが開き、scheme.graphql が表示されます。
 
-```graphql
+```ts
 type Todo @model {
   id: ID!
   name: String!
