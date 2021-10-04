@@ -1,8 +1,8 @@
 ---
-title: 'AmplifyでCognitoグループを追加してGraphQLへのAPIアクセスを制御する'
+title: 'AmplifyでCognitoグループを追加してGraphQLのAPIアクセスをグループで制限する'
 date: '2021-10-05'
 isPublished: true
-metaDescription: 'AmplifyでCognitoグループを追加してGraphQLへのAPIアクセスを制御する方法です。'
+metaDescription: 'AmplifyでCognitoグループを追加してGraphQLへのAPIアクセスをグループで制御する方法です。'
 tags:
   - 'AWS'
   - 'Amplify'
@@ -15,7 +15,7 @@ tags:
 
 前回、前々回は Next.js アプリに認証機能を追加し、Amplify の認証 UI コンポーネントのスタイル変更、入力項目変更と日本語対応をしました。
 
-今回は Amplify CLI で認証グループを追加して、GraphQL への API アクセスを制御したいと思います。
+今回は Amplify CLI で認証グループを追加して、GraphQL への API アクセスをグループ単位で制御したいと思います。
 
 API アクセス制御を行うには AppSync の schema.graphql で@auth ディレクティブを設定します。
 
@@ -190,6 +190,19 @@ type PrivateNote @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   content: String!
 }
+```
+
+groups は今回作成した Admins と Operators グループに書き換えてください。
+
+```ts
+type Task
+  @model
+  @auth(
+    rules: [
+      { allow: groups, groups: ["Admins"], queries: null, mutations: [create, update, delete] }
+      { allow: groups, groups: ["Operators"], queries: [get, list], mutations: null }
+    ]
+  ) {
 ```
 
 次に以下コマンドを実行して作成したローカルのバックエンドリソースをクラウドにプロビジョニングします。
