@@ -518,11 +518,15 @@ const Home: NextPage = () => {
 
 <img src='/images/posts/2021-10-05-4.png' class='img' alt='post image' />
 
-## 新機能 SX Props を使う
+## 新機能 SX Prop を使う
 
-MUI v5 から sx props が追加されました。
+MUI v5 から sx prop が追加されました。
 
-sx props は通常のスタイル定義が書けることの他、以下が使用できます。
+この公式のドキュメントがすごく分かりやすいです。
+
+<iframe class="hatenablogcard" style="width:100%;height:155px;margin:15px 0;max-width:680px;" title="The sx prop - MUI" src="https://hatenablog-parts.com/embed?url=https://mui.com/system/the-sx-prop/" frameborder="0" scrolling="no"></iframe>
+
+sx prop は通常のスタイル定義が書けることの他、以下が使用できます。
 
 - 特定の CSS プロパティのエイリアス
 - テーマ情報とマッピングされた値
@@ -534,7 +538,7 @@ CSS プロパティに関しては公式の一覧を参照ください。
 
 <iframe class="hatenablogcard" style="width:100%;height:155px;margin:15px 0;max-width:680px;" title="Properties - MUI" src="https://hatenablog-parts.com/embed?url=https://mui.com/system/properties/" frameborder="0" scrolling="no"></iframe>
 
-theme は sx props を使用して指定することができます。
+theme は sx prop を使用して指定することができます。
 
 便利ですね！
 
@@ -548,7 +552,7 @@ theme は sx props を使用して指定することができます。
 </AppBar>
 ```
 
-また、sx props なら　 theme を callback でも受け取ることができます。
+また、sx prop なら　 theme を callback でも受け取ることができます。
 
 theme にマッピングされた値を元に加工した値を設定できます。
 
