@@ -51,7 +51,7 @@
 
   <url>
     <loc>https://zuma-lab.com/posts/amplify-next-add-auth-group</loc>
-    <lastmod>2021-10-04T11:01:20.699Z</lastmod>
+    <lastmod>2021-10-04T23:45:53.808Z</lastmod>
   </url>
 
   <url>
@@ -355,6 +355,11 @@
       >https://zuma-lab.com/posts/next-material-ui-styled-components-settings</loc
     >
     <lastmod>2021-09-13T07:17:45.738Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://zuma-lab.com/posts/next-mui-emotion-settings</loc>
+    <lastmod>2021-10-06T05:55:30.795Z</lastmod>
   </url>
 
   <url>

@@ -389,6 +389,10 @@ const Home: NextPage = () => {
           <span css={RedColor}>Get started by editing</span>{" "}
           <code className={styles.code}>pages/index.js</code>
         </p>
+            :
+            :
+        </main>
+      </div>
 ```
 
 `yarn dev` でアプリを起動すると index ページが以下のようにスタイリングされることが確認できます。
@@ -438,6 +442,10 @@ const Home: NextPage = () => {
             <Welcome>Welcome to</Welcome>{" "}
             <a href="https://nextjs.org">Next.js!</a>
           </h1>
+            :
+            :
+        </main>
+      </div>
 ```
 
 AppBar が表示されました。
@@ -545,38 +553,38 @@ theme は sx props を使用して指定することができます。
 theme にマッピングされた値を元に加工した値を設定できます。
 
 ```jsx
-      <AppBar
-        position="static"
-        sx={{
-          backgroundColor: "secondary.main",
-          height: (theme) => theme.spacing(10),
-        }}
-      >
+<AppBar
+  position="static"
+  sx={{
+    backgroundColor: "secondary.main",
+    height: (theme) => theme.spacing(10),
+  }}
+>
 ```
 
 また疑似要素も適用できます。
 
 ```jsx
-      <AppBar
-        position="static"
-        sx={{
-					'&:hover': {
-						boxShadow: 10
-					},
-        }}
-      >
+<AppBar
+  position="static"
+  sx={{
+    '&:hover': {
+      boxShadow: 10
+    },
+  }}
+>
 ```
 
 メディアクエリも書けます。
 
 ```jsx
-      <Box
-        sx={{
-					'@media (max-width: 600px)': {
-						width: 300,
-					}
-        }}
-      >
+<Box
+  sx={{
+    '@media (max-width: 600px)': {
+      width: 300,
+    }
+  }}
+>
 ```
 
 ネストにも対応しています。
