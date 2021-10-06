@@ -40,7 +40,66 @@ FUJI ROCK は 10 年以上通ってるフジロッカーです。
 
 # Work Experience
 
-## GENOVA.Inc, June 2012 - Present
+## GENOVA.Inc, June 2012 - The present
+
+### Next.js x Amplify 医療機関向け備品発注システム開発 September 2021 - The present
+
+医療機関向けの備品発注 SaaS 開発プロジェクトの技術選定・設計・開発・運用保守を担当。
+
+フロントエンドは Next.js、バックエンドは Amplify で現在開発中。
+
+- Role
+  - Lead Engineer
+
+**Frontend**
+
+- Language
+  - TypeScript
+- Framework
+  - Next.js
+- Hosting
+  - Amplify
+- Query Language
+  - GraphQL (Using AppSync)
+- Local State Management
+  - Redux-toolkit
+- UI Component Library
+  - Material-UI
+- CSS in JS Library
+  - Emotion
+- Date Library
+  - date-fns
+- Unit Test
+  - Jest
+  - ReactTestingLibrary
+- E2E Test
+  - Cypress
+- Linter
+  - ESLint
+- Formatter
+  - Prettier
+- Tools
+  - Figma
+  - Github
+  - Slack
+
+**Backend**
+
+- Language
+  - Node.js
+- GraphQL API
+  - AppSync (Using Amplify)
+- Authentication
+  - Cognito (Using Amplify)
+- Serverless
+  - Lambda (Using Amplify)
+- Data Store
+  - DynamoDB (Using Amplify)
+- Storage
+  - S3 (Using Amplify)
+- Tools
+  - Github
+  - Slack
 
 ### Flutter 診察券電子化&医療ポータルアプリ開発 February 2021 - August 2021
 
@@ -56,8 +115,6 @@ Flutter を選定した理由として、以下を挙げる。
 - iOS/Android で得たネイティブアプリ開発の知見を活かせる
 - Dart は Javascript に近い記法で学習コストが低い
 - Flutter の Widget の仕組みに React/Next で得た Component 指向、 Atomic Design の考えを導入できる
-
-技術 Stack
 
 - Language
   - Dart
@@ -109,26 +166,29 @@ Flutter を選定した理由として、以下を挙げる。
 ### オンライン診療システム フロントエンド開発技術検証 July 2020 - December 2020
 
 - Role
-  - Lead Engineer
+  - Tech Lead
 
 オンライン診療システム開発要望に伴い、フロントエンド技術検証を担当。
 
 Amplify で利用出来る React フレームワークを試験導入した。
 
 - Language
-  - JavaScript/TypeScript
+  - TypeScript
 - Framework
   - React
-- State Management
+- Local State Management
   - React Hooks
-- UI
+- UI Component Library
   - Material-UI
+- CSS in JS Library
+  - styled-components
 - Http
   - Axios
 - Date Library
   - date-fns
 - Unit Test
-  - Jest/ReactTestingLibrary
+  - Jest
+  - ReactTestingLibrary
 - E2E Test
   - Cypress
 - Linter
@@ -136,12 +196,13 @@ Amplify で利用出来る React フレームワークを試験導入した。
 - Formatter
   - Prettier
 - Tools
-  - Github/Slack
+  - Github
+  - Slack
 
 ### オンライン診療システム バックエンド開発技術検証 July 2020 - December 2020
 
 - Role
-  - Lead Engineer
+  - Tech Lead
 
 オンライン診療システム開発要望に伴い、バックエンド技術検証を担当。
 
@@ -149,18 +210,17 @@ Amplify で利用出来る React フレームワークを試験導入した。
 
 - Language
   - Node.js
-- Framework
-  - Amplify
 - Authentication
-  - Cognito
+  - Cognito (Using Amplify)
 - Serverless
-  - Lambda
+  - Lambda (Using Amplify)
 - Data Store
-  - DynamoDB
+  - DynamoDB (Using Amplify)
 - Storage
-  - S3
+  - S3 (Using Amplify)
 - Tools
-  - Github/Slack
+  - Github
+  - Slack
 
 ### Android 診察券電子化&医療ポータルアプリ開発 July 2019 - November 2019
 
