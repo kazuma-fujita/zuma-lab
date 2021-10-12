@@ -33,11 +33,20 @@ v5 から内部で使用されているスタイリングソリューション�
 - macOS Big Sur 11.15.2
 - Next.js 11.1.2
 - Typescript 4.4.3
+- npm 7.7.6
 - yarn 1.22.4
 
 ## Next.js のプロジェクトを作成
 
 以下のコマンドを実行して Typescript 導入済みの Next.js プロジェクトを作成します。
+
+- npx
+
+```txt
+npx create-next-app next-mui-emotion-sample --typescript
+```
+
+- yarn
 
 ```txt
 yarn create next-app next-mui-emotion-sample --typescript
@@ -53,11 +62,27 @@ cd next-mui-emotion-sample
 
 ## MUI と Emotion を install する
 
+- npm
+
+```txt
+npm install @mui/material @emotion/react @emotion/styled @emotion/cache @emotion/server
+```
+
+- yarn
+
 ```txt
 yarn add @mui/material @emotion/react @emotion/styled @emotion/cache @emotion/server
 ```
 
 後ほど作成する .babelrc で読み込む Emotion の devDependencies package も install します。
+
+- npm
+
+```txt
+npm install -D @emotion/babel-plugin
+```
+
+- yarn
 
 ```txt
 yarn add -D @emotion/babel-plugin
@@ -65,7 +90,21 @@ yarn add -D @emotion/babel-plugin
 
 ### install した package を確認する
 
+- npm
+
+```txt
+$ npm list --depth=0 |grep -e mui -e emotion
+├── @emotion/babel-plugin@11.3.0
+├── @emotion/cache@11.4.0
+├── @emotion/react@11.4.1
+├── @emotion/server@11.4.0
+├── @emotion/styled@11.3.0
+├── @mui/material@5.0.3
 ```
+
+- yarn
+
+```txt
 $ yarn list --depth=0 |grep -e mui -e emotion
 ├─ @emotion/babel-plugin@11.3.0
 ├─ @emotion/cache@11.4.0
@@ -81,7 +120,7 @@ $ yarn list --depth=0 |grep -e mui -e emotion
 ├─ @emotion/utils@1.0.0
 ├─ @emotion/weak-memoize@0.2.5
 ├─ @mui/core@5.0.0-alpha.49
-├─ @mui/material@5.0.2
+├─ @mui/material@5.0.3
 ├─ @mui/private-theming@5.0.1
 ├─ @mui/styled-engine@5.0.1
 ├─ @mui/system@5.0.2
@@ -190,9 +229,9 @@ export default function createEmotionCache(): EmotionCache {
 
 <iframe class="hatenablogcard" style="width:100%;height:155px;margin:15px 0;max-width:680px;" title="Emotion - @emotion/cache" src="https://hatenablog-parts.com/embed?url=https://emotion.sh/docs/@emotion/cache" frameborder="0" scrolling="no"></iframe>
 
-## \_app.tsx を作成する
+## \_app.tsx を編集する
 
-material-ui と Emotion を全画面共通で利用出来るよう `pages/_app.tsx` を作成します。
+material-ui と Emotion を全画面共通で利用出来るよう `pages/_app.tsx` を編集します。
 
 ```jsx:_app.tsx
 import * as React from "react";
@@ -235,7 +274,7 @@ MyApp.propTypes = {
 export default MyApp;
 ```
 
-## \_document.tsx 作成
+## \_document.tsx を作成する
 
 最後に MUI / Emotion を SSG/SSR に対応させる為、 `pages/_document.tsx` を作成します。
 
