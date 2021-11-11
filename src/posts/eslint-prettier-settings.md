@@ -10,6 +10,18 @@ tags:
   - 'Prettier'
 ---
 
+---
+
+2021/11/11 update
+
+この記事は Next.js10 以前の Ver.に対応した設定手順について書いています。
+
+Next.js11 以降の設定手順については以下の記事を参照してください。
+
+<iframe class="hatenablogcard" style="width:100%;height:155px;margin:15px 0;max-width:680px;" title="Next.jsにESLintとPrettierで静的解析と自動フォーマットを行う" src="https://hatenablog-parts.com/embed?url=https://zuma-lab.com/posts/next-eslint-prettier-settings" frameborder="0" scrolling="no"></iframe>
+
+---
+
 TypeScript のプロジェクトに ESLint と Prettier を併用して VSCode の保存時に自動フォーマットを実行します。
 
 Prettier (プリティア) とはコードフォーマッターで、ソースコードを整形してくれます。
@@ -28,78 +40,14 @@ ESLint の構文チェックは TypeScript も対応させます。
 
 ### 環境
 
-2021/10/12 現在
-
-- macOS Catalina 11.5.2
-- VSCode 1.60.1
-- Next 11.1.2
-- React 17.0.2
-- TypeScript 4.4.3
-- npm 7.7.6
+- macOS Catalina 10.15.5(19F101)
+- VSCode 1.52.1
+- Next 10.0.4
+- React 16.14.0
+- TypeScript 4.0.5
 - yarn 1.22.4
 
-## Prettier を install する
-
-- prettier 関連 package
-
-  - prettier
-    - prettier 本体
-  - eslint-config-prettier
-    - prettier が整形したコードに対して ESLint がエラーを出力しないようにするプラグイン
-
-- npm
-
-```
-npm install -D prettier eslint-config-prettier
-```
-
-- yarn
-
-```
-yarn add -D prettier eslint-config-prettier
-```
-
-※ `eslint-plugin-prettier` を install する方法がありますが、現在非推奨となっいる為、今回利用しません。
-
-## 2021/10/12 更新
-
-Next11 がデフォルトで ESLint に対応しました。
-
-create-next-app を実行すると eslint と eslint-config-next が install されます。
-
-```txt
-$ npx create-next-app nomoca-order --typescript
-Creating a new Next.js app in /Users/kazuma/Documents/github/next/nomoca-order.
-
-Using npm.
-
-Installing dependencies:
-- react
-- react-dom
-- next
-
-npm WARN deprecated querystring@0.2.1: The querystring API is considered Legacy. new code should use the URLSearchParams API instead.
-npm WARN deprecated querystring@0.2.0: The querystring API is considered Legacy. new code should use the URLSearchParams API instead.
-
-added 321 packages, and audited 322 packages in 14s
-
-50 packages are looking for funding
-  run `npm fund` for details
-
-found 0 vulnerabilities
-
-Installing devDependencies:
-- eslint
-- eslint-config-next
-- typescript
-- @types/react
-```
-
-以下の作業は Next10 のユースケースとなります。
-
-### ESLint package を install する
-
-**Next11 ならば ESLint package の install は不要です**
+## ESLint/Prettier package を install する
 
 - ESLint 関連 package
   - ESLint
@@ -113,38 +61,47 @@ Installing devDependencies:
 yarn add -D eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin
 ```
 
+- prettier 関連 package
+  - prettier
+    - prettier 本体
+  - eslint-config-prettier
+    - prettier が整形したコードに対して ESLint がエラーを出力しないようにするプラグイン
+
+```
+yarn add -D prettier eslint-config-prettier
+```
+
+※ `eslint-plugin-prettier` を install する方法がありますが、現在非推奨となっいる為、今回利用しません。
+
 ## install した package を確認する
-
-- npm
-
-```
-$ npm list --depth=0 |grep -e prettier -e eslint
-├── eslint-config-next@11.1.2
-├── eslint-config-prettier@8.3.0
-├── eslint@7.32.0
-├── prettier@2.4.1
-```
-
-- yarn
 
 ```
 $ yarn list --depth=0 |grep -e prettier -e eslint
-├── eslint-config-next@11.1.2
-├── eslint-config-prettier@8.3.0
-├── eslint@7.32.0
-├── prettier@2.4.1
+├─ @eslint/eslintrc@0.2.2
+├─ @typescript-eslint/eslint-plugin@4.13.0
+├─ @typescript-eslint/experimental-utils@4.13.0
+├─ @typescript-eslint/parser@4.13.0
+├─ @typescript-eslint/scope-manager@4.13.0
+├─ @typescript-eslint/types@4.13.0
+├─ @typescript-eslint/typescript-estree@4.13.0
+├─ @typescript-eslint/visitor-keys@4.13.0
+├─ eslint-config-prettier@7.1.0
+├─ eslint-scope@5.1.1
+├─ eslint-utils@2.1.0
+├─ eslint-visitor-keys@1.3.0
+├─ eslint@7.17.0
+├─ prettier@2.2.1
 ```
 
-## ESLint 設定ファイル .eslintrc.json の編集
+## ESLint 設定ファイル .eslintrc.json を作成する
 
-ESLint 設定をする為、package.json と同じ階層にある `.eslintrc.json` を編集します。
+ESLint 設定をする為、package.json と同じ階層に `.eslintrc.json` を新規作成します。
 
 以下は参考までに設定の一例です。
 
 ```json:.eslintrc.json
 {
   "extends": [
-    "next/core-web-vitals",
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:@typescript-eslint/recommended-requiring-type-checking",
