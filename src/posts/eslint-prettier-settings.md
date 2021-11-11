@@ -10,6 +10,18 @@ tags:
   - 'Prettier'
 ---
 
+---
+
+2021/11/11 update
+
+この記事は Next.js10 以前の Ver.に対応した設定手順について書いています。
+
+Next.js11 以降の設定手順については以下の記事を参照してください。
+
+<iframe class="hatenablogcard" style="width:100%;height:155px;margin:15px 0;max-width:680px;" title="Next.jsにESLintとPrettierで静的解析と自動フォーマットを行う" src="https://hatenablog-parts.com/embed?url=https://zuma-lab.com/posts/next-eslint-prettier-settings" frameborder="0" scrolling="no"></iframe>
+
+---
+
 TypeScript のプロジェクトに ESLint と Prettier を併用して VSCode の保存時に自動フォーマットを実行します。
 
 Prettier (プリティア) とはコードフォーマッターで、ソースコードを整形してくれます。
