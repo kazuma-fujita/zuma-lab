@@ -18,7 +18,7 @@ tags:
 
 Next.js11 以降の設定手順については以下の記事を参照してください。
 
-<iframe class="hatenablogcard" style="width:100%;height:155px;margin:15px 0;max-width:680px;" title="Next.jsにESLintとPrettierで静的解析と自動フォーマットを行う" src="https://hatenablog-parts.com/embed?url=https://zuma-lab.com/posts/next-eslint-prettier-settings" frameborder="0" scrolling="no"></iframe>
+<iframe class="hatenablogcard" style="width:100%;height:155px;margin:15px 0;max-width:680px;" title="Next.jsにESLintとPrettierを併用して静的解析と自動フォーマットを行う" src="https://hatenablog-parts.com/embed?url=https://zuma-lab.com/posts/next-eslint-prettier-settings" frameborder="0" scrolling="no"></iframe>
 
 ---
 
