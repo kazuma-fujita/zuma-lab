@@ -1,5 +1,5 @@
 ---
-title: 'Next.jsにESLintとPrettierで静的解析と自動フォーマットを行う'
+title: 'Next.jsにESLintとPrettierを併用して静的解析と自動フォーマットを行う'
 date: '2021-11-11'
 isPublished: true
 metaDescription: 'Next12とTypescriptのプロジェクトにNextにPrettier/ESLintを併用してコードフォーマットします。かつTypeScriptに対応させます。Prettier はコードフォーマット、ESLint は構文チェックツールとして併用します。さらにVSCodeの保存時に自動フォーマットをする設定をします。'
@@ -65,6 +65,20 @@ Installing devDependencies:
 
 Next10 以前は ESLint を install する必要があったのですが、Next11 以降は Next に最適化された設定で ESLint がデフォルトで使用できます。
 
+以下コマンドで静的解析を実行し動作確認を行うことができます。
+
+- npm
+
+```
+npm run lint
+```
+
+- yarn
+
+```
+yarn lint
+```
+
 ## Prettier を install する
 
 - prettier 関連 package
@@ -129,6 +143,51 @@ ESLint のチェック項目は [ESLint - Rules](https://eslint.org/docs/rules/)
 - eslint:recommended
   - チェック項目をひとつずつ追加しなくても ESLint が推奨するチェック項目でまとめてチェックすることができる
   - これだけでも基本的なソースの不備を手軽にチェックできる
+
+## ESLint の対象範囲を変更する
+
+ESLint の静的解析対象はデフォルトで以下ディレクトリのソースとなっています。
+
+- pages
+- lib
+- components
+
+プロジェクト初期では問題ないかもしれませんが、プロジェクト規模によってはおそらく上記以外のディレクトリにソースコードを配置することになります。
+
+どのディレクトリのソースコードにも静的解析を適用させたい場合の方法の一つとして、全てのソースコードディレクトリを `src` 配下に集約する方法があります。
+
+例えば筆者の場合は以下のようなディレクトリ構成にしています。
+
+```txt
+root
+└── src
+    ├── components
+    │   ├── atoms
+    │   ├── molecules
+    │   ├── organisms
+    │   └── templates
+    ├── constants
+    ├── graphql
+    ├── hooks
+    ├── pages
+    ├── stores
+    ├── styles
+    └── utilities
+```
+
+静的解析の設定の方法は ESLint の lint コマンドの対象に `src` ディレクトリを指定します。
+
+package.json の lint コマンドに `--dir src` を追記します。
+
+```json
+  "scripts": {
+    ...
+    "lint": "next lint --dir src"
+    ...
+  },
+```
+
+これで lint 実行時に `src` ディレクトリ全てを静的解析してくれます。
 
 ## Prettier option 設定ファイル .prettierrc.json を作成する
 
