@@ -43,13 +43,13 @@ v5 から内部で使用されているスタイリングソリューション�
 - npx
 
 ```txt
-npx create-next-app next-mui-emotion-sample --template typescript
+npx create-next-app next-mui-emotion-sample --typescript
 ```
 
 - yarn
 
 ```txt
-yarn create next-app next-mui-emotion-sample --template typescript
+yarn create next-app next-mui-emotion-sample --typescript
 ```
 
 アプリケーション作成完了後、プロジェクトのルートディレクトリへ移動します。

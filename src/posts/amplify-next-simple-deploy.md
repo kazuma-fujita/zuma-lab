@@ -41,7 +41,7 @@ ISR については Vercel 公式の解説が図解入りで分かりやすか�
 以下のコマンドを実行します。
 
 ```txt
-yarn create next-app next-amplify-deploy-sample --template typescript
+yarn create next-app next-amplify-deploy-sample --typescript
 ```
 
 ## ソースコードの編集

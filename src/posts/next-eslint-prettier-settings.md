@@ -34,7 +34,7 @@ Next.js11 以降デフォルトで ESLint に対応しました。
 create-next-app を実行すると eslint と eslint-config-next が install されます。
 
 ```txt
-$ npx create-next-app sample-app --template typescript
+$ npx create-next-app sample-app --typescript
 Creating a new Next.js app in /Users/kazuma/Documents/github/next/nomoca-order.
 
 Using npm.
