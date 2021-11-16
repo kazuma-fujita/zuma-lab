@@ -27,7 +27,7 @@ tags:
 以下のコマンドを実行します。
 
 ```txt
-yarn create next-app next-amplify-auth-sample --typescript
+yarn create next-app next-amplify-auth-sample --template typescript
 ```
 
 アプリケーション作成完了後、プロジェクトのルートディレクトリへ移動します。
