@@ -4,15 +4,13 @@
 
 普段 Web や Mobile アプリ開発をしている ZUMA です。
 
-二児の父です。
-
 この blog は 2021 年に入り Next.js を勉強しようと思い作りました。
 
 Vercel でホスティングしています。
 
 最新の技術が好きで率先して新しいことにチャレンジしています。
 
-[Twitter](https://twitter.com/zuma_lab) でも技術情報を発信をしているので、お気軽にフォローお願いします。
+[Twitter](https://twitter.com/zuma_lab) をやってるのでお気軽にフォローお願いします。
 
 ## 趣味
 
@@ -27,8 +25,6 @@ FUJI ROCK は 10 年以上通ってるフジロッカーです。
 特技はギター、バンジョー、マンドリンです。
 
 毎週演奏動画を自分の [Youtube channel](https://www.youtube.com/channel/UCY5iFo2L4IYmKq-FcsYKBKQ) にアップしています。
-
-将来は子供たちとセッションしたいです。
 
 # Work Experience
 
