@@ -946,3 +946,7 @@ Test case が増えてくると同じようなフォーム入力状態を再現�
 代替策として `sign-in-form.stories` から import した emptyErrorStory と filledSuccessStory の play 関数を実行しています。
 
 まだ CSF3.0 が prerelease ということもあり、また今後状況が変わるかもしれません。
+
+最後に今回実装したサンプルアプリのソースコードは以下のリポジトリにあるので参照ください。
+
+<iframe class="hatenablogcard" style="width:100%;height:155px;margin:15px 0;max-width:680px;" title="kazuma-fujita/next-storybook-csf3: Using Storybook with Next.js sample app." src="https://hatenablog-parts.com/embed?url=https://github.com/kazuma-fujita/next-storybook-csf3" frameborder="0" scrolling="no"></iframe>
