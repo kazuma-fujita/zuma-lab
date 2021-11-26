@@ -82,13 +82,13 @@ npm、yarn それぞれ以下コマンドを実行してください。
 - npm
 
 ```txt
-npm install --save-dev jest babel-jest identity-obj-proxy react-test-renderer @testing-library/react @testing-library/jest-dom @testing-library/user-event @storybook/addon-storyshots@next @storybook/testing-react@next
+npm install --save-dev jest babel-jest identity-obj-proxy react-test-renderer @testing-library/react @testing-library/jest-dom @testing-library/user-event @testing-library/react-hooks @storybook/addon-storyshots@next @storybook/testing-react@next
 ```
 
 - yarn
 
 ```txt
-yarn add --dev jest babel-jest identity-obj-proxy react-test-renderer @testing-library/react @testing-library/jest-dom @testing-library/user-event @storybook/addon-storyshots@next @storybook/testing-react@next
+yarn add --dev jest babel-jest identity-obj-proxy react-test-renderer @testing-library/react @testing-library/jest-dom @testing-library/user-event @testing-library/react-hooks @storybook/addon-storyshots@next @storybook/testing-react@next
 ```
 
 それぞれ install package は以下の用途になります。
@@ -103,6 +103,8 @@ yarn add --dev jest babel-jest identity-obj-proxy react-test-renderer @testing-l
   - Unit test でクリックや文字入力などユーザーインタラクションを実行する
 - @testing-library/jest-dom
   - Jest カスタムマッチャーを利用可能にする
+- @testing-library/react-hooks
+  - Unit Test で React Hooks を利用可能にする
 - @storybook/addon-storyshots
   - 各 Story で Snapshot test を作成する
 - react-test-renderer
