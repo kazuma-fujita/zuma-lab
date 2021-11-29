@@ -82,13 +82,13 @@ npm、yarn それぞれ以下コマンドを実行してください。
 - npm
 
 ```txt
-npm install --save-dev jest babel-jest identity-obj-proxy react-test-renderer @testing-library/react @testing-library/jest-dom @testing-library/user-event @storybook/addon-storyshots@next @storybook/testing-react@next
+npm install --save-dev jest babel-jest identity-obj-proxy react-test-renderer @testing-library/react @testing-library/jest-dom @testing-library/user-event @testing-library/react-hooks @storybook/addon-storyshots@next @storybook/testing-react@next
 ```
 
 - yarn
 
 ```txt
-yarn add --dev jest babel-jest identity-obj-proxy react-test-renderer @testing-library/react @testing-library/jest-dom @testing-library/user-event @storybook/addon-storyshots@next @storybook/testing-react@next
+yarn add --dev jest babel-jest identity-obj-proxy react-test-renderer @testing-library/react @testing-library/jest-dom @testing-library/user-event @testing-library/react-hooks @storybook/addon-storyshots@next @storybook/testing-react@next
 ```
 
 それぞれ install package は以下の用途になります。
@@ -103,6 +103,8 @@ yarn add --dev jest babel-jest identity-obj-proxy react-test-renderer @testing-l
   - Unit test でクリックや文字入力などユーザーインタラクションを実行する
 - @testing-library/jest-dom
   - Jest カスタムマッチャーを利用可能にする
+- @testing-library/react-hooks
+  - Unit Test で React Hooks を利用可能にする
 - @storybook/addon-storyshots
   - 各 Story で Snapshot test を作成する
 - react-test-renderer
@@ -163,6 +165,18 @@ module.exports = {
 
 ```js
 import '@testing-library/jest-dom/extend-expect';
+```
+
+**tsconfig.json の baseUrl を変更している場合**
+
+tsconfig.json の baseUrl を `src` に変更している場合、jest.config.js に設定を追記する必要があります。
+
+以下の moduleDirectories 設定を追記すれば component の import 文を `src` 配下からの相対パスとして認識してくれます。
+
+```js
+module.exports = {
+  moduleDirectories: ['node_modules', 'src'],
+};
 ```
 
 ## CSS と画像 Mock 設定
@@ -276,6 +290,80 @@ module.exports = {
     '../src/components/**/*.stories.@(js|jsx|ts|tsx)', // <- Added stories settings.
   ],
   addons: ['@storybook/addon-links', '@storybook/addon-essentials'],
+};
+```
+
+**Storybook 起動時に PostCSS DeprecationWarning が発生する場合**
+
+Tailwind CSS や MUI を使用している場合、Storybook 起動時に PostCSS DeprecationWarning が発生する場合があります。
+
+ライブラリが使用している PostCSS version と Storybook の PostCSS version が異なる為エラーが発生します。
+
+version の整合性を取る為 addon を導入する必要があります。
+
+- npm
+
+```txt
+npm install --save-dev @storybook/addon-postcss
+```
+
+- yarn
+
+```txt
+yarn add --dev @storybook/addon-postcss
+```
+
+`.storybook/main.js` の addons に `@storybook/addon-postcss` を追記します。
+
+```js
+module.exports = {
+  stories: ['../src/components/**/*.stories.@(js|jsx|ts|tsx)'],
+  addons: ['@storybook/addon-links', '@storybook/addon-essentials', '@storybook/addon-postcss'],
+};
+```
+
+**tsconfig.json の baseUrl を変更している場合**
+
+tsconfig.json の baseUrl を src に変更している場合、main.js に Webpack 設定を追記する必要があります。
+
+Storybook は Next.js とは別の Webpack で動作しています。
+
+以下の Webpack 設定で Storybook が component の import 文を src 配下からの相対パスとして認識してくれます。
+
+```js
+const path = require('path'); // Added
+
+module.exports = {
+  stories: ['../src/**/*.stories.@(js|jsx|ts|tsx)'],
+  addons: ['@storybook/addon-links', '@storybook/addon-essentials', '@storybook/addon-postcss'],
+  // Add this
+  webpackFinal: async (config, { configType }) => {
+    config.resolve.modules.push(path.resolve(__dirname, '../src'));
+    return config;
+  },
+};
+```
+
+**MUI を導入している場合**
+
+MUI を導入している場合、Storybook の Docs(@storybook/addon-docs)が表示されません。
+
+以下 Webpack 設定を追記することにより MUI が Docs に表示されます。
+
+```js
+const path = require('path');
+
+module.exports = {
+  stories: ['../src/**/*.stories.@(js|jsx|ts|tsx)'],
+  addons: ['@storybook/addon-links', '@storybook/addon-essentials', '@storybook/addon-postcss'],
+  webpackFinal: async (config, { configType }) => {
+    config.resolve.modules.push(path.resolve(__dirname, '../src'));
+    // Add this
+    delete config.resolve.alias['emotion-theming'];
+    delete config.resolve.alias['@emotion/styled'];
+    delete config.resolve.alias['@emotion/core'];
+    return config;
+  },
 };
 ```
 
