@@ -167,6 +167,18 @@ module.exports = {
 import '@testing-library/jest-dom/extend-expect';
 ```
 
+**tsconfig.json の baseUrl を変更している場合**
+
+tsconfig.json の baseUrl を `src` に変更している場合、jest.config.js に設定を追記する必要があります。
+
+以下の moduleDirectories 設定を追記すれば component の import 文を `src` 配下からの相対パスとして認識してくれます。
+
+```js
+module.exports = {
+  moduleDirectories: ['node_modules', 'src'],
+};
+```
+
 ## CSS と画像 Mock 設定
 
 プロダクトコードに CSS modules 以外の CSS や画像を import している場合、Snapshot test で jest 実行時にエラーになります。
