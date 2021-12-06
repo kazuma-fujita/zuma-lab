@@ -51,23 +51,27 @@ FUJI ROCK は 10 年以上通ってるフジロッカーです。
 - Query Language
   - GraphQL (Using AppSync)
 - Local State Management
-  - Redux-toolkit
+  - useSWR
 - UI Component Library
   - Material-UI
 - CSS in JS Library
   - Emotion
 - Date Library
   - date-fns
+- Linter
+  - ESLint
+- Formatter
+  - Prettier
+- Snapshot Test
+  - Jest
+  - Storybook
 - Unit Test
   - Jest
   - ReactTestingLibrary
 - E2E Test
   - Cypress
-- Linter
-  - ESLint
-- Formatter
-  - Prettier
 - Tools
+  - Storybook
   - Figma
   - Github
   - Slack
