@@ -4,27 +4,51 @@
 
 普段 Web や Mobile アプリ開発をしている ZUMA です。
 
-この blog は 2021 年に入り Next.js を勉強しようと思い作りました。
+2 児の父です。
+
+この blog は Next.js を勉強しようと思い作りました。
 
 Vercel でホスティングしています。
 
-最新の技術が好きで率先して新しいことにチャレンジしています。
+比較的新しい技術が好きで率先して新しいことにチャレンジしています。
 
 [Twitter](https://twitter.com/zuma_lab) をやってるのでお気軽にフォローお願いします。
 
+## 特技
+
+特技はギター、バンジョー、マンドリンの演奏です。
+
+毎週演奏動画を自分の [Youtube channel](https://www.youtube.com/channel/UCY5iFo2L4IYmKq-FcsYKBKQ) にアップしています。
+
+最近、新たに娘とバイオリンにチャレンジしています。
+
 ## 趣味
 
-野外フェスが好きで、FUJI ROCK、Summer Sonic、朝霧 JAM、GREENROOM FESTIVAL、ARABAKI ROCK FEST. など全国数え切れないくらい行ってます。
+野外フェスが好きで、FUJI ROCK、Summer Sonic、朝霧 JAM、GREENROOM FESTIVAL、ARABAKI ROCK FEST. など全国のフェスに行ってます。
 
 FUJI ROCK は 10 年以上通ってるフジロッカーです。
 
 ロードバイクも大好きで、東京から FUJI ROCK 会場のある新潟県の苗場まで往復 400km を走破しました。
 
-## 特技
+## 語学
 
-特技はギター、バンジョー、マンドリンです。
+現在英語を学んでいます。
 
-毎週演奏動画を自分の [Youtube channel](https://www.youtube.com/channel/UCY5iFo2L4IYmKq-FcsYKBKQ) にアップしています。
+私は学生の頃から英語が苦手で TOEIC も 400 点台です。
+
+語学力アップの為、まずは旅行英会話レベル習得を目標として日々勉強しています。
+
+次にビジネス英会話、最終的に日常英会話レベル習得を目標としています。
+
+語学習得は日々の積み重ねが大事だと感じているので、毎日継続して以下の input、output を行っています。
+
+- Input
+  - オンライン英会話教材でリーディング、リスニング学習
+  - 英語学習アプリ Duolingo で文法・単語学習
+  - 語学系 Youtube チャンネルで英語フレーズ学習
+- Output
+  - 週 4〜5 回のオンライン英会話でスピーキング練習
+  - 習慣継続アプリ みんチャレで英語日記をライティング
 
 # Work Experience
 
