@@ -51,6 +51,22 @@ play 関数のおかげで Storybook の表現の幅が広がり、Storybook の
 npx create-next-app next-storybook-csf3 --typescript
 ```
 
+## Next.js の設定
+
+Next.js12 から導入された Rust で作られたビルドツールである SWC を有効化します。
+
+`next.config.js` に `swcMinify: true` を追記します。
+
+```js
+/** @type {import('next').NextConfig} */
+module.exports = {
+  reactStrictMode: true,
+  swcMinify: true, // added
+};
+```
+
+また、後述する Jest 設定では SWC を使用したビルド設定をします。
+
 ## Storybook の install
 
 筆者は package 管理に npm を利用する為、 `--use-npm` オプションを指定しています。
@@ -82,19 +98,17 @@ npm、yarn それぞれ以下コマンドを実行してください。
 - npm
 
 ```txt
-npm install --save-dev jest babel-jest identity-obj-proxy react-test-renderer @testing-library/react @testing-library/jest-dom @testing-library/user-event @testing-library/react-hooks @storybook/testing-library @storybook/addon-storyshots@next @storybook/testing-react@next
+npm install --save-dev jest identity-obj-proxy react-test-renderer @testing-library/react @testing-library/jest-dom @testing-library/user-event @testing-library/react-hooks @storybook/testing-library @storybook/addon-storyshots@next @storybook/testing-react@next
 ```
 
 - yarn
 
 ```txt
-yarn add --dev jest babel-jest identity-obj-proxy react-test-renderer @testing-library/react @testing-library/jest-dom @testing-library/user-event @testing-library/react-hooks @storybook/testing-library @storybook/addon-storyshots@next @storybook/testing-react@next
+yarn add --dev jest identity-obj-proxy react-test-renderer @testing-library/react @testing-library/jest-dom @testing-library/user-event @testing-library/react-hooks @storybook/testing-library @storybook/addon-storyshots@next @storybook/testing-react@next
 ```
 
 それぞれ install package は以下の用途になります。
 
-- babel-jest
-  - Babel を使って jest を実行する
 - jest
   - Storybook と Jest を利用した Snapshot test や Unit test を実行する
 - @testing-library/react
@@ -135,8 +149,19 @@ jest をコマンドラインから実行する為、package.json に `"test": "
 次にルートディレクトリに `jest.config.js` ファイルを作成して以下を追記します。
 
 ```js
-module.exports = {
-  collectCoverageFrom: ['**/*.{js,jsx,ts,tsx}', '!**/*.d.ts', '!**/node_modules/**'],
+const nextJest = require('next/jest');
+
+const createJestConfig = nextJest({
+  // Provide the path to your Next.js app to load next.config.js and .env files in your test environment
+  dir: './',
+});
+
+// Add any custom config to be passed to Jest
+const customJestConfig = {
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
+  // if using TypeScript with a baseUrl set to the root directory then you need the below for alias' to work
+  moduleDirectories: ['node_modules', '<rootDir>/', 'src'],
+  testEnvironment: 'jest-environment-jsdom',
   moduleNameMapper: {
     /* Handle CSS imports (with CSS modules)
     https://jestjs.io/docs/webpack#mocking-css-modules */
@@ -149,19 +174,21 @@ module.exports = {
     https://jestjs.io/docs/webpack#handling-static-assets */
     '^.+\\.(jpg|jpeg|png|gif|webp|avif|svg)$': '<rootDir>/__mocks__/file.mock.js',
   },
-  testPathIgnorePatterns: ['<rootDir>/node_modules/', '<rootDir>/.next/'],
-  testEnvironment: 'jsdom',
-  transform: {
-    /* Use babel-jest to transpile tests with the next/babel preset
-    https://jestjs.io/docs/configuration#transform-objectstring-pathtotransformer--pathtotransformer-object */
-    '^.+\\.(js|jsx|ts|tsx)$': ['babel-jest', { presets: ['next/babel'] }],
-  },
-  transformIgnorePatterns: ['/node_modules/', '^.+\\.module\\.(css|sass|scss)$'],
-  setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
 };
+
+// createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async
+module.exports = createJestConfig(customJestConfig);
 ```
 
-細かい設定については [Configuring Jest](https://jestjs.io/docs/configuration) を参照ください。
+Next.js 12 のリリース以降、Next.js には Jest の構成が組み込まれています。
+
+設定の最初に import している `require('next/jest')` には基本的な Jest の設定がされています。
+
+上記の設定で SWC でコンパイルされるようになります。
+
+SWC は Next.12 より導入された Rust で作られたビルドツールで、Babel より高速にコンパイルされるとされています。
+
+その他の細かい設定については [Configuring Jest](https://jestjs.io/docs/configuration) を参照ください。
 
 最後に Jest カスタムマッチャーを利用出来るようにする為、ルートディレクトリに `jest.setup.js` ファイルを作成して以下を追記します。
 
