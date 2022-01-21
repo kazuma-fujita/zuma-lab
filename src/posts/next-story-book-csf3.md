@@ -82,13 +82,13 @@ npm、yarn それぞれ以下コマンドを実行してください。
 - npm
 
 ```txt
-npm install --save-dev jest babel-jest identity-obj-proxy react-test-renderer @testing-library/react @testing-library/jest-dom @testing-library/user-event @testing-library/react-hooks @storybook/addon-storyshots@next @storybook/testing-react@next
+npm install --save-dev jest babel-jest identity-obj-proxy react-test-renderer @testing-library/react @testing-library/jest-dom @testing-library/user-event @testing-library/react-hooks @storybook/testing-library @storybook/addon-storyshots@next @storybook/testing-react@next
 ```
 
 - yarn
 
 ```txt
-yarn add --dev jest babel-jest identity-obj-proxy react-test-renderer @testing-library/react @testing-library/jest-dom @testing-library/user-event @testing-library/react-hooks @storybook/addon-storyshots@next @storybook/testing-react@next
+yarn add --dev jest babel-jest identity-obj-proxy react-test-renderer @testing-library/react @testing-library/jest-dom @testing-library/user-event @testing-library/react-hooks @storybook/testing-library @storybook/addon-storyshots@next @storybook/testing-react@next
 ```
 
 それぞれ install package は以下の用途になります。
@@ -111,6 +111,8 @@ yarn add --dev jest babel-jest identity-obj-proxy react-test-renderer @testing-l
   - Snapshot test 実行時に snapshot を出力する
 - @storybook/testing-react
   - jest のテストコード中に Story を利用可能にする
+- @storybook/testing-library
+  - storybook のコード中に userEvent や screen など react-testing-library の機能 を利用可能にする
 - identity-obj-proxy
   - CSS Modules をモックする
 
@@ -947,8 +949,7 @@ export const SignInForm = () => {
 
 ```ts
 import type { ComponentStoryObj } from '@storybook/react';
-import { screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+import { userEvent, screen } from '@storybook/testing-library';
 import { SignInForm } from './sign-in-form';
 
 type Story = ComponentStoryObj<typeof SignInForm>;
