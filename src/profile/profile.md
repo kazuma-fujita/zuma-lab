@@ -28,31 +28,79 @@ Vercel でホスティングしています。
 
 FUJI ROCK は 10 年以上通ってるフジロッカーです。
 
-ロードバイクも大好きで、東京から FUJI ROCK 会場のある新潟県の苗場まで往復 400km を走破しました。
+また、ロードバイクは 10 年以上乗っていて、最長ロングライドとして東京から新潟県の苗場まで往復 400km を走破しました。
+
+愛車は Ridley の HELIUM Retro です。
 
 ## 語学
 
-現在英語を学んでいます。
+エンジニアとして英語レベル向上の必要性を常に感じていました。
 
-私は学生の頃から英語が苦手で TOEIC も 400 点台です。
+現在コロナ渦の隙間時間を利用し、英語を学んでいます。
 
-語学力アップの為、まずは旅行英会話レベル習得を目標として日々勉強しています。
-
-次にビジネス英会話、最終的に日常英会話レベル習得を目標としています。
-
-語学習得は日々の積み重ねが大事だと感じているので、毎日継続して以下の input、output を行っています。
+語学習得は日々の積み重ねが大事だと感じているので、継続して以下の input、output を行っています。
 
 - Input
   - オンライン英会話教材でリーディング、リスニング学習
   - 英語学習アプリ Duolingo で文法・単語学習
   - 語学系 Youtube チャンネルで英語フレーズ学習
 - Output
-  - 週 4〜5 回のオンライン英会話でスピーキング練習
-  - 習慣継続アプリ みんチャレで英語日記をライティング
+  - 週 5 日のオンライン英会話
+  - 毎日 Studygram アカウントで Instagram に英語日記投稿
 
 # Work Experience
 
 **GENOVA.Inc, June 2012 - The present**
+
+## React x Amplify 画像解析 LINE (LIFF) アプリ開発 April 2022 - The present
+
+病院の診察券を撮影、画像解析し診察券番号を QR コード化する LINE (LIFF) アプリ 開発プロジェクトの技術選定・設計・開発・運用保守を担当。
+
+フロントエンドは React、バックエンドは Amplify、画像解析には Amazon Textract を使用して現在開発中。
+
+**Role**
+
+- Lead Engineer
+
+**Frontend**
+
+- Language
+  - TypeScript
+- Js Library
+  - React
+- Hosting
+  - Amplify
+- Query Language
+  - GraphQL (Using AppSync)
+- Local State Management
+  - useSWR
+- UI Component Library
+  - Chakra-UI
+- Linter
+  - ESLint
+- Formatter
+  - Prettier
+- Tools
+  - Github
+  - Slack
+
+**Backend**
+
+- Language
+  - Node.js
+- ML Library
+  - Amazon Textract
+- Serverless
+  - Lambda (Using Amplify)
+- GraphQL API
+  - AppSync (Using Amplify)
+- Authentication
+  - Cognito (Using Amplify)
+- Data Store
+  - DynamoDB (Using Amplify)
+- Tools
+  - Github
+  - Slack
 
 ## Next.js x Amplify 医療機関向け備品発注 SaaS 開発 September 2021 - The present
 
