@@ -146,6 +146,24 @@ Cypress component testing ではテスト対象のコンポーネントとテス
 
 以後、上記構成を前提とした TypeScript、Jest、Cypress 設定をします。
 
+## Next.js 設定
+
+Next.js12 から導入された Rust で作られたビルドツールである SWC を有効化します。
+
+`next.config.js` に `swcMinify: true` を追記します。
+
+```js
+/** @type {import('next').NextConfig} */
+module.exports = {
+  reactStrictMode: true,
+  swcMinify: true, // added
+};
+```
+
+筆者のケースでは SWC を有効化しないと Cypress component testing の `cypress open-ct` でコンポーネントテスト実行時に `Cannot GET /__cypress/src/index.html` エラーが発生しテストが実行されませんでした。
+
+また、後述する Jest 設定では SWC を使用したビルド設定をします。
+
 ## TypeScript の設定
 
 `tsconfig.json` の設定で baseUrl をルートから src ディレクトリに変更します。
@@ -177,23 +195,7 @@ include も併せて参照するファイルパスに src ディレクトリを�
 }
 ```
 
-## Next の設定
-
-Next.js12 から導入された Rust で作られたビルドツールである SWC を有効化します。
-
-`next.config.js` に `swcMinify: true` を追記します。
-
-```js
-/** @type {import('next').NextConfig} */
-module.exports = {
-  reactStrictMode: true,
-  swcMinify: true, // added
-};
-```
-
-筆者のケースでは SWC を有効化しないと Cypress component testing の `cypress open-ct` でコンポーネントテスト実行時に `Cannot GET /__cypress/src/index.html` エラーが発生しテストが実行されませんでした。
-
-## Jest の設定
+## Jest 設定
 
 Jest の設定です。
 
@@ -228,7 +230,7 @@ const createJestConfig = nextJest({
 const customJestConfig = {
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
   // if using TypeScript with a baseUrl set to the root directory then you need the below for alias' to work
-  moduleDirectories: ['node_modules', '<rootDir>/'],
+  moduleDirectories: ['node_modules', '<rootDir>/', 'src'],
   testPathIgnorePatterns: ['<rootDir>/cypress/'],
   testEnvironment: 'jest-environment-jsdom',
 };
@@ -259,7 +261,7 @@ SWC は Next.12 より導入された Rust で作られたビルドツールで�
 import '@testing-library/jest-dom/extend-expect';
 ```
 
-## Cypress の設定
+## Cypress 設定
 
 Cypress をコマンドラインから実行するショートカットを作成する為、package.json に 以下を追記します。
 
