@@ -4,8 +4,6 @@
 
 普段 Web や Mobile アプリ開発をしている ZUMA です。
 
-2 児の父です。
-
 この blog は Next.js を勉強しようと思い作りました。
 
 Vercel でホスティングしています。
@@ -32,25 +30,9 @@ FUJI ROCK は 10 年以上通ってるフジロッカーです。
 
 愛車は Ridley の HELIUM Retro です。
 
-## 語学
-
-エンジニアとして英語レベル向上の必要性を常に感じていました。
-
-現在コロナ渦の隙間時間を利用し、英語を学んでいます。
-
-語学習得は日々の積み重ねが大事だと感じているので、継続して以下の input、output を行っています。
-
-- Input
-  - オンライン英会話教材でリーディング、リスニング学習
-  - 英語学習アプリ Duolingo で文法・単語学習
-  - 語学系 Youtube チャンネルで英語フレーズ学習
-- Output
-  - 週 5 日のオンライン英会話レッスン
-  - 毎日 Studygram アカウントで Instagram に英語日記投稿
-
 # Work Experience
 
-**GENOVA.Inc, June 2012 - The present**
+**医療系スタートアップ, June 2012 - The present**
 
 ## React x Amplify 画像解析 LINE (LIFF) アプリ開発 April 2022 - The present
 
@@ -456,7 +438,7 @@ Linux/PHP/FuelPHP/Nginx/MySQL
 
 Linux/Perl/PSGI/Apache/MySQL
 
-## **株式会社 FST April 2009 - March 2012**
+## **受託開発会社勤務 April 2009 - March 2012**
 
 ## PHP 受託案件 January 2011 - March 2012
 
