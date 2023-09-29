@@ -12,29 +12,118 @@ Vercel でホスティングしています。
 
 [Twitter](https://twitter.com/zuma_lab) をやってるのでお気軽にフォローお願いします。
 
-## 特技
-
-特技はギター、バンジョー、マンドリンの演奏です。
-
-毎週演奏動画を自分の [Youtube channel](https://www.youtube.com/channel/UCY5iFo2L4IYmKq-FcsYKBKQ) にアップしています。
-
-最近、新たに娘とバイオリンにチャレンジしています。
-
-## 趣味
-
-野外フェスが好きで、FUJI ROCK、Summer Sonic、朝霧 JAM、GREENROOM FESTIVAL、ARABAKI ROCK FEST. など全国のフェスに行ってます。
-
-FUJI ROCK は 10 年以上通ってるフジロッカーです。
-
-また、ロードバイクも 10 年以上乗っていて、最長ロングライドとして東京から新潟県の苗場まで往復 400km を走破しました。
-
-愛車は Ridley の HELIUM Retro です。
-
 # Work Experience
 
-**医療系スタートアップ, June 2012 - The present**
+**医療系上場企業, June 2012 - The present**
 
-## React x Amplify 画像解析 LINE (LIFF) アプリ開発 April 2022 - The present
+## ChatGPT を利用した医療機関向け AI Chatbot システム開発 May 2023 -
+
+ChatGPT を利用した医療機関向けの AI Chatbot システム開発プロジェクトの技術検証・技術選定・設計・開発・テスト・インフラ構築・運用保守を担当。
+
+ChatGPT, Bard, Bing Chatそれぞれの特性を活かし、プロンプトを使い分け生産性・開発効率が大幅に向上。
+
+また、VSCode Plugin である Github Copilot, Copilot Chat, Genie を積極的にプロダクト導入し更に生産性が向上。
+
+結果、1.5人のリソースで開発着手から 2 ヶ月でβ版リリースを実現した。
+
+アーキテクチャとして、RAG の手法を用いて医療機関のドメイン知識を回答出来るように ChatGPT をカスタマイズ。
+
+RAG の ベクターストアには Pinecone を利用。
+
+また、プロンプト・エンジニアリングで回答の精度を向上させ、ハルシネーションの低減を実現。
+
+現在、他社API連携でチャットボットから歯科予約機能や内科順番待ち機能を実装中。
+
+**Role**
+
+- Tech Lead
+
+**Frontend**
+
+- Language
+  - Typescript
+- Framework
+  - Next.js
+- Hosting
+  - Amplify
+- GraphQL Client
+  - Apollo Client
+- UI Component Library
+  - MUI
+- CSS In JS Library
+  - Tailwind CSS
+- Date Library
+  - date-fns
+- Linter
+  - ESLint
+- Formatter
+  - Prettier
+- Snapshot Test
+  - Jest
+  - Storybook
+- Unit Test
+  - Jest
+  - React Testing Library
+- E2E Test
+  - Cypress
+- CI/CD
+  - Github Actions
+- Tools
+  - Github
+  - Slack
+
+**Backend**
+
+- Language
+  - Python
+- Framework
+  - FastAPI
+- ASGI
+  - Uvicorn
+- GraphQL Library
+  - Strawberry
+- Validation Library
+  - Pydantic
+- ORM
+  - SQLAlchemy
+- Database
+  - MySQL
+- Vector Store
+  - Pinecone
+- Unit Test
+  - Pytest
+- CI/CD
+  - Github Actions
+- Tools
+  - Docker
+  - Github
+  - Slack
+
+**Infrastructure**
+
+- Container Orchestration
+  - Amazon ECS
+- Instance
+  - Amazon EC2/ALB
+- Data Store
+  - Amazon RDS
+- Storage
+  - Amazon S3
+- CDN
+  - Amazon CloudFront
+- Container Registry
+  - Amazon ECR
+- Batch
+  - AWS Lambda/SQS
+- Domain
+  - Amazon Route53
+- SSL/TLS
+  - AWS ACM
+- Log
+  - Amazon CloudWatch
+
+
+## React x Amplify 画像解析 LINE (LIFF) アプリ開発 April 2022 - April 2023
 
 病院の診察券を撮影、画像解析し診察券番号を QR コード化する LINE (LIFF) アプリ 開発プロジェクトの技術選定・設計・開発・運用保守を担当。
 
@@ -84,69 +173,69 @@ FUJI ROCK は 10 年以上通ってるフジロッカーです。
   - Github
   - Slack
 
-## Next.js x Amplify 医療機関向け備品発注 SaaS 開発 September 2021 - The present
+## Next.js x Amplify 医療機関向け備品発注 SaaS 開発 September 2021 - March 2022
 
 医療機関向けの備品発注 SaaS 開発プロジェクトの技術選定・設計・開発・運用保守を担当。
 
-フロントエンドは Next.js、バックエンドは Amplify で現在開発中。
+フロントエンドは Next.js、バックエンドは Amplify で開発。
 
-**Role**
+**role**
 
-- Lead Engineer
+- lead engineer
 
-**Frontend**
+**frontend**
 
-- Language
-  - TypeScript
-- Framework
-  - Next.js
-- Hosting
-  - Amplify
-- Query Language
-  - GraphQL (Using AppSync)
-- Local State Management
-  - useSWR
-- UI Component Library
-  - Material-UI
-- CSS in JS Library
-  - Emotion
-- Date Library
+- language
+  - typescript
+- framework
+  - next.js
+- hosting
+  - amplify
+- query language
+  - graphql (using appsync)
+- local state management
+  - useswr
+- ui component library
+  - material-ui
+- css in js library
+  - emotion
+- date library
   - date-fns
-- Linter
-  - ESLint
-- Formatter
-  - Prettier
-- Snapshot Test
-  - Jest
-  - Storybook
-- Unit Test
-  - Jest
-  - ReactTestingLibrary
-- E2E Test
-  - Cypress
-- Tools
-  - Storybook
-  - Figma
-  - Github
-  - Slack
+- linter
+  - eslint
+- formatter
+  - prettier
+- snapshot test
+  - jest
+  - storybook
+- unit test
+  - jest
+  - reacttestinglibrary
+- e2e test
+  - cypress
+- tools
+  - storybook
+  - figma
+  - github
+  - slack
 
-**Backend**
+**backend**
 
-- Language
-  - Node.js
-- GraphQL API
-  - AppSync (Using Amplify)
-- Authentication
-  - Cognito (Using Amplify)
-- Serverless
-  - Lambda (Using Amplify)
-- Data Store
-  - DynamoDB (Using Amplify)
-- Storage
-  - S3 (Using Amplify)
-- Tools
-  - Github
-  - Slack
+- language
+  - node.js
+- graphql api
+  - appsync (using amplify)
+- authentication
+  - cognito (using amplify)
+- serverless
+  - lambda (using amplify)
+- data store
+  - dynamodb (using amplify)
+- storage
+  - s3 (using amplify)
+- tools
+  - github
+  - slack
 
 ## Flutter 診察券電子化&医療ポータルアプリ開発 February 2021 - August 2021
 
