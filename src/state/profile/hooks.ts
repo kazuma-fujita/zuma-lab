@@ -37,33 +37,33 @@ const data = [
 
 const mainSkillData = [
   {
-    title: 'Web skills',
+    title: 'Web Skills',
     image: '/images/profile/web-skill-image.jpeg',
     imageTitle: 'web skill image',
     skills: [
-      { skill: 'React', rate: 60 },
-      { skill: 'TypeScript', rate: 60 },
-      { skill: 'Next.js', rate: 60 },
+      { skill: 'React', rate: 70 },
+      { skill: 'TypeScript', rate: 70 },
+      { skill: 'Next.js', rate: 70 },
     ],
   },
   {
-    title: 'Mobile skills',
+    title: 'Mobile Skills',
     image: '/images/profile/mobile-skill-image.jpeg',
     imageTitle: 'mobile skill image',
     skills: [
+      { skill: 'Flutter', rate: 70 },
       { skill: 'Swift', rate: 50 },
       { skill: 'Kotlin', rate: 50 },
-      { skill: 'Flutter', rate: 70 },
     ],
   },
   {
-    title: 'Backend skills',
+    title: 'Backend Skills',
     image: '/images/profile/backend-skill-image.jpeg',
     imageTitle: 'backend skill image',
     skills: [
+      { skill: 'Python', rate: 70 },
+      { skill: 'FastAPI', rate: 70 },
       { skill: 'Node.js', rate: 50 },
-      { skill: 'Amplify', rate: 60 },
-      { skill: 'DynamoDB', rate: 40 },
     ],
   },
 ];
@@ -73,19 +73,23 @@ const subSkillData = [
     title: 'Other skills',
     image: '/images/profile/other-skill-image.jpeg',
     imageTitle: 'other skill image',
-    skills: ['Django', 'MySQL', 'Apache', 'Nginx', 'Git', 'Github', 'Docker', 'Cypress', 'Slack', 'Discode', 'Trello'],
+    skills: ['Terraform', 'Django', 'MySQL', 'Pinecone', 'Nginx', 'Git', 'Github', 'Docker', 'Cypress', 'Slack'],
   },
   {
     title: 'AWS skills',
     image: '/images/profile/aws-skill-image.jpeg',
     imageTitle: 'aws skill image',
     skills: [
-      'ElasticBeanstalk',
+      'Amplify',
+      'Cognito',
+      'ECS',
+      'ECR',
       'EC2',
       'ALB',
       'RDS',
-      'Elasticsearch',
+      'DynamoDB',
       'S3',
+      'Lambda',
       'CloudFront',
       'Route53',
       'ACM',
@@ -96,7 +100,7 @@ const subSkillData = [
     title: 'Studying skills',
     image: '/images/profile/studying-skill-image.jpeg',
     imageTitle: 'Studying skill image',
-    skills: ['CDK', 'Lambda', 'Cognito', 'AppSync', 'CloudFormation', 'ECS', 'ECR', 'SMS', 'SES', 'DeviceFarm'],
+    skills: ['CDK', 'AppSync', 'CloudFormation', 'SMS', 'SES', 'DeviceFarm'],
   },
   {
     title: 'Music play skills',
