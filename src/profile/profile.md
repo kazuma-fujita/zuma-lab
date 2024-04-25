@@ -10,7 +10,7 @@ Vercel でホスティングしています。
 
 比較的新しい技術が好きで率先して新しいことにチャレンジしています。
 
-[Twitter](https://twitter.com/zuma_lab) をやってるのでお気軽にフォローお願いします。
+[X](https://twitter.com/zuma_lab) をやってるのでお気軽にフォローお願いします。
 
 # Work Experience
 
@@ -20,25 +20,27 @@ Vercel でホスティングしています。
 
 ChatGPT を利用した医療機関向けの AI Chatbot システム開発プロジェクトの技術検証・技術選定・設計・開発・テスト・インフラ構築・運用保守を担当。
 
-ChatGPT, Bard, Bing Chatそれぞれの特性を活かし、プロンプトを使い分け生産性・開発効率が大幅に向上。
+ChatGPT, Claude, Gemini, Copilot それぞれの特性を活かし、プロンプトを使い分け生産性・開発効率が大幅に向上。
 
-また、VSCode Plugin である Github Copilot, Copilot Chat, Genie を積極的にプロダクト導入し更に生産性が向上。
+また、AI Editor Cursor をプロダクト導入し更に生産性が向上。
 
 結果、1.5人のリソースで開発着手から 2 ヶ月でβ版リリースを実現した。
 
-アーキテクチャとして、RAG の手法を用いて医療機関のドメイン知識を回答出来るように ChatGPT をカスタマイズ。
+アーキテクチャとして、RAG を用いて医療機関のドメイン知識を回答。
 
 RAG の ベクターストアには Pinecone を利用。
 
-また、プロンプト・エンジニアリングで回答の精度を向上させ、ハルシネーションの低減を実現。
+更にChatbotで自然言語でクリニックの仮予約を取る機能を追加。
 
-現在、他社API連携でチャットボットから歯科予約機能や内科順番待ち機能を実装中。
+また、OpenAIのWhisper、TTS APIを利用して音声会話機能を追加。
 
-**Role**
+現在ChatbotにAI Avatarと会話ができる機能を実装中。
+
+### Role
 
 - Tech Lead
 
-**Frontend**
+### Frontend
 
 - Language
   - Typescript
@@ -54,10 +56,6 @@ RAG の ベクターストアには Pinecone を利用。
   - Tailwind CSS
 - Date Library
   - date-fns
-- Linter
-  - ESLint
-- Formatter
-  - Prettier
 - Snapshot Test
   - Jest
   - Storybook
@@ -66,13 +64,17 @@ RAG の ベクターストアには Pinecone を利用。
   - React Testing Library
 - E2E Test
   - Cypress
+- Linter
+  - ESLint & Biome
+- Formatter
+  - Biome
 - CI/CD
   - Github Actions
 - Tools
   - Github
   - Slack
 
-**Backend**
+### Backend
 
 - Language
   - Python
@@ -83,15 +85,19 @@ RAG の ベクターストアには Pinecone を利用。
 - GraphQL Library
   - Strawberry
 - Validation Library
-  - Pydantic
+  - Pydantic2
 - ORM
-  - SQLAlchemy
+  - SQLAlchemy2
 - Database
   - MySQL
-- Vector Store
-  - Pinecone
 - Unit Test
   - Pytest
+- Type Check
+  - Pyright (Pylance)
+- Formatter
+  - Ruff
+- Linter
+  - Ruff
 - CI/CD
   - Github Actions
 - Tools
@@ -99,7 +105,7 @@ RAG の ベクターストアには Pinecone を利用。
   - Github
   - Slack
 
-**Infrastructure**
+### Infrastructure
 
 - Container Orchestration
   - Amazon ECS
@@ -107,6 +113,8 @@ RAG の ベクターストアには Pinecone を利用。
   - Amazon EC2/ALB
 - Data Store
   - Amazon RDS
+- Vector Store
+  - Pinecone
 - Storage
   - Amazon S3
 - CDN
@@ -121,7 +129,10 @@ RAG の ベクターストアには Pinecone を利用。
   - AWS ACM
 - Log
   - Amazon CloudWatch
-
+- Email Platform
+  - Amazon SES
+- Security
+  - AWS WAF
 
 ## React x Amplify 画像解析 LINE (LIFF) アプリ開発 April 2022 - April 2023
 
